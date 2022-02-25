@@ -11,6 +11,7 @@ import seaborn as sns
 from linearmodels.panel import PanelOLS
 from matplotlib import font_manager
 from scipy.stats import ttest_ind
+import datetime as dt
 
 def settings_plot(ax):
     for label in ax.get_xticklabels():
@@ -24,10 +25,22 @@ def settings_plot(ax):
 sizeOfFont=18
 ticks_font = font_manager.FontProperties(size=sizeOfFont)
 
-data=pd.read_excel('../data/entry_analysis.xlsx')
+data=pd.read_csv('../data/entry_analysis_AUM.csv')
+data['log_AUM_etf']=np.log(data['AUM_q'])
+
+data['fdate']=data['follow_inc_date'].apply(lambda x: dt.datetime.strptime(x,"%Y-%m-%d"))
+data['fmonth']=data['fdate'].apply(lambda x: int(str(x.year)+str(x.month)))
+
+match_q=data[data.yearmonth==data.fmonth][['ticker','mer_bps','spread_bps_crsp','log_AUM_etf']]
+match_q=match_q.rename(columns={'mer_bps':'mer_bps_entry', 'spread_bps_crsp':'spread_bps_crsp_entry',
+                                'log_AUM_etf':'log_AUM_etf_entry'})
+data=data.merge(match_q,on='ticker',how='left')
+
+for v in ['mer_bps','spread_bps_crsp','log_AUM_etf']:
+    data[v+"_norm"]=data[v]/data[v+"%s"%"_entry"]
+
 data=data.set_index(['ticker','yearmonth'])
 
-data['log_AUM_etf']=np.log(data['AUM_q'])
 
 # dependent variables
 vars=['mer_bps','mkt_share','spread_bps_crsp','log_AUM_etf']

@@ -1,0 +1,21 @@
+		(1)	(2)	(3)	(4)	(5)
+VARIABLES	LABELS	Multi-ETF index	Multi-ETF index	Multi-ETF index	Multi-ETF index	Multi-ETF index
+						
+ratio_hu	Investor heterogeneity	1.41***	1.33***	1.23***	1.16***	1.13**
+		(3.47)	(3.05)	(2.91)	(2.58)	(2.50)
+aum_ind_bn	Assets under management	0.03***	0.02**	0.02		
+		(4.07)	(2.25)	(1.63)		
+spread_ind_bps	Relative spread		-0.02***		-0.02***	-0.02***
+			(-2.99)		(-2.81)	(-2.73)
+top3_ind	Top 3 issuer dummy	1.09***	0.88***	1.09***	0.98***	0.90***
+		(6.98)	(5.39)	(6.91)	(6.15)	(5.48)
+num_const_00	Number of constituents		0.02			0.02*
+			(1.57)			(1.95)
+dvol_ind_bn	Dollar volume			1.28***	1.27***	1.25***
+				(3.33)	(3.75)	(3.58)
+Constant	Constant	-2.98***	-2.48***	-2.88***	-2.38***	-2.42***
+		(-9.34)	(-6.75)	(-8.78)	(-6.38)	(-6.45)
+						
+Observations		1,057	1,057	1,057	1,060	1,060
+z-statistics in parentheses						
+*** p<0.01, ** p<0.05, * p<0.1						
