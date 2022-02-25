@@ -1,0 +1,22 @@
+\vspace{0.05in}\\	Intercept	&  12.60$^{\ast\ast\ast}$ &  10.67$^{\ast\ast\ast}$ & -45.13$^{\ast\ast\ast}$ & -29.46$^{\ast\ast\ast}$ &   0.66 &   3.84$^{\ast\ast\ast}$ &   4.33$^{\ast\ast\ast}$ &   5.65$^{\ast\ast\ast}$
+\\		& (25.39) & (25.32) & (-35.10) & (-25.44) & (1.14) & (7.48) & (12.45) & (13.53)
+\vspace{0.05in}\\	Relative spread	&  -0.49$^{\ast\ast\ast}$ &  -0.30$^{\ast\ast\ast}$ &  &  &  &  &  &
+\\		& (-7.66) & (-6.96) & & & & & &
+\vspace{0.05in}\\	Log dollar volume	&  &  &   2.94$^{\ast\ast\ast}$ &   2.07$^{\ast\ast\ast}$ &  &  &  &
+\\		& & & (44.63) & (34.37) & & & &
+\vspace{0.05in}\\	Turnover	&  &  &  &  &   0.70$^{\ast\ast\ast}$ &   0.44$^{\ast\ast\ast}$ &  &
+\\		& & & & & (25.35) & (20.07) & &
+\vspace{0.05in}\\	Market share	&  &  &  &  &  &  &  12.97$^{\ast\ast\ast}$ &   7.78$^{\ast\ast\ast}$
+\\		& & & & & & & (28.01) & (20.14)
+\vspace{0.05in}\\	Tracking error	&  &   0.18$^{\ast\ast\ast}$ &  &   0.14$^{\ast\ast\ast}$ &  &   0.15$^{\ast\ast\ast}$ &  &   0.17$^{\ast\ast\ast}$
+\\		& & (20.73) & & (19.36) & & (20.01) & & (21.12)
+\vspace{0.05in}\\	Performance drag	&  &   0.12$^{\ast\ast\ast}$ &  &   0.10$^{\ast\ast\ast}$ &  &   0.11$^{\ast\ast\ast}$ &  &   0.13$^{\ast\ast\ast}$
+\\		& & (5.01) & & (4.95) & & (4.31) & & (5.25)
+\vspace{0.05in}\\	$D_\text{UIT}$	&  &   8.90$^{\ast\ast\ast}$ &  &   2.98$^{\ast\ast\ast}$ &  &   3.44$^{\ast\ast\ast}$ &  &   8.20$^{\ast\ast\ast}$
+\\		& & (25.07) & & (6.19) & & (4.33) & & (16.50)
+\vspace{0.05in}\\	Lending income	&  &   0.10$^{\ast\ast\ast}$ &  &   0.03 &  &   0.15$^{\ast\ast\ast}$ &  &   0.07$^{\ast\ast\ast}$
+\\		& & (4.27) & & (1.03) & & (7.33) & & (2.79)
+\vspace{0.05in}\\	Marketing expenses	&  &  -0.49$^{\ast\ast\ast}$ &  &  -0.40$^{\ast\ast\ast}$ &  &  -0.56$^{\ast\ast\ast}$ &  &  -0.47$^{\ast\ast\ast}$
+\\		& & (-22.06) & & (-25.73) & & (-28.93) & & (-25.08)
+\vspace{0.05in}\\	Adjusted $R^2$	&   0.76 &   0.82 &   0.81 &   0.84 &   0.76 &   0.82 &   0.77 &   0.82
+\\		& & & & & & & &

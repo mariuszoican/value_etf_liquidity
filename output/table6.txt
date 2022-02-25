@@ -1,0 +1,18 @@
+		(1)	(2)	(3)	(4)	(5)	(6)
+VARIABLES	LABELS	$\Delta$ Market share	$\Delta$ Market share	$\Delta$ MER	$\Delta$ MER	$\Delta$ Relative spread	$\Delta$ Relative spread
+							
+ix_ratio_hu	Investor heterogeneity	-0.03***	-0.03***	-1.46**	-1.46**	5.35***	5.38***
+		(-2.82)	(-2.78)	(-2.50)	(-2.49)	(3.41)	(3.45)
+delta_tr_error_bps	$\Delta$ Tracking error		0.00		0.00		-0.02
+			(1.62)		(0.82)		(-0.54)
+delta_perf_drag_bps	$\Delta$ Performance drag		-0.00		0.00		0.05
+			(-0.37)		(0.16)		(1.44)
+delta_marketing_fee_bps	$\Delta$ Marketing expenses		-0.00*		-0.01		0.16*
+			(-1.81)		(-0.93)		(1.86)
+Constant	Constant	0.50***	0.50***	12.66***	12.61***	-8.56***	-7.60***
+		(51.73)	(50.39)	(28.98)	(29.16)	(-6.79)	(-6.30)
+							
+Observations		2,734	2,734	2,734	2,734	2,734	2,734
+R-squared		0.98	0.98	0.98	0.98	0.53	0.53
+Robust t-statistics in parentheses							
+*** p<0.01, ** p<0.05, * p<0.1							
