@@ -36,7 +36,7 @@ sizefigs_S=(8,7) # size of figures
 sizefigs_L=(16,18)
 
 
-data=pd.read_excel('../data/cross_section2020.xlsx')
+data=pd.read_excel('../regressions/excel_panels/cross_section2020.xlsx')
 
 import matplotlib.gridspec as gridspec
 gs = gridspec.GridSpec(2, 2)

@@ -25,25 +25,26 @@ def settings_plot(ax):
 sizeOfFont=18
 ticks_font = font_manager.FontProperties(size=sizeOfFont)
 
-data=pd.read_csv('../data/entry_analysis_AUM.csv')
-data['log_AUM_etf']=np.log(data['AUM_q'])
+data=pd.read_excel('../regressions/excel_panels/reg_entry_aum.xlsx')
 
-data['fdate']=data['follow_inc_date'].apply(lambda x: dt.datetime.strptime(x,"%Y-%m-%d"))
+
+#data['fdate']=data['follow_inc_date'].apply(lambda x: dt.datetime.strptime(x,"%Y-%m-%d"))
+data['fdate']=data['follow_inc_date']
 data['fmonth']=data['fdate'].apply(lambda x: int(str(x.year)+str(x.month)))
 
-match_q=data[data.yearmonth==data.fmonth][['ticker','mer_bps','spread_bps_crsp','log_AUM_etf']]
-match_q=match_q.rename(columns={'mer_bps':'mer_bps_entry', 'spread_bps_crsp':'spread_bps_crsp_entry',
-                                'log_AUM_etf':'log_AUM_etf_entry'})
+match_q=data[data.yearmonth==data.fmonth][['ticker','mer_bps1','spread_bps_crsp1','log_aum']]
+match_q=match_q.rename(columns={'mer_bps1':'mer_bps_entry', 'spread_bps_crsp1':'spread_bps_crsp_entry',
+                                'log_aum':'log_AUM_etf_entry'})
 data=data.merge(match_q,on='ticker',how='left')
 
-for v in ['mer_bps','spread_bps_crsp','log_AUM_etf']:
-    data[v+"_norm"]=data[v]/data[v+"%s"%"_entry"]
+# for v in ['mer_bps1','spread_bps_crsp1','log_aum']:
+#     data[v+"_norm"]=data[v]/data[v+"%s"%"_entry"]
 
 data=data.set_index(['ticker','yearmonth'])
 
 
 # dependent variables
-vars=['mer_bps','mkt_share','spread_bps_crsp','log_AUM_etf']
+vars=['mer_bps1','mkt_share1','spread_bps_crsp1','log_aum']
 
 # run regressions to include controls
 for var in vars:
@@ -67,7 +68,7 @@ fig=plt.figure(facecolor='white',figsize=sizefigs_L)
 ax=fig.add_subplot(gs[0, 0])
 ax=settings_plot(ax)
 
-vplot='mer_bps'
+vplot='mer_bps1'
 vname='Leader MER'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -85,7 +86,7 @@ plt.title('No controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t1
 ax=fig.add_subplot(gs[1, 0])
 ax=settings_plot(ax)
 
-vplot='mer_bps_resid_OnlyFE'
+vplot='mer_bps1_resid_OnlyFE'
 vname='Leader MER'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -102,7 +103,7 @@ plt.title('Fixed effects \n $H_0$: No difference around entry\n P-value: %.3f'%(
 ax=fig.add_subplot(gs[2, 0])
 ax=settings_plot(ax)
 
-vplot='mer_bps_resid_FE'
+vplot='mer_bps1_resid_FE'
 vname='Leader MER'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -119,7 +120,7 @@ plt.title('All controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t
 ax=fig.add_subplot(gs[0, 1])
 ax=settings_plot(ax)
 
-vplot='mkt_share'
+vplot='mkt_share1'
 vname='Leader market share'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -137,7 +138,7 @@ plt.title('No controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t1
 ax=fig.add_subplot(gs[1, 1])
 ax=settings_plot(ax)
 
-vplot='mkt_share_resid_OnlyFE'
+vplot='mkt_share1_resid_OnlyFE'
 vname='Leader market share'
 
 
@@ -155,7 +156,7 @@ plt.title('Fixed effects \n $H_0$: No difference around entry\n P-value: %.3f'%(
 ax=fig.add_subplot(gs[2, 1])
 ax=settings_plot(ax)
 
-vplot='mkt_share_resid_FE'
+vplot='mkt_share1_resid_FE'
 vname='Leader market share'
 
 
@@ -174,7 +175,7 @@ plt.title('All controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t
 ax=fig.add_subplot(gs[0, 2])
 ax=settings_plot(ax)
 
-vplot='spread_bps_crsp'
+vplot='spread_bps_crsp1'
 vname='Leader spread'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -191,7 +192,7 @@ plt.title('No controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t1
 ax=fig.add_subplot(gs[1, 2])
 ax=settings_plot(ax)
 
-vplot='spread_bps_crsp_resid_OnlyFE'
+vplot='spread_bps_crsp1_resid_OnlyFE'
 vname='Leader spread'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -209,7 +210,7 @@ plt.title('Fixed effects \n $H_0$: No difference around entry\n P-value: %.3f'%(
 ax=fig.add_subplot(gs[2, 2])
 ax=settings_plot(ax)
 
-vplot='spread_bps_crsp_resid_FE'
+vplot='spread_bps_crsp1_resid_FE'
 vname='Leader spread'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -227,7 +228,7 @@ plt.title('All controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t
 ax=fig.add_subplot(gs[0, 3])
 ax=settings_plot(ax)
 
-vplot='log_AUM_etf'
+vplot='log_aum'
 vname='Leader AUM (log)'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -244,7 +245,7 @@ plt.title('No controls \n $H_0$: No difference around entry\n P-value: %.3f'%(t1
 ax=fig.add_subplot(gs[1, 3])
 ax=settings_plot(ax)
 
-vplot='log_AUM_etf_resid_OnlyFE'
+vplot='log_aum_resid_OnlyFE'
 vname='Leader AUM (log)'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',
@@ -262,7 +263,7 @@ plt.title('Fixed effects \n $H_0$: No difference around entry\n P-value: %.3f'%(
 ax=fig.add_subplot(gs[2, 3])
 ax=settings_plot(ax)
 
-vplot='log_AUM_etf_resid_FE'
+vplot='log_aum_resid_FE'
 vname='Leader AUM (log)'
 
 sns.barplot(x="d_lwc", y=vplot, palette='Paired',

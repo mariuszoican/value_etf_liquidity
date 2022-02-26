@@ -13,7 +13,7 @@ options obs=max mprint sortsize=0 notes; ods _all_ close;
 HOW TO RUN THIS CODE 
 
 
-1. SAVE THE DATASETS ATTACHED TO THE FOLDER UNDER FILE PATH SPECIFIED ABOVE (e.g., libname f "C:\Users\marta\OneDrive\Desktop\ETF Revisions final\data")
+1. SAVE THE DATASETS ATTACHED TO THE FOLDER UNDER FILE PATH SPECIFIED ABOVE (e.g., libname f "D:\ResearchProjects\kpz_etfliquidity\regressions")
 2. CLICK "RUN"
 ;
 
@@ -2928,7 +2928,7 @@ putnames=no; run;
 
 
 *****************************************************************************************************************************************
-Producing regressions for the Table "Impact of follower ETF entry on leader";
+Producing regressions for the Table "Impact of follower ETF entry on leader (ticker FE)";
 
 ******************************************************************************************;
 
@@ -3268,4 +3268,345 @@ run;
 proc export data=table6 outfile='.\output\Table10_Entry.txt' dbms=tab replace;
 putnames=no; run;
 
+
+*****************************************************************************************************************************************
+Producing regressions for the Table "Impact of follower ETF entry on leader" (ticker and year-month FE);
+
+******************************************************************************************;
+
+*Model 1;
+ods output ParameterEstimates=temp1 fitstatistics=fit1;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model mkt_share1 = d_lwc  ticker yearmonth/ solution ADJRSQ;
+run;
+
+
+*Model 2;
+ods output ParameterEstimates=temp2 fitstatistics=fit2;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model mkt_share1 = d_lwc tr_error_bps perf_drag_bps  marketing_fee_bps  ticker yearmonth/ solution ADJRSQ;
+run;
+
+
+*Model 3;
+ods output ParameterEstimates=temp3 fitstatistics=fit3;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model mer_leader_bps = d_lwc ticker yearmonth/ solution ADJRSQ;
+run;
+
+*Model 4;
+ods output ParameterEstimates=temp4 fitstatistics=fit4;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model mer_leader_bps = d_lwc tr_error_bps perf_drag_bps marketing_fee_bps  ticker yearmonth/ solution ADJRSQ;
+run;
+
+
+
+*Model 5;
+
+ods output ParameterEstimates=temp5 fitstatistics=fit5;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model spread_bps_crsp1 = d_lwc ticker yearmonth/ solution ADJRSQ;
+run;
+
+*Model 6;
+ods output ParameterEstimates=temp6 fitstatistics=fit6;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model spread_bps_crsp1 = d_lwc tr_error_bps perf_drag_bps  marketing_fee_bps  ticker yearmonth/ solution ADJRSQ;
+run;
+
+*Model 7;
+
+ods output ParameterEstimates=temp7 fitstatistics=fit7;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model log_aum = d_lwc ticker yearmonth/ solution ADJRSQ;
+run;
+
+*Model 8;
+ods output ParameterEstimates=temp8 fitstatistics=fit8;
+proc surveyreg data=f.entry_analysis; class ticker yearmonth; cluster ticker yearmonth;
+		model log_aum = d_lwc tr_error_bps perf_drag_bps  marketing_fee_bps  ticker yearmonth/ solution ADJRSQ;
+run;
+
+
+
+
+
+
+
+
+*Produce LATEX output;
+
+*Model 1;
+data temp_1 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp1 fit1(rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_1(keep=Parameter estimate1 tValue1 probt1 ) ;
+	  set temp_1(rename=(estimate=estimate1 tValue=tValue1 probt=probt1));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+
+
+
+
+*Model 2;
+data temp_2 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp2 fit2 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_2(keep=Parameter estimate2 tValue2 probt2 ) ;
+	  set temp_2(rename=(estimate=estimate2 tValue=tValue2 probt=probt2));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+
+
+*Model 3;
+data temp_3 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp3 fit3 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_3(keep=Parameter estimate3 tValue3 probt3) ;
+	  set temp_3(rename=(estimate=estimate3 tValue=tValue3 probt=probt3));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+
+
+
+*Model 4;
+data temp_4 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp4 fit4 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_4(keep=Parameter estimate4 tValue4 probt4) ;
+	  set temp_4(rename=(estimate=estimate4 tValue=tValue4 probt=probt4));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+
+
+
+
+
+*Model 5;
+data temp_5 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp5 fit5 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_5(keep=Parameter estimate5 tValue5 probt5) ;
+	  set temp_5(rename=(estimate=estimate5 tValue=tValue5 probt=probt5));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+
+
+
+*Model 6;
+data temp_6 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp6 fit6 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_6(keep=Parameter estimate6 tValue6 probt6) ;
+	  set temp_6(rename=(estimate=estimate6 tValue=tValue6 probt=probt6));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+
+*Model 7;
+data temp_7 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp7 fit7 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_7(keep=Parameter estimate7 tValue7 probt7) ;
+	  set temp_7(rename=(estimate=estimate7 tValue=tValue7 probt=probt7));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+*Model 8;
+data temp_8 (drop=cValue1 nValue1 fitStat denDF); 
+	  set temp8 fit8 (rename=(label1=FitStat)); 
+	  if fitStat^="Root MSE" & fitStat^="Denominator DF"; 
+	  if substrn(Parameter,1,3)^="symbol" & substrn(Parameter,1,3)^="year"; if FitStat="Adjusted R-Square" then do; 
+	  Estimate=cValue1; Parameter="AdjR2"; end; run; 
+
+	  data temp_8(keep=Parameter estimate8 tValue8 probt8) ;
+	  set temp_8(rename=(estimate=estimate8 tValue=tValue8 probt=probt8));
+where parameter in ("Intercept","ix_urgency_std", "d_lwc", "tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",  
+"tr_error_bps", "perf_drag_bps", "d_UIT",
+"marketing_fee_bps", "lend_byAUM_bps",
+"AdjR2"); if missing(parameter) then delete; run;
+
+	  
+
+
+proc sort data=temp_1; by parameter; run;
+proc sort data=temp_2; by parameter; run;
+proc sort data=temp_3; by parameter; run;
+proc sort data=temp_4; by parameter; run;
+proc sort data=temp_5; by parameter; run;
+proc sort data=temp_6; by parameter; run;
+proc sort data=temp_7; by parameter; run;
+proc sort data=temp_8; by parameter; run;
+
+
+data temp; merge temp_1 temp_2 temp_3 temp_4 temp_5 temp_6 temp_7 temp_8; by parameter; run;
+
+
+*Arranging the parameters in sequence
+;
+
+data temp_v1_; set temp;
+*FOrmat p-values;
+ pvalue1 = put(probt1,best32.);
+  pvalue2 = put(probt2,best32.);
+   pvalue3 = put(probt3,best32.);
+    pvalue4 = put(probt4,best32.);
+	 pvalue5 = put(probt5,best32.);
+	 pvalue6 = put(probt6,best32.);
+	 pvalue7 = put(probt7,best32.);
+	 pvalue8 = put(probt8,best32.);
+
+
+if parameter="Intercept" then parameter="A_Intercept";
+if parameter="d_lwc" then parameter="C_lwc";
+
+if parameter="tr_error_bps" then parameter="D_tr_error_bps";
+if parameter="perf_drag_bps" then parameter="E_perf_drag_bps";
+
+
+if parameter="marketing_fee_bp" then parameter="H_mktng";
+
+if parameter="AdjR2" then parameter="I_AdjR2";
+
+run;
+proc sort data=temp_v1_; by parameter; run;
+
+* Create Latex-specific file and convert into txt;
+
+data  table2;
+set temp_v1_;
+
+
+array aest(1:8) estimate1-estimate8;
+array atvalue(1:8) tValue1-tValue8;
+array apvalue(1:8) pvalue1-pvalue8;
+run;
+
+
+
+data table3 (keep = latexCoef latexSign );
+set  table2;
+
+array aest(1:8) estimate1-estimate8;
+array atvalue(1:8) tValue1-tValue8;
+array apvalue(1:8) pvalue1-pvalue8;
+
+LENGTH latexCoef latexSign strTVal2 $5000.;
+
+*latexCoef = " ";	* starts with decile number;
+latexSign = " ";	* starts with empty column;
+
+
+
+*raw1;
+
+DO i = 1 to 8;
+
+if apvalue(i)=. then apvalue(i)=" ";
+if aEST(i)=. then aEST(i)=" ";
+
+
+		latexCoef = strip(latexCoef) || " & " || put( Round(aEST(i), 0.01), 6.2) ;
+		strTVal = put((Round(atvalue(i), 0.01)), 6.2);	
+		strTVal2 = "("  || strip(strTVal) || ")"; 	
+
+		
+
+
+		if (apvalue(i)<= 0.01 and apvalue(i)>=0)     or (apvalue(i)>= -0.01 and apvalue(i)<=0)     then latexCoef =  strip(latexCoef) || "$^{\ast\ast\ast}$"  ;
+		if (apvalue(i) <= 0.05 and apvalue(i)>0.01) or (apvalue(i)>= -0.05 and apvalue(i)<-0.01) then latexCoef =  strip(latexCoef) || "$^{\ast\ast}$"  ;	
+		if (apvalue(i) <= 0.1 and apvalue(i)>0.05)  or (apvalue(i)>= -0.1 and apvalue(i)<-0.05)   then latexCoef =  strip(latexCoef) || "$^{\ast}$"  ;
+
+
+		latexSign = strip(latexSign) || " & " ||  strip (strTVal2);
+end;
+run;
+
+
+*Transpose;
+
+data table3; set table3; famid=_n_; run;
+proc transpose data=table3 out=table4  ;
+   by famid;
+var latexCoef latexSign ;
+run;
+
+
+
+data table5 (keep=col0 col1 col_n); 
+LENGTH col_n col0 $5000.;
+retain col0 col1 col_n;
+set table4;
+if _NAME_="latexCoef" and famid=1 then col0="Intercept";
+else if _NAME_="latexCoef" and famid=2 then col0="$D_\text{entry}$";
+else if _NAME_="latexCoef" and famid=3 then col0="Tracking error";
+else if _NAME_="latexCoef" and famid=4 then col0="Performance drag";
+else if _NAME_="latexCoef" and famid=5 then col0="Marketing expenses";
+else if _NAME_="latexCoef" and famid=6 then col0="Adjusted $R^2$";
+
+else col0=" ";
+
+if _NAME_="latexCoef" then col_n="\vspace{0.05in}\\";
+if _NAME_="latexSign" then col_n="\\";
+
+
+run;
+
+data table6;
+	set table5;
+	col1=tranwrd(col1,"    .", " ");
+	col1=tranwrd(col1," (.) ", " ");
+run;
+
+proc export data=table6 outfile='.\output\Table10_Entry_2wayFE.txt' dbms=tab replace;
+putnames=no; run;
 

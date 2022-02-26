@@ -1,1 +1,0 @@
-ivreghdfe mer_bps tr_error_bps (mkt_share = d_lwc), absorb(ticker yearmonth) cluster(ticker yearmonth)

@@ -25,7 +25,7 @@ sizeOfFont=18
 ticks_font = font_manager.FontProperties(size=sizeOfFont)
 
 # load data for all indices
-data = pd.read_excel('../data/probit_data.xlsx')
+data = pd.read_excel('../regressions/excel_panels/probit_data.xlsx')
 data = data.set_index(['index_id'])
 
 # control for dollar volume, relative spread, index AUM, top 3 issuer, and no. constituents
