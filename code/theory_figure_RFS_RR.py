@@ -360,6 +360,6 @@ plt.ylabel(r'Equilibrium spread differential',fontsize=16)
 
 
 
-plt.tight_layout(pad=3.0)
+plt.tight_layout(pad=0.5)
 
 plt.savefig(path+'compstat_RR_RFS_differentials.png',bbox_inches='tight')
