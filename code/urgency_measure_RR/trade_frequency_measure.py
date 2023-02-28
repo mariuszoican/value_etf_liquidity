@@ -24,6 +24,7 @@ data13f['dollar_position']=data13f['shares']*data13f['prc']
 
 # compute lagged shareholdings
 data13f['shares_lagged']=data13f.groupby(['mgrno','cusip'])['shares'].shift(1)
+data13f['shares_lagged']=data13f['shares_lagged'].fillna(0)
 data13f['dollar_position_lagged']=data13f['shares_lagged']*data13f['prc']
 
 # compute AUM by manager quarter
@@ -78,4 +79,4 @@ for mgr in list_managers:
     del df_lambdas['level_0']
 
 # save trading intensity file
-df_lambdas.to_csv('../../data/trading_intensity_mgrno_RR.csv',compression='gzip')
+df_lambdas.to_csv('../../data/trading_intensity_mgrno_RR.csv.gz',compression='gzip')
