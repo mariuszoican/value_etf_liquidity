@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 
-# load manager panel
-manager_data=pd.read_csv("../data/manager_panel.csv.gz",index_col=0)
 # load ETF panel
 etf_panel=pd.read_csv("../data/etf_panel_raw.csv")
 
@@ -18,6 +16,8 @@ del etf_panel['top2aum']
 
 # list of ETF tickers
 list_ETF_tickers=etf_panel.ticker.drop_duplicates().tolist()
+df_tickers=pd.DataFrame(list_ETF_tickers)
+df_tickers.to_csv("../data/list_tickers_etf.csv")
 
 # label the high-fee ETF in each index-quarter
 etf_panel=etf_panel.groupby(['index_id','quarter']).apply(lambda x: rank_group(x,1,'mer_bps','high_fee'))
@@ -25,7 +25,7 @@ etf_panel['high_fee']=1*etf_panel['high_fee']
 
 
 # load 13F data and select only rows with ETF holdings in our sample
-data13F=pd.read_csv("../data/data_13F_updateRR.csv.gz",index_col=0)
+data13F=pd.read_csv("../data/data_13F_RR_complete.csv.gz",index_col=0)
 data13F_ETF=data13F[data13F.ticker.isin(list_ETF_tickers)]
 # convert report date to Python format
 data13F_ETF['rdate']=data13F_ETF['rdate'].apply(lambda x: dt.datetime.strptime(x, "%Y-%m-%d"))

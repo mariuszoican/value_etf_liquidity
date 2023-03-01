@@ -8,44 +8,42 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # load raw 13F data
-print("Load (raw) 13F data")
-data13f=pd.read_csv("../../data/data_13F_updateRR.csv.gz",index_col=0)
+print("Load (raw) 13F data and CRSP data")
+data13f=pd.read_csv("../../data/data_13F_RR_complete.csv.gz",index_col=0)
 
-# convert report date to Python format
-data13f['rdate']=data13f['rdate'].apply(lambda x: dt.datetime.strptime(x, "%Y-%m-%d"))
-# get column with year-quarter
-data13f['quarter']=data13f['rdate'].dt.year*10+data13f['rdate'].dt.quarter
+# load CRSP data and keep end of quarter
+data_crsp=pd.read_csv("../../data/data_crsp_updateRR.csv.gz",index_col=0)
+data_crsp['date']=data_crsp['date'].apply(lambda x: dt.datetime.strptime(x, "%Y-%m-%d"))
+data_crsp['month']=data_crsp['date'].dt.month
+data_crsp=data_crsp[data_crsp.month.isin([3,6,9,12])]
+data_crsp=data_crsp.rename(columns={'prc':'prc_crsp'})
+# get the price of next quarter
+data_crsp['prc_crsp_nextq']=data_crsp.groupby('ticker')['prc_crsp'].shift(-1)
 
 # keep only the last report for any given quarter
 data13f=data13f.drop_duplicates(subset=['mgrno','cusip','quarter'],keep='last')
 
-# dollar position in a given stock is shares times price
-data13f['dollar_position']=data13f['shares']*data13f['prc']
+# merge CRSP and 13F data
+data13f=data13f.merge(data_crsp[['ticker','quarter','prc_crsp','prc_crsp_nextq']],on=['ticker','quarter'])
 
-# compute lagged shareholdings
-data13f['shares_lagged']=data13f.groupby(['mgrno','cusip'])['shares'].shift(1)
-data13f['shares_lagged']=data13f['shares_lagged'].fillna(0)
-data13f['dollar_position_lagged']=data13f['shares_lagged']*data13f['prc']
+# dollar position in a given stock is shares times price
+data13f['dollar_position']=data13f['shares']*data13f['prc_crsp']
+data13f['dollar_position_nextq']=data13f['shares']*data13f['prc_crsp_nextq']
 
 # compute AUM by manager quarter
-aum_manager_quarter=data13f.groupby(['mgrno','quarter']).sum()['dollar_position'].reset_index()
+aum_manager_quarter=data13f.groupby(['mgrno','quarter']).sum()[['dollar_position',
+                                                                'dollar_position_nextq']].reset_index()
 # AUM return (with actual portfolio weights)
 aum_manager_quarter['return_aum']=aum_manager_quarter.groupby('mgrno')['dollar_position'].pct_change(1)
+aum_manager_quarter['return_aum_lagged']=(aum_manager_quarter['dollar_position_nextq']/
+                                          aum_manager_quarter['dollar_position']-1)
+aum_manager_quarter['return_aum_lagged']=aum_manager_quarter['return_aum_lagged'].shift(1)
 
-# get counterfactual AUM (holding fixed at previous quarter no. of shares)
-aum_manager_quarter_lagged=data13f.groupby(['mgrno','quarter']).sum()['dollar_position_lagged'].reset_index()
-# compute counterfactual return, as if portfolio weights are fixed at the end of last quarter
-aum_manager_quarter_lagged['return_aum_lagged']=aum_manager_quarter_lagged.groupby('mgrno')['dollar_position_lagged'].pct_change(1)
 
-# merge actual and counterfactual return for rolling window regressions
-returns_regression=aum_manager_quarter.merge(aum_manager_quarter_lagged,on=['mgrno','quarter'])
-returns_regression['return_aum_lagged']=np.where(returns_regression['return_aum_lagged']==np.inf, 
-                                                 np.nan, returns_regression['return_aum_lagged'])
-
-returns_regression['return_aum_winsor']=returns_regression['return_aum'].transform(lambda x: 
-                                    np.maximum(x.quantile(.01), np.minimum(x, x.quantile(.99))))
-returns_regression['return_aum_lagged_winsor']=returns_regression['return_aum_lagged'].transform(lambda x: 
-                                    np.maximum(x.quantile(.01), np.minimum(x, x.quantile(.99))))
+aum_manager_quarter['return_aum_winsor']=aum_manager_quarter['return_aum'].transform(lambda x: 
+                                    np.maximum(x.quantile(.025), np.minimum(x, x.quantile(.975))))
+aum_manager_quarter['return_aum_lagged_winsor']=aum_manager_quarter['return_aum_lagged'].transform(lambda x: 
+                                    np.maximum(x.quantile(.025), np.minimum(x, x.quantile(.975))))
 
 # function to compute rolling regression of returns
 def roll_regression(df,wndw=20):
@@ -58,7 +56,7 @@ def roll_regression(df,wndw=20):
 
 
 # get list of managers and initialize dataframe
-list_managers=returns_regression['mgrno'].drop_duplicates().tolist()
+list_managers=aum_manager_quarter['mgrno'].drop_duplicates().tolist()
 df_lambdas=pd.DataFrame()
 k=0
 
@@ -66,7 +64,7 @@ k=0
 for mgr in list_managers:
     k+=1
     print(k/len(list_managers)*100)
-    temp=returns_regression[returns_regression.mgrno==mgr]
+    temp=aum_manager_quarter[aum_manager_quarter.mgrno==mgr]
     if len(temp)<=20:
         continue
     df=roll_regression(temp)

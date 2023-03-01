@@ -30,8 +30,9 @@ etf_panel['high_fee']=np.where(etf_panel['etf_per_index']==2, 1*etf_panel['high_
 data13F=pd.read_csv("../data/data_13F_ETFonly_RR.csv.gz",index_col=0)
 
 # merge 13F with manager data
-cols_mgr=['mgrno','quarter','lambda_manager','type','transient_investor','tax_extend']
-data13F=data13F.merge(manager_data[cols_mgr],on=['mgrno','quarter'],how='left')
+data13F['year']=data13F['fdate'].apply(lambda x: float(x[0:4]))
+cols_mgr=['mgrno','year','lambda_manager','type','transient_investor','tax_extend']
+data13F=data13F.merge(manager_data[cols_mgr],on=['mgrno','year'],how='left')
 
 # compute ETF-level weighted average trading urgency
 etf_intensity = data13F.groupby(['ticker',
@@ -71,4 +72,4 @@ etf_panel.to_csv("../data/etf_panel_tradingrate.csv")
 sns.histplot(data=etf_panel[etf_panel.etf_per_index==2], x='ratio_tra', hue='high_fee',common_norm=False,
              stat='probability')
 sns.histplot(data=etf_panel[(etf_panel.etf_per_index==2)], x='mgr_intensity', hue='high_fee',common_norm=False,
-             stat='probability',weights='aum_index',bins=40)
+             stat='probability',bins=40)
