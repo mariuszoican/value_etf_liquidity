@@ -30,7 +30,7 @@ etf_panel['high_fee']=np.where(etf_panel['etf_per_index']==2, 1*etf_panel['high_
 data13F=pd.read_csv("../data/data_13F_ETFonly_RR.csv.gz",index_col=0)
 
 # merge 13F with manager data
-data13F['year']=data13F['fdate'].apply(lambda x: float(x[0:4]))
+data13F['year']=data13F['rdate'].apply(lambda x: float(x[0:4]))
 cols_mgr=['mgrno','year','lambda_manager','type','transient_investor','tax_extend']
 data13F=data13F.merge(manager_data[cols_mgr],on=['mgrno','year'],how='left')
 
