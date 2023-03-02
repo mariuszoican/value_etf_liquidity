@@ -46,10 +46,16 @@ mgr_classification['tax_extend']=mgr_classification.groupby('permakey')['tax_ext
 
 # Load trade frequency measure
 mgr_tradefreq=pd.read_csv("../../data/trading_intensity_mgrno_RR.csv.gz",index_col=0)
-mgr_tradefreq['year']=mgr_tradefreq['quarter'].apply(lambda x: int(x/10))
+
+
+# Load duration measure
+mgr_duration=pd.read_csv("../../data/manager_duration_panel.csv.gz",index_col=0)
+mgr_duration['year']=mgr_duration['quarter'].apply(lambda x: int(x/10))
 
 # merge trading measure with Bushee
-mgr_data=mgr_tradefreq.merge(mgr_classification,on=['mgrno','year'],how='left')
+mgr_data=mgr_duration.merge(mgr_tradefreq, on=['mgrno','quarter'],how='left')
+mgr_data=mgr_data.merge(mgr_classification,on=['mgrno','year'],how='left')
+
 
 sizefigs_L=(14,5)
 fig=plt.figure(facecolor='white',figsize=sizefigs_L)
@@ -76,5 +82,33 @@ handles = [mpatches.Patch(facecolor=plt.cm.Reds(100), label="Transient investors
 plt.legend(handles=handles,fontsize=18,frameon=False)
 plt.tight_layout(pad=2)
 plt.savefig("../../output/tradingrate_by_tax.png",bbox_inches="tight")
+
+
+sizefigs_L=(14,5)
+fig=plt.figure(facecolor='white',figsize=sizefigs_L)
+gs = gridspec.GridSpec(1, 2)
+
+ax=fig.add_subplot(gs[0, 0])
+ax=settings_plot(ax)
+sns.kdeplot(data=mgr_data,x='mgr_duration',hue='tax_extend',common_norm=False)
+plt.ylabel('Probability density',fontsize=18)
+plt.xlabel('Investor duration',fontsize=18)
+
+handles = [mpatches.Patch(facecolor=plt.cm.Reds(100), label="Tax-insensitive investors"),
+           mpatches.Patch(facecolor=plt.cm.Blues(100), label="Tax-sensitive investors")]
+plt.legend(handles=handles,fontsize=18,frameon=False)
+
+ax=fig.add_subplot(gs[0, 1])
+ax=settings_plot(ax)
+sns.kdeplot(data=mgr_data,x='mgr_duration',hue='transient_investor',common_norm=False)
+plt.ylabel('Probability density',fontsize=18)
+plt.xlabel('Investor duration',fontsize=18)
+
+handles = [mpatches.Patch(facecolor=plt.cm.Reds(100), label="Transient investors"),
+           mpatches.Patch(facecolor=plt.cm.Blues(100), label="Non-transient investors")]
+plt.legend(handles=handles,fontsize=18,frameon=False)
+plt.tight_layout(pad=2)
+plt.savefig("../../output/mgrduration_by_tax.png",bbox_inches="tight")
+
 
 mgr_data.to_csv("../../data/manager_panel.csv.gz",compression='gzip')
