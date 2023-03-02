@@ -31,7 +31,7 @@ data13F=pd.read_csv("../data/data_13F_ETFonly_RR.csv.gz",index_col=0)
 
 # merge 13F with manager data
 data13F['year']=data13F['rdate'].apply(lambda x: float(x[0:4]))
-cols_mgr=['mgrno','year','lambda_manager','type','transient_investor','tax_extend']
+cols_mgr=['mgrno','year','lambda_manager','mgr_duration','type','transient_investor','tax_extend']
 data13F=data13F.merge(manager_data[cols_mgr],on=['mgrno','year'],how='left')
 
 # compute ETF-level weighted average trading urgency
@@ -39,10 +39,13 @@ etf_intensity = data13F.groupby(['ticker',
                                 'quarter']).apply(lambda x: 
                                  (x['lambda_manager']*x['shares']).sum()/x['shares'].sum()).reset_index()
 etf_intensity=etf_intensity.rename(columns={0:'mgr_intensity'})
-# etf_intensity = data13F.groupby(['ticker',
-#                                 'quarter']).mean()['lambda_manager'].reset_index()
 
-# etf_intensity=etf_intensity.rename(columns={'lambda_manager':'mgr_intensity'})
+# compute ETF-level weighted average duration
+etf_duration = data13F.groupby(['ticker',
+                                'quarter']).apply(lambda x: 
+                                 (x['mgr_duration']*x['shares']).sum()/x['shares'].sum()).reset_index()
+etf_duration=etf_duration.rename(columns={0:'mgr_duration'})
+
 
 # compute share of AUM held by tax-insensitive investors (TII)
 tax_sensitivity=data13F.groupby(['ticker','quarter','tax_extend']).agg({'shares':sum,'shrout2':np.mean}).reset_index()
@@ -60,7 +63,9 @@ transient['ratio_tra']=transient['shares']/transient['total_shares_sample']*100
 transient=transient[transient.transient_investor=='TRA']
 transient=transient[['ticker','quarter','ratio_tra']]
 
-etf_measures=etf_intensity.merge(tax_sensitivity,on=['ticker','quarter'],
+etf_measures=etf_duration.merge(etf_intensity,on=['ticker','quarter'],how='outer')
+
+etf_measures=etf_measures.merge(tax_sensitivity,on=['ticker','quarter'],
                                  how='outer').merge(transient,on=['ticker','quarter'],how='outer')
 etf_panel=etf_panel.merge(etf_measures,on=['ticker','quarter'],how='left')
 
