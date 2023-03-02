@@ -69,9 +69,21 @@ etf_measures=etf_measures.merge(tax_sensitivity,on=['ticker','quarter'],
                                  how='outer').merge(transient,on=['ticker','quarter'],how='outer')
 etf_panel=etf_panel.merge(etf_measures,on=['ticker','quarter'],how='left')
 
+# load StockTwits data
+stock_twits=pd.read_csv("../data/stocktwits_etf.csv",index_col=0)
+stock_twits['date']=stock_twits['date'].apply(lambda x: dt.datetime.strptime(x,"%Y-%m-%d"))
+stock_twits['quarter']=stock_twits['date'].dt.year*10+stock_twits['date'].dt.quarter
+stock_twits_q=stock_twits.groupby(['ticker','quarter']).median()['number_of_msgs'].reset_index()
+stock_twits_q=stock_twits_q.rename(columns={'number_of_msgs':'stock_tweets'})
 
 etf_panel['aum_index']=etf_panel.groupby(['index_id','quarter'])['aum'].transform(sum)
-etf_panel.to_csv("../data/etf_panel_tradingrate.csv")
+etf_panel=etf_panel.merge(stock_twits_q, on=['ticker','quarter'],how='left')
+etf_panel['stock_tweets']=etf_panel['stock_tweets'].fillna(0)
+
+# take logs since distribution has large outliers for SPY
+etf_panel['stock_tweets']=etf_panel['stock_tweets'].apply(lambda x: np.log(1+x))
+
+etf_panel.to_csv("../data/etf_panel_processed.csv")
 
 # get some plots on urgency
 sns.histplot(data=etf_panel[etf_panel.etf_per_index==2], x='ratio_tra', hue='high_fee',common_norm=False,
