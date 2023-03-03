@@ -135,6 +135,9 @@ etf_panel['stock_tweets']=etf_panel['stock_tweets'].fillna(0)
 # take logs since distribution has large outliers for SPY
 etf_panel['stock_tweets']=etf_panel['stock_tweets'].apply(lambda x: np.log(1+x))
 
+etf_panel['qduration']=pd.qcut(etf_panel['mgr_duration'], q=5, labels=False)+1
+etf_panel['qintensity']=pd.qcut(etf_panel['mgr_intensity'], q=5, labels=False)+1
+
 etf_panel.to_csv("../data/etf_panel_processed.csv")
 
 # get some plots on urgency and ETF Fee
@@ -144,14 +147,17 @@ gs = gridspec.GridSpec(1, 3)
 
 ax=fig.add_subplot(gs[0, 0])
 ax=settings_plot(ax)
-sns.kdeplot(data=etf_panel[(etf_panel.etf_per_index==2)].dropna(subset=['highfee']), 
-             x='mgr_duration', hue='highfee',common_norm=False)
-plt.ylabel('Probability density',fontsize=18)
-plt.xlabel('Investor stock duration',fontsize=18)
+# sns.kdeplot(data=etf_panel[(etf_panel.etf_per_index==2)].dropna(subset=['highfee']), 
+#              x='mgr_duration', hue='highfee',common_norm=False)
+sns.barplot(data=etf_panel[(etf_panel.etf_per_index==2)].dropna(subset=['highfee']), 
+            x='qduration', y='highfee', palette='mako',capsize=0.1)
+ax.set_xticklabels(['Low','Q2','Q3','Q4','High'],fontsize=18)
+plt.ylabel('Fraction of high-fee ETFs',fontsize=18)
+plt.xlabel('Investor stock duration quantile',fontsize=18)
 
-handles = [mpatches.Patch(facecolor=plt.cm.Reds(100), label="High-fee ETF"),
-           mpatches.Patch(facecolor=plt.cm.Blues(100), label="Low-fee ETF")]
-plt.legend(handles=handles,fontsize=18,frameon=False,loc='upper right')
+# handles = [mpatches.Patch(facecolor=plt.cm.Reds(100), label="High-fee ETF"),
+#            mpatches.Patch(facecolor=plt.cm.Blues(100), label="Low-fee ETF")]
+# plt.legend(handles=handles,fontsize=18,frameon=False,loc='upper right')
 
 ax=fig.add_subplot(gs[0, 1])
 ax=settings_plot(ax)
@@ -178,3 +184,25 @@ plt.legend(handles=handles,fontsize=18,frameon=False)
 
 plt.tight_layout(pad=2)
 plt.savefig("../output/liquidityneed_by_mer.png",bbox_inches="tight")
+
+
+# stockmean=panel.copy()
+# stockmean=stockmean.set_index(['gic','YYYYQ'])
+
+# full_rv= PanelOLS.from_formula('RetailValue~1+lnMCAP+TURN+IO+bm_ratio + rd + age + RET + \
+#                             absRET + Volatility+ EntityEffects', data=stockmean).fit()
+# full_ac= PanelOLS.from_formula('numest~1+lnMCAP+TURN+IO+bm_ratio + rd + age + RET + \
+#                             absRET + Volatility+EntityEffects', data=stockmean).fit()
+# stockmean['ResRetailValue'] = full_rv.resids
+# stockmean['ResNumest'] = full_ac.resids
+
+from linearmodels.panel import PanelOLS
+etf_graph=etf_panel[(etf_panel.etf_per_index==2)].dropna(subset=['highfee']).copy()
+etf_graph=etf_graph.set_index(['index_id','quarter'])
+etf_graph=etf_graph.dropna()
+inv_dur_reg=PanelOLS.from_formula('mgr_duration~1 + EntityEffects + TimeEffects',data=etf_graph).fit()
+inv_int_reg=PanelOLS.from_formula('mgr_intensity~1 + EntityEffects + TimeEffects',data=etf_graph).fit()
+etf_graph['dur_resid']=inv_dur_reg.resids
+etf_graph['int_resid']=inv_int_reg.resids
+etf_graph['qduration']=pd.qcut(etf_graph['dur_resid'], q=5, labels=False)+1
+etf_graph['qintensity']=pd.qcut(etf_graph['int_resid'], q=5, labels=False)+1
