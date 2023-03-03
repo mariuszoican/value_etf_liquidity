@@ -98,14 +98,21 @@ tax_sensitivity=tax_sensitivity[['ticker','quarter','ratio_tii']]
 # transient=data13F.groupby(['ticker','quarter','transient_investor']).agg({'shares':sum,'shrout2':np.mean}).reset_index()
 # transient['total_shares_sample']=transient.groupby(['ticker','quarter',
 #                                                                 ])['shares'].transform(sum)
-# transient['ratio_tra']=transient['shares']/transient['total_shares_sample']*100
+# transient['ratio_tra']=transient['shares']/(transient['total_shares_sample'])
 # transient=transient[transient.transient_investor=='TRA']
 # transient=transient[['ticker','quarter','ratio_tra']]
 
-transient=data13F.groupby(['ticker','quarter','transient_investor']).count()['rdate'].reset_index()
-transient['total_investors']=transient.groupby(['ticker','quarter'])['rdate'].transform(sum)
-transient['ratio_tra']=transient['rdate']/transient['total_investors']
+# transient=data13F.groupby(['ticker','quarter','transient_investor']).count()['rdate'].reset_index()
+# transient['total_investors']=transient.groupby(['ticker','quarter'])['rdate'].transform(sum)
+# transient['ratio_tra']=transient['rdate']/transient['total_investors']
+# transient=transient[transient.transient_investor=='TRA']
+# transient=transient[['ticker','quarter','ratio_tra']]
+
+transient=data13F.groupby(['ticker','quarter','transient_investor']).agg({'shares':sum,'shrout2':np.mean}).reset_index()
+transient=transient.merge(etf_panel[['ticker','index_id']].drop_duplicates(),on='ticker',how='left')
 transient=transient[transient.transient_investor=='TRA']
+transient['index_shares']=transient.groupby(['index_id','quarter'])['shares'].transform(sum)
+transient['ratio_tra']=transient['shares']/transient['index_shares']
 transient=transient[['ticker','quarter','ratio_tra']]
 
 etf_measures=etf_duration.merge(etf_intensity,on=['ticker','quarter'],how='outer')
