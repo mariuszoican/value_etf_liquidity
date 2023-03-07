@@ -1,0 +1,138 @@
+ticker,index_id,ISSUER,PRIMARY_BENCHMARK
+AAXJ,Asia ex Japan,Blackrock,MSCI AC Asia Ex Japan NR USD
+ACWI,All World,Blackrock,MSCI ACWI NR USD
+ACWX,MSCI ACWI ex-US Index,Blackrock,MSCI ACWI Ex USA NR USD
+AGT,MSCI All Argentina 25/50 Index,iShares,MSCI All Argentina 25/50 Index
+ARGT,MSCI All Argentina 25/50 Index,Global X,FTSE Argentina 20 USD
+BBCA,Canada,JPMorgan,Morningstar Canada Target Market Exposure Index
+BBJP,Japan,JPMorgan,Morningstar Japan Target Market Exposure Index
+CN,MSCI China All Shares Index,Deutsche Bank,MSCI China All Shares Index
+CQQQ,China Technology Sector,Guggenheim,AlphaShares China Technology USD
+CRBN,MSCI ACWI Low Carbon Target Index,Blackrock,MSCI ACWI Low Carbon Target Index
+CWI,MSCI ACWI ex-US Index,SSgA,MSCI ACWI Ex USA NR USD
+EASG,MSCI Emerging Markets ESG Leaders Index,DWS,MSCI Emerging Markets ESG Leaders Index
+EEM,Emerging Markets,Blackrock,MSCI EM NR USD
+EMSG,MSCI Emerging Markets ESG Leaders Index,DWS,MSCI Emerging Markets ESG Leaders Index
+ENOR,MSCI Norway IMI 25/50 Index,Blackrock,MSCI Norway IMI 20/50 NR USD
+ERUS,Russia,Blackrock,MSCI Russia 25/50 NR USD
+EWA,Australia,Blackrock,MSCI Australia NR USD
+EWC,Canada,Blackrock,MSCI Canada NR USD
+EWG,Germany,Blackrock,MSCI Germany NR USD
+EWH,Hong Kong,Blackrock,MSCI Hong Kong NR USD
+EWJ,Japan,Blackrock,MSCI Japan NR USD
+EWL,Switzerland,Blackrock,MSCI Switzerland 25/50 TR USD
+EWQ,France,Blackrock,MSCI France NR USD
+EWT,Taiwan,Blackrock,MSCI Taiwan NR USD
+EWU,UK,Blackrock,MSCI UK NR USD
+EWW,Mexico,Blackrock,MSCI Mexico IMI 25/50 TR USD
+EWY,Korea,Blackrock,MSCI Korea 25/50 NR USD
+EWZ,Brazil,Blackrock,MSCI Brazil 25/50 NR USD
+EZA,South Africa,Blackrock,MSCI South Africa NR USD
+EZU,Eurozone,Blackrock,MSCI EMU NR USD
+FDN,US Internet Sector,First Trust,DJ Internet Composite TR USD
+FEZ,Europe,SSgA,EURO STOXX 50 NR USD
+FLAU,Australia,Franklin Templeton Investments,FTSE Australia Capped Index
+FLAX,Asia ex Japan,Franklin Templeton Investments,FTSE Asia Pacific ex Japan Capped Index
+FLBR,Brazil,Franklin Templeton Investments,FTSE Brazil Capped Index
+FLFR,France,Franklin Templeton Investments,FTSE France Capped Index
+FLGB,UK,Franklin Templeton Investments,FTSE UK Capped Index
+FLHK,Hong Kong,Franklin Templeton Investments,FTSE Hong Kong Capped Index
+FLKR,Korea,Franklin Templeton Investments,FTSE South Korea Capped Index
+FLMX,Mexico,Franklin Templeton Investments,FTSE Mexico Capped Index
+FLSW,Switzerland,Franklin Templeton Investments,FTSE Switzerland Capped Index
+FLTW,Taiwan,Franklin Templeton Investments,FTSE Taiwan Capped Index
+FLZA,South Africa,Franklin Templeton Investments,FTSE/JSE South Africa Capped Index
+GII,S&P Global Infrastructure Index,SSgA,S&P Global Infrastructure TR USD
+IEFA,EAFE,Blackrock,MSCI EAFE IMI NR USD
+IEV,Europe,Blackrock,S&P Europe 350 TR USD
+IGF,S&P Global Infrastructure Index,Blackrock,S&P Global Infrastructure TR USD
+IJH,S&P Midcap 400 Index,Blackrock,S&P MidCap 400 TR
+IJJ,S&P Midcap 400 Value Index,Blackrock,S&P MidCap 400 Value TR USD
+IJK,S&P Midcap 400 Growth Index,Blackrock,S&P MidCap 400 Growth TR
+IJR,S&P SmallCap 600 Index,Blackrock,S&P SmallCap 600 TR USD
+IJS,S&P Smallcap 600 Value Index,Blackrock,S&P SmallCap 600 Value TR
+IJT,S&P Smallcap 600 Growth Index,Blackrock,S&P SmallCap 600 Growth TR
+ITA,US Defense Sector,Blackrock,DJ US Select Aerospace&Defense TR USD
+ITOT,US Total Market,Blackrock,S&P 1500 TR
+IVE,S&P 500 Value Index,Blackrock,S&P 500 Value TR USD
+IVOG,S&P Midcap 400 Growth Index,Vanguard,S&P MidCap 400 Growth TR
+IVOO,S&P Midcap 400 Index,Vanguard,S&P MidCap 400 TR
+IVOV,S&P Midcap 400 Value Index,Vanguard,S&P MidCap 400 Value TR USD
+IVV,S&P 500 Index,Blackrock,S&P 500 TR USD
+IVW,S&P 500 Growth Index,Blackrock,S&P 500 Growth TR
+IWB,Russell 1000 Index,Blackrock,Russell 1000 TR USD
+IWD,Russell 1000 Value Index,Blackrock,Russell 1000 Value TR USD
+IWF,Russell 1000 Growth Index,Blackrock,Russell 1000 Growth TR USD
+IWM,Russell 2000 Index,Blackrock,Russell 2000 TR USD
+IWN,Russell 2000 Value Index,Blackrock,Russell 2000 Value TR USD
+IWO,Russell 2000 Growth Index,Blackrock,Russell 2000 Growth TR USD
+IWV,Russell 3000 Index,Blackrock,Russell 3000 TR USD
+JPN,JPX-Nikkei 400 Net Total Return Index,Deutsche Bank,JPX-Nikkei 400 Total Return Index
+JPXN,JPX-Nikkei 400 Net Total Return Index,Blackrock,JPX-Nikkei 400 Total Return Index
+KALL,MSCI China All Shares Index,Kraneshares,MSCI China All Shares Index
+KNG,S&P 500 Dividend Aristocrats Index,Cboe Vest Financial,S&P 500 Dividend Aristocrats Index
+KWEB,China Technology Sector,KraneShares,CSI Overseas China Internet GR USD
+LOWC,MSCI ACWI Low Carbon Target Index,SSgA,MSCI ACWI Low Carbon Target Index
+MDY,S&P Midcap 400 Index,SSgA,S&P MidCap 400 TR
+MDYG,S&P Midcap 400 Growth Index,SSgA,S&P MidCap 400 Growth TR
+MDYV,S&P Midcap 400 Value Index,SSgA,S&P MidCap 400 Value TR USD
+NOBL,S&P 500 Dividend Aristocrats Index,ProShares,S&P 500 Dividend Aristocrats USD
+NORW,MSCI Norway IMI 25/50 Index,Global X,FTSE Norway 30 USD
+PFF,Preferred Shares,Blackrock,S&P Preferred Stock TR USD
+PGX,Preferred Shares,Invesco PowerShares,BofAML Preferred Stock Fixed Rate TR USD
+PNQI,US Internet Sector,Invesco PowerShares,NASDAQ Internet TR USD
+PPA,US Defense Sector,Invesco PowerShares,AMEX SPADE Defense TR USD
+QQEW,NASDAQ-100 Equal Weighted Index,First Trust,NASDAQ 100 Equal Weighted TR USD
+QQQE,NASDAQ-100 Equal Weighted Index,Direxion,NASDAQ 100 Equal Weighted TR USD
+RSX,Russia,Van Eck,MV Russia NR USD
+SCHC,EAFE Small Cap,Charles Schwab,FTSE Dvlp Small Cap Ex US Liquid NR USD
+SCZ,EAFE Small Cap,Blackrock,MSCI EAFE Small Cap NR USD
+SLY,S&P SmallCap 600 Index,SSgA,S&P SmallCap 600 TR USD
+SLYG,S&P Smallcap 600 Growth Index,SSgA,S&P SmallCap 600 Growth TR
+SLYV,S&P Smallcap 600 Value Index,SSgA,S&P SmallCap 600 Value TR
+SMMD,US Small Caps,iShares,Russell 2500 Index
+SPY,S&P 500 Index,SSgA,S&P 500 TR USD
+SPYG,S&P 500 Growth Index,SSgA,S&P 500 Growth TR
+SPYV,S&P 500 Value Index,SSgA,S&P 500 Value TR USD
+VAW,US Materials Sector,Vanguard,MSCI US IMI/Materials 25-50 GR USD
+VCR,Consumer Discretionary Sector,Vanguard,MSCI US IMI/Consumer Discr 25-50 GR USD
+VDC,Consumer Staples Sector,Vanguard,MSCI US IMI/Cons Staples 25-50 GR USD
+VDE,Energy Sector,Vanguard,MSCI US IMI/Energy 25-50 GR USD
+VEA,EAFE,Vanguard,FTSE Developed ex North America NR USD
+VEU,All World Ex US,Vanguard,FTSE AW Ex US TR USD
+VFH,US Financials Sector,Vanguard,MSCI US IMI/Financials 25-50 GR USD
+VGK,Eurozone,Vanguard,FTSE Developed Europe NR USD
+VGT,US Technology Sector,Vanguard,MSCI US IMI/Info Tech 25-50 GR USD
+VHT,US Healthcare Sector,Vanguard,MSCI US IMI/Health Care 25-50 GR USD
+VIOG,S&P Smallcap 600 Growth Index,Vanguard,S&P SmallCap 600 Growth TR
+VIOO,S&P SmallCap 600 Index,Vanguard,S&P SmallCap 600 TR USD
+VIOV,S&P Smallcap 600 Value Index,Vanguard,S&P SmallCap 600 Value TR
+VIS,US Industrials Sector,Vanguard,MSCI US IMI/Industrials 25-50 GR USD
+VONE,Russell 1000 Index,Vanguard,Russell 1000 TR USD
+VONG,Russell 1000 Growth Index,Vanguard,Russell 1000 Growth TR USD
+VONV,Russell 1000 Value Index,Vanguard,Russell 1000 Value TR USD
+VOO,S&P 500 Index,Vanguard,S&P 500 TR USD
+VOOG,S&P 500 Growth Index,Vanguard,S&P 500 Growth TR
+VOOV,S&P 500 Value Index,Vanguard,S&P 500 Value TR USD
+VOX,US Communications Sector,Vanguard,MSCI US IMI/Telecom Svc 25-50 GR USD
+VPU,US Utilities Sector,Vanguard,MSCI US IMI/Utilities 25-50 GR USD
+VT,All World,Vanguard,FTSE Global All Cap TR USD
+VTHR,Russell 3000 Index,Vanguard,Russell 3000 TR USD
+VTI,US Total Market,Vanguard,MSCI US Broad Market NR USD
+VTWG,Russell 2000 Growth Index,Vanguard,Russell 2000 Growth TR USD
+VTWO,Russell 2000 Index,Vanguard,Russell 2000 TR USD
+VTWV,Russell 2000 Value Index,Vanguard,Russell 2000 Value TR USD
+VWO,Emerging Markets,Vanguard,FTSE Emerging NR USD
+VXF,US Small Caps,Vanguard,S&P 500 TR USD
+VXUS,All World Ex US,Vanguard,FTSE Global All Cap ex US TR USD
+XLB,US Materials Sector,SSgA,S&P Materials Select Sector TR USD
+XLC,US Communications Sector,SSgA,Communication Services Select Sector Index
+XLE,Energy Sector,SSgA,S&P Energy Select Sector TR USD
+XLF,US Financials Sector,SSgA,S&P Financial Select Sector TR USD
+XLI,US Industrials Sector,SSgA,S&P Industrial Select Sector TR USD
+XLK,US Technology Sector,SSgA,S&P Technology Select Sector TR USD
+XLP,Consumer Staples Sector,SSgA,S&P Cons Staples Select Sector TR USD
+XLU,US Utilities Sector,SSgA,S&P Utilities Select Sector TR USD
+XLV,US Healthcare Sector,SSgA,S&P Health Care Select Sector TR USD
+XLY,Consumer Discretionary Sector,SSgA,S&P Consumer Dis Select Sector TR USD
+ZDEU,Germany,SSgA,Solactive GBS Germany Large & Mid Cap Index
