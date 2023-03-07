@@ -77,7 +77,7 @@ etf_panel=etf_panel.merge(index_us,on='index_id',how='left') # dummy is index is
 
 # load 13-F based duration measure (Cremers and Pareek, 2016)
 # -------------------------------------------------------------------------
-d13furg=pd.read_csv("../data/duration_13F.csv.gz",index_col=0)
+d13furg=pd.read_csv("../data/duration_13F_w8.csv.gz",index_col=0)
 d13furg=d13furg[d13furg.ticker.isin(list_ETF_tickers)] 
 d13furg=d13furg.rename(columns={'duration':'mgr_duration'})
 
