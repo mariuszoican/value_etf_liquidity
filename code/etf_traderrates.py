@@ -104,13 +104,18 @@ etf_duration = d13furg.groupby(['ticker',
                                  (x['mgr_duration']*x['shares']).sum()/x['shares'].sum()).reset_index()
 etf_duration=etf_duration.rename(columns={0:'mgr_duration'})
 
+etf_intensity = d13furg.groupby(['ticker',
+                                'quarter']).apply(lambda x: 
+                                 (x['lambda_manager']*x['shares']).sum()/x['shares'].sum()).reset_index()
+etf_intensity=etf_intensity.rename(columns={0:'lambda_manager'})
+
 etf_time_since_first = d13furg.groupby(['ticker',
                                 'quarter']).apply(lambda x: 
                                  (x['time_since_first_inv']*x['shares']).sum()/x['shares'].sum()).reset_index()
 etf_time_since_first=etf_time_since_first.rename(columns={0:'time_since_first'})
 
 etf_duration=etf_duration.merge(etf_time_since_first,on=['ticker','quarter'],how='left')
-
+etf_duration=etf_duration.merge(etf_intensity,on=['ticker','quarter'],how='left')
 
 
 
