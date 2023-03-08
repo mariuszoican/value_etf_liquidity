@@ -81,7 +81,7 @@ d13furg=pd.read_csv("../data/duration_13F_w8.csv.gz",index_col=0)
 d13furg=d13furg[d13furg.ticker.isin(list_ETF_tickers)] 
 d13furg=d13furg.rename(columns={'duration':'mgr_duration'})
 
-cols_mgr=['mgrno','quarter','horizon_perma','type','tax_extend']
+cols_mgr=['mgrno','quarter','lambda_manager','horizon_perma','type','tax_extend']
 d13furg=d13furg.merge(manager_data[cols_mgr],on=['mgrno','quarter'],how='left')
 d13furg=d13furg[d13furg.horizon_perma.isin(['QIX','TRA'])]
 
