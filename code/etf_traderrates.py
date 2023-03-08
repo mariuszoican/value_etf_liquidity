@@ -46,7 +46,7 @@ etf_panel['inception_q']=etf_panel['inception'].dt.year*10+etf_panel['inception'
 etf_panel['quarter_decimal']=etf_panel['quarter'].apply(lambda x: int(x/10)+(x%10-1)/4)
 etf_panel['inc_quarter_decimal']=etf_panel['inception_q'].apply(lambda x: int(x/10)+(x%10-1)/4)
 etf_panel['time_existence']=etf_panel['quarter_decimal']-etf_panel['inc_quarter_decimal']
-etf_panel=etf_panel[etf_panel.time_existence>0.5] # exclude first 1/2 years of existence
+etf_panel=etf_panel[etf_panel.time_existence>0.5] # exclude first 0.5 years of existence
 etf_panel['quarters_in_sample']=etf_panel.groupby('ticker')['quarter'].transform('count')
 etf_panel=etf_panel[etf_panel.quarters_in_sample>=10] # keep ETFs with at least 10 quarters in sample
 
@@ -81,10 +81,18 @@ d13furg=pd.read_csv("../data/duration_13F_w8.csv.gz",index_col=0)
 d13furg=d13furg[d13furg.ticker.isin(list_ETF_tickers)] 
 d13furg=d13furg.rename(columns={'duration':'mgr_duration'})
 
+# Remove 9385 - Blackrock, 90457 - Vanguard, 81540 - State Street
+# d13furg=d13furg[~d13furg['mgrno'].isin([9385, 90457, 81540])]
+
 cols_mgr=['mgrno','quarter','lambda_manager','horizon_perma','type','tax_extend']
 d13furg=d13furg.merge(manager_data[cols_mgr],on=['mgrno','quarter'],how='left')
 d13furg=d13furg[d13furg.horizon_perma.isin(['QIX','TRA'])]
+d13furg['inst_shares']=d13furg.groupby(['ticker','quarter'])['shares'].transform(sum)
+d13furg['weight_shares']=d13furg['shares']/d13furg['inst_shares']
+d13furg['weight_shares_out']=d13furg['shares']/(1000*d13furg['shrout2'])
 
+d13furg['share_ownership']=d13furg['inst_shares']/(1000*d13furg['shrout2'])
+d13furg=d13furg[d13furg.share_ownership<1]
 
 unique_mgr_qtr=d13furg.drop_duplicates(subset=['mgrno','quarter'])
 unique_mgr_qtr['quarter_count']=unique_mgr_qtr.groupby(['mgrno']).cumcount()
@@ -94,15 +102,41 @@ d13furg=d13furg.merge(unique_mgr_qtr, on=['mgrno','quarter'],how='left')
 d13furg['quarter_count']=d13furg['quarter_count'].fillna(0)
 d13furg=d13furg[d13furg.quarter_count>=8]
 
+d13furg['std_pos']=d13furg.groupby(['mgrno',
+                                    'ticker'])['weight_shares_out'].rolling(10).std().reset_index(
+                                    level=[0,1], drop=True)
+
 d13furg['quarter_decimal']=d13furg['quarter'].apply(lambda x: int(x/10)+(x%10-1)/4)
 # first quarter of investment for that investor
 d13furg['first_quarter_inv']=d13furg.groupby(['mgrno','ticker'])['quarter_decimal'].transform('first')
 d13furg['time_since_first_inv']=d13furg['quarter_decimal']-d13furg['first_quarter_inv']
 
+# Add manager-level durations (not merged by tickers)
+manager_dur=pd.read_csv("../data/manager_duration_panel.csv.gz", index_col=0)
+agg_dur=manager_dur[manager_dur.quarter<=20154].groupby(['mgrno',
+                                                         'mgrname']).mean()['mgr_duration'].reset_index()
+agg_dur=agg_dur.rename(columns={'mgr_duration':'mgr_duration_stable'})
+d13furg=d13furg.merge(agg_dur[['mgrno','mgrname','mgr_duration_stable']], on=['mgrno','mgrname'],how='left')
+
+# add index column
+d13furg=d13furg.merge(etf_panel[['ticker','index_id']].drop_duplicates(), on='ticker', how='left')
+d13furg['dollar_pos']=d13furg['shares']*d13furg['prc_crsp']
+
+# mgr_index_dur=d13furg.groupby(['mgrno', 'index_id',
+#                                 'quarter']).apply(lambda x: 
+#                                  (x['mgr_duration']*x['dollar_pos']).sum()/x['dollar_pos'].sum()).reset_index()
+# mgr_index_dur=mgr_index_dur.rename(columns={0:'mgr_duration_index'})
+# d13furg=d13furg.merge(mgr_index_dur, on=['mgrno','index_id','quarter'],how='left')
+
 etf_duration = d13furg.groupby(['ticker',
                                 'quarter']).apply(lambda x: 
                                  (x['mgr_duration']*x['shares']).sum()/x['shares'].sum()).reset_index()
 etf_duration=etf_duration.rename(columns={0:'mgr_duration'})
+
+etf_duration_stable = d13furg.groupby(['ticker',
+                                'quarter']).apply(lambda x: 
+                                 (x['mgr_duration_stable']*x['shares']).sum()/x['shares'].sum()).reset_index()
+etf_duration_stable=etf_duration_stable.rename(columns={0:'mgr_duration_stable'})
 
 etf_intensity = d13furg.groupby(['ticker',
                                 'quarter']).apply(lambda x: 
@@ -114,6 +148,7 @@ etf_time_since_first = d13furg.groupby(['ticker',
                                  (x['time_since_first_inv']*x['shares']).sum()/x['shares'].sum()).reset_index()
 etf_time_since_first=etf_time_since_first.rename(columns={0:'time_since_first'})
 
+etf_duration=etf_duration.merge(etf_duration_stable,on=['ticker','quarter'],how='left')
 etf_duration=etf_duration.merge(etf_time_since_first,on=['ticker','quarter'],how='left')
 etf_duration=etf_duration.merge(etf_intensity,on=['ticker','quarter'],how='left')
 
@@ -137,8 +172,19 @@ transient['ratio_tra']=transient['shares']/(transient['total_shares_sample'])
 transient=transient[transient.horizon_perma=='TRA']
 transient=transient[['ticker','quarter','ratio_tra']]
 
+# compute share of AUM held by transient investors (according to Bushee classification)
+d13furg['type_transient']=np.where(d13furg['type'].isin(['INV','IIA']),1,0)
+transient_type=d13furg.groupby(['ticker','quarter','type_transient']).agg({'shares':sum}).reset_index()
+transient_type['total_shares_sample']=transient_type.groupby(['ticker','quarter',
+                                                                ])['shares'].transform(sum)
+transient_type['ratio_tra_type']=transient_type['shares']/(transient_type['total_shares_sample'])
+transient_type=transient_type[transient_type.type_transient==1]
+transient_type=transient_type[['ticker','quarter','ratio_tra_type']]
+
+
 etf_measures=etf_duration.merge(tax_sensitivity,on=['ticker','quarter'],
-                                 how='outer').merge(transient,on=['ticker','quarter'],how='outer')
+                                 how='outer').merge(transient,on=['ticker','quarter'],how='outer').merge(
+                                transient_type,on=['ticker','quarter'],how='outer')
 etf_panel=etf_panel.merge(etf_measures,on=['ticker','quarter'],how='left')
 
 # load StockTwits data
@@ -165,7 +211,7 @@ etf_graph.to_csv("../data/etf_panel_processed.csv")
 from linearmodels.panel import PanelOLS
 etf_graph=etf_graph.set_index(['index_id','quarter'])
 etf_graph=etf_graph.dropna()
-inv_dur_reg=PanelOLS.from_formula('mgr_duration~1 + EntityEffects + TimeEffects + time_existence + time_since_first ',data=etf_graph).fit()
+inv_dur_reg=PanelOLS.from_formula('mgr_duration ~ 1 + EntityEffects + TimeEffects + time_existence + time_since_first ',data=etf_graph).fit()
 etf_graph['dur_resid']=inv_dur_reg.resids
 etf_graph['qduration']=pd.qcut(etf_graph['dur_resid'], q=5, labels=False)+1
 

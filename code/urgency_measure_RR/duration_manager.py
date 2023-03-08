@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-dur_13F=pd.read_csv("../../data/duration_13F.csv.gz",index_col=0)
+dur_13F=pd.read_csv("../../data/duration_13F_w8.csv.gz",index_col=0)
 dur_13F['dollar_pos']=dur_13F['shares']*dur_13F['prc_crsp']
 
 def weighted_avg(x):
