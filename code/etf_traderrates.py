@@ -204,7 +204,7 @@ stock_twits=pd.read_csv("../data/stocktwits_etf.csv",index_col=0)
 stock_twits['date']=stock_twits['date'].apply(lambda x: dt.datetime.strptime(x,"%Y-%m-%d"))
 stock_twits['quarter']=stock_twits['date'].dt.year*10+stock_twits['date'].dt.quarter
 stock_twits_q=stock_twits.groupby(['ticker','quarter']).median()['number_of_msgs'].reset_index()
-stock_twits=stock_twits['number_of_msgs'].apply(lambda x: np.log(1+x))
+stock_twits_q['number_of_msgs']=stock_twits_q['number_of_msgs'].apply(lambda x: np.log(1+x))
 stock_twits_q=stock_twits_q.rename(columns={'number_of_msgs':'stock_tweets'})
 
 etf_panel['aum_index']=etf_panel.groupby(['index_id','quarter'])['aum'].transform(sum)
