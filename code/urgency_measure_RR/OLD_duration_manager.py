@@ -9,7 +9,7 @@ def weighted_avg(x):
     return np.average(x['duration'],weights=x['dollar_pos'])
 
 # manager_dur=dur_13F.groupby(['mgrno','mgrname','quarter']).apply(weighted_avg)
-manager_dur=dur_13F[dur_13F.quarter<20161].groupby(['mgrno','mgrname']).apply(weighted_avg)
+manager_dur=dur_13F.groupby(['mgrno','mgrname']).apply(weighted_avg)
 manager_dur=manager_dur.reset_index()
 manager_dur=manager_dur.rename(columns={0:'mgr_duration'})
 
