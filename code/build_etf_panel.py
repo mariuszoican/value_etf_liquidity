@@ -215,14 +215,50 @@ etf_graph.to_csv("../data/etf_panel_processed.csv")
 from linearmodels.panel import PanelOLS
 etf_graph=etf_graph.set_index(['index_id','quarter'])
 etf_graph=etf_graph.dropna()
-inv_dur_reg=PanelOLS.from_formula('''mgr_duration ~ 1 + EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
+inv_dur_reg=PanelOLS.from_formula('''mgr_duration ~  EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
                                   marketing_fee_bps + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first''',data=etf_graph).fit()
 etf_graph['dur_resid']=inv_dur_reg.resids
-etf_graph['qduration']=pd.qcut(etf_graph['dur_resid'], q=5, labels=False)+1
+
+rat_tra_reg=PanelOLS.from_formula('''ratio_tra ~  EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
+                                  marketing_fee_bps + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first''',data=etf_graph).fit()
+etf_graph['tra_resid']=rat_tra_reg.resids
 
 
 d13furg=d13furg.merge(etf_graph.reset_index()[['ticker',
                                                      'quarter','highfee']],on=['ticker','quarter'],how='left')
+
+
+sizefigs_L=(14,6)
+fig=plt.figure(facecolor='white',figsize=sizefigs_L)
+gs = gridspec.GridSpec(1, 2)
+
+# ---------
+ax=fig.add_subplot(gs[0, 0])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='dur_resid', capsize=0.1, errorbar='se', palette='Blues')
+plt.xlabel("ETF management fee",fontsize=18)
+plt.ylabel("Residual investor holding duration",fontsize=18)
+ax.set_xticklabels(['Low fee', 'High fee'],fontsize=18)
+plt.title("Panel (a): Investor holding duration",fontsize=18)
+
+ax=fig.add_subplot(gs[0, 1])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='tra_resid', capsize=0.1, errorbar='se', palette='Blues')
+plt.xlabel("ETF management fee",fontsize=18)
+plt.ylabel("Residual AUM share of transient investors",fontsize=18)
+ax.set_xticklabels(['Low fee', 'High fee'],fontsize=18)
+plt.title("Panel (a): AUM share of transient investors",fontsize=18)
+
+path = "../output/"
+
+plt.tight_layout(pad=4)
+plt.savefig(path+'ETF_Clienteles.png',bbox_inches='tight')
+
+
+
+
 
 
 
