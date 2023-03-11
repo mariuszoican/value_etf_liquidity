@@ -78,6 +78,12 @@ etf_panel['highfee']=np.where(etf_panel['rank_fee']==2,1,
                                 np.where(etf_panel['rank_fee']==1,0,np.nan))
 etf_panel['highfee']=np.where(etf_panel['etf_per_index']==2, 1*etf_panel['highfee'], np.nan)
 
+etf_panel['rank_spread']=etf_panel.groupby(['index_id','quarter'])['spread_bps_crsp'].rank(method='dense')
+etf_panel['rank_spread']=np.where(etf_panel['uniquevals']==2, etf_panel['rank_spread'],np.nan)
+etf_panel['highspread']=np.where(etf_panel['rank_spread']==2,1,
+                                np.where(etf_panel['rank_spread']==1,0,np.nan))
+etf_panel['highspread']=np.where(etf_panel['etf_per_index']==2, 1*etf_panel['highspread'], np.nan)
+
 # add a dummy if ETF is focused on US equities
 index_us=pd.read_csv("../data/indices_uslabel.csv")
 etf_panel=etf_panel.merge(index_us,on='index_id',how='left') # dummy is index is US-focused
