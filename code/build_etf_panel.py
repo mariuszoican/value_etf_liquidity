@@ -36,11 +36,19 @@ def settings_plot(ax):
 # load manager panel
 # --------------------------
 manager_data=pd.read_csv("../data/manager_panel.csv.gz",index_col=0)
-
+probit_file=pd.read_csv("../data/ETF_probitData_byIndex.csv")
 
 # Load ETF panel and apply Broman-Shum (2018) filters
 # ----------------------------------------------------
 etf_panel=pd.read_csv("../data/etf_panel_raw.csv")
+
+# compute profit
+etf_panel['log_profit']=((etf_panel['mer_bps']/10**4)*(etf_panel['aum'])).map(np.log)
+
+# Add dummy = 1 if index not by FTSE, MSCI, S&P, Dow Jones, NASDAQ, Russell 
+etf_panel=etf_panel.merge(probit_file[['index_id','d_OwnIndex']],on='index_id',how='left')
+
+
 # keep ETFs with at least 10 quarters of data, and exclude the first 2 quarters of an ETF existence
 # (Broman-Shum, 2018)
 
@@ -306,8 +314,146 @@ sns.kdeplot(data=d13furg, x='mgr_duration', hue='horizon_perma', common_norm=Fal
 plt.xlabel("Investor holding duration",fontsize=18)
 plt.ylabel("Density",fontsize=18)
 ax.legend(title='Investor horizon',fontsize=16, title_fontsize=18, frameon=False, 
-          labels=['Quasi-indexers','Transient'])
+          labels=['Transient','Quasi-indexers'])
 plt.title("Panel (c): Distribution of holding durations",fontsize=18)
 
 plt.tight_layout(pad=4)
 plt.savefig(path+'micro_sumstats.png',bbox_inches='tight')
+
+
+sizefigs_L=(14,6)
+fig=plt.figure(facecolor='white',figsize=sizefigs_L)
+gs = gridspec.GridSpec(1, 1)
+
+# ---------
+ax=fig.add_subplot(gs[0, 0])
+ax=settings_plot(ax)
+sns.histplot((1/d13furg['mgr_duration']),stat='percent',bins=20,palette='Blues')
+plt.xlabel("Inverse of investor holding duration (quarters)",fontsize=18)
+plt.ylabel(r"\% of the sample",fontsize=18)
+plt.savefig(path+'distribution_urgency_RR.png',bbox_inches='tight')
+
+
+etf_graph=etf_graph.set_index(['index_id','quarter'])
+
+
+controls='''EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
+                                  marketing_fee_bps + tr_error_bps + perf_drag_bps + d_UIT + ratio_tii + logret_q_lag +  ret_lag_tii'''
+etf_graph['ret_lag_tii']=etf_graph['logret_q_lag']*etf_graph['ratio_tii']
+
+## Controls for spreads
+spread_reg=PanelOLS.from_formula(f'''spread_bps_crsp ~  {controls}''',
+                                  data=etf_graph).fit()
+etf_graph['spread_resid']=spread_reg.resids
+
+
+## Controls for market share
+mkt_reg=PanelOLS.from_formula(f'''mkt_share ~  {controls}''',
+                                  data=etf_graph).fit()
+etf_graph['mktshare_resid']=mkt_reg.resids
+
+
+## Controls for log volume
+vol_reg=PanelOLS.from_formula(f'''log_volume ~  {controls}''',
+                                  data=etf_graph).fit()
+etf_graph['volume_resid']=vol_reg.resids
+
+
+
+## Controls for turnover
+trn_reg=PanelOLS.from_formula(f'''turnover_frac ~  {controls}''',
+                                  data=etf_graph).fit()
+etf_graph['turnover_resid']=trn_reg.resids
+
+
+
+
+sizefigs_L=(20,12)
+fig=plt.figure(facecolor='white',figsize=sizefigs_L)
+gs = gridspec.GridSpec(2, 4)
+
+# ---------
+ax=fig.add_subplot(gs[0, 0])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='spread_bps_crsp', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Bid-ask spread (basis points)",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("No controls",fontsize=18)
+
+ax=fig.add_subplot(gs[0, 1])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='mkt_share', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Market shares",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("No controls",fontsize=18)
+
+ax=fig.add_subplot(gs[0, 2])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='log_volume', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Trading volume (logs)",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("No controls",fontsize=18)
+
+
+ax=fig.add_subplot(gs[0, 3])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='turnover_frac', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Turnover",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("All controls",fontsize=18)
+
+
+ax=fig.add_subplot(gs[1, 0])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='spread_resid', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Bid-ask spread (basis points)",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("All controls",fontsize=18)
+
+ax=fig.add_subplot(gs[1, 1])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='mktshare_resid', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Market shares",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("All controls",fontsize=18)
+
+ax=fig.add_subplot(gs[1, 2])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='volume_resid', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Trading volume (logs)",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("All controls",fontsize=18)
+
+ax=fig.add_subplot(gs[1, 3])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='highfee', y='turnover_resid', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("")
+#plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
+plt.ylabel("Turnover",fontsize=18)
+ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
+plt.title("No controls",fontsize=18)
+
+plt.tight_layout(pad=2)
+plt.savefig(path+'main_graph_RR.png',bbox_inches='tight')
