@@ -48,6 +48,11 @@ etf_panel['log_profit']=((etf_panel['mer_bps']/10**4)*(etf_panel['aum'])).map(np
 # Add dummy = 1 if index not by FTSE, MSCI, S&P, Dow Jones, NASDAQ, Russell 
 etf_panel=etf_panel.merge(probit_file[['index_id','d_OwnIndex']],on='index_id',how='left')
 
+# compute cumulative marketing expense
+etf_panel['marketing_expense']=etf_panel['marketing_fee_bps']/10000*etf_panel['aum']
+etf_panel['cum_mktg_expense']=etf_panel.groupby('ticker')['marketing_expense'].transform('cumsum')
+etf_panel['cum_mktg_expense']=etf_panel['cum_mktg_expense'].apply(lambda x: np.log(1+x))
+
 
 # keep ETFs with at least 10 quarters of data, and exclude the first 2 quarters of an ETF existence
 # (Broman-Shum, 2018)
@@ -216,6 +221,7 @@ stock_twits_q['stock_tweets']=scaler.fit_transform(stock_twits_q[['stock_tweets'
 
 etf_panel['aum_index']=etf_panel.groupby(['index_id','quarter'])['aum'].transform(sum)
 etf_panel['log_aum_index']=etf_panel['aum_index'].map(np.log)
+etf_panel['log_aum']=etf_panel['aum'].map(np.log)
 etf_panel=etf_panel.merge(stock_twits_q, on=['ticker','quarter'],how='left')
 etf_panel['stock_tweets']=etf_panel['stock_tweets'].fillna(0)
 
@@ -453,7 +459,24 @@ plt.xlabel("")
 #plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
 plt.ylabel("Turnover",fontsize=18)
 ax.set_xticklabels(['Low MER', 'High MER'],fontsize=18)
-plt.title("No controls",fontsize=18)
+plt.title("No controls",fontsize=18) 
 
 plt.tight_layout(pad=2)
 plt.savefig(path+'main_graph_RR.png',bbox_inches='tight')
+
+# Get panel of quarterly differences
+# -----------------------------------
+
+panel_diff=etf_graph.pivot(columns='highfee')
+# list of columns to get differences from
+col_diffs=['lend_byAUM_bps','d_UIT', 'aum', 'log_aum','cum_mktg_expense', 'log_volume', 'logret_q','logret_q_lag',
+           'marketing_fee_bps','mer_bps','mgr_duration','mgr_duration_tii','mgr_duration_tsi','mkt_share',
+           'perf_drag_bps','ratio_tii','ratio_tra','spread_bps_crsp','stock_tweets','time_existence','tr_error_bps',
+           'turnover_frac']
+
+for c in col_diffs:
+    panel_diff[c+"_diff"]=(panel_diff[(c,1)]-panel_diff[(c,0)])
+
+panel_diff=panel_diff[[c+"_diff" for c in col_diffs]]
+panel_diff=panel_diff.reset_index()
+panel_diff.to_csv("../data/etf_panel_differences_RR.csv")
