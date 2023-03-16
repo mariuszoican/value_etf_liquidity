@@ -96,6 +96,9 @@ gen tii_return=ratio_tii * logret_q_lag
 gen profit=aum*mer_bps
 gen log_pr=log(profit)
 
+drop log_aum
+gen log_aum=log(aum)
+
 label variable ratio_tii "Tax-insensitive investors (TII)"
 label variable logret_q_lag "Lagged ETF return"
 label variable tii_return "TII $\times$ Lagged ETF return"
@@ -104,6 +107,7 @@ label variable spread_bps_crsp "Relative spread"
 label variable log_volume "Log dollar volume"
 label variable log_pr "Log profit"
 label variable mkt_share "Market share"
+label variable log_aum "Log AUM"
 
 reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
@@ -120,6 +124,9 @@ outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat la
 reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker)
+// reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker)
+// outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe log_aum highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 

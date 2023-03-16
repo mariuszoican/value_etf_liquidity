@@ -105,6 +105,7 @@ etf_panel=etf_panel.merge(index_us,on='index_id',how='left') # dummy is index is
 # -----------------------------------------------------------------------------------------
 d13furg=pd.read_csv("../data/duration_13F.csv.gz",index_col=0)
 d13furg['dollar_pos']=d13furg['shares']*d13furg['prc_crsp']
+d13furg=d13furg.merge(etf_panel[['ticker','index_id']].drop_duplicates(), on='ticker',how='left')
 
 # compute duration measure
 def weighted_avg(x): # function to weigh duration by dollar positions
@@ -153,6 +154,11 @@ etf_duration = d13furg.groupby(['ticker',
                                  (x['mgr_duration']*x['shares']).sum()/x['shares'].sum()).reset_index()
 etf_duration=etf_duration.rename(columns={0:'mgr_duration'})
 
+etf_duration_index = d13furg.groupby(['index_id',
+                                'quarter']).apply(lambda x: 
+                                 (x['mgr_duration']*x['dollar_pos']).sum()/x['dollar_pos'].sum()).reset_index()
+etf_duration_index=etf_duration_index.rename(columns={0:'mgr_duration_index'})
+
 # duration for Tax-Insensitive Investors (TII)
 etf_duration_tii = d13furg[d13furg.tax_extend=='TII'].groupby(['ticker',
                                 'quarter']).apply(lambda x: 
@@ -197,12 +203,21 @@ transient['ratio_tra']=transient['shares']/(transient['total_shares_sample'])
 transient=transient[transient.horizon_perma=='TRA']
 transient=transient[['ticker','quarter','ratio_tra']]
 
+transient_ix=d13furg.groupby(['index_id','quarter','horizon_perma']).agg({'dollar_pos':sum}).reset_index()
+transient_ix['dollar_pos_sample']=transient_ix.groupby(['index_id','quarter',
+                                                                ])['dollar_pos'].transform(sum)
+transient_ix['ratio_tra_ix']=transient_ix['dollar_pos']/(transient_ix['dollar_pos_sample'])
+transient_ix=transient_ix[transient_ix.horizon_perma=='TRA']
+transient_ix=transient_ix[['index_id','quarter','ratio_tra_ix']]
+
 # put together manager-specific measures
 etf_measures=etf_duration.merge(tax_sensitivity,on=['ticker','quarter'],
                                  how='outer').merge(transient,on=['ticker','quarter'],how='outer')
 
 # merge into main ETF panel
 etf_panel=etf_panel.merge(etf_measures,on=['ticker','quarter'],how='left')
+etf_panel=etf_panel.merge(etf_duration_index,on=['index_id','quarter'],how='left')
+etf_panel=etf_panel.merge(transient_ix,on=['index_id','quarter'],how='left')
 
 # load StockTwits data
 stock_twits=pd.read_csv("../data/stocktwits_etf.csv",index_col=0)
@@ -475,8 +490,24 @@ col_diffs=['lend_byAUM_bps','d_UIT', 'aum', 'log_aum','cum_mktg_expense', 'log_v
            'turnover_frac']
 
 for c in col_diffs:
-    panel_diff[c+"_diff"]=(panel_diff[(c,1)]-panel_diff[(c,0)])
+    if c=='mkt_share':
+
+        panel_diff[c+"_sum"] = panel_diff[(c,1)]+panel_diff[(c,0)]
+        panel_diff[c+"_sum"] = np.where(panel_diff[c+"_sum"]==0,1,panel_diff[c+"_sum"])
+        panel_diff[c+"_diff"]=2*(panel_diff[(c,1)]-panel_diff[(c,0)])/panel_diff[c+"_sum"]
+
+        #panel_diff[c+"_diff"]=panel_diff[(c,1)]-panel_diff[(c,0)]
+    else:
+        panel_diff[c+"_sum"] = panel_diff[(c,1)]+panel_diff[(c,0)]
+        panel_diff[c+"_sum"] = np.where(panel_diff[c+"_sum"]==0,1,panel_diff[c+"_sum"])
+        panel_diff[c+"_diff"]=2*(panel_diff[(c,1)]-panel_diff[(c,0)])/panel_diff[c+"_sum"]
+        #panel_diff[c+"_diff"]=(panel_diff[(c,1)]-panel_diff[(c,0)])
+
 
 panel_diff=panel_diff[[c+"_diff" for c in col_diffs]]
 panel_diff=panel_diff.reset_index()
+
+panel_diff=panel_diff.merge(etf_panel[['index_id','quarter',
+                                       'd_UIT','mgr_duration_index','ratio_tra_ix']].drop_duplicates(),
+                                       on=['index_id','quarter'], how='left')
 panel_diff.to_csv("../data/etf_panel_differences_RR.csv")
