@@ -3,8 +3,8 @@
 clear all
 set more off
 
-// local directory "D:\ResearchProjects\kpz_etfliquidity\"
-local directory "D:\Research\kpz_etfliquidity\"
+local directory "D:\ResearchProjects\kpz_etfliquidity\"
+// local directory "D:\Research\kpz_etfliquidity\"
 // import delimited "`directory'data\etf_panel_differences_RR.csv"
 import delimited "`directory'data\etf_panel_processed.csv"
 
@@ -49,16 +49,16 @@ encode index_id, gen(index_no)
 quietly regress mer_bps i.index_no i.quarter
 predict mer_bps_fe, residuals
 
-// quietly regress mkt_share i.index_no i.quarter
-// predict mkt_share_fe, residuals
+quietly regress mkt_share i.index_no i.quarter
+predict mkt_share_fe, residuals
 
 
 
 drop log_aum
 gen log_aum=log(aum)
 
-quietly regress log_aum i.index_no i.quarter
-predict mkt_share_fe, residuals
+// quietly regress log_aum i.index_no i.quarter
+// predict mkt_share_fe, residuals
 
 label variable mkt_share_fe "Market share"
 label variable mer_bps_fe "MER"
@@ -66,42 +66,42 @@ label variable mer_bps_fe "MER"
 
 log using "`directory'\output\RR_RFS\shapley_log_RR.txt", text replace
 
-rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cluster ticker)
+rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cluster ticker)
+rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cluster ticker)
+rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cluster ticker)
+rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cluster ticker)
+rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cluster ticker)
+rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 // ROBUSTNESS: ONLY > 0 marketing fees
 
-rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cluster ticker)
+rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cluster ticker)
+rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cluster ticker)
+rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cluster ticker)
+rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cluster ticker)
+rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cluster ticker)
+rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std cum_mktg_expense_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 

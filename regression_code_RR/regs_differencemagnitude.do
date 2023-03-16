@@ -3,8 +3,8 @@
 clear all
 set more off
 
-// local directory "D:\ResearchProjects\kpz_etfliquidity\"
-local directory "D:\Research\kpz_etfliquidity\"
+local directory "D:\ResearchProjects\kpz_etfliquidity\"
+//local directory "D:\Research\kpz_etfliquidity\"
 import delimited "`directory'data\etf_panel_processed"
 
 // // Label variables
@@ -33,15 +33,38 @@ label variable tr_error_bps_std "Tracking error (bps)"
 label variable perf_drag_bps_std "Performance drag (bps)"
 label variable turnover_frac_std "ETF turnover"
 
+label variable mkt_share "Market share"
+label variable spread_bps_crsp "Relative spread"
+label variable mer_bps "MER"
+label variable logret_q_lag "Lagged return"
+label variable ratio_tii "Tax-insensitive investors"
+
+gen tii_return=ratio_tii * logret_q_lag
+
+
 egen ratio_tra_ix_std=std(ratio_tra_ix )
 gen ix_ratiotra_highfee=highfee * ratio_tra_ix_std
+
+gen tra_above=ratio_tra_ix_std>0
+gen ix_tra_above=highfee * tra_above
+
+label variable ratio_tra_ix_std "Index AUM share of transient investors ($\text{TRA}_\text{ix}$)"
+label variable ix_ratiotra_highfee "High MER $\times$ $\text{TRA}_\text{ix}$"
 
 drop log_aum
 gen log_aum=log(aum)
 
+reghdfe mkt_share highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+reghdfe mkt_share highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_aum  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag, absorb(index quarter) vce(cl ticker )
+reghdfe spread_bps_crsp highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+reghdfe spread_bps_crsp   highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe spread_bps_crsp   highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag, absorb(index quarter) vce(cl ticker )
-
-reghdfe mer_bps  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag, absorb(index quarter) vce(cl ticker )
+reghdfe mer_bps highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+reghdfe mer_bps  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)

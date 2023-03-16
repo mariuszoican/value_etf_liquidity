@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  16 MAR 2023 09:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  16 MAR 2023 10:47
 entering extended mode
-**d:/ResearchProjects/kpz_etfliquidity/output/RR_RFS/clientele_duration.tex
-(d:/ResearchProjects/kpz_etfliquidity/output/RR_RFS/clientele_duration.tex
+**d:/ResearchProjects/kpz_etfliquidity/output/RR_RFS/shapley_table_RR.tex
+(d:/ResearchProjects/kpz_etfliquidity/output/RR_RFS/shapley_table_RR.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03> (C:\Users\admin-zoicanma\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
@@ -23,8 +23,8 @@ File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count185
 \l__pdf_internal_box=\box47
-) (clientele_duration.aux)
-\openout1 = `clientele_duration.aux'.
+) (shapley_table_RR.aux)
+\openout1 = `shapley_table_RR.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -45,23 +45,23 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
 
-Overfull \hbox (614.55766pt too wide) in paragraph at lines 4--38
+Overfull \hbox (193.86212pt too wide) in paragraph at lines 4--39
 [][] 
  []
 
 [1
 
-{C:/Users/admin-zoicanma/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (clientele_duration.aux) ) 
+{C:/Users/admin-zoicanma/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (shapley_table_RR.aux) ) 
 Here is how much of TeX's memory you used:
  413 strings out of 479618
- 8121 string characters out of 2860751
- 299198 words of memory out of 3000000
+ 8099 string characters out of 2860751
+ 294194 words of memory out of 3000000
  17666 multiletter control sequences out of 15000+200000
  403430 words of font info for 27 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,7n,50p,303b,110s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,7n,50p,251b,110s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/admin-zoicanma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/admin-zoicanma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on clientele_duration.pdf (1 page, 31737 bytes).
+Output written on shapley_table_RR.pdf (1 page, 30844 bytes).
 PDF statistics:
  14 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

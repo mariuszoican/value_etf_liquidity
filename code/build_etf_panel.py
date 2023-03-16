@@ -268,16 +268,16 @@ fig=plt.figure(facecolor='white',figsize=sizefigs_L)
 gs = gridspec.GridSpec(1, 2)
 
 # ---------
-ax=fig.add_subplot(gs[0, 0])
+ax=fig.add_subplot(gs[0, 1])
 ax=settings_plot(ax)
 
 sns.barplot(data=etf_graph, x='highfee', y='dur_resid', capsize=0.1, errorbar='se', palette='Blues')
 plt.xlabel("ETF management fee",fontsize=18)
 plt.ylabel("Residual investor holding duration",fontsize=18)
 ax.set_xticklabels(['Low fee', 'High fee'],fontsize=18)
-plt.title("Panel (a): Investor holding duration",fontsize=18)
+plt.title("Panel (b): Investor holding duration",fontsize=18)
 
-ax=fig.add_subplot(gs[0, 1])
+ax=fig.add_subplot(gs[0, 0])
 ax=settings_plot(ax)
 
 sns.barplot(data=etf_graph, x='highfee', y='tra_resid', capsize=0.1, errorbar='se', palette='Blues')
