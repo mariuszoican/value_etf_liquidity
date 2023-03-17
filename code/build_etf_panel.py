@@ -38,9 +38,10 @@ def settings_plot(ax):
 manager_data=pd.read_csv("../data/manager_panel.csv.gz",index_col=0)
 probit_file=pd.read_csv("../data/ETF_probitData_byIndex.csv")
 
+
 # Load ETF panel and apply Broman-Shum (2018) filters
 # ----------------------------------------------------
-etf_panel=pd.read_csv("../data/etf_panel_raw.csv")
+etf_panel=pd.read_csv("../data/etf_panel_raw.csv",index_col=0)
 
 # compute profit
 etf_panel['log_profit']=((etf_panel['mer_bps']/10**4)*(etf_panel['aum'])).map(np.log)
@@ -97,9 +98,30 @@ etf_panel['highspread']=np.where(etf_panel['rank_spread']==2,1,
                                 np.where(etf_panel['rank_spread']==1,0,np.nan))
 etf_panel['highspread']=np.where(etf_panel['etf_per_index']==2, 1*etf_panel['highspread'], np.nan)
 
+etf_panel['rank_inception']=etf_panel.groupby(['index_id','quarter'])['time_existence'].rank(method='dense')
+etf_panel['rank_inception']=np.where(etf_panel['uniquevals']==2, etf_panel['rank_inception'],np.nan)
+etf_panel['firstmover']=np.where(etf_panel['rank_inception']==2,1,
+                                np.where(etf_panel['rank_inception']==1,0,np.nan))
+etf_panel['firstmover']=np.where(etf_panel['etf_per_index']==2, 1*etf_panel['firstmover'], np.nan)
+
 # add a dummy if ETF is focused on US equities
 index_us=pd.read_csv("../data/indices_uslabel.csv")
 etf_panel=etf_panel.merge(index_us,on='index_id',how='left') # dummy is index is US-focused
+
+# add more data from WRDS ETF Global
+extra_data=pd.read_csv("../data/etf_indices_dummy_wrds.csv.gz")
+extra_data=extra_data[extra_data.composite_ticker.isin(list_ETF_tickers)]
+extra_data['as_of_date']=extra_data['as_of_date'].apply(lambda x: dt.datetime.strptime(x,'%Y-%m-%d'))
+extra_data['quarter']=extra_data['as_of_date'].dt.year*10+extra_data['as_of_date'].dt.quarter
+extra_data=extra_data.drop_duplicates(subset=['composite_ticker','quarter'], keep='last')
+extra_data=extra_data.rename(columns={'composite_ticker':'ticker'})
+etf_panel=etf_panel.merge(extra_data[['ticker','quarter','issuer','description','primary_benchmark',
+                            'tax_classification','is_etn','asset_class','category','is_levered',
+                            'is_active','creation_fee','other_expenses','total_expenses',
+                            'fee_waivers','net_expenses','lead_market_maker']],
+                            on=['ticker','quarter'],how='left')
+
+
 
 # load 13-F based duration measure and aggregate across managers (Cremers and Pareek, 2016)
 # -----------------------------------------------------------------------------------------
@@ -243,6 +265,17 @@ etf_panel['stock_tweets']=etf_panel['stock_tweets'].fillna(0)
 etf_panel['qduration']=pd.qcut(etf_panel['mgr_duration'], q=5, labels=False)+1
 
 etf_graph=etf_panel[(etf_panel.etf_per_index==2)].dropna(subset=['highfee']).copy()
+
+
+count_benchmarks=etf_graph.groupby(['index_id',
+                                    'quarter'])[['primary_benchmark',
+                                                 'lead_market_maker']].nunique().reset_index()
+count_benchmarks=count_benchmarks.rename(columns={'primary_benchmark':'same_benchmark',
+                                                  'lead_market_maker':'same_lead_mm'})
+count_benchmarks['same_benchmark']=2-count_benchmarks['same_benchmark']
+count_benchmarks['same_lead_mm']=2-count_benchmarks['same_lead_mm']
+
+etf_graph=etf_graph.merge(count_benchmarks, on=['index_id','quarter'], how='left')
 
 etf_graph.to_csv("../data/etf_panel_processed.csv")
 
