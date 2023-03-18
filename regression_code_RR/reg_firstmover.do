@@ -3,8 +3,8 @@
 clear all
 set more off
 
-local directory "D:\ResearchProjects\kpz_etfliquidity\"
-// local directory "D:\Research\kpz_etfliquidity\"
+//local directory "D:\ResearchProjects\kpz_etfliquidity\"
+local directory "D:\Research\kpz_etfliquidity\"
 import delimited "`directory'data\etf_panel_processed"
 
 // // Label variables
