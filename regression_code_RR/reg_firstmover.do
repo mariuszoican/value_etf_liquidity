@@ -42,6 +42,9 @@ label variable ratio_tii "Tax-insensitive investors (TII)"
 label variable same_benchmark "Same benchmark"
 label variable same_lead_mm "Same lead market-maker"
 
+gen firstmover_samebench=firstmover * same_benchmark
+gen firstmover_samemm= firstmover * same_lead_mm
+
 reghdfe highfee firstmover, absorb(index_id quarter) vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 reghdfe highfee firstmover marketing_fee_bps_std other_expense_std fee_waiver_std stock_tweets, absorb(index_id quarter) vce(cl quarter)
