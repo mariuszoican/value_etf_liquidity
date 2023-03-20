@@ -41,6 +41,26 @@ probit_file=pd.read_csv("../data/probit_raw.csv")
 meta=pd.read_csv("../data/all_tickers_meta.csv",index_col=0)[['ticker','index']]
 meta=meta.rename(columns={'index':'index_id'})
 
+wrds_file=pd.read_csv("../data/etf_all_indices_data.csv.gz",compression='gzip',index_col=0)
+wrds_file['as_of_date']=wrds_file['as_of_date'].apply(lambda x: dt.datetime.strptime(x,"%Y-%m-%d"))
+wrds_file=wrds_file[(wrds_file['as_of_date']>=dt.datetime(2016,1,1)) 
+                    & (wrds_file['as_of_date']<=dt.datetime(2020,12,31))]
+wrds_file=wrds_file.rename(columns={'composite_ticker':'ticker'})
+wrds_file=wrds_file.merge(meta,on='ticker',how='left')
+wrds_file['bid_ask_spread']=np.where(wrds_file['bid_ask_spread']<0, np.nan, wrds_file['bid_ask_spread'])
+
+wrds_file['aum_index']=wrds_file.groupby('index_id')['aum'].transform(sum)
+wrds_file['num_hold_index']=wrds_file.groupby('index_id')['num_holdings'].transform(np.mean)
+wrds_file['numhold_000']=wrds_file['num_hold_index']/1000
+wrds_file['volume_index']=wrds_file.groupby('index_id')['avg_daily_trading_volume'].transform(sum)
+wrds_file['spread_index']=wrds_file.groupby('index_id')['bid_ask_spread'].transform(np.mean)
+
+crsp_data=wrds_file.groupby('index_id').mean()[['aum_index','numhold_000',
+                                                'volume_index','spread_index']].reset_index()
+
+def weighted_avg(x): # function to weigh duration by dollar positions
+    return np.average(x['bid_ask_spread'],weights=x['aum'])
+
 data13f=pd.read_csv("../data/data_13F_RR_complete.csv.gz",index_col=0)
 data13f=data13f[data13f['rdate'].apply(lambda x: x[0:4]=='2020')]
 data13f=data13f[data13f.ticker.isin(meta['ticker'].tolist())]
