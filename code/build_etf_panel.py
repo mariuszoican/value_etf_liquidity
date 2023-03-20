@@ -544,3 +544,57 @@ panel_diff=panel_diff.merge(etf_panel[['index_id','quarter',
                                        'd_UIT','mgr_duration_index','ratio_tra_ix']].drop_duplicates(),
                                        on=['index_id','quarter'], how='left')
 panel_diff.to_csv("../data/etf_panel_differences_RR.csv")
+
+#### Plot to see first mover advantage
+controls_v2='''EntityEffects + TimeEffects + other_expenses + fee_waivers + lend_byAUM_bps + stock_tweets +
+                                  marketing_fee_bps + tr_error_bps + perf_drag_bps + creation_fee + ratio_tii 
+                                  + same_benchmark + same_lead_mm'''
+## Controls for spreads
+highfee_resid=PanelOLS.from_formula(f'''highfee ~  {controls_v2}''',
+                                  data=etf_graph).fit()
+etf_graph['hf_resid']=highfee_resid.resids
+
+etf_graph['Different benchmarks']=1-etf_graph['same_benchmark']
+
+
+sizefigs_L=(18,8)
+fig=plt.figure(facecolor='white',figsize=sizefigs_L)
+gs = gridspec.GridSpec(1, 3)
+
+# ---------
+ax=fig.add_subplot(gs[0, 0])
+ax=settings_plot(ax)
+
+sns.barplot(data=etf_graph, x='firstmover', y='highfee', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("First mover",fontsize=18)
+plt.ylabel("Proportion of high fee ETFs",fontsize=18)
+ax.set_xticklabels(['No', 'Yes'],fontsize=18)
+plt.title("No controls",fontsize=18)
+
+
+ax=fig.add_subplot(gs[0, 1])
+ax=settings_plot(ax)
+
+etf_graph['Different benchmarks']=np.where(etf_graph['same_benchmark']==1,'No','Yes')
+sns.barplot(data=etf_graph, x='firstmover', y='hf_resid', hue='Different benchmarks', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("First mover",fontsize=18)
+plt.ylabel("Proportion of high fee ETFs",fontsize=18)
+ax.set_xticklabels(['No', 'Yes'],fontsize=18)
+
+ax.legend(title='Different benchmarks', fontsize=18, title_fontsize=18, frameon=False)
+plt.title("All controls",fontsize=18)
+
+
+ax=fig.add_subplot(gs[0, 2])
+ax=settings_plot(ax)
+
+etf_graph['Major brand index']=np.where(etf_graph['d_OwnIndex']==1,'No','Yes')
+sns.barplot(data=etf_graph, x='firstmover', y='hf_resid', hue='Major brand index', palette='Blues',errorbar='se',capsize=0.1)
+plt.xlabel("First mover",fontsize=18)
+plt.ylabel("Proportion of high fee ETFs",fontsize=18)
+ax.set_xticklabels(['No', 'Yes'],fontsize=18)
+
+ax.legend(title='Major brand index', fontsize=18, title_fontsize=18, frameon=False)
+plt.title("All controls",fontsize=18)
+plt.tight_layout(pad=2)
+plt.savefig(path+'first_mover.png',bbox_inches='tight')
