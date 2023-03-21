@@ -252,6 +252,7 @@ stock_twits_q=stock_twits.groupby(['ticker','quarter']).mean()[['number_of_msgs'
 stock_twits_q=stock_twits_q.rename(columns={'number_of_msgs':'stock_tweets'})
 
 standardize = lambda x: (x - x.mean()) / x.std()
+stock_twits_q['stock_tweets_raw']=stock_twits_q['stock_tweets']
 stock_twits_q['stock_tweets']=scaler.fit_transform(stock_twits_q[['stock_tweets']])
 #stock_twits_q['stock_tweets']=winsorize(stock_twits_q['stock_tweets'], limits=(0,0.01))
 
@@ -261,6 +262,7 @@ etf_panel['log_aum_index']=etf_panel['aum_index'].map(np.log)
 etf_panel['log_aum']=etf_panel['aum'].map(np.log)
 etf_panel=etf_panel.merge(stock_twits_q, on=['ticker','quarter'],how='left')
 etf_panel['stock_tweets']=etf_panel['stock_tweets'].fillna(0)
+etf_panel['stock_tweets_raw']=etf_panel['stock_tweets_raw'].fillna(0)
 
 etf_panel['qduration']=pd.qcut(etf_panel['mgr_duration'], q=5, labels=False)+1
 
@@ -335,7 +337,7 @@ aum_quarter_tra=d13furg_micro.groupby(['quarter','horizon_perma', 'highfee']).su
 aum_quarter_tra['dollar_pos']=aum_quarter_tra['dollar_pos']/10**9
 aum_quarter_tra['highfee']=np.where(aum_quarter_tra['highfee']==1, 'High MER', 'Low MER')
 
-sizefigs_L=(14,8)
+sizefigs_L=(16,9)
 fig=plt.figure(facecolor='white',figsize=sizefigs_L)
 gs = gridspec.GridSpec(2, 2)
 
@@ -362,14 +364,23 @@ ax.legend(title='ETF management fee',fontsize=16, title_fontsize=18, frameon=Fal
 ax.set_xticklabels(['Quasi-indexers', 'Transient investor'],fontsize=18)
 plt.title("Panel (b): Holdings by investor horizon",fontsize=18)
 
-ax=fig.add_subplot(gs[1, :])
+ax=fig.add_subplot(gs[1, 0])
 ax=settings_plot(ax)
 sns.kdeplot(data=d13furg, x='mgr_duration', hue='horizon_perma', common_norm=False)
 plt.xlabel("Investor holding duration",fontsize=18)
 plt.ylabel("Density",fontsize=18)
 ax.legend(title='Investor horizon',fontsize=16, title_fontsize=18, frameon=False, 
           labels=['Transient','Quasi-indexers'])
-plt.title("Panel (c): Distribution of holding durations",fontsize=18)
+plt.title("Panel (c): Holding durations by investor horizon",fontsize=18)
+
+ax=fig.add_subplot(gs[1, 1])
+ax=settings_plot(ax)
+sns.kdeplot(data=d13furg, x='mgr_duration', hue='tax_extend', common_norm=False)
+plt.xlabel("Investor holding duration",fontsize=18)
+plt.ylabel("Density",fontsize=18)
+ax.legend(title='Tax sensitivity',fontsize=16, title_fontsize=18, frameon=False,            
+          labels=['Tax-insensitive','Tax-sensitive'])
+plt.title("Panel (d): Holding durations by tax status",fontsize=18)
 
 plt.tight_layout(pad=4)
 plt.savefig(path+'micro_sumstats.png',bbox_inches='tight')
