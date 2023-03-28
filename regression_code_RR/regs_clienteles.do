@@ -118,6 +118,9 @@ label variable log_aum "Log AUM"
 reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
+reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
 reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
@@ -130,9 +133,23 @@ outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat la
 reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+// Robustness
+reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-// reghdfe log_aum highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
-// outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
 
