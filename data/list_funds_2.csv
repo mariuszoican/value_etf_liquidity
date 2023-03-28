@@ -1,0 +1,136 @@
+,index_id,ticker,issuer,inception,primary_benchmark,lead_market_maker,aum
+0,All World,ACWI,Blackrock,2008-03-26,MSCI ACWI NR USD,Susquehanna,8872573268.6
+1,All World,VT,Vanguard,2008-06-24,FTSE Global All Cap TR USD,Cantor Fitzgerald,10595207884.4
+2,All World Ex US,VXUS,Vanguard,2011-01-26,FTSE Global All Cap ex US TR USD,KCG,12996232091.55
+3,All World Ex US,VEU,Vanguard,2007-03-02,FTSE AW Ex US TR USD,Jane Street,20826236229.25
+4,Asia ex Japan,AAXJ,Blackrock,2008-08-13,MSCI AC Asia Ex Japan NR USD,KCG,3800646687.3
+5,Asia ex Japan,FLAX,,2018-02-06,,,16915333.819083337
+6,Australia,EWA,Blackrock,1996-03-12,MSCI Australia NR USD,Jane Street,1500385293.34
+7,Australia,FLAU,Franklin Templeton Investments,2017-11-02,FTSE Australia Capped Index,Credit Suisse,9422665.476692308
+8,Brazil,EWZ,Blackrock,2000-07-10,MSCI Brazil 25/50 NR USD,Goldman Sachs,6328368367.25
+9,Brazil,FLBR,Franklin Templeton Investments,2017-11-03,FTSE Brazil Capped Index,Jane Street,57319325.18230769
+10,Canada,BBCA,,2018-08-07,,,3194622832.2
+11,Canada,EWC,Blackrock,1996-03-12,MSCI Canada NR USD,Virtu Financial,2738450713.05
+12,China Technology Sector,CQQQ,Guggenheim,2009-12-08,AlphaShares China Technology USD,Cantor Fitzgerald,427636575.581
+13,China Technology Sector,KWEB,KraneShares,2013-07-31,CSI Overseas China Internet GR USD,KCG,1398412438.465
+14,Consumer Discretionary Sector,XLY,SSgA,1998-12-16,S&P Consumer Dis Select Sector TR USD,Goldman Sachs,12996667721.45
+15,Consumer Discretionary Sector,VCR,Vanguard,2004-01-26,MSCI US IMI/Consumer Discr 25-50 GR USD,Virtu Financial,2673710520.15
+16,Consumer Staples Sector,XLP,SSgA,1998-12-16,S&P Cons Staples Select Sector TR USD,Goldman Sachs,10724909820.65
+17,Consumer Staples Sector,VDC,Vanguard,2004-01-26,MSCI US IMI/Cons Staples 25-50 GR USD,LaTour,4273434230.65
+18,EAFE,VEA,Vanguard,2007-07-20,FTSE Developed ex North America NR USD,Virtu Financial,61485498649.85
+19,EAFE,IEFA,Blackrock,2012-10-18,MSCI EAFE IMI NR USD,Jane Street,46840337125.4
+20,EAFE Small Cap,SCZ,Blackrock,2007-12-10,MSCI EAFE Small Cap NR USD,KCG,8718889850.2
+21,EAFE Small Cap,SCHC,Charles Schwab,2010-01-14,FTSE Dvlp Small Cap Ex US Liquid NR USD,Susquehanna,1787043818.78
+22,Emerging Markets,EEM,Blackrock,2003-04-07,MSCI EM NR USD,KCG,29458873105.05
+23,Emerging Markets,VWO,Vanguard,2005-03-04,FTSE Emerging NR USD,Jane Street,56427438198.85
+24,Energy Sector,VDE,Vanguard,2004-09-23,MSCI US IMI/Energy 25-50 GR USD,Goldman Sachs,3589293736.65
+25,Energy Sector,XLE,SSgA,1998-12-16,S&P Energy Select Sector TR USD,Goldman Sachs,14014201185.05
+26,Europe,IEV,Blackrock,2000-07-25,S&P Europe 350 TR USD,Susquehanna,2209841004.45
+27,Europe,FEZ,SSgA,2002-10-15,EURO STOXX 50 NR USD,Jane Street,2802204581.15
+28,Eurozone,VGK,Vanguard,2005-03-04,FTSE Developed Europe NR USD,Virtu Financial,14088782266.85
+29,Eurozone,EZU,Blackrock,2000-07-25,MSCI EMU NR USD,KCG,8008692722.95
+30,France,EWQ,Blackrock,1996-03-12,MSCI France NR USD,Goldman Sachs,676063757.35
+31,France,FLFR,,2017-11-02,,,4394908.3055
+32,Germany,ZDEU,SSgA,2014-06-11,Solactive GBS Germany Large & Mid Cap Index,,11912208.2925
+33,Germany,EWG,Blackrock,1996-03-12,MSCI Germany NR USD,Goldman Sachs,3345707597.45
+34,Hong Kong,EWH,Blackrock,1996-03-12,MSCI Hong Kong NR USD,KCG,1919957951.2
+35,Hong Kong,FLHK,Franklin Templeton Investments,2017-11-02,FTSE Hong Kong Capped Index,Susquehanna,15496512.653583333
+36,JPX-Nikkei 400 Net Total Return Index,JPN,Deutsche Bank,2015-06-24,JPX-Nikkei 400 Total Return Index,Cantor Fitzgerald,24684468.060000002
+37,JPX-Nikkei 400 Net Total Return Index,JPXN,iShares,2001-10-23,JPX-Nikkei 400 Net Total Return Index,IMC Chicago,104326449.06083335
+38,Japan,EWJ,Blackrock,1996-03-12,MSCI Japan NR USD,KCG,15349162383.0
+39,Japan,BBJP,,2018-06-15,,,3865985508.1
+40,Korea,FLKR,Franklin Templeton Investments,2017-11-02,FTSE South Korea Capped Index,Jane Street,17952229.213333335
+41,Korea,EWY,Blackrock,2000-05-09,MSCI Korea 25/50 NR USD,Goldman Sachs,4095644764.25
+42,MSCI ACWI Low Carbon Target Index,LOWC,SSgA,2014-11-25,MSCI ACWI Low Carbon Target Index,Jane Street,106476706.283
+43,MSCI ACWI Low Carbon Target Index,CRBN,Blackrock,2014-12-08,MSCI ACWI Low Carbon Target Index,Credit Suisse,428691669.4499999
+44,MSCI ACWI ex-US Index,CWI,SSgA,2007-01-10,MSCI ACWI Ex USA NR USD,Susquehanna,1355900682.4450002
+45,MSCI ACWI ex-US Index,ACWX,Blackrock,2008-03-26,MSCI ACWI Ex USA NR USD,Susquehanna,2976281176.45
+46,MSCI All Argentina 25/50 Index,ARGT,Global X,2011-03-02,FTSE Argentina 20 USD,KCG,100406032.47699998
+47,MSCI All Argentina 25/50 Index,AGT,iShares,2017-04-25,MSCI All Argentina 25/50 Index,Jane Street,21645488.9124
+48,MSCI China All Shares Index,KALL,,2015-02-12,,,6274506.41
+49,MSCI China All Shares Index,CN,Deutsche Bank,2014-04-30,MSCI China All Shares Index,Jane Street,38227634.90585
+50,MSCI Emerging Markets ESG Leaders Index,EASG,,2018-09-06,,,11209003.5794
+51,MSCI Emerging Markets ESG Leaders Index,EMSG,,2018-12-06,,,7844512.596222222
+52,MSCI Norway IMI 25/50 Index,ENOR,Blackrock,2012-01-23,MSCI Norway IMI 20/50 NR USD,KCG,26998720.936999995
+53,MSCI Norway IMI 25/50 Index,NORW,Global X,2010-11-09,FTSE Norway 30 USD,KCG,127641658.00416668
+54,Mexico,EWW,Blackrock,1996-03-12,MSCI Mexico IMI 25/50 TR USD,Goldman Sachs,1076056914.865
+55,Mexico,FLMX,,2017-11-03,,,3759765.323444444
+56,NASDAQ-100 Equal Weighted Index,QQEW,First Trust,2006-04-19,NASDAQ 100 Equal Weighted TR USD,,620028053.6049999
+57,NASDAQ-100 Equal Weighted Index,QQQE,Direxion,2012-03-21,NASDAQ 100 Equal Weighted TR USD,LaTour,176103847.62150002
+58,Preferred Shares,PGX,Invesco PowerShares,2008-01-31,BofAML Preferred Stock Fixed Rate TR USD,KCG,5114016845.65
+59,Preferred Shares,PFF,Blackrock,2007-03-26,S&P Preferred Stock TR USD,KCG,16390405202.3
+60,Russell 1000 Growth Index,IWF,Blackrock,2000-05-22,Russell 1000 Growth TR USD,Goldman Sachs,41657592940.6
+61,Russell 1000 Growth Index,VONG,Vanguard,2010-09-20,Russell 1000 Growth TR USD,Virtu Financial,2194524245.805
+62,Russell 1000 Index,IWB,Blackrock,2000-05-15,Russell 1000 TR USD,Goldman Sachs,19367427157.9
+63,Russell 1000 Index,VONE,Vanguard,2010-09-20,Russell 1000 TR USD,Virtu Financial,1000978353.7
+64,Russell 1000 Value Index,IWD,Blackrock,2000-05-22,Russell 1000 Value TR USD,Goldman Sachs,36075939905.3
+65,Russell 1000 Value Index,VONV,Vanguard,2010-09-20,Russell 1000 Value TR USD,Virtu Financial,1554161975.5700002
+66,Russell 2000 Growth Index,IWO,Blackrock,2000-07-24,Russell 2000 Growth TR USD,Goldman Sachs,8582211295.2
+67,Russell 2000 Growth Index,VTWG,Vanguard,2010-09-20,Russell 2000 Growth TR USD,KCG,259281605.695
+68,Russell 2000 Index,IWM,Blackrock,2000-05-22,Russell 2000 TR USD,Goldman Sachs,39820213382.2
+69,Russell 2000 Index,VTWO,Vanguard,2010-09-20,Russell 2000 TR USD,Virtu Financial,1334867996.4299998
+70,Russell 2000 Value Index,IWN,Blackrock,2000-07-24,Russell 2000 Value TR USD,Credit Suisse,8576039642.95
+71,Russell 2000 Value Index,VTWV,Vanguard,2010-09-20,Russell 2000 Value TR USD,Virtu Financial,216358974.4915
+72,Russell 3000 Index,VTHR,Vanguard,2010-09-20,Russell 3000 TR USD,Virtu Financial,412664186.78499997
+73,Russell 3000 Index,IWV,Blackrock,2000-05-22,Russell 3000 TR USD,Goldman Sachs,8367581759.7
+74,Russia,ERUS,Blackrock,2010-11-09,MSCI Russia 25/50 NR USD,KCG,498230298.35499984
+75,Russia,RSX,Van Eck,2007-04-24,MV Russia NR USD,Goldman Sachs,1613488915.075
+76,S&P 500 Dividend Aristocrats Index,NOBL,ProShares,2013-10-09,S&P 500 Dividend Aristocrats USD,Goldman Sachs,4029216383.2
+77,S&P 500 Dividend Aristocrats Index,KNG,,2018-03-26,,,36869743.04558333
+78,S&P 500 Growth Index,SPYG,SSgA,2000-09-25,S&P 500 Growth Index,IMC Chicago,5304896946.0
+79,S&P 500 Growth Index,IVW,Blackrock,2000-05-22,S&P 500 Growth TR,Goldman Sachs,20957221694.4
+80,S&P 500 Growth Index,VOOG,Vanguard,2010-09-07,S&P 500 Growth TR,Cantor Fitzgerald,1293003453.1
+81,S&P 500 Index,SPY,SSgA,1993-01-22,S&P 500 TR USD,Goldman Sachs,252250000000.0
+82,S&P 500 Index,IVV,Blackrock,2000-05-15,S&P 500 TR USD,Goldman Sachs,147710311955.85
+83,S&P 500 Value Index,IVE,Blackrock,2000-05-22,S&P 500 Value TR USD,Goldman Sachs,14319507855.7
+84,S&P 500 Value Index,VOOV,Vanguard,2010-09-07,S&P 500 Value TR USD,Cantor Fitzgerald,601068945.575
+85,S&P 500 Value Index,SPYV,SSgA,2000-09-25,S&P 500 Value Index,IMC Chicago,3455713912.0
+86,S&P Global Infrastructure Index,GII,SSgA,2007-01-25,S&P Global Infrastructure TR USD,Goldman Sachs,235574592.36099997
+87,S&P Global Infrastructure Index,IGF,Blackrock,2007-12-10,S&P Global Infrastructure TR USD,KCG,2309785038.0950003
+88,S&P Midcap 400 Growth Index,MDYG,SSgA,2005-11-08,S&P Midcap 400 Pure Growth Index,IMC Chicago,1514600061.3333333
+89,S&P Midcap 400 Growth Index,IJK,Blackrock,2000-07-24,S&P MidCap 400 Growth TR,Goldman Sachs,6816984489.95
+90,S&P Midcap 400 Growth Index,IVOG,Vanguard,2010-09-07,S&P MidCap 400 Growth TR,Virtu Financial,611757271.9875001
+91,S&P Midcap 400 Index,MDY,SSgA,1995-05-04,S&P MidCap 400 TR,Virtu Financial,18051247502.8
+92,S&P Midcap 400 Index,IJH,Blackrock,2000-05-22,S&P MidCap 400 TR,Goldman Sachs,42121341436.25
+93,S&P Midcap 400 Value Index,IVOV,Vanguard,2010-09-07,S&P MidCap 400 Value TR USD,Virtu Financial,516158121.6375
+94,S&P Midcap 400 Value Index,IJJ,Blackrock,2000-07-24,S&P MidCap 400 Value TR USD,Goldman Sachs,5511622147.6
+95,S&P Midcap 400 Value Index,MDYV,SSgA,2005-11-08,S&P Midcap 400 Pure Value Index,IMC Chicago,1168817681.9166667
+96,S&P SmallCap 600 Index,SLY,SSgA,2005-11-08,S&P SmallCap 600 Index,IMC Chicago,1133401017.4916668
+97,S&P SmallCap 600 Index,IJR,Blackrock,2000-05-22,S&P SmallCap 600 TR USD,KCG,36178361699.75
+98,S&P SmallCap 600 Index,VIOO,Vanguard,2010-09-07,S&P SmallCap 600 TR USD,Virtu Financial,493021710.4125
+99,S&P Smallcap 600 Growth Index,SLYG,SSgA,2000-09-25,S&P Smallcap 600 Growth Index,IMC Chicago,1814420899.6666667
+100,S&P Smallcap 600 Growth Index,IJT,Blackrock,2000-07-24,S&P SmallCap 600 Growth TR,Goldman Sachs,4737676227.55
+101,S&P Smallcap 600 Growth Index,VIOG,Vanguard,2010-09-07,S&P SmallCap 600 Growth TR,Virtu Financial,198438463.5125
+102,S&P Smallcap 600 Value Index,IJS,Blackrock,2000-07-24,S&P SmallCap 600 Value TR,Goldman Sachs,5210124454.55
+103,S&P Smallcap 600 Value Index,SLYV,SSgA,2000-09-25,S&P Smallcap 600 Value Index,Credit Suisse,1974872537.5833333
+104,S&P Smallcap 600 Value Index,VIOV,Vanguard,2010-09-07,S&P SmallCap 600 Value TR,Virtu Financial,178646274.7625
+105,South Africa,FLZA,,2018-10-10,,,2333143.2156666666
+106,South Africa,EZA,Blackrock,2003-02-03,MSCI South Africa NR USD,Goldman Sachs,393940972.3449999
+107,Switzerland,FLSW,,2018-02-06,,,12358863.720249997
+108,Switzerland,EWL,Blackrock,1996-03-12,MSCI Switzerland 25/50 TR USD,Goldman Sachs,1167945058.08
+109,Taiwan,FLTW,,2017-11-02,,,14284809.391000003
+110,Taiwan,EWT,Blackrock,2000-06-20,MSCI Taiwan NR USD,Goldman Sachs,3453675464.25
+111,UK,EWU,Blackrock,1996-03-12,MSCI UK NR USD,Goldman Sachs,2233068429.95
+112,UK,FLGB,Franklin Templeton Investments,2017-11-02,FTSE UK Capped Index,Susquehanna,40146716.92484616
+113,US Communications Sector,XLC,,2018-06-18,,,5932968534.820001
+114,US Communications Sector,VOX,Vanguard,2004-09-23,MSCI US IMI/Telecom Svc 25-50 GR USD,KCG,1664709033.5
+115,US Defense Sector,PPA,Invesco PowerShares,2005-10-26,AMEX SPADE Defense TR USD,Goldman Sachs,745540213.4400002
+116,US Defense Sector,ITA,Blackrock,2006-05-01,DJ US Select Aerospace&Defense TR USD,Goldman Sachs,3702605120.8
+117,US Financials Sector,XLF,SSgA,1998-12-16,S&P Financial Select Sector TR USD,Goldman Sachs,23274387303.0
+118,US Financials Sector,VFH,Vanguard,2004-01-26,MSCI US IMI/Financials 25-50 GR USD,KCG,6287827624.2
+119,US Healthcare Sector,XLV,SSgA,1998-12-16,S&P Health Care Select Sector TR USD,Goldman Sachs,17656842857.85
+120,US Healthcare Sector,VHT,Vanguard,2004-01-26,MSCI US IMI/Health Care 25-50 GR USD,Cantor Fitzgerald,8063104701.1
+121,US Industrials Sector,XLI,SSgA,1998-12-16,S&P Industrial Select Sector TR USD,KCG,10526604880.2
+122,US Industrials Sector,VIS,Vanguard,2004-09-23,MSCI US IMI/Industrials 25-50 GR USD,Goldman Sachs,3132990037.95
+123,US Internet Sector,PNQI,Invesco PowerShares,2008-06-12,NASDAQ Internet TR USD,Susquehanna,518317080.16
+124,US Internet Sector,FDN,First Trust,2006-06-19,DJ Internet Composite TR USD,Goldman Sachs,6726000952.75
+125,US Materials Sector,VAW,Vanguard,2004-01-26,MSCI US IMI/Materials 25-50 GR USD,KCG,1925349361.15
+126,US Materials Sector,XLB,SSgA,1998-12-16,S&P Materials Select Sector TR USD,Goldman Sachs,3887989146.2
+127,US Small Caps,SMMD,iShares,2017-07-06,Russell 2500 Index,Latour Trading,42249180.848
+128,US Small Caps,VXF,Vanguard,2001-12-27,S&P 500 TR USD,Virtu Financial,6503730659.5
+129,US Technology Sector,XLK,SSgA,1998-12-16,S&P Technology Select Sector TR USD,Goldman Sachs,21039946140.35
+130,US Technology Sector,VGT,Vanguard,2004-01-26,MSCI US IMI/Info Tech 25-50 GR USD,Goldman Sachs,19468141615.05
+131,US Total Market,ITOT,iShares,2004-01-20,S&P Total Market Index,Pundion,20883670554.666668
+132,US Total Market,VTI,Vanguard,2001-05-24,MSCI US Broad Market NR USD,Virtu Financial,103848059158.9
+133,US Utilities Sector,XLU,SSgA,1998-12-16,S&P Utilities Select Sector TR USD,Goldman Sachs,8939754358.35
+134,US Utilities Sector,VPU,Vanguard,2004-01-26,MSCI US IMI/Utilities 25-50 GR USD,LaTour,3125492741.95
