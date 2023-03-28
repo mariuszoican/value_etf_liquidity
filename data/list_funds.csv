@@ -1,0 +1,123 @@
+,index_id,ticker,inception,primary_benchmark,lead_market_maker,aum
+0,All World,ACWI,2008-03-26,MSCI ACWI Index,Susquehanna,8872573268.6
+1,All World,VT,2008-06-24,FTSE Global All Cap Index,,10595207884.4
+2,All World Ex US,VEU,2007-03-02,FTSE All-World ex US Index,,20826236229.25
+3,All World Ex US,VXUS,2011-01-26,FTSE Global All Cap ex US Index,,12996232091.55
+4,Asia ex Japan,AAXJ,2008-08-13,MSCI All Country Asia ex Japan Index,Virtu Financial,3800646687.3
+5,Australia,EWA,1996-03-12,MSCI Australia Index,Jane Street,1500385293.34
+6,Australia,FLAU,2017-11-02,FTSE Australia Capped Index,Credit Suisse,10962269.1221
+7,Brazil,FLBR,2017-11-03,FTSE Brazil Capped Index,Jane Street,66495427.399000004
+8,Brazil,EWZ,2000-07-10,MSCI Brazil 25/50 Index,IMC Chicago,6328368367.25
+9,Canada,EWC,1996-03-12,MSCI Canada Custom Capped Index,Virtu Financial,2738450713.05
+10,China Technology Sector,KWEB,2013-07-31,CSI Overseas China Internet Index,Virtu Financial,1398412438.465
+11,China Technology Sector,CQQQ,2009-12-08,FTSE China Incl A 25% Technology Capped Index,Cantor Fitzgerald,427636575.581
+12,Consumer Discretionary Sector,VCR,2004-01-26,MSCI US Investable Market Consumer Discretionary 25/50 Index,Virtu Financial,2673710520.15
+13,Consumer Discretionary Sector,XLY,1998-12-16,S&P Consumer Discretionary Select Sector Index,IMC Chicago,12996667721.45
+14,Consumer Staples Sector,XLP,1998-12-16,S&P Consumer Staples Select Sector Index,IMC Chicago,10724909820.65
+15,Consumer Staples Sector,VDC,2004-01-26,MSCI US Investable Market Consumer Staples 25/50 Index,Latour Trading,4273434230.65
+16,EAFE,IEFA,2012-10-18,MSCI EAFE Investable Market Index,Jane Street,46840337125.4
+17,EAFE,VEA,2007-07-20,FTSE Developed All Cap ex US Index,,61485498649.85
+18,EAFE Small Cap,SCZ,2007-12-10,MSCI EAFE Small Cap Index,Virtu Financial,8718889850.2
+19,EAFE Small Cap,SCHC,2010-01-14,FTSE Developed Small Cap ex U.S. Liquid Index,Susquehanna,1787043818.78
+20,Emerging Markets,VWO,2005-03-04,FTSE Emerging Markets All Cap China A Inclusion Index,,56427438198.85
+21,Emerging Markets,EEM,2003-04-07,MSCI Emerging Markets Index,Virtu Financial,29458873105.05
+22,Energy Sector,XLE,1998-12-16,S&P Energy Select Sector Index,IMC Chicago,14014201185.05
+23,Energy Sector,VDE,2004-09-23,MSCI US Investable Market Energy 25/50 Index,Pundion,3589293736.65
+24,Europe,FEZ,2002-10-15,EURO STOXX 50 Index,Jane Street,2802204581.15
+25,Europe,IEV,2000-07-25,S&P Europe 350,Pundion,2209841004.45
+26,Eurozone,EZU,2000-07-25,MSCI EMU Index,Virtu Financial,8008692722.95
+27,Eurozone,VGK,2005-03-04,FTSE Developed Europe All Cap Index,,14088782266.85
+28,France,EWQ,1996-03-12,MSCI France Index,Pundion,676063757.35
+29,Germany,ZDEU,2014-06-11,Solactive GBS Germany Large & Mid Cap Index,,11912208.2925
+30,Germany,EWG,1996-03-12,MSCI Germany index,IMC Chicago,3345707597.45
+31,Hong Kong,FLHK,2017-11-02,FTSE Hong Kong Capped Index,Susquehanna,17018089.643
+32,Hong Kong,EWH,1996-03-12,MSCI Hong Kong Index,Virtu Financial,1919957951.2
+33,JPX-Nikkei 400 Net Total Return Index,JPXN,2001-10-23,JPX-Nikkei 400 Net Total Return Index,IMC Chicago,104326449.06083335
+34,JPX-Nikkei 400 Net Total Return Index,JPN,2015-06-24,JPX-Nikkei 400 Net Total Return Index,Cantor Fitzgerald,24684468.060000002
+35,Japan,EWJ,1996-03-12,MSCI Japan Index,Virtu Financial,15349162383.0
+36,Korea,FLKR,2017-11-02,FTSE South Korea Capped Index,Jane Street,18816562.57
+37,Korea,EWY,2000-05-09,MSCI Korea 25/50 Index,Flow Traders,4095644764.25
+38,MSCI ACWI Low Carbon Target Index,CRBN,2014-12-08,MSCI ACWI Low Carbon Target Index,Credit Suisse,428691669.4499999
+39,MSCI ACWI Low Carbon Target Index,LOWC,2014-11-25,MSCI ACWI Low Carbon Target Index,Credit Suisse,106476706.283
+40,MSCI ACWI ex-US Index,ACWX,2008-03-26,MSCI ACWI ex-US Index,Susquehanna,2976281176.45
+41,MSCI ACWI ex-US Index,CWI,2007-01-10,MSCI ACWI ex-US Index,Susquehanna,1355900682.4450002
+42,MSCI All Argentina 25/50 Index,AGT,2017-04-25,MSCI All Argentina 25/50 Index,Jane Street,20453714.327166665
+43,MSCI All Argentina 25/50 Index,ARGT,2011-03-02,MSCI All Argentina 25/50 Index,Virtu Financial,100406032.47699998
+44,MSCI China All Shares Index,CN,2014-04-30,MSCI China All Shares Index,Jane Street,38227634.90585
+45,MSCI Norway IMI 25/50 Index,NORW,2010-11-09,MSCI Norway IMI 25/50 Index,Virtu Financial,127641658.00416668
+46,MSCI Norway IMI 25/50 Index,ENOR,2012-01-23,MSCI Norway IMI 25/50 Index,Virtu Financial,26998720.936999995
+47,Mexico,EWW,1996-03-12,MSCI Mexico IMI 25/50 Index,Virtu Financial,1076056914.865
+48,NASDAQ-100 Equal Weighted Index,QQQE,2012-03-21,NASDAQ-100 Equal Weighted Index,Virtu Financial,176103847.62150002
+49,NASDAQ-100 Equal Weighted Index,QQEW,2006-04-19,NASDAQ-100 Equal Weighted Index,Deutsche Bank,620028053.6049999
+50,Preferred Shares,PGX,2008-01-31,BofA Merrill Lynch Core Fixed Rate Preferred Securities Index,Citadel,5114016845.65
+51,Preferred Shares,PFF,2007-03-26,S&P U.S. Preferred Stock Index,IMC Chicago,16390405202.3
+52,Russell 1000 Growth Index,IWF,2000-05-22,Russell 1000 Growth Index,Latour Trading,41657592940.6
+53,Russell 1000 Growth Index,VONG,2010-09-20,Russell 1000 Growth Index,Virtu Financial,2194524245.805
+54,Russell 1000 Index,IWB,2000-05-15,Russell 1000 Index,Latour Trading,19367427157.9
+55,Russell 1000 Index,VONE,2010-09-20,Russell 1000 Index,Virtu Financial,1000978353.7
+56,Russell 1000 Value Index,IWD,2000-05-22,Russell 1000 Value Index,Latour Trading,36075939905.3
+57,Russell 1000 Value Index,VONV,2010-09-20,Russell 1000 Value Index,Virtu Financial,1554161975.5700002
+58,Russell 2000 Growth Index,VTWG,2010-09-20,Russell 2000 Growth Index,Virtu Financial,259281605.695
+59,Russell 2000 Growth Index,IWO,2000-07-24,Russell 2000 Growth Index,Latour Trading,8582211295.2
+60,Russell 2000 Index,VTWO,2010-09-20,Russell 2000 Index,Virtu Financial,1334867996.4299998
+61,Russell 2000 Index,IWM,2000-05-22,Russell 2000 Index,Latour Trading,39820213382.2
+62,Russell 2000 Value Index,VTWV,2010-09-20,Russell 2000 Pure Value Index,Virtu Financial,216358974.4915
+63,Russell 2000 Value Index,IWN,2000-07-24,Russell 2000 Pure Value Index,Credit Suisse,8576039642.95
+64,Russell 3000 Index,IWV,2000-05-22,Russell 3000 Index,Virtu Financial,8367581759.7
+65,Russell 3000 Index,VTHR,2010-09-20,Russell 3000 Index,Virtu Financial,412664186.78499997
+66,Russia,RSX,2007-04-24,MVIS Russia Index,,1613488915.075
+67,Russia,ERUS,2010-11-09,MSCI Russia 25/50 Index,Pundion,498230298.35499984
+68,S&P 500 Dividend Aristocrats Index,NOBL,2013-10-09,S&P 500 Dividend Aristocrats Index,RBC Capital Markets,4029216383.2
+69,S&P 500 Growth Index,SPYG,2000-09-25,S&P 500 Growth Index,IMC Chicago,5304896946.0
+70,S&P 500 Growth Index,IVW,2000-05-22,S&P 500 Growth Index,Latour Trading,20957221694.4
+71,S&P 500 Growth Index,VOOG,2010-09-07,S&P 500 Growth Index,Cantor Fitzgerald,1293003453.1
+72,S&P 500 Index,SPY,1993-01-22,S&P 500 Index,None,252250000000.0
+73,S&P 500 Index,IVV,2000-05-15,S&P 500 Index,,147710311955.85
+74,S&P 500 Value Index,SPYV,2000-09-25,S&P 500 Value Index,IMC Chicago,3455713912.0
+75,S&P 500 Value Index,IVE,2000-05-22,S&P 500 Value Index,Latour Trading,14319507855.7
+76,S&P 500 Value Index,VOOV,2010-09-07,S&P 500 Value Index,Cantor Fitzgerald,601068945.575
+77,S&P Global Infrastructure Index,GII,2007-01-25,S&P Global Infrastructure Index,Jane Street,235574592.36099997
+78,S&P Global Infrastructure Index,IGF,2007-12-10,S&P Global Infrastructure Index,Virtu Financial,2309785038.0950003
+79,S&P Midcap 400 Growth Index,IVOG,2010-09-07,S&P Midcap 400 Pure Growth Index,Virtu Financial,611757271.9875001
+80,S&P Midcap 400 Growth Index,IJK,2000-07-24,S&P Midcap 400 Pure Growth Index,,6816984489.95
+81,S&P Midcap 400 Growth Index,MDYG,2005-11-08,S&P Midcap 400 Pure Growth Index,IMC Chicago,1514600061.3333333
+82,S&P Midcap 400 Index,IJH,2000-05-22,S&P Midcap 400 Index,,42121341436.25
+83,S&P Midcap 400 Index,MDY,1995-05-04,S&P Midcap 400 Index,Virtu Financial,18051247502.8
+84,S&P Midcap 400 Value Index,IVOV,2010-09-07,S&P Midcap 400 Pure Value Index,Virtu Financial,516158121.6375
+85,S&P Midcap 400 Value Index,IJJ,2000-07-24,S&P Midcap 400 Pure Value Index,,5511622147.6
+86,S&P Midcap 400 Value Index,MDYV,2005-11-08,S&P Midcap 400 Pure Value Index,IMC Chicago,1168817681.9166667
+87,S&P SmallCap 600 Index,VIOO,2010-09-07,S&P SmallCap 600 Index,Virtu Financial,493021710.4125
+88,S&P SmallCap 600 Index,SLY,2005-11-08,S&P SmallCap 600 Index,IMC Chicago,1133401017.4916668
+89,S&P SmallCap 600 Index,IJR,2000-05-22,S&P SmallCap 600 Index,,36178361699.75
+90,S&P Smallcap 600 Growth Index,IJT,2000-07-24,S&P Smallcap 600 Growth Index,,4737676227.55
+91,S&P Smallcap 600 Growth Index,VIOG,2010-09-07,S&P Smallcap 600 Growth Index,Virtu Financial,198438463.5125
+92,S&P Smallcap 600 Growth Index,SLYG,2000-09-25,S&P Smallcap 600 Growth Index,IMC Chicago,1814420899.6666667
+93,S&P Smallcap 600 Value Index,IJS,2000-07-24,S&P Smallcap 600 Value Index,,5210124454.55
+94,S&P Smallcap 600 Value Index,VIOV,2010-09-07,S&P Smallcap 600 Value Index,Virtu Financial,178646274.7625
+95,S&P Smallcap 600 Value Index,SLYV,2000-09-25,S&P Smallcap 600 Value Index,Credit Suisse,1974872537.5833333
+96,South Africa,EZA,2003-02-03,MSCI South Africa 25/50 Index,Flow Traders,393940972.3449999
+97,Switzerland,EWL,1996-03-12,MSCI Switzerland 25/50 Index,Virtu Financial,1167945058.08
+98,Taiwan,EWT,2000-06-20,MSCI Taiwan 25/50 Index,IMC Chicago,3453675464.25
+99,UK,EWU,1996-03-12,MSCI United Kingdom Index,Flow Traders,2233068429.95
+100,UK,FLGB,2017-11-02,FTSE UK Capped Index,Susquehanna,51129923.569
+101,US Communications Sector,VOX,2004-09-23,MSCI US Investable Market Telecommunication Services 25/50 Index,Virtu Financial,1664709033.5
+102,US Defense Sector,PPA,2005-10-26,SPADE Defense Index,IMC Chicago,745540213.4400002
+103,US Defense Sector,ITA,2006-05-01,Dow Jones US Select Aerospace & Defense Index,Virtu Financial,3702605120.8
+104,US Financials Sector,VFH,2004-01-26,MSCI US Investable Market Financials 25/50 Index,Virtu Financial,6287827624.2
+105,US Financials Sector,XLF,1998-12-16,S&P Financial Select Sector Index,Virtu Financial,23274387303.0
+106,US Healthcare Sector,VHT,2004-01-26,MSCI US Investable Market Healthcare 25/50 Index,Cantor Fitzgerald,8063104701.1
+107,US Healthcare Sector,XLV,1998-12-16,S&P Health Care Select Sector Index,Credit Suisse,17656842857.85
+108,US Industrials Sector,VIS,2004-09-23,MSCI US Investable Market Industrials 25/50 Index,Latour Trading,3132990037.95
+109,US Industrials Sector,XLI,1998-12-16,S&P Industrials Select Sector Index,Virtu Financial,10526604880.2
+110,US Internet Sector,PNQI,2008-06-12,NASDAQ Internet Index,Susquehanna,518317080.16
+111,US Internet Sector,FDN,2006-06-19,Dow Jones Internet Index,RBC Capital Markets,6726000952.75
+112,US Materials Sector,VAW,2004-01-26,MSCI US Investable Market Materials 25/50 Index,Virtu Financial,1925349361.15
+113,US Materials Sector,XLB,1998-12-16,S&P Materials Select Sector Index,Virtu Financial,3887989146.2
+114,US Small Caps,VXF,2001-12-27,S&P Completion Index,,6503730659.5
+115,US Small Caps,SMMD,2017-07-06,Russell 2500 Index,Latour Trading,52409788.81545455
+116,US Technology Sector,XLK,1998-12-16,S&P Technology Select Sector Index,Jane Street,21039946140.35
+117,US Technology Sector,VGT,2004-01-26,MSCI US Investable Market Information Technology 25/50 Index,Pundion,19468141615.05
+118,US Total Market,ITOT,2004-01-20,S&P Total Market Index,Pundion,20883670554.666668
+119,US Total Market,VTI,2001-05-24,CRSP US Total Market Index,,103848059158.9
+120,US Utilities Sector,VPU,2004-01-26,MSCI US Investable Market Utilities 25/50 Index,Latour Trading,3125492741.95
+121,US Utilities Sector,XLU,1998-12-16,S&P Utilities Select Sector Index,Jane Street,8939754358.35

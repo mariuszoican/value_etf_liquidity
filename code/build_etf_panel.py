@@ -298,7 +298,7 @@ d13furg=d13furg.merge(etf_graph.reset_index()[['ticker',
                                                      'quarter','highfee']],on=['ticker','quarter'],how='left')
 
 
-sizefigs_L=(16,6)
+sizefigs_L=(18,6)
 fig=plt.figure(facecolor='white',figsize=sizefigs_L)
 gs = gridspec.GridSpec(1, 2)
 
@@ -386,7 +386,7 @@ plt.tight_layout(pad=4)
 plt.savefig(path+'micro_sumstats.png',bbox_inches='tight')
 
 
-sizefigs_L=(14,6)
+sizefigs_L=(12,3)
 fig=plt.figure(facecolor='white',figsize=sizefigs_L)
 gs = gridspec.GridSpec(1, 1)
 
@@ -609,3 +609,9 @@ ax.legend(title='Major brand index', fontsize=18, title_fontsize=18, frameon=Fal
 plt.title("All controls",fontsize=18)
 plt.tight_layout(pad=2)
 plt.savefig(path+'first_mover.png',bbox_inches='tight')
+
+
+list_funds=etf_panel[['index_id','ticker','inception',
+                      'primary_benchmark','lead_market_maker']].drop_duplicates(subset='ticker',
+                                                                                                                keep='last').sort_values(by='index_id').reset_index(drop=True)
+list_funds=list_funds.merge(etf_panel.groupby(['ticker']).mean()['aum'].reset_index(),on='ticker')
