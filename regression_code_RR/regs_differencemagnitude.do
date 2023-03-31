@@ -61,16 +61,16 @@ drop log_aum
 gen log_aum=log(aum)
 
 reghdfe mkt_share highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex",  adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 reghdfe mkt_share highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex",  adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 reghdfe spread_bps_crsp highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex",  adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 reghdfe spread_bps_crsp   highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex",  adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 reghdfe mer_bps highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex",  adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 reghdfe mer_bps  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std  tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\effect_magnitude.tex",  adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)

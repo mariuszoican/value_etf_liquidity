@@ -1,12 +1,11 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_log_RR.txt
   log type:  text
- opened on:  17 Mar 2023, 15:38:21
+ opened on:  31 Mar 2023, 09:43:17
 
 . 
-. rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr
-> _error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+. rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
@@ -30,13 +29,12 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
      Log Likelihood |   -380.7007
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_table_RR.tex
 dir : seeout
 
 . 
-. rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr
-> _error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+. rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
@@ -60,13 +58,12 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
      Log Likelihood |   -400.2269
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_table_RR.tex
 dir : seeout
 
 . 
-. rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_er
-> ror_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+. rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
@@ -90,13 +87,12 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
      Log Likelihood |   -124.3088
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_table_RR.tex
 dir : seeout
 
 . 
-. rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_
-> error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+. rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
@@ -120,13 +116,12 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
      Log Likelihood |   -5906.619
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_table_RR.tex
 dir : seeout
 
 . 
-. rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_er
-> ror_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+. rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
@@ -150,13 +145,12 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
      Log Likelihood |   -5942.103
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_table_RR.tex
 dir : seeout
 
 . 
-. rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error
-> _bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+. rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
@@ -180,35 +174,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
      Log Likelihood |   -5946.343
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+. outreg2 using "`directory'\output\RR_RFS\shapley_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_table_RR.tex
 dir : seeout
 
 . 
 . // // ROBUSTNESS: ONLY > 0 marketing fees
 . //
-. // rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std 
->  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
+. // rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 . // outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 . //
-. // rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std 
->  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
+. // rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 . // outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 . //
-. // rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr
-> _error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
+. // rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 . // outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 . //
-. // rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  
-> tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
+. // rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 . // outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 . //
-. // rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  t
-> r_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
+. // rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 . // outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 . //
-. // rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_e
-> rror_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
+. // rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std if marketing_fee_bps>0, vce(cl quarter)
 . // outreg2 using "`directory'\output\RR_RFS\shapley_table_RR_robust.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 . 
 . 
@@ -216,5 +204,5 @@ dir : seeout
       name:  <unnamed>
        log:  D:\ResearchProjects\kpz_etfliquidity\\output\RR_RFS\shapley_log_RR.txt
   log type:  text
- closed on:  17 Mar 2023, 15:38:22
----------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  31 Mar 2023, 09:43:18
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

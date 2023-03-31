@@ -58,18 +58,18 @@ label variable firstmover_diffbench "First mover $\times$ Different benchmarks"
 label variable firstmover_diffleadmm "First mover $\times$ Different lead market-maker"
 
 reghdfe highfee firstmover, absorb(index_id quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 reghdfe highfee firstmover marketing_fee_bps_std other_expense_std fee_waiver_std stock_tweets lend_byaum_bps_std tr_error_bps_std creation_fee_std perf_drag_bps_std different_benchmarks different_lead_mm ratio_tii, absorb(index_id quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 reghdfe highfee firstmover firstmover_diffbench marketing_fee_bps_std other_expense_std fee_waiver_std stock_tweets lend_byaum_bps_std tr_error_bps_std creation_fee_std perf_drag_bps_std different_benchmarks different_lead_mm ratio_tii, absorb(index_id quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 reghdfe highfee firstmover firstmover_majorindex marketing_fee_bps_std other_expense_std fee_waiver_std stock_tweets lend_byaum_bps_std tr_error_bps_std creation_fee_std perf_drag_bps_std different_benchmarks  different_lead_mm ratio_tii, absorb(index_id quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 
 
 reghdfe highfee firstmover firstmover_diffleadmm marketing_fee_bps_std other_expense_std fee_waiver_std stock_tweets lend_byaum_bps_std tr_error_bps_std creation_fee_std perf_drag_bps_std different_benchmarks  different_lead_mm ratio_tii, absorb(index_id quarter) vce(cl quarter)
-outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'\output\RR_RFS\highfee_determinants.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
