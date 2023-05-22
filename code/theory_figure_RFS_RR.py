@@ -329,7 +329,7 @@ ax=fig.add_subplot(gs[0, 1])
 ax=settings_plot(ax)
 
 #plt.plot(beta_space,sharesH_space,ls='-',c='b',label=r'AUM share of ETF $H$ (\%)',lw=2)
-plt.plot(beta_space,tsharesH_space,ls='--',c='r',label=r'Turnover share for ETH $H$ (\%)',lw=2)
+plt.plot(beta_space,tsharesH_space,ls='--',c='r',label=r'Secondary market volume share for ETF $H$ (\%)',lw=2)
 
 plt.legend(loc='best',frameon=False,fontsize=16)
 plt.xlabel(r'Investor trading urgency ($\beta$)',fontsize=16)
