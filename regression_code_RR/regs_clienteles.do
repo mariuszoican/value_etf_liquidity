@@ -3,8 +3,8 @@
 clear all
 set more off
 
-local directory "D:\ResearchProjects\kpz_etfliquidity\"
-//local directory "D:\Research\kpz_etfliquidity\"
+//local directory "D:\ResearchProjects\kpz_etfliquidity\"
+local directory "D:\Research\kpz_etfliquidity\"
 import delimited "`directory'data\etf_panel_processed"
 
 // // Label variables
@@ -42,55 +42,55 @@ label variable creation_fee_std "Creation fee"
 
 //// REGRESSIONS FOR MANAGER DURATION
 //// -----------------------------------------
-reghdfe mgr_duration highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration  highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration  highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration  highfee turnover_frac_std stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration  highfee turnover_frac_std stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration_tii highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration_tii highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration_tii  highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration_tii  highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration_tii  highfee turnover_frac_std stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration_tii  highfee turnover_frac_std stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 
 //
-reghdfe mgr_duration_tsi highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration_tsi highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration_tsi  highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe mgr_duration_tsi  highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-// reghdfe mgr_duration_tsi  highfee turnover_frac_std stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+// reghdfe mgr_duration_tsi  highfee turnover_frac_std stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 // outreg2 using "`directory'\output\RR_RFS\clientele_duration.tex", append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 
 //// REGRESSIONS FOR RATIO TRANSIENT
 //// -----------------------------------------
 
-reghdfe ratio_tra highfee , absorb(index quarter) vce(cl quarter)
+reghdfe ratio_tra highfee , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_ratiotra.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_ratiotra.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe ratio_tra highfee stock_tweets log_aum_index_std , absorb(index quarter) vce(cl quarter)
+reghdfe ratio_tra highfee stock_tweets log_aum_index_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_ratiotra.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std, absorb(index quarter) vce(cl quarter)
+reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_ratiotra.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std , absorb(index quarter) vce(cl quarter)
+reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_ratiotra.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl quarter)
+reghdfe ratio_tra highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\clientele_ratiotra.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 
@@ -115,41 +115,41 @@ label variable log_pr "Log profit"
 label variable mkt_share "Market share"
 label variable log_aum "Log AUM"
 
-reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl quarter)
+reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 // Robustness
-reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl quarter)
+reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std other_expense_std fee_waiver_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl index quarter)
 outreg2 using "`directory'\output\RR_RFS\main_table_RR_Robust.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 
