@@ -91,6 +91,10 @@ class model:
         )
         return np.mean(fL_star.x)
 
+    def slope_reaction_F(self, fl):
+        h = 1e-9
+        return (self.reaction_F(fl + h) - self.reaction_F(fl - h)) / (2 * h)
+
     def reaction_F(self, fl):
         bnd = [(0, fl)]
         fF_star = sco.minimize(
@@ -233,12 +237,12 @@ class model_stackelberg:
             lambda x: -10000 * self.mktshares(fl, x)[1] * x,
             fl - 0.5 * self.max_h(),
             bounds=bnd,
-            method="Nelder-Mead",
+            method="L-BFGS-B",
         )
         return np.mean(fF_star.x)
 
     def slope_reaction_F(self, fl):
-        h = 1e-6
+        h = 1e-9
         return (self.reaction_F(fl + h) - self.reaction_F(fl - h)) / (2 * h)
 
     def reaction_L_stackelberg(self, x):
@@ -386,7 +390,7 @@ df_both["wH_formula_seq"] = df_both["feeH_seq"] / (
     df_both["feeH_seq"] + df_both["feeL_seq"]
 )
 
-beta = 7.95
+beta = 2
 m = model_stackelberg([beta, eta, sigma])
 profit_h = [m.mktshares(x, m.reaction_F(x))[0] * x for x in np.linspace(0, 15, 100)]
 plt.plot(np.linspace(0, 15, 100), [x.mean() for x in profit_h])
