@@ -242,7 +242,7 @@ class model_stackelberg:
         return np.mean(fF_star.x)
 
     def slope_reaction_F(self, fl):
-        h = 1e-9
+        h = 1e-4
         return (self.reaction_F(fl + h) - self.reaction_F(fl - h)) / (2 * h)
 
     def reaction_L_stackelberg(self, x):
@@ -285,36 +285,36 @@ class model_stackelberg:
         return self.lmg(self.eq_fees()[0], self.eq_fees()[1])
 
 
-eta = 1.5
-sigma = 10
-beta_space = np.linspace(0.2, 10, 25)
-# m = model([3, eta, sigma])
-# m = model_stackelberg([3, eta, sigma])
+# eta = 1.5
+# sigma = 10
+# beta_space = np.linspace(0.2, 10, 25)
+# # m = model([3, eta, sigma])
+# # m = model_stackelberg([3, eta, sigma])
 
-print("Computing fees")
-fees = np.array(
-    [model([round(betai, 1), eta, sigma]).eq_fees() for betai in beta_space]
-)
-fees_stackelberg = np.array(
-    [model_stackelberg([round(betai, 1), eta, sigma]).eq_fees() for betai in beta_space]
-)
-mktshares = np.array(
-    [
-        model_stackelberg([round(betai, 1), eta, sigma]).eq_mktshares()
-        for betai in beta_space
-    ]
-)
-max_h = np.array(
-    [model_stackelberg([round(betai, 1), eta, sigma]).max_h() for betai in beta_space]
-)
+# print("Computing fees")
+# fees = np.array(
+#     [model([round(betai, 1), eta, sigma]).eq_fees() for betai in beta_space]
+# )
+# fees_stackelberg = np.array(
+#     [model_stackelberg([round(betai, 1), eta, sigma]).eq_fees() for betai in beta_space]
+# )
+# mktshares = np.array(
+#     [
+#         model_stackelberg([round(betai, 1), eta, sigma]).eq_mktshares()
+#         for betai in beta_space
+#     ]
+# )
+# max_h = np.array(
+#     [model_stackelberg([round(betai, 1), eta, sigma]).max_h() for betai in beta_space]
+# )
 
 
-mktshares = np.array(
-    [
-        model_stackelberg([round(betai, 1), eta, sigma]).eq_mktshares()
-        for betai in beta_space
-    ]
-)
+# mktshares = np.array(
+#     [
+#         model_stackelberg([round(betai, 1), eta, sigma]).eq_mktshares()
+#         for betai in beta_space
+#     ]
+# )
 
 
 def mshares_sim(fees):
@@ -379,18 +379,34 @@ def mshares_seq(fees):
     return df
 
 
-df_simult = mshares_sim(fees)
-df_seq = mshares_seq(fees_stackelberg)
-df_both = df_simult.merge(df_seq, on="beta")
+# df_simult = mshares_sim(fees)
+# df_seq = mshares_seq(fees_stackelberg)
+# df_both = df_simult.merge(df_seq, on="beta")
 
-df_both["wH_formula_sim"] = df_both["feeH_sim"] / (
-    df_both["feeH_sim"] + df_both["feeL_sim"]
-)
-df_both["wH_formula_seq"] = df_both["feeH_seq"] / (
-    df_both["feeH_seq"] + df_both["feeL_seq"]
-)
+# df_both["wH_formula_sim"] = df_both["feeH_sim"] / (
+#     df_both["feeH_sim"] + df_both["feeL_sim"]
+# )
+# df_both["wH_formula_seq"] = df_both["feeH_seq"] / (
+#     df_both["feeH_seq"] + df_both["feeL_seq"]
+# )
 
-beta = 2
+# beta = 2
+# m = model_stackelberg([beta, eta, sigma])
+# profit_h = [m.mktshares(x, m.reaction_F(x))[0] * x for x in np.linspace(0, 15, 100)]
+# plt.plot(np.linspace(0, 15, 100), [x.mean() for x in profit_h])
+
+
+beta = 8
+eta = 1.5
+sigma = 1
+min = 0
+max = 3
 m = model_stackelberg([beta, eta, sigma])
-profit_h = [m.mktshares(x, m.reaction_F(x))[0] * x for x in np.linspace(0, 15, 100)]
-plt.plot(np.linspace(0, 15, 100), [x.mean() for x in profit_h])
+profit_h = [m.mktshares(x, m.reaction_F(x))[0] * x for x in np.linspace(min, max, 100)]
+reaction_l = [m.reaction_F(x) for x in np.linspace(min, max, 100)]
+plt.plot(np.linspace(min, max, 100), [x.mean() for x in profit_h])
+plt.plot(np.linspace(min, max, 100), [x.mean() for x in reaction_l], c="r")
+plt.axvline(m.eq_fees()[0], c="k", linestyle="--")
+m.eq_fees(), m.eq_fees() / m.eq_fees().sum(), m.eq_mktshares(), m.slope_reaction_F(
+    m.eq_fees()[0]
+)
