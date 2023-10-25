@@ -218,10 +218,10 @@ class model_stackelberg:
         def profit(x):
             if x <= self.reaction_F(x):
                 return 100000
-            elif 100000 * (x - self.reaction_F(x)) >= 100000 * self.max_h():
+            elif 1e8 * (x - self.reaction_F(x)) >= 1e8 * self.max_h():
                 return 100000
             else:
-                return -10000 * self.mktshares(x, self.reaction_F(x))[0] * x
+                return -1e8 * self.mktshares(x, self.reaction_F(x))[0] * x
 
         fL_star = sco.minimize(
             lambda x: profit(x),
@@ -234,7 +234,7 @@ class model_stackelberg:
     def reaction_F(self, fl):
         bnd = [(0, fl)]
         fF_star = sco.minimize(
-            lambda x: -10000 * self.mktshares(fl, x)[1] * x,
+            lambda x: -1e8 * self.mktshares(fl, x)[1] * x,
             fl - 0.5 * self.max_h(),
             bounds=bnd,
             method="L-BFGS-B",

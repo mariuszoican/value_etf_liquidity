@@ -21,6 +21,7 @@ egen turnover_frac_std=std(turnover_frac)
 egen other_expense_std=std(other_expenses)
 egen fee_waiver_std=std(fee_waivers)
 egen creation_fee_std=std(creation_fee)
+egen stock_tweets_std=std(stock_tweets)
 
 
 label variable mgr_duration "Investor holding duration"
