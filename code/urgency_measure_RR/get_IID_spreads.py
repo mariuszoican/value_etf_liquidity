@@ -10,18 +10,45 @@ list_tickers = panel.ticker.drop_duplicates().tolist()
 
 print("Connection successful. Get Intraday Spread Indicators")
 
-data_spread = conn.raw_sql(
-    f""" SELECT EffectiveSpread_Dollar_Ave 
-        FROM taqmsec.wrds_iid_2023
-        WHERE DATE>='12/31/2010' AND  symbol IN {tuple(list_tickers)}"""
-)
+list_variables = [
+    "date",
+    "sym_root",
+    "quotedspread_dollar_tw",
+    "quotedspread_percent_tw",
+    "effectivespread_dollar_ave",
+    "effectivespread_percent_ave",
+    "effectivespread_dollar_dw",
+    "effectivespread_dollar_sw",
+    "effectivespread_percent_dw",
+    "effectivespread_percent_sw",
+    "dollarrealizedspread_lr_ave",
+    "percentrealizedspread_lr_ave",
+    "dollarpriceimpact_lr_ave",
+    "percentpriceimpact_lr_ave",
+    "dollarrealizedspread_lr_sw",
+    "dollarrealizedspread_lr_dw",
+    "percentrealizedspread_lr_sw",
+    "percentrealizedspread_lr_dw",
+    "dollarpriceimpact_lr_sw",
+    "dollarpriceimpact_lr_dw",
+    "percentpriceimpact_lr_sw",
+    "percentpriceimpact_lr_dw",
+]
 
-print(f"Data collected. Saving {len(data_spread)} observations...")
+data_spread = pd.DataFrame()
 
-# data13f = data13f.dropna(subset=["cusip", "ticker"])
-# data13f["quarter"] = data13f["rdate"].dt.year * 10 + data13f["rdate"].dt.quarter
-# data13f.to_csv("../../data/data_13F_RR_complete.csv.gz", compression="gzip")
+for year in range(2014, 2024):
+    print(year)
+    data_temp = conn.raw_sql(
+        f""" SELECT *
+            FROM taqmsec.wrds_iid_{str(year)}
+            WHERE sym_root IN {tuple(list_tickers)}"""
+    )
 
-gg = """EffectiveSpread_Percent_Ave EffectiveSpread_Dollar_DW  EffectiveSpread_Dollar_SW  EffectiveSpread_Percent_DW EffectiveSpread_Percent_SW
-            DollarRealizedSpread_LR_Ave PercentRealizedSpread_LR_Ave DollarPriceImpact_LR_Ave PercentPriceImpact_LR_Ave DollarRealizedSpread_LR_SW  DollarRealizedSpread_LR_DW PercentRealizedSpread_LR_SW
-            PercentRealizedSpread_LR_DW DollarPriceImpact_LR_SW DollarPriceImpact_LR_DW PercentPriceImpact_LR_SW PercentPriceImpact_LR_DW"""
+    print(f"Data collected. Saving {len(data_temp)} observations...")
+    data_temp = data_temp[list_variables]
+    data_temp = data_temp.rename(columns={"sym_root": "ticker"})
+
+    data_spread = pd.concat([data_spread, data_temp], axis=0, ignore_index=True)
+
+data_spread.to_csv("../../data/etf_spread_measures.csv")
