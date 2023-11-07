@@ -7,10 +7,11 @@
 clear all
 set more off
 
-//local directory "U:\kpz_etfliquidity\data_Marta"
+cd ..
+local directory : pwd
+display "`working_dir'"
+import delimited "`directory'/data_Marta/etf_panel_processed.csv"
 
-local directory "D:\Research\kpz_etfliquidity\data_Marta"
-import delimited "`directory'\etf_panel_processed"
 
 // // Label variables
 // // ---------------------------------
