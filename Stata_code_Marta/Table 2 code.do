@@ -7,7 +7,9 @@
 clear all
 set more off
 
-local directory "U:\kpz_etfliquidity\data_Marta"
+//local directory "U:\kpz_etfliquidity\data_Marta"
+
+local directory "D:\Research\kpz_etfliquidity\data_Marta"
 import delimited "`directory'\etf_panel_processed"
 
 // // Label variables
