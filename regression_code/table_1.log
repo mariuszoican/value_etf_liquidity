@@ -80,7 +80,7 @@ D:\Research\kpz_etfliquidity
 . gen fee_waivers_100=fee_waivers*100
 
 . 
-. gen  net_expense_mer=net_expense-mer_bps/100
+. gen  net_expense_mer=other_expenses-marketing_fee_bps/100+fee_waivers
 
 . gen net_expense_100=net_expense_mer*100
 
@@ -119,7 +119,8 @@ D:\Research\kpz_etfliquidity
 . outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkee
 > p(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp turnover_
 > frac lend_byaum_bps tr_error_bps perf_drag_bps marketing_fee_bps stock_tweets
-> _raw net_expense_100 time_existence mgr_duration ratio_tii ratio_tra)
+> _raw other_expenses_100 fee_waivers_100 time_existence mgr_duration ratio_tii
+>  ratio_tra)
 
                              v1
 -------------------------------------------------------------
@@ -1219,32 +1220,32 @@ D:\Research\kpz_etfliquidity
                        net_expense_mer
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%    -2.86e-08      -.0231579
- 5%    -1.07e-08      -.0172727
-10%    -7.15e-09         -.0165       Obs               1,752
-25%    -2.68e-09          -.011       Sum of wgt.       1,752
+ 1%         -.25           -.25
+ 5%         -.25           -.25
+10%         -.06           -.25       Obs               1,752
+25%            0           -.25       Sum of wgt.       1,752
 
-50%     1.49e-09                      Mean          -.0000576
-                        Largest       Std. dev.      .0009628
-75%     4.77e-09       2.86e-08
-90%     9.54e-09       2.86e-08       Variance       9.27e-07
-95%     2.15e-08       2.86e-08       Skewness      -16.49724
-99%     2.86e-08          .0075       Kurtosis       326.6463
+50%            0                      Mean          -.0066906
+                        Largest       Std. dev.      .0851018
+75%         .023            .18
+90%         .065            .18       Variance       .0072423
+95%         .068            .18       Skewness      -1.788242
+99%          .14            .18       Kurtosis       6.243812
 
                        net_expense_100
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%    -2.86e-06      -2.315789
- 5%    -1.07e-06      -1.727272
-10%    -7.15e-07          -1.65       Obs               1,752
-25%    -2.68e-07      -1.100001       Sum of wgt.       1,752
+ 1%          -25            -25
+ 5%          -25            -25
+10%           -6            -25       Obs               1,752
+25%            0            -25       Sum of wgt.       1,752
 
-50%     1.49e-07                      Mean          -.0057573
-                        Largest       Std. dev.      .0962814
-75%     4.77e-07       2.86e-06
-90%     9.54e-07       2.86e-06       Variance       .0092701
-95%     2.15e-06       2.86e-06       Skewness      -16.49724
-99%     2.86e-06       .7500002       Kurtosis       326.6463
+50%            0                      Mean          -.6690639
+                        Largest       Std. dev.      8.510177
+75%          2.3             18
+90%          6.5             18       Variance       72.42312
+95%          6.8             18       Skewness      -1.788242
+99%           14             18       Kurtosis       6.243812
 
 Following variable is string, not included:  
 ticker  inception  index_id  log_profit  issuer  description  primary_benchmark

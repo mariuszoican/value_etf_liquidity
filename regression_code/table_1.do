@@ -28,7 +28,7 @@ gen aum_bn=aum/10^9
 gen other_expenses_100=other_expenses*100
 gen fee_waivers_100=fee_waivers*100
 
-gen  net_expense_mer=other_expense-marketing_fee_bps/100+fee_waiver
+gen  net_expense_mer=other_expenses-marketing_fee_bps/100+fee_waivers
 gen net_expense_100=net_expense_mer*100
 
 label variable mgr_duration "Investor holding duration"
@@ -47,4 +47,4 @@ label variable other_expense_std "Other expenses"
 label variable fee_waiver_std "Fee waivers"
 label variable creation_fee_std "Creation fee"
 
-outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp turnover_frac lend_byaum_bps tr_error_bps perf_drag_bps marketing_fee_bps stock_tweets_raw net_expense_100 time_existence mgr_duration ratio_tii ratio_tra)
+outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp turnover_frac lend_byaum_bps tr_error_bps perf_drag_bps marketing_fee_bps stock_tweets_raw other_expenses_100 fee_waivers_100 time_existence mgr_duration ratio_tii ratio_tra)
