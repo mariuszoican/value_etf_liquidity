@@ -1,0 +1,275 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      18.0
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2023 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-STATA-PC        https://www.stata.com
+                                   979-696-4600        stata@stata.com
+
+Stata license: Single-user 8-core  perpetual
+Serial number: 501806221785
+  Licensed to: Marius Zoican
+               University of Toronto
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do table_8.do 
+
+. // Load data
+. // -------------------------------------
+. clear all
+
+. set more off
+
+. 
+. cd ..
+D:\Research\kpz_etfliquidity
+
+. local directory : pwd
+
+. display "`working_dir'"
+
+
+. import delimited "`directory'\data\probit_data_processed.csv"
+(encoding automatically selected: ISO-8859-1)
+(12 vars, 1,071 obs)
+
+. 
+. gen log_aum=log(aum_index)
+(3 missing values generated)
+
+. egen spread_index_std=std(spread_index)
+(2 missing values generated)
+
+. egen ratio_tii_std=std(ratio_tii)
+(37 missing values generated)
+
+. egen ratio_tra_std=std(ratio_tra)
+(51 missing values generated)
+
+. gen major_brand_index=1-d_ownindex
+
+. gen numhold_000=num_hold_index/1000
+(2 missing values generated)
+
+. 
+. label variable competition "Competition"
+
+. label variable log_aum "Log AUM index"
+
+. label variable top3_issuer "Top-3 ETF issuer"
+
+. label variable major_brand_index "Major brand index"
+
+. label variable numhold_000 "Number constituents (000s)"
+
+. label variable spread_index_std "Relative spread"
+
+. label variable ratio_tii_std "Tax-insensitive investors (% AUM)"
+
+. label variable ratio_tra_std "Transient investors (% AUM)"
+
+. 
+. probit competition log_aum, vce(robust)
+
+Iteration 0:  Log pseudolikelihood = -242.18114  
+Iteration 1:  Log pseudolikelihood = -162.38679  
+Iteration 2:  Log pseudolikelihood = -149.84056  
+Iteration 3:  Log pseudolikelihood =   -149.632  
+Iteration 4:  Log pseudolikelihood =  -149.6315  
+Iteration 5:  Log pseudolikelihood =  -149.6315  
+
+Probit regression                                       Number of obs =  1,068
+                                                        Wald chi2(1)  =  65.40
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -149.6315                        Pseudo R2     = 0.3822
+
+------------------------------------------------------------------------------
+             |               Robust
+ competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     log_aum |    .467191   .0577725     8.09   0.000      .353959     .580423
+       _cons |  -11.10173    1.24976    -8.88   0.000    -13.55121   -8.652245
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'\output\table_8.tex", replace tex tstat e(r2_p)  la
+> bel  dec(2) tdec(2) eqdrop(/) keep(*) 
+D:\Research\kpz_etfliquidity\output\table_8.tex
+dir : seeout
+
+. 
+. probit competition log_aum top3_issuer major_brand_index, vce(robust)
+
+Iteration 0:  Log pseudolikelihood = -242.18114  
+Iteration 1:  Log pseudolikelihood = -159.24094  
+Iteration 2:  Log pseudolikelihood = -146.72756  
+Iteration 3:  Log pseudolikelihood = -146.43736  
+Iteration 4:  Log pseudolikelihood = -146.43638  
+Iteration 5:  Log pseudolikelihood = -146.43638  
+
+Probit regression                                       Number of obs =  1,068
+                                                        Wald chi2(3)  =  88.15
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -146.43638                       Pseudo R2     = 0.3953
+
+------------------------------------------------------------------------------
+             |               Robust
+ competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     log_aum |   .4264278   .0588707     7.24   0.000     .3110434    .5418122
+ top3_issuer |   .3564935   .1784009     2.00   0.046     .0068342    .7061528
+major_bran~x |   .3232265    .168911     1.91   0.056    -.0078331     .654286
+       _cons |  -10.55332   1.229884    -8.58   0.000    -12.96385   -8.142792
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+> el  dec(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_8.tex
+dir : seeout
+
+. 
+. probit competition log_aum top3_issuer major_brand_index numhold_000, vce(rob
+> ust)
+
+Iteration 0:  Log pseudolikelihood = -242.18114  
+Iteration 1:  Log pseudolikelihood = -158.95872  
+Iteration 2:  Log pseudolikelihood = -146.70538  
+Iteration 3:  Log pseudolikelihood = -146.41647  
+Iteration 4:  Log pseudolikelihood = -146.41545  
+Iteration 5:  Log pseudolikelihood = -146.41545  
+
+Probit regression                                       Number of obs =  1,068
+                                                        Wald chi2(4)  =  91.76
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -146.41545                       Pseudo R2     = 0.3954
+
+------------------------------------------------------------------------------
+             |               Robust
+ competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     log_aum |   .4243028   .0607469     6.98   0.000      .305241    .5433646
+ top3_issuer |   .3499361   .1816915     1.93   0.054    -.0061727    .7060448
+major_bran~x |   .3174044   .1697276     1.87   0.061    -.0152555    .6500643
+ numhold_000 |   .0245838   .1054235     0.23   0.816    -.1820426    .2312101
+       _cons |  -10.51358   1.261189    -8.34   0.000    -12.98546   -8.041693
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+> el  dec(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_8.tex
+dir : seeout
+
+. 
+. probit competition log_aum top3_issuer major_brand_index numhold_000 spread_i
+> ndex_std, vce(robust)
+
+Iteration 0:  Log pseudolikelihood = -242.18114  
+Iteration 1:  Log pseudolikelihood = -156.42822  
+Iteration 2:  Log pseudolikelihood = -144.32779  
+Iteration 3:  Log pseudolikelihood = -144.10756  
+Iteration 4:  Log pseudolikelihood =   -144.107  
+Iteration 5:  Log pseudolikelihood =   -144.107  
+
+Probit regression                                       Number of obs =  1,068
+                                                        Wald chi2(5)  =  98.62
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -144.107                         Pseudo R2     = 0.4050
+
+------------------------------------------------------------------------------
+             |               Robust
+ competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     log_aum |   .4838241   .0651497     7.43   0.000      .356133    .6115152
+ top3_issuer |   .3452512    .185942     1.86   0.063    -.0191885    .7096909
+major_bran~x |   .3343794   .1715109     1.95   0.051    -.0017757    .6705346
+ numhold_000 |   .0050722   .1071325     0.05   0.962    -.2049036     .215048
+spread_ind~d |   .3179377    .057075     5.57   0.000     .2060727    .4298027
+       _cons |  -11.61747   1.333897    -8.71   0.000    -14.23186   -9.003084
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p) labe
+> l  dec(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_8.tex
+dir : seeout
+
+. 
+. probit competition log_aum ratio_tra_std top3_issuer major_brand_index numhol
+> d_000 spread_index_std , vce(robust)
+
+Iteration 0:  Log pseudolikelihood = -239.07915  
+Iteration 1:  Log pseudolikelihood = -151.55884  
+Iteration 2:  Log pseudolikelihood = -138.14622  
+Iteration 3:  Log pseudolikelihood = -137.82949  
+Iteration 4:  Log pseudolikelihood = -137.82872  
+Iteration 5:  Log pseudolikelihood = -137.82872  
+
+Probit regression                                       Number of obs =  1,019
+                                                        Wald chi2(6)  =  91.57
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -137.82872                       Pseudo R2     = 0.4235
+
+------------------------------------------------------------------------------
+             |               Robust
+ competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     log_aum |    .557176   .0863998     6.45   0.000     .3878355    .7265166
+ratio_tra_~d |   .4393057   .1537507     2.86   0.004     .1379599    .7406516
+ top3_issuer |   .3172092   .1870065     1.70   0.090    -.0493169    .6837353
+major_bran~x |   .3775165   .1653155     2.28   0.022     .0535041    .7015289
+ numhold_000 |   .0663616   .1082649     0.61   0.540    -.1458338     .278557
+spread_ind~d |   .2638045   .0590377     4.47   0.000     .1480927    .3795163
+       _cons |  -13.14156   1.782293    -7.37   0.000    -16.63479   -9.648332
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+> el  dec(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_8.tex
+dir : seeout
+
+. 
+. probit competition log_aum ratio_tra_std ratio_tii_std top3_issuer major_bran
+> d_index numhold_000 spread_index_std , vce(robust)
+
+Iteration 0:  Log pseudolikelihood = -239.07915  
+Iteration 1:  Log pseudolikelihood =  -149.0535  
+Iteration 2:  Log pseudolikelihood = -133.04485  
+Iteration 3:  Log pseudolikelihood = -132.73296  
+Iteration 4:  Log pseudolikelihood = -132.73258  
+Iteration 5:  Log pseudolikelihood = -132.73258  
+
+Probit regression                                       Number of obs =  1,019
+                                                        Wald chi2(7)  = 113.43
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -132.73258                       Pseudo R2     = 0.4448
+
+------------------------------------------------------------------------------
+             |               Robust
+ competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     log_aum |   .5731926   .0781487     7.33   0.000      .420024    .7263613
+ratio_tra_~d |   .3913059   .1468989     2.66   0.008     .1033893    .6792226
+ratio_tii_~d |   .4718587   .1489502     3.17   0.002     .1799215    .7637958
+ top3_issuer |   .3281361   .1928701     1.70   0.089    -.0498825    .7061546
+major_bran~x |   .3809722   .1705814     2.23   0.026     .0466389    .7153056
+ numhold_000 |   .1536337   .1089121     1.41   0.158    -.0598301    .3670974
+spread_ind~d |   .2462373   .0587993     4.19   0.000     .1309928    .3614818
+       _cons |  -13.58376   1.601278    -8.48   0.000    -16.72221   -10.44531
+------------------------------------------------------------------------------
+Note: 5 failures and 0 successes completely determined.
+
+. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+> el  dec(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_8.tex
+dir : seeout
+
+. 
+end of do-file

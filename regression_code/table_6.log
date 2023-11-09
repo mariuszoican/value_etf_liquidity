@@ -1,0 +1,428 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      18.0
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2023 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-STATA-PC        https://www.stata.com
+                                   979-696-4600        stata@stata.com
+
+Stata license: Single-user 8-core  perpetual
+Serial number: 501806221785
+  Licensed to: Marius Zoican
+               University of Toronto
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do table_6.do 
+
+. 
+. // Table 3 - Investor holding duration and ETF fees
+. // -------------------------------------
+. 
+. // Load data
+. // -------------------------------------
+. clear all
+
+. set more off
+
+. 
+. cd ..
+D:\Research\kpz_etfliquidity
+
+. local directory : pwd
+
+. display "`working_dir'"
+
+
+. import delimited "`directory'/data/etf_panel_processed.csv"
+(encoding automatically selected: ISO-8859-1)
+(71 vars, 1,752 obs)
+
+. 
+. 
+. // // Label variables
+. // // ---------------------------------
+. 
+. egen time_existence_std=std(time_existence)
+
+. egen time_since_first_std=std(time_since_first)
+(55 missing values generated)
+
+. egen log_aum_index_std=std(log_aum_index)
+
+. egen lend_byaum_bps_std=std(lend_byaum_bps)
+
+. egen marketing_fee_bps_std=std(marketing_fee_bps)
+
+. egen tr_error_bps_std=std(tr_error_bps)
+
+. egen perf_drag_bps_std=std(perf_drag_bps)
+
+. egen turnover_frac_std=std(turnover_frac)
+(2 missing values generated)
+
+. gen  net_expense_mer=other_expense-marketing_fee_bps/100+fee_waiver
+
+. egen net_expenses_std=std(net_expense_mer)
+
+. egen stock_tweets_std=std(stock_tweets)
+
+. 
+. label variable mgr_duration "Investor holding duration"
+
+. label variable highfee "High MER"
+
+. label variable time_existence_std "ETF age (quarters)"
+
+. label variable time_since_first_std "Time since first position"
+
+. label variable log_aum_index_std "Log index AUM"
+
+. label variable d_uit "Unit investment trust"
+
+. label variable lend_byaum_bps_std "Lending income (bps of AUM)"
+
+. label variable marketing_fee_bps_std "Marketing expense (bps)"
+
+. label variable stock_tweets "Name recognition (Twitter msg.)"
+
+. label variable tr_error_bps_std "Tracking error (bps)"
+
+. label variable perf_drag_bps_std "Performance drag (bps)"
+
+. label variable turnover_frac_std "ETF turnover"
+
+. label variable net_expenses_std "Other net expenses"
+
+. label variable stock_tweets_std "Stock tweets"
+
+. 
+. 
+. label variable mkt_share "Market share"
+
+. label variable spread_bps_crsp "Relative spread"
+
+. label variable mer_bps "MER"
+
+. label variable logret_q_lag "Lagged return"
+
+. label variable ratio_tii "Tax-insensitive investors"
+
+. 
+. 
+. gen tii_return=ratio_tii * logret_q_lag
+(71 missing values generated)
+
+. label variable tii_return "TII $\times$ Lagged return"
+
+. 
+. 
+. egen ratio_tra_ix_std=std(ratio_tra_ix )
+
+. gen ix_ratiotra_highfee=highfee * ratio_tra_ix_std
+
+. 
+. gen tra_above=ratio_tra_ix_std>0
+
+. gen ix_tra_above=highfee * tra_above
+
+. 
+. label variable ratio_tra_ix_std "Index AUM share of transient investors ($\te
+> xt{TRA}_\text{ix}$)"
+
+. label variable ix_ratiotra_highfee "High MER $\times$ $\text{TRA}_\text{ix}$"
+
+. 
+. drop log_aum
+
+. gen log_aum=log(aum)
+(2 missing values generated)
+
+. 
+. 
+. reghdfe spread_bps_crsp highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb
+> (index quarter) vce(cl ticker quarter)
+(MWFE estimator converged in 5 iterations)
+
+HDFE Linear regression                            Number of obs   =      1,752
+Absorbing 2 HDFE groups                           F(   3,     19) =       7.14
+Statistics robust to heteroskedasticity           Prob > F        =     0.0021
+                                                  R-squared       =     0.5637
+                                                  Adj R-squared   =     0.5453
+Number of clusters (ticker)  =        105         Within R-sq.    =     0.1549
+Number of clusters (quarter) =         20         Root MSE        =     6.7586
+
+                        (Std. err. adjusted for 20 clusters in ticker quarter)
+------------------------------------------------------------------------------
+             |               Robust
+spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |  -4.146113   .9711516    -4.27   0.000    -6.178756   -2.113469
+ix_ratiotr~e |  -3.670334   1.638521    -2.24   0.037    -7.099798   -.2408702
+ratio_tra_~d |   2.986366   1.208688     2.47   0.023     .4565532    5.516178
+       _cons |   8.618705   .5710195    15.09   0.000     7.423547    9.813862
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        49           0          49     |
+     quarter |        20          20           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'\output\table_6",  adjr2 replace tex tstat label  d
+> ec(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_6.tex
+dir : seeout
+
+. reghdfe spread_bps_crsp  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock
+> _tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expens
+> es_std, absorb(index quarter) vce(cl ticker quarter)
+(MWFE estimator converged in 5 iterations)
+Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
+> lbach & Miller applied.
+
+HDFE Linear regression                            Number of obs   =      1,752
+Absorbing 2 HDFE groups                           F(   8,     19) =      14.64
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
+                                                  R-squared       =     0.6064
+                                                  Adj R-squared   =     0.5885
+Number of clusters (ticker)  =        105         Within R-sq.    =     0.2375
+Number of clusters (quarter) =         20         Root MSE        =     6.4294
+
+                        (Std. err. adjusted for 20 clusters in ticker quarter)
+------------------------------------------------------------------------------
+             |               Robust
+spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |  -3.531954   .8877691    -3.98   0.001    -5.390076   -1.673832
+ix_ratiotr~e |  -3.544057   1.602965    -2.21   0.039    -6.899102   -.1890125
+ratio_tra_~d |   2.437946   1.174809     2.08   0.052    -.0209579     4.89685
+stock_tweets |   .0513345   .0722162     0.71   0.486    -.0998157    .2024847
+log_aum_in~d |   -4.90553   1.520405    -3.23   0.004    -8.087775   -1.723285
+lend_byaum~d |  -1.953406   .3548097    -5.51   0.000    -2.696032   -1.210781
+marketing_~d |   1.862869   1.042395     1.79   0.090    -.3188888    4.044626
+net_expens~d |  -.2702214   .8478965    -0.32   0.753    -2.044889    1.504446
+       _cons |   8.310107   .5182912    16.03   0.000     7.225311    9.394903
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        49           0          49     |
+     quarter |        20          20           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'\output\table_6",  adjr2 append tex tstat label  de
+> c(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_6.tex
+dir : seeout
+
+. reghdfe spread_bps_crsp  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock
+> _tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expens
+> es_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_re
+> turn, absorb(index quarter) vce(cl ticker quarter)
+(MWFE estimator converged in 5 iterations)
+Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
+> lbach & Miller applied.
+warning: missing F statistic; dropped variables due to collinearity or too few 
+> clusters
+
+HDFE Linear regression                            Number of obs   =      1,681
+Absorbing 2 HDFE groups                           F(  14,     19) =          .
+Statistics robust to heteroskedasticity           Prob > F        =          .
+                                                  R-squared       =     0.6020
+                                                  Adj R-squared   =     0.5816
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.2323
+Number of clusters (quarter) =         20         Root MSE        =     6.4177
+
+                        (Std. err. adjusted for 20 clusters in ticker quarter)
+------------------------------------------------------------------------------
+             |               Robust
+spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |  -3.379871   .9327217    -3.62   0.002     -5.33208   -1.427663
+ix_ratiotr~e |  -3.122625   1.695253    -1.84   0.081    -6.670829    .4255797
+ratio_tra_~d |   2.205551    1.29876     1.70   0.106    -.5127846    4.923886
+stock_tweets |  -.1622571    .107694    -1.51   0.148    -.3876632     .063149
+log_aum_in~d |  -3.609112   1.761976    -2.05   0.055    -7.296969    .0787461
+lend_byaum~d |  -1.864117    .341631    -5.46   0.000    -2.579159   -1.149075
+marketing_~d |   1.633413   1.017327     1.61   0.125    -.4958771    3.762703
+net_expens~d |  -.5857403   .8628783    -0.68   0.505    -2.391765    1.220285
+tr_error_b~d |  -.7479608   .5408711    -1.38   0.183    -1.880017    .3840955
+perf_drag_~d |    .076829   .2733009     0.28   0.782    -.4951964    .6488544
+       d_uit |   3.194472   1.356649     2.35   0.029     .3549734    6.033971
+   ratio_tii |    .025338   .0201585     1.26   0.224    -.0168543    .0675302
+logret_q_lag |  -2.630618   1.887519    -1.39   0.179    -6.581241    1.320005
+  tii_return |   .0668286   .0273346     2.44   0.024     .0096167    .1240405
+       _cons |   5.987589   1.480121     4.05   0.001     2.889659    9.085519
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        49           0          49     |
+     quarter |        20          20           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'\output\table_6",  adjr2 append tex tstat label  de
+> c(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_6.tex
+dir : seeout
+
+. 
+. reghdfe mer_bps highfee ix_ratiotra_highfee ratio_tra_ix_std , absorb(index q
+> uarter) vce(cl ticker quarter)
+(MWFE estimator converged in 5 iterations)
+Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
+> lbach & Miller applied.
+
+HDFE Linear regression                            Number of obs   =      1,752
+Absorbing 2 HDFE groups                           F(   3,     19) =      34.64
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
+                                                  R-squared       =     0.8704
+                                                  Adj R-squared   =     0.8649
+Number of clusters (ticker)  =        105         Within R-sq.    =     0.4832
+Number of clusters (quarter) =         20         Root MSE        =     6.9153
+
+                        (Std. err. adjusted for 20 clusters in ticker quarter)
+------------------------------------------------------------------------------
+             |               Robust
+     mer_bps | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |   12.50279   1.441442     8.67   0.000     9.485821    15.51976
+ix_ratiotr~e |   3.887257   1.764655     2.20   0.040     .1937912    7.580724
+ratio_tra_~d |  -2.174138   .8556542    -2.54   0.020    -3.965043   -.3832331
+       _cons |   19.09397   .9817964    19.45   0.000     17.03905     21.1489
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        49           0          49     |
+     quarter |        20          20           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'\output\table_6",  adjr2 append tex tstat label  de
+> c(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_6.tex
+dir : seeout
+
+. reghdfe mer_bps highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets l
+> og_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std, a
+> bsorb(index quarter) vce(cl ticker quarter)
+(MWFE estimator converged in 5 iterations)
+Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
+> lbach & Miller applied.
+
+HDFE Linear regression                            Number of obs   =      1,752
+Absorbing 2 HDFE groups                           F(   8,     19) =      30.87
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
+                                                  R-squared       =     0.8937
+                                                  Adj R-squared   =     0.8889
+Number of clusters (ticker)  =        105         Within R-sq.    =     0.5761
+Number of clusters (quarter) =         20         Root MSE        =     6.2719
+
+                        (Std. err. adjusted for 20 clusters in ticker quarter)
+------------------------------------------------------------------------------
+             |               Robust
+     mer_bps | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |   11.84428   1.478623     8.01   0.000     8.749482    14.93907
+ix_ratiotr~e |   4.136083   1.458627     2.84   0.011     1.083141    7.189024
+ratio_tra_~d |  -1.912921   .7467486    -2.56   0.019    -3.475884   -.3499582
+stock_tweets |   -.403946   .1614209    -2.50   0.022    -.7418038   -.0660882
+log_aum_in~d |   .2856763   .1493072     1.91   0.071    -.0268272    .5981799
+lend_byaum~d |   1.313146    .828369     1.59   0.129      -.42065    3.046943
+marketing_~d |  -4.574898   1.489284    -3.07   0.006    -7.692006   -1.457791
+net_expens~d |  -1.044251    1.57295    -0.66   0.515    -4.336473    2.247972
+       _cons |   19.43518   .9443738    20.58   0.000     17.45858    21.41177
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        49           0          49     |
+     quarter |        20          20           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'\output\table_6",  adjr2 append tex tstat label  de
+> c(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_6.tex
+dir : seeout
+
+. reghdfe mer_bps  highfee ix_ratiotra_highfee ratio_tra_ix_std   stock_tweets 
+> log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std  
+> tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, a
+> bsorb(index quarter) vce(cl ticker quarter)
+(MWFE estimator converged in 5 iterations)
+Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
+> lbach & Miller applied.
+warning: missing F statistic; dropped variables due to collinearity or too few 
+> clusters
+
+HDFE Linear regression                            Number of obs   =      1,681
+Absorbing 2 HDFE groups                           F(  14,     19) =          .
+Statistics robust to heteroskedasticity           Prob > F        =          .
+                                                  R-squared       =     0.9049
+                                                  Adj R-squared   =     0.9001
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.6287
+Number of clusters (quarter) =         20         Root MSE        =     5.9394
+
+                        (Std. err. adjusted for 20 clusters in ticker quarter)
+------------------------------------------------------------------------------
+             |               Robust
+     mer_bps | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |   11.23728    1.27103     8.84   0.000     8.576983    13.89758
+ix_ratiotr~e |    3.34507   1.581959     2.11   0.048     .0339922    6.656148
+ratio_tra_~d |  -1.794474   .8195477    -2.19   0.041    -3.509807   -.0791413
+stock_tweets |   -.541075   .3900434    -1.39   0.181    -1.357445    .2752953
+log_aum_in~d |   .2088886   .2246789     0.93   0.364    -.2613698    .6791471
+lend_byaum~d |   1.258011   .6714716     1.87   0.076    -.1473949    2.663418
+marketing_~d |  -4.232286   1.348037    -3.14   0.005    -7.053759   -1.410813
+net_expens~d |  -1.208687   1.523633    -0.79   0.437    -4.397687    1.980313
+tr_error_b~d |   3.739676   1.248964     2.99   0.007     1.125564    6.353787
+perf_drag_~d |   1.457387   .6335505     2.30   0.033     .1313501    2.783423
+       d_uit |   4.372089   4.470714     0.98   0.340    -4.985223     13.7294
+   ratio_tii |  -.0143883   .0172337    -0.83   0.414    -.0504587    .0216822
+logret_q_lag |   -3.89858   1.545589    -2.52   0.021    -7.133535   -.6636254
+  tii_return |   .0528284   .0295648     1.79   0.090    -.0090515    .1147083
+       _cons |   21.02476   1.653017    12.72   0.000     17.56495    24.48456
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        49           0          49     |
+     quarter |        20          20           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'\output\table_6",  adjr2 append tex tstat label  de
+> c(2) tdec(2) eqdrop(/) keep(*)
+D:\Research\kpz_etfliquidity\output\table_6.tex
+dir : seeout
+
+. 
+end of do-file

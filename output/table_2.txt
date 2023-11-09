@@ -1,0 +1,32 @@
+		(1)	(2)	(3)	(4)	(5)	(6)
+VARIABLES	LABELS	ratio_tra	ratio_tra	ratio_tra	ratio_tra	ratio_tra	ratio_tra
+							
+highfee	High MER	0.06***	0.08***	0.05***	0.06***	0.05***	0.09***
+		(3.22)	(4.31)	(3.15)	(3.90)	(3.13)	(4.77)
+stock_tweets_std	Stock tweets		0.00	0.00	0.00	0.00	0.00
+			(0.86)	(0.76)	(0.60)	(0.38)	(0.50)
+log_aum_index_std	Log index AUM		-0.07	-0.08	-0.09	-0.09	-0.07
+			(-1.07)	(-1.20)	(-1.27)	(-1.32)	(-1.00)
+lend_byaum_bps_std	Lending income (bps of AUM)		-0.03**		-0.03**	-0.02**	-0.03**
+			(-2.38)		(-2.48)	(-2.31)	(-2.43)
+marketing_fee_bps_std	Marketing expense (bps)		0.09***		0.03**	0.08***	0.05***
+			(4.13)		(2.35)	(3.42)	(3.60)
+net_expenses_std	Other net expenses		0.06**			0.06**	
+			(2.67)			(2.85)	
+tr_error_bps_std	Tracking error (bps)		0.01				0.01
+			(0.58)				(0.65)
+perf_drag_bps_std	Performance drag (bps)		-0.00				-0.00
+			(-0.38)				(-0.46)
+d_uit	Unit investment trust		-0.05				0.01
+			(-0.99)				(0.26)
+time_existence_std	ETF age (quarters)		-0.04**				-0.04**
+			(-2.39)				(-2.55)
+time_since_first_std	Time since first position		0.07**				0.08**
+			(2.61)				(2.81)
+Constant	Constant	0.19***	0.18***	0.19***	0.19***	0.20***	0.18***
+		(16.90)	(16.93)	(16.84)	(17.57)	(19.17)	(15.34)
+							
+Observations		1,653	1,653	1,653	1,653	1,653	1,653
+Adjusted R-squared		0.52	0.57	0.53	0.54	0.55	0.56
+Robust t-statistics in parentheses							
+*** p<0.01, ** p<0.05, * p<0.1							

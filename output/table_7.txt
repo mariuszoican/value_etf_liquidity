@@ -1,0 +1,38 @@
+		(1)	(2)	(3)	(4)	(5)
+VARIABLES	LABELS	High MER	High MER	High MER	High MER	High MER
+						
+firstmover	First mover	0.62***	0.57***	0.59***	0.53**	0.42**
+		(7.63)	(5.46)	(4.47)	(2.53)	(2.32)
+firstmover_diffbench	First mover $\times$ Different benchmarks			-0.05		
+				(-0.30)		
+marketing_fee_bps_std	Marketing expense (bps)		0.14	0.15	0.15	0.14
+			(1.31)	(1.35)	(0.98)	(1.36)
+net_expenses_std	Other net expenses		0.14	0.15	0.16	0.14
+			(1.36)	(1.46)	(1.10)	(1.36)
+stock_tweets	Name recognition (Twitter msg.)		0.02**	0.01	0.01	0.03*
+			(2.10)	(1.62)	(1.39)	(1.73)
+lend_byaum_bps_std	Lending income (bps of AUM)		-0.06	-0.06	-0.07	-0.05
+			(-0.96)	(-0.91)	(-1.06)	(-0.71)
+tr_error_bps_std	Tracking error (bps)		0.07**	0.07**	0.07**	0.07**
+			(2.57)	(2.33)	(2.27)	(2.68)
+creation_fee_std	Standardized values of creation_fee		0.25**	0.24**	0.25**	0.23**
+			(2.77)	(2.80)	(2.73)	(2.60)
+perf_drag_bps_std	Performance drag (bps)		0.01	0.01*	0.01	0.01
+			(0.95)	(1.93)	(0.84)	(0.93)
+different_benchmarks	Different benchmarks		-0.30***	-0.28***	-0.30***	-0.28***
+			(-6.06)	(-5.25)	(-5.99)	(-3.91)
+different_lead_mm	Different lead market-maker		0.01	0.01	0.01	-0.08
+			(0.61)	(0.56)	(0.64)	(-0.94)
+ratio_tii_std	Tax-insensitive investors		0.02	0.02	0.02	0.02
+			(0.70)	(0.73)	(0.71)	(0.80)
+firstmover_majorindex	First mover $\times$ Major brand index				0.05	
+					(0.21)	
+firstmover_diffleadmm	First mover $\times$ Different lead market-maker					0.19
+						(1.10)
+Constant	Constant	0.20***	0.38***	0.38***	0.38***	0.44***
+		(3.62)	(11.51)	(11.47)	(11.08)	(7.77)
+						
+Observations		1,752	1,681	1,681	1,681	1,681
+Adjusted R-squared		0.35	0.44	0.44	0.44	0.44
+Robust t-statistics in parentheses						
+*** p<0.01, ** p<0.05, * p<0.1						

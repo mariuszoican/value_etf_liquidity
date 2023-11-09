@@ -1,0 +1,1256 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      18.0
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2023 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-STATA-PC        https://www.stata.com
+                                   979-696-4600        stata@stata.com
+
+Stata license: Single-user 8-core  perpetual
+Serial number: 501806221785
+  Licensed to: Marius Zoican
+               University of Toronto
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do table_1.do 
+
+. // Load data
+. // -------------------------------------
+. clear all
+
+. set more off
+
+. 
+. cd ..
+D:\Research\kpz_etfliquidity
+
+. local directory : pwd
+
+. display "`working_dir'"
+
+
+. import delimited "`directory'/data/etf_panel_processed.csv"
+(encoding automatically selected: ISO-8859-1)
+(71 vars, 1,752 obs)
+
+. 
+. 
+. // // Label variables
+. // // ---------------------------------
+. 
+. egen time_existence_std=std(time_existence)
+
+. egen time_since_first_std=std(time_since_first)
+(55 missing values generated)
+
+. egen log_aum_index_std=std(log_aum_index)
+
+. egen lend_byaum_bps_std=std(lend_byaum_bps)
+
+. egen marketing_fee_bps_std=std(marketing_fee_bps)
+
+. egen tr_error_bps_std=std(tr_error_bps)
+
+. egen perf_drag_bps_std=std(perf_drag_bps)
+
+. egen turnover_frac_std=std(turnover_frac)
+(2 missing values generated)
+
+. egen other_expense_std=std(other_expenses)
+
+. egen fee_waiver_std=std(fee_waivers)
+
+. egen creation_fee_std=std(creation_fee)
+
+. 
+. gen aum_bn=aum/10^9
+
+. gen other_expenses_100=other_expenses*100
+
+. gen fee_waivers_100=fee_waivers*100
+
+. 
+. gen  net_expense_mer=net_expense-mer_bps/100
+
+. gen net_expense_100=net_expense_mer*100
+
+. 
+. label variable mgr_duration "Investor holding duration"
+
+. label variable highfee "High MER"
+
+. label variable time_existence_std "ETF age (quarters)"
+
+. label variable time_since_first_std "Time since first position"
+
+. label variable log_aum_index_std "Log index AUM"
+
+. label variable d_uit "Unit investment trust"
+
+. label variable lend_byaum_bps_std "Lending income (bps of AUM)"
+
+. label variable marketing_fee_bps_std "Marketing expense (bps)"
+
+. label variable stock_tweets "Name recognition (Twitter msg.)"
+
+. label variable tr_error_bps_std "Tracking error (bps)"
+
+. label variable perf_drag_bps_std "Performance drag (bps)"
+
+. label variable turnover_frac_std "ETF turnover"
+
+. label variable other_expense_std "Other expenses"
+
+. label variable fee_waiver_std "Fee waivers"
+
+. label variable creation_fee_std "Creation fee"
+
+. 
+. outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkee
+> p(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp turnover_
+> frac lend_byaum_bps tr_error_bps perf_drag_bps marketing_fee_bps stock_tweets
+> _raw net_expense_100 time_existence mgr_duration ratio_tii ratio_tra)
+
+                             v1
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           17              0
+ 5%           87              1
+10%          175              2       Obs               1,752
+25%        437.5              3       Sum of wgt.       1,752
+
+50%        875.5                      Mean              875.5
+                        Largest       Std. dev.      505.9032
+75%       1313.5           1748
+90%         1576           1749       Variance         255938
+95%         1664           1750       Skewness              0
+99%         1734           1751       Kurtosis       1.799999
+
+                           quarter
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%        20161          20161
+ 5%        20162          20161
+10%        20163          20161       Obs               1,752
+25%        20172          20161       Sum of wgt.       1,752
+
+50%        20183                      Mean           20183.46
+                        Largest       Std. dev.      14.11447
+75%        20194          20204
+90%        20203          20204       Variance       199.2184
+95%        20204          20204       Skewness      -.1016068
+99%        20204          20204       Kurtosis       1.741545
+
+                          logret_q
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.3813039      -.7426121
+ 5%    -.2086673      -.7046754
+10%    -.1126564      -.7019287       Obs               1,752
+25%    -.0006416      -.7001262       Sum of wgt.       1,752
+
+50%     .0401738                      Mean           .0285336
+                        Largest       Std. dev.        .11775
+75%     .0834569       .3135216
+90%     .1430491       .3206922       Variance       .0138651
+95%     .1966454       .3219066       Skewness      -1.582446
+99%      .272301       .3439421       Kurtosis         8.7371
+
+                        logret_q_lag
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.3813039      -.7426121
+ 5%    -.2160022      -.7046754
+10%    -.1161696      -.7019287       Obs               1,752
+25%    -.0039992      -.7001262       Sum of wgt.       1,752
+
+50%     .0361232                      Mean           .0202817
+                        Largest       Std. dev.      .1127229
+75%     .0747372       .3135216
+90%     .1228506       .3206922       Variance       .0127065
+95%     .1634231       .3219066       Skewness      -1.809559
+99%     .2457466       .3439421       Kurtosis       9.609462
+
+                          yearmonth
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%        20163          20163
+ 5%        20166          20163
+10%        20169          20163       Obs               1,752
+25%        20179          20163       Sum of wgt.       1,752
+
+50%        20196                      Mean           66217.63
+                        Largest       Std. dev.       79028.5
+75%       201612         202012
+90%       201912         202012       Variance       6.25e+09
+95%       202012         202012       Skewness       1.133755
+99%       202012         202012       Kurtosis       2.285406
+
+                       lend_byAUM_bps
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%     .1205841              0       Sum of wgt.       1,752
+
+50%     .9155166                      Mean            3.13904
+                        Largest       Std. dev.      6.074327
+75%     3.259783        55.1515
+90%       8.1301        55.1515       Variance       36.89745
+95%     14.58371        55.1515       Skewness       4.943432
+99%     20.26362        55.1515       Kurtosis       37.78053
+
+                           mer_bps
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            4              3
+ 5%            7              3
+10%            9       3.863636       Obs               1,752
+25%           12              4       Sum of wgt.       1,752
+
+50%           18                      Mean           25.34537
+                        Largest       Std. dev.      18.81537
+75%           35             72
+90%           60             72       Variance       354.0182
+95%           63             72       Skewness       1.049003
+99%           72             72       Kurtosis       2.775659
+
+                       spread_bps_crsp
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%      .423962         .27112
+ 5%     .8592577       .3110935
+10%     1.238987       .3122806       Obs               1,752
+25%     1.972718        .326658       Sum of wgt.       1,752
+
+50%     3.386538                      Mean           6.545648
+                        Largest       Std. dev.      10.02298
+75%     6.480313       89.00514
+90%     14.41713       93.77586       Variance       100.4601
+95%     24.30362       125.4971       Skewness       5.228366
+99%     47.04505       145.3526       Kurtosis       47.18769
+
+                         log_volume
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%      10.4977       6.889089
+ 5%     12.89355       7.519145
+10%     14.01591        8.86456       Obs               1,752
+25%     15.76432       9.086446       Sum of wgt.       1,752
+
+50%     17.54671                      Mean           17.42793
+                        Largest       Std. dev.      2.590796
+75%      19.2652       24.12063
+90%     20.51763       24.22494       Variance       6.712221
+95%     21.11687       24.45274       Skewness      -.3939419
+99%     23.65509       24.97996       Kurtosis       3.301992
+
+                        tr_error_bps
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     3.852257       2.253133
+ 5%      6.46039        2.60829
+10%     7.467638       2.635809       Obs               1,752
+25%     10.04092       2.719357       Sum of wgt.       1,752
+
+50%     15.24823                      Mean           28.77949
+                        Largest       Std. dev.      36.55422
+75%      31.9683       310.0677
+90%     66.75269       353.1277       Variance       1336.211
+95%      96.4608       356.5926       Skewness       4.203464
+99%     207.4887       425.2161       Kurtosis        29.2216
+
+                        perf_drag_bps
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -24.69341       -70.0647
+ 5%    -9.232449      -69.13781
+10%     -5.07601       -68.5226       Obs               1,752
+25%    -2.153134      -60.60103       Sum of wgt.       1,752
+
+50%    -1.168285                      Mean          -1.868032
+                        Largest       Std. dev.      6.177749
+75%    -.4764203       23.13932
+90%     .8752714       23.58003       Variance       38.16458
+95%     3.750768       23.61436       Skewness      -4.026882
+99%     13.49368       47.71764       Kurtosis       45.61732
+
+                        turnover_frac
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .3621074       .0228163
+ 5%     .6916751       .0501741
+10%     .8705912       .1016253       Obs               1,750
+25%     1.261162       .1147841       Sum of wgt.       1,750
+
+50%     2.166134                      Mean           5.894738
+                        Largest       Std. dev.      8.600755
+75%     5.808964       57.92653
+90%     17.96259       58.92796       Variance       73.97299
+95%     24.68063       70.87081       Skewness       2.835841
+99%       40.222       78.63817       Kurtosis       13.53185
+
+                    Unit investment trust
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .0228311
+                        Largest       Std. dev.      .1494073
+75%            0              1
+90%            0              1       Variance       .0223225
+95%            0              1       Skewness       6.389316
+99%            1              1       Kurtosis       41.82336
+
+                          mkt_share
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0034891              0
+ 5%     .0204727              0
+10%     .0366577       .0017789       Obs               1,752
+25%     .1912041       .0020657       Sum of wgt.       1,752
+
+50%     .4898219                      Mean           .4922067
+                        Largest       Std. dev.      .3361195
+75%     .7911315       .9979343
+90%     .9573468       .9982211       Variance       .1129763
+95%     .9781696              1       Skewness       .0145219
+99%     .9965109              1       Kurtosis       1.515772
+
+                      marketing_fee_bps
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           3.292637
+                        Largest       Std. dev.      7.736585
+75%           .6             25
+90%           25             25       Variance       59.85475
+95%           25             25       Skewness       2.396142
+99%           25             25       Kurtosis       6.891851
+
+                             aum
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     1.16e+07              0
+ 5%     5.95e+07              0
+10%     2.02e+08        5624818       Obs               1,752
+25%     1.11e+09        6309366       Sum of wgt.       1,752
+
+50%     4.21e+09                      Mean           1.39e+10
+                        Largest       Std. dev.      3.32e+10
+75%     1.29e+10       2.76e+11
+90%     3.41e+10       2.97e+11       Variance       1.10e+21
+95%     5.29e+10       2.99e+11       Skewness       5.643727
+99%     2.14e+11       3.23e+11       Kurtosis       40.00227
+
+                      cum_mktg_expense
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           7.168116
+                        Largest       Std. dev.      7.613339
+75%     14.88577       18.85866
+90%     17.17506       18.88534       Variance       57.96293
+95%     17.79893       18.89762       Skewness       .1996609
+99%     18.52905       18.94779       Kurtosis       1.183405
+
+                          d_sameind
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .4611872
+                        Largest       Std. dev.      .4986336
+75%            1              1
+90%            1              1       Variance       .2486355
+95%            1              1       Skewness        .155721
+99%            1              1       Kurtosis       1.024249
+
+                         d_OwnIndex
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .3105023
+                        Largest       Std. dev.      .4628314
+75%            1              1
+90%            1              1       Variance       .2142129
+95%            1              1       Skewness       .8190967
+99%            1              1       Kurtosis       1.670919
+
+                      marketing_expense
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           964431.1
+                        Largest       Std. dev.       2292696
+75%     378627.5       1.89e+07
+90%      3869108       1.91e+07       Variance       5.26e+12
+95%      5497682       2.31e+07       Skewness       3.768316
+99%     1.07e+07       2.38e+07       Kurtosis       23.30498
+
+                         inception_q
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%        19931          19931
+ 5%        19984          19931
+10%        19984          19931       Obs               1,752
+25%        20002          19931       Sum of wgt.       1,752
+
+50%        20041                      Mean           20046.06
+                        Largest       Std. dev.      53.69066
+75%        20082          20174
+90%        20104          20174       Variance       2882.687
+95%        20133          20174       Skewness       .3346921
+99%        20174          20174       Kurtosis       2.466012
+
+                       quarter_decimal
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         2016           2016
+ 5%      2016.25           2016
+10%       2016.5           2016       Obs               1,752
+25%      2017.25           2016       Sum of wgt.       1,752
+
+50%       2018.5                      Mean           2018.473
+                        Largest       Std. dev.      1.434559
+75%      2019.75        2020.75
+90%       2020.5        2020.75       Variance       2.057961
+95%      2020.75        2020.75       Skewness      -.1013985
+99%      2020.75        2020.75       Kurtosis       1.819461
+
+                     inc_quarter_decimal
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         1993           1993
+ 5%      1998.75           1993
+10%      1998.75           1993       Obs               1,752
+25%      2000.25           1993       Sum of wgt.       1,752
+
+50%         2004                      Mean           2004.739
+                        Largest       Std. dev.      5.378519
+75%      2008.25        2017.75
+90%      2010.75        2017.75       Variance       28.92846
+95%       2013.5        2017.75       Skewness       .3556787
+99%      2017.75        2017.75       Kurtosis       2.535958
+
+                       time_existence
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         1.25            .75
+ 5%          4.5            .75
+10%            6            .75       Obs               1,752
+25%          9.5            .75       Sum of wgt.       1,752
+
+50%           14                      Mean           13.73388
+                        Largest       Std. dev.      5.589562
+75%        18.25             27
+90%        20.25          27.25       Variance       31.24321
+95%        21.75           27.5       Skewness      -.2065348
+99%        24.75          27.75       Kurtosis       2.272184
+
+                     quarters_in_sample
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           10             10
+ 5%           12             10
+10%           12             10       Obs               1,752
+25%           20             10       Sum of wgt.       1,752
+
+50%           20                      Mean           19.10788
+                        Largest       Std. dev.      2.662064
+75%           20             20
+90%           20             20       Variance       7.086586
+95%           20             20       Skewness      -2.690875
+99%           20             20       Kurtosis       8.386855
+
+                        etf_per_index
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            2              2
+ 5%            2              2
+10%            2              2       Obs               1,752
+25%            2              2       Sum of wgt.       1,752
+
+50%            2                      Mean                  2
+                        Largest       Std. dev.             0
+75%            2              2
+90%            2              2       Variance              0
+95%            2              2       Skewness              .
+99%            2              2       Kurtosis              .
+
+                         uniquevals
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            2              2
+ 5%            2              2
+10%            2              2       Obs               1,752
+25%            2              2       Sum of wgt.       1,752
+
+50%            2                      Mean                  2
+                        Largest       Std. dev.             0
+75%            2              2
+90%            2              2       Variance              0
+95%            2              2       Skewness              .
+99%            2              2       Kurtosis              .
+
+                          rank_fee
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            1              1
+10%            1              1       Obs               1,752
+25%            1              1       Sum of wgt.       1,752
+
+50%          1.5                      Mean                1.5
+                        Largest       Std. dev.      .5001428
+75%            2              2
+90%            2              2       Variance       .2501428
+95%            2              2       Skewness              0
+99%            2              2       Kurtosis              1
+
+                          High MER
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%           .5                      Mean                 .5
+                        Largest       Std. dev.      .5001428
+75%            1              1
+90%            1              1       Variance       .2501428
+95%            1              1       Skewness              0
+99%            1              1       Kurtosis              1
+
+                         rank_spread
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            1              1
+10%            1              1       Obs               1,752
+25%            1              1       Sum of wgt.       1,752
+
+50%          1.5                      Mean                1.5
+                        Largest       Std. dev.      .5001428
+75%            2              2
+90%            2              2       Variance       .2501428
+95%            2              2       Skewness              0
+99%            2              2       Kurtosis              1
+
+                         highspread
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%           .5                      Mean                 .5
+                        Largest       Std. dev.      .5001428
+75%            1              1
+90%            1              1       Variance       .2501428
+95%            1              1       Skewness              0
+99%            1              1       Kurtosis              1
+
+                       rank_inception
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            1              1
+10%            1              1       Obs               1,752
+25%            1              1       Sum of wgt.       1,752
+
+50%            1                      Mean           1.486301
+                        Largest       Std. dev.       .499955
+75%            2              2
+90%            2              2       Variance        .249955
+95%            2              2       Skewness       .0548151
+99%            2              2       Kurtosis       1.003005
+
+                         firstmover
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .4863014
+                        Largest       Std. dev.       .499955
+75%            1              1
+90%            1              1       Variance        .249955
+95%            1              1       Skewness       .0548151
+99%            1              1       Kurtosis       1.003005
+
+                          us_index
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            1                      Mean           .6746575
+                        Largest       Std. dev.      .4686364
+75%            1              1
+90%            1              1       Variance       .2196201
+95%            1              1       Skewness      -.7455989
+99%            1              1       Kurtosis       1.555918
+
+                           is_etn
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean                  0
+                        Largest       Std. dev.             0
+75%            0              0
+90%            0              0       Variance              0
+95%            0              0       Skewness              .
+99%            0              0       Kurtosis              .
+
+                         is_levered
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean                  0
+                        Largest       Std. dev.             0
+75%            0              0
+90%            0              0       Variance              0
+95%            0              0       Skewness              .
+99%            0              0       Kurtosis              .
+
+                          is_active
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean                  0
+                        Largest       Std. dev.             0
+75%            0              0
+90%            0              0       Variance              0
+95%            0              0       Skewness              .
+99%            0              0       Kurtosis              .
+
+                        creation_fee
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          250            250
+ 5%          500            250
+10%          500            250       Obs               1,752
+25%          500            250       Sum of wgt.       1,752
+
+50%         1000                      Mean           2454.909
+                        Largest       Std. dev.      3305.099
+75%         2500          15000
+90%         9300          15000       Variance       1.09e+07
+95%        10000          15000       Skewness       2.061627
+99%        15000          15000       Kurtosis       6.228584
+
+                       other_expenses
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .0323402
+                        Largest       Std. dev.      .0509362
+75%          .04            .22
+90%           .1            .22       Variance       .0025945
+95%          .14            .22       Skewness       1.805241
+99%          .22            .25       Kurtosis       5.741162
+
+                       total_expenses
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          .04            .03
+ 5%          .07            .03
+10%          .09            .03       Obs               1,752
+25%          .12            .04       Sum of wgt.       1,752
+
+50%          .18                      Mean           .2582163
+                        Largest       Std. dev.       .191926
+75%           .4            .81
+90%           .6            .81       Variance       .0368356
+95%          .63            .81       Skewness       1.047653
+99%          .72            .81       Kurtosis       2.837505
+
+                         fee_waivers
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         -.17            -.2
+ 5%         -.05           -.17
+10%            0           -.17       Obs               1,752
+25%            0           -.17       Sum of wgt.       1,752
+
+50%            0                      Mean          -.0061045
+                        Largest       Std. dev.      .0261761
+75%            0              0
+90%            0              0       Variance       .0006852
+95%            0              0       Skewness      -4.945803
+99%            0              0       Kurtosis       28.08554
+
+                        net_expenses
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          .04            .03
+ 5%          .07            .03
+10%          .09            .03       Obs               1,752
+25%          .12            .04       Sum of wgt.       1,752
+
+50%          .18                      Mean           .2533961
+                        Largest       Std. dev.      .1881899
+75%          .35            .72
+90%           .6            .72       Variance       .0354154
+95%          .63            .72       Skewness        1.04845
+99%          .72            .72       Kurtosis       2.774824
+
+                  Investor holding duration
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .4408884              0
+ 5%     1.259269              0
+10%     1.590737              0       Obs               1,697
+25%     2.289479       .0012559       Sum of wgt.       1,697
+
+50%     3.264672                      Mean           3.331746
+                        Largest       Std. dev.      1.386708
+75%     4.257656       8.007271
+90%     5.315493       8.292539       Variance        1.92296
+95%     5.669639       8.328018       Skewness       .2773658
+99%     6.334822       8.754671       Kurtosis       2.896407
+
+                      mgr_duration_tii
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .1354883              0
+ 5%      .776893              0
+10%     1.111842              0       Obs               1,681
+25%     1.725285              0       Sum of wgt.       1,681
+
+50%      2.57522                      Mean           2.997906
+                        Largest       Std. dev.      1.687959
+75%     4.161057       8.728792
+90%     5.526112       8.754671       Variance       2.849207
+95%      5.97248       8.754671       Skewness       .6456274
+99%     7.410152       8.879823       Kurtosis       2.863046
+
+                      mgr_duration_tsi
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .8349901              0
+ 5%     3.639803              0
+10%     4.209543              0       Obs               1,582
+25%     5.346739              0       Sum of wgt.       1,582
+
+50%     6.105994                      Mean            5.73879
+                        Largest       Std. dev.      1.167421
+75%     6.441935       7.786857
+90%       6.7131       7.786857       Variance       1.362872
+95%     6.990842       7.820513       Skewness      -1.978637
+99%     7.384368       7.854928       Kurtosis       8.473391
+
+                      time_since_first
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0      -.8463281
+ 5%     .1028979      -.6036507
+10%     .2001532      -.2010538       Obs               1,697
+25%     .4999484      -.0879004       Sum of wgt.       1,697
+
+50%     1.004444                      Mean           1.208636
+                        Largest       Std. dev.      .8841227
+75%      1.85866       3.445374
+90%     2.590066       3.675341       Variance        .781673
+95%      2.86828       3.985584       Skewness       .6470208
+99%      3.27173       4.328281       Kurtosis       2.427564
+
+                          ratio_tii
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     16.16833       .0485172
+ 5%     45.87636       7.427808
+10%     57.98963       7.680283       Obs               1,681
+25%     75.06169        8.37225       Sum of wgt.       1,681
+
+50%     87.00438                      Mean           81.70686
+                        Largest       Std. dev.      16.96824
+75%     93.20017            100
+90%       97.985            100       Variance        287.921
+95%          100            100       Skewness      -1.667418
+99%          100            100       Kurtosis       6.181187
+
+                          ratio_tra
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0039648       .0000101
+ 5%     .0189201       .0000216
+10%      .034859       .0002041       Obs               1,653
+25%     .0805635       .0006801       Sum of wgt.       1,653
+
+50%     .1537128                      Mean           .2210678
+                        Largest       Std. dev.      .2099699
+75%     .2831311              1
+90%     .5220737              1       Variance       .0440874
+95%     .6714544              1       Skewness       1.771253
+99%     .9792964              1       Kurtosis       6.096524
+
+                     mgr_duration_index
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .8617472       .5615579
+ 5%     1.509307       .5615579
+10%     1.752313       .5923234       Obs               1,752
+25%     2.371469       .5923234       Sum of wgt.       1,752
+
+50%     3.298719                      Mean           3.379838
+                        Largest       Std. dev.      1.264139
+75%     4.330067       6.234871
+90%     5.199009       6.234871       Variance       1.598048
+95%     5.617594       6.324784       Skewness       .1680248
+99%     5.911767       6.324784       Kurtosis       2.185495
+
+                        ratio_tra_ix
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0088025       .0005833
+ 5%     .0315322       .0005833
+10%     .0489245       .0006049       Obs               1,752
+25%     .1002477       .0006049       Sum of wgt.       1,752
+
+50%     .1724568                      Mean            .219304
+                        Largest       Std. dev.      .1789261
+75%      .270234       .9754641
+90%     .4988424       .9754641       Variance       .0320146
+95%     .5969998       .9795313       Skewness       1.680833
+99%     .8794099       .9795313       Kurtosis       5.993471
+
+                          aum_index
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     1.36e+08       6.79e+07
+ 5%     9.07e+08       6.79e+07
+10%     1.93e+09       1.02e+08       Obs               1,752
+25%     5.22e+09       1.02e+08       Sum of wgt.       1,752
+
+50%     1.10e+10                      Mean           2.79e+10
+                        Largest       Std. dev.      6.27e+10
+75%     2.48e+10       5.11e+11
+90%     4.89e+10       5.11e+11       Variance       3.94e+21
+95%     8.72e+10       5.61e+11       Skewness       5.547976
+99%     4.17e+11       5.61e+11       Kurtosis       36.80029
+
+                        log_aum_index
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     18.72667       18.03347
+ 5%     20.62527       18.03347
+10%     21.37857       18.44444       Obs               1,752
+25%     22.37619       18.44444       Sum of wgt.       1,752
+
+50%     23.11971                      Mean           23.07315
+                        Largest       Std. dev.      1.453902
+75%     23.93503       26.95963
+90%     24.61375       26.95963       Variance       2.113832
+95%     25.19175       27.05299       Skewness      -.4989591
+99%     26.75635       27.05299       Kurtosis       4.282151
+
+               Name recognition (Twitter msg.)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.0787547      -.0787547
+ 5%    -.0787547      -.0787547
+10%    -.0787547      -.0787547       Obs               1,752
+25%    -.0783605      -.0787547       Sum of wgt.       1,752
+
+50%     -.077582                      Mean           .0295682
+                        Largest       Std. dev.      1.122899
+75%    -.0741459       13.01469
+90%    -.0039589       13.27388       Variance       1.260901
+95%            0       24.51455       Skewness       16.18587
+99%     3.058294        25.3506       Kurtosis       312.3853
+
+                       sum_of_replies
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,620
+25%            0              0       Sum of wgt.       1,620
+
+50%      .106383                      Mean           44.42954
+                        Largest       Std. dev.      509.6499
+75%     .5482375       5851.554
+90%      1.92738       6735.207       Variance         259743
+95%     6.451932       10342.86       Skewness        16.2445
+99%     1050.348        11628.8       Kurtosis       308.3693
+
+                        sum_of_likes
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,620
+25%     .0526316              0       Sum of wgt.       1,620
+
+50%        .3125                      Mean           58.94834
+                        Largest       Std. dev.      727.0674
+75%     .9393382       9077.924
+90%      3.65644       9293.945       Variance         528627
+95%     11.90556       15698.96       Skewness       18.05902
+99%     1112.598       17509.49       Kurtosis        374.106
+
+                      stock_tweets_raw
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            1              0       Obs               1,752
+25%     1.069048              0       Sum of wgt.       1,752
+
+50%     1.361111                      Mean           41.93136
+                        Largest       Std. dev.      449.8648
+75%     2.022233       5244.891
+90%     6.379747       5348.696       Variance       202378.4
+95%     16.96667       9850.561       Skewness       16.18633
+99%      1257.38        10185.4       Kurtosis        312.331
+
+                          qduration
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            1              1
+10%            1              1       Obs               1,697
+25%            2              1       Sum of wgt.       1,697
+
+50%            3                      Mean           2.986447
+                        Largest       Std. dev.      1.417688
+75%            4              5
+90%            5              5       Variance        2.00984
+95%            5              5       Skewness       .0276548
+99%            5              5       Kurtosis       1.702452
+
+                       same_benchmark
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .4554795
+                        Largest       Std. dev.      .4981562
+75%            1              1
+90%            1              1       Variance       .2481596
+95%            1              1       Skewness       .1787924
+99%            1              1       Kurtosis       1.031967
+
+                        same_lead_mm
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           .2180365
+                        Largest       Std. dev.      .4212448
+75%            0              2
+90%            1              2       Variance       .1774472
+95%            1              2       Skewness       1.502521
+99%            1              2       Kurtosis       3.664917
+
+                     ETF age (quarters)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -2.233426      -2.322879
+ 5%    -1.651985      -2.322879
+10%    -1.383628      -2.322879       Obs               1,752
+25%     -.757461      -2.322879       Sum of wgt.       1,752
+
+50%      .047611                      Mean          -1.46e-09
+                        Largest       Std. dev.             1
+75%     .8079567       2.373374
+90%     1.165766       2.418101       Variance              1
+95%     1.434124       2.462827       Skewness      -.2065348
+99%     1.970838       2.507553       Kurtosis       2.272184
+
+                  Time since first position
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -1.367045      -2.324297
+ 5%    -1.250661      -2.049813
+10%    -1.140659       -1.59445       Obs               1,697
+25%    -.8015712      -1.466466       Sum of wgt.       1,697
+
+50%    -.2309536                      Mean          -7.19e-10
+                        Largest       Std. dev.             1
+75%     .7352189       2.529896
+90%     1.562487       2.790004       Variance              1
+95%     1.877165       3.140909       Skewness       .6470208
+99%     2.333493       3.528521       Kurtosis       2.427564
+
+                        Log index AUM
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -2.989527      -3.466312
+ 5%     -1.68366      -3.466312
+10%    -1.165539      -3.183646       Obs               1,752
+25%     -.479376      -3.183646       Sum of wgt.       1,752
+
+50%     .0320213                      Mean           2.11e-10
+                        Largest       Std. dev.             1
+75%     .5928005       2.673139
+90%      1.05963       2.673139       Variance              1
+95%     1.457183       2.737346       Skewness      -.4989591
+99%      2.53332       2.737346       Kurtosis       4.282151
+
+                 Lending income (bps of AUM)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.5167717      -.5167717
+ 5%    -.5167717      -.5167717
+10%    -.5167717      -.5167717       Obs               1,752
+25%    -.4969203      -.5167717       Sum of wgt.       1,752
+
+50%    -.3660527                      Mean          -1.76e-09
+                        Largest       Std. dev.             1
+75%     .0198775        8.56267
+90%     .8216647        8.56267       Variance              1
+95%     1.884105        8.56267       Skewness       4.943432
+99%     2.819173        8.56267       Kurtosis       37.78053
+
+                   Marketing expense (bps)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     -.425593       -.425593
+ 5%     -.425593       -.425593
+10%     -.425593       -.425593       Obs               1,752
+25%     -.425593       -.425593       Sum of wgt.       1,752
+
+50%     -.425593                      Mean          -1.25e-09
+                        Largest       Std. dev.             1
+75%    -.3480394       2.805807
+90%     2.805807       2.805807       Variance              1
+95%     2.805807       2.805807       Skewness       2.396142
+99%     2.805807       2.805807       Kurtosis       6.891851
+
+                    Tracking error (bps)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.6819248      -.7256715
+ 5%    -.6105751      -.7159556
+10%    -.5830202      -.7152027       Obs               1,752
+25%    -.5126239      -.7129171       Sum of wgt.       1,752
+
+50%    -.3701696                      Mean          -3.07e-10
+                        Largest       Std. dev.             1
+75%     .0872352       7.695094
+90%     1.038818       8.873072       Variance              1
+95%     1.851532       8.967859       Skewness       4.203464
+99%     4.888881       10.84517       Kurtosis        29.2216
+
+                   Performance drag (bps)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -3.694772      -11.03908
+ 5%    -1.192087      -10.88904
+10%    -.5192794      -10.78946       Obs               1,752
+25%    -.0461498      -9.507185       Sum of wgt.       1,752
+
+50%      .113269                      Mean          -1.66e-09
+                        Largest       Std. dev.             1
+75%      .225262       4.047971
+90%     .4440621       4.119311       Variance              1
+95%     .9095223       4.124867       Skewness      -4.026882
+99%     2.486619       8.026496       Kurtosis       45.61732
+
+                        ETF turnover
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.6432727      -.6827217
+ 5%    -.6049542      -.6795409
+10%    -.5841519      -.6735587       Obs               1,750
+25%    -.5387406      -.6720287       Sum of wgt.       1,750
+
+50%    -.4335206                      Mean           5.35e-10
+                        Largest       Std. dev.             1
+75%    -.0099729       6.049677
+90%     1.403116       6.166112       Variance              1
+95%     2.184214       7.554694       Skewness       2.835841
+99%     3.991192       8.457796       Kurtosis       13.53185
+
+                       Other expenses
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.6349154      -.6349154
+ 5%    -.6349154      -.6349154
+10%    -.6349154      -.6349154       Obs               1,752
+25%    -.6349154      -.6349154       Sum of wgt.       1,752
+
+50%    -.6349154                      Mean           5.06e-09
+                        Largest       Std. dev.             1
+75%     .1503806       3.684212
+90%     1.328325       3.684212       Variance              1
+95%     2.113621       3.684212       Skewness       1.805241
+99%     3.684212       4.273184       Kurtosis       5.741162
+
+                         Fee waivers
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -6.261258       -7.40734
+ 5%     -1.67693      -6.261258
+10%     .2332068      -6.261258       Obs               1,752
+25%     .2332068      -6.261258       Sum of wgt.       1,752
+
+50%     .2332068                      Mean          -3.08e-09
+                        Largest       Std. dev.             1
+75%     .2332068       .2332068
+90%     .2332068       .2332068       Variance              1
+95%     .2332068       .2332068       Skewness      -4.945803
+99%     .2332068       .2332068       Kurtosis       28.08554
+
+                        Creation fee
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.6671234      -.6671234
+ 5%    -.5914827      -.6671234
+10%    -.5914827      -.6671234       Obs               1,752
+25%    -.5914827      -.6671234       Sum of wgt.       1,752
+
+50%    -.4402013                      Mean           1.03e-08
+                        Largest       Std. dev.             1
+75%      .013643       3.795678
+90%      2.07107       3.795678       Variance              1
+95%     2.282864       3.795678       Skewness       2.061627
+99%     3.795678       3.795678       Kurtosis       6.228583
+
+                           aum_bn
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0116186              0
+ 5%       .05955              0
+10%     .2015349       .0056248       Obs               1,752
+25%     1.108538       .0063094       Sum of wgt.       1,752
+
+50%     4.211723                      Mean           13.94964
+                        Largest       Std. dev.      33.21419
+75%     12.90144            276
+90%     34.14183            297       Variance       1103.182
+95%     52.85334            299       Skewness       5.643727
+99%          214            323       Kurtosis       40.00227
+
+                     other_expenses_100
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            0                      Mean           3.234018
+                        Largest       Std. dev.      5.093621
+75%            4             22
+90%           10             22       Variance       25.94498
+95%           14             22       Skewness       1.805241
+99%           22             25       Kurtosis       5.741162
+
+                       fee_waivers_100
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          -17            -20
+ 5%           -5            -17
+10%            0            -17       Obs               1,752
+25%            0            -17       Sum of wgt.       1,752
+
+50%            0                      Mean          -.6104452
+                        Largest       Std. dev.      2.617614
+75%            0              0
+90%            0              0       Variance       6.851901
+95%            0              0       Skewness      -4.945803
+99%            0              0       Kurtosis       28.08554
+
+                       net_expense_mer
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -2.86e-08      -.0231579
+ 5%    -1.07e-08      -.0172727
+10%    -7.15e-09         -.0165       Obs               1,752
+25%    -2.68e-09          -.011       Sum of wgt.       1,752
+
+50%     1.49e-09                      Mean          -.0000576
+                        Largest       Std. dev.      .0009628
+75%     4.77e-09       2.86e-08
+90%     9.54e-09       2.86e-08       Variance       9.27e-07
+95%     2.15e-08       2.86e-08       Skewness      -16.49724
+99%     2.86e-08          .0075       Kurtosis       326.6463
+
+                       net_expense_100
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -2.86e-06      -2.315789
+ 5%    -1.07e-06      -1.727272
+10%    -7.15e-07          -1.65       Obs               1,752
+25%    -2.68e-07      -1.100001       Sum of wgt.       1,752
+
+50%     1.49e-07                      Mean          -.0057573
+                        Largest       Std. dev.      .0962814
+75%     4.77e-07       2.86e-06
+90%     9.54e-07       2.86e-06       Variance       .0092701
+95%     2.15e-06       2.86e-06       Skewness      -16.49724
+99%     2.86e-06       .7500002       Kurtosis       326.6463
+
+Following variable is string, not included:  
+ticker  inception  index_id  log_profit  issuer  description  primary_benchmark
+>   tax_classification  asset_class  category  lead_market_maker  log_aum  
+D:\Research\kpz_etfliquidity\output\table_1.tex
+dir : seeout
+
+. 
+end of do-file
