@@ -105,8 +105,10 @@ def rank_group(df, k, in_column, out_column):
     return df
 
 
-etf_panel = etf_panel.groupby(["index_id", "quarter"]).apply(
-    lambda x: rank_group(x, 2, "aum", "top2aum")
+etf_panel = (
+    etf_panel.groupby(["index_id", "quarter"])
+    .apply(lambda x: rank_group(x, 2, "aum", "top2aum"))
+    .reset_index(drop=True)
 )
 etf_panel = etf_panel[etf_panel.top2aum]
 del etf_panel["top2aum"]
@@ -857,6 +859,7 @@ for c in col_diffs:
 
 panel_diff = panel_diff[[c + "_diff" for c in col_diffs]]
 panel_diff = panel_diff.reset_index()
+panel_diff.columns = ["".join(col).strip() for col in panel_diff.columns.values]
 
 panel_diff = panel_diff.merge(
     etf_panel[
@@ -957,5 +960,5 @@ list_funds = (
     .reset_index(drop=True)
 )
 list_funds = list_funds.merge(
-    etf_panel.groupby(["ticker"]).mean()["aum"].reset_index(), on="ticker"
+    etf_panel.groupby(["ticker"])["aum"].mean().reset_index(), on="ticker"
 )
