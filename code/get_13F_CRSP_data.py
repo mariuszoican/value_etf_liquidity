@@ -13,6 +13,8 @@ if __name__ == "__main__":
 
     print("Connection successful. Get 13F data for Thomson Reuters")
 
+    gg
+
     data13f = conn.raw_sql(
         """ SELECT rdate, mgrno, mgrname, cusip, shares, ticker, prc, shrout2 FROM tr_13f.s34 
                             WHERE fdate>='12/31/2010' AND fdate<='6/30/2022' """,
@@ -51,3 +53,12 @@ if __name__ == "__main__":
     data_crsp["quarter"] = data_crsp["date"].dt.year * 10 + data_crsp["date"].dt.quarter
 
     data_crsp.to_csv(f"{cfg.data_folder}/data_crsp.csv.gz", compression="gzip")
+
+    # get ETFG data
+    data_etfg = conn.raw_sql(
+        """ SELECT as_of_date, composite_ticker, issuer, description, primary_benchmark, tax_classification, is_etn, asset_class, category, is_levered, is_active, 
+        creation_fee, management_fee, other_expenses, total_expenses, fee_waivers, net_expenses, lead_market_maker FROM etfg_industry.industry
+                        WHERE as_of_date>='1/1/2015' AND as_of_date<='3/1/2023' """,
+        date_cols=["as_of_date"],
+    )
+    data_etfg.to_csv(f"{cfg.data_folder}/dummies_etfg.csv.gz", compression="gzip")

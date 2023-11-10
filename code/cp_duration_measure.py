@@ -69,10 +69,7 @@ if __name__ == "__main__":
     # partition the list of managers
     partition_managers = partition_list(list_managers, 1000)
 
-    # idx=int(sys.argv[1])
-    idx = 0
-
-    gg
+    idx=int(sys.argv[1])
 
     sample = data13f[data13f.mgrno.isin(partition_managers[idx])]
     # sample = data13f[data13f.mgrno.isin(list_managers)]
@@ -121,4 +118,4 @@ if __name__ == "__main__":
     data = data.reset_index(drop=True)
 
     print("Save data!")
-    data.to_csv(f"{cfg.data_folder}/duration_13F_new.csv.gz" % idx, compression="gzip")
+    data.to_csv(f"{cfg.temp_folder}/duration_13F_part_{idx}.csv.gz", compression="gzip")
