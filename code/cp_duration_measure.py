@@ -31,7 +31,9 @@ if __name__ == "__main__":
     # keep only the last report for any given quarter
     data13f = data13f.drop_duplicates(subset=["mgrno", "cusip", "quarter"], keep="last")
 
-    data13f = data13f[["mgrno", "mgrname", "quarter", "ticker", "shares", "shrout2"]]
+    data13f = data13f[
+        ["rdate", "mgrno", "mgrname", "quarter", "ticker", "shares", "shrout2"]
+    ]
 
     # count number of reporting quarters by manager
     mgr_count = (
@@ -70,9 +72,12 @@ if __name__ == "__main__":
     # idx=int(sys.argv[1])
     idx = 0
 
-    sample = data13f[data13f.mgrno.isin(partition_managers[idx])]
+    gg
 
-    def compute_duration(temp):
+    sample = data13f[data13f.mgrno.isin(partition_managers[idx])]
+    # sample = data13f[data13f.mgrno.isin(list_managers)]
+
+    def compute_duration(temp, w):
         temp = temp.merge(quarters, on="quarter", how="outer")
         temp["shares"] = temp["shares"].fillna(0)
         temp = temp.fillna(method="ffill")
@@ -116,4 +121,4 @@ if __name__ == "__main__":
     data = data.reset_index(drop=True)
 
     print("Save data!")
-    data.to_csv(f"{cfg.data_folder}/duration_13F.csv.gz" % idx, compression="gzip")
+    data.to_csv(f"{cfg.data_folder}/duration_13F_new.csv.gz" % idx, compression="gzip")
