@@ -1,3 +1,7 @@
 # config.yaml
 
 stata_path: "C:/Program Files/Stata18/StataMP-64.exe"
+wrds_user: "mazoican"
+data_folder: "../data"
+min_quarters: 8 # keep only managers with `quarters_manager` or more.
+rolling_window_cremers: 12 # rolling window quarters for Cremers estimation.

@@ -1,277 +1,204 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import cm, rcParams
 from matplotlib import rc, font_manager
 import matplotlib.gridspec as gridspec
+from scipy.special import lambertw
 import scipy.optimize as sco
 import warnings
+
 warnings.filterwarnings("ignore")
 
+path = "../output/"
+plt.rcParams.update(
+    {"text.usetex": True, "font.family": "sans-serif", "font.sans-serif": ["Helvetica"]}
+)
 
-path="../output/"
-plt.rcParams.update({
-    "text.usetex": True,
-    "font.family": "sans-serif",
-    "font.sans-serif": ["Helvetica"]})
-
-
-sizeOfFont=18
+sizeOfFont = 18
 ticks_font = font_manager.FontProperties(size=sizeOfFont)
+
 
 def settings_plot(ax):
     for label in ax.get_xticklabels():
         label.set_fontproperties(ticks_font)
     for label in ax.get_yticklabels():
         label.set_fontproperties(ticks_font)
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["top"].set_visible(False)
     return ax
+
 
 def settings_plot2(ax):
     for label in ax.get_xticklabels():
         label.set_fontproperties(ticks_font)
     for label in ax.get_yticklabels():
         label.set_fontproperties(ticks_font)
-    ax.spines['top'].set_visible(False)
+    ax.spines["top"].set_visible(False)
     return ax
 
 
-sizefigs_S=(8,7) # size of figures
-sizefigs_L=(14,14)
-
-params = [1, 0.75, 0.1]  # Lambda, xi, and gamma parameters
+sizefigs_S = (8, 7)  # size of figures
+sizefigs_L = (14, 6)
 
 
 class model:
-
     def __init__(self, params):
-        self.L = params[0]
-        self.xi = params[1]
-        self.gamma = params[2]
+        self.alpha = params[0]
+        self.eta = params[1]
+        self.sigma = params[2]
+        self.lh = params[3]
+        self.ll = params[4]
 
-    def lmg(self, fl, ff):
-        # marginal investor intensity
-        zeta = 2 * self.gamma / self.xi
-        return 0.5 * self.L - 0.5 * np.sqrt(self.L ** 2 - 4 * (fl - ff) / zeta)
+    def L(self):  # aggregate arrival rate
+        return self.alpha * self.lh + (1 - self.alpha) * self.ll
 
-    def mktshares(self, fl, ff):
-        lm = self.lmg(fl, ff)
-        wL = (np.log(self.L + self.xi) - np.log(lm)) / (np.log(self.L + self.xi) - np.log(self.L - self.xi))
-        wF = 1 - wL
-        return [wL, wF]
+    def G0(self):
+        return 2 * self.ll * self.sigma * (self.L() / (self.L() + self.eta))
 
-    #     def mktshares(self,fl,ff):
-    #         lm=self.lmg(fl,ff)
-    #         wL=1/(2*self.xi)*(self.L+self.xi-lm)
-    #         wF=1-wL
-    #         return [wL,wF]
+    def G1(self):
+        return (
+            2
+            * self.lh
+            * self.sigma
+            * (
+                (self.eta / (self.eta + (1 - self.alpha) * self.ll))
+                - (self.eta / (self.eta + self.alpha * self.lh))
+            )
+        )
 
-    def reaction_L(self, ff):
-        zeta = 2 * self.gamma / self.xi
-        fL_star = sco.fminbound(lambda x:
-                                -self.mktshares(x, ff)[0] * x,
-                                ff + zeta * (self.L - self.xi) * self.xi, ff + zeta * self.L ** 2 / 4, full_output=1)
-        return fL_star[0]
+    def G0_mode(self, alpha):
+        L = alpha * self.lh + (1 - alpha) * self.ll
+        return 2 * self.ll * self.sigma * (L / (L + self.eta))
 
-    def reaction_F(self, fl):
-        zeta = 2 * self.gamma / self.xi
-        fF_star = sco.fminbound(lambda x:
-                                -self.mktshares(fl, x)[1] * x,
-                                fl - zeta * self.L ** 2 / 4, fl - zeta * (self.L - self.xi) * self.xi, full_output=1)
-        return np.maximum(0, fF_star[0])
+    def G1_mode(self, alpha):
+        return (
+            2
+            * self.lh
+            * self.sigma
+            * (
+                (self.eta / (self.eta + (1 - alpha) * self.ll))
+                - (self.eta / (self.eta + alpha * self.lh))
+            )
+        )
 
-    def fixed_point(self, fees):
-        zeta = 2 * self.gamma / self.xi
-        return [fees[0] - self.reaction_L(fees[1]), fees[1] - self.reaction_F(fees[0])]
+    def entry_barrier(self):
+        return sco.fsolve(lambda a: self.G1_mode(a) - self.G0_mode(a), 0.5)
 
     def eq_fees(self):
-        initial_guess = [0, 0]
-        zeta = 2 * self.gamma / self.xi
-        eq_fee = sco.fsolve(lambda f: self.fixed_point(f), initial_guess)
-        return eq_fee
+        if self.G0() <= self.G1():
+            return np.array(
+                [
+                    (self.G1() + (1 - self.alpha) * self.G0()) / self.alpha,
+                    (self.G1() + self.G0()) / self.alpha - 2 * self.G0(),
+                ]
+            )
+        else:
+            return np.array([self.G0(), 0])
 
-    def eq_mktshares(self):
-        return self.mktshares(self.eq_fees()[0], self.eq_fees()[1])
+    def eq_spread(self):
+        if self.G0() <= self.G1():
+            return np.array(
+                [
+                    self.eta / (self.eta + self.alpha * self.lh),
+                    self.eta / (self.eta + (1 - self.alpha) * self.ll),
+                ]
+            )
+        else:
+            return np.array([self.eta / (self.eta + self.L()), 0])
 
     def eq_turnover(self):
-        lm_eq = self.lmg(self.eq_fees()[0], self.eq_fees()[1])
-        lL = 1 / np.log((self.L + self.xi) / (self.L - self.xi)) * (self.L + self.xi - lm_eq)
-        lF = 1 / np.log((self.L + self.xi) / (self.L - self.xi)) * (lm_eq - self.L + self.xi)
-        return np.array([lL, lF])
+        if self.G0() <= self.G1():
+            return np.array([self.alpha * self.lh, (1 - self.alpha) * self.ll])
+        else:
+            return np.array([self.L(), 0])
 
-    def eq_spreads(self):
-        lL, lF = self.eq_turnover()
-        sL = 2 * self.gamma * (lF) ** 2 / (lL + lF) ** 2
-        sF = 2 * self.gamma * (lL) ** 2 / (lL + lF) ** 2
-        return np.array([sL, sF])
 
-    def eq_lmg(self):
-        return self.lmg(self.eq_fees()[0], self.eq_fees()[1])
+df = pd.DataFrame()
 
-L=1.5
-xi=1.2
-gamma=0.2
+alpha_space = np.linspace(0.01, 0.99, 1000)
+df["alpha"] = alpha_space
 
-xi_space=np.linspace(0.5*L+0.1,L-0.1,100)
-L_space=np.linspace(xi+0.1,2*xi-0.1,100)
+eta = 10
+sigma = 1
+lH = 4
+ll = 1
 
-feesL_space=[model([L,xii,gamma]).eq_fees()[0] for xii in xi_space]
-feesF_space=[model([L,xii,gamma]).eq_fees()[1] for xii in xi_space]
+print("Computing fees")
+fees = np.array(
+    [model([alphai, eta, sigma, lH, ll]).eq_fees() for alphai in alpha_space]
+)
+spreads = np.array(
+    [model([alphai, eta, sigma, lH, ll]).eq_spread() for alphai in alpha_space]
+)
+entry = np.array(
+    [model([alphai, eta, sigma, lH, ll]).entry_barrier() for alphai in alpha_space]
+)
 
-sharesL_space=[model([L,xii,gamma]).eq_mktshares()[0] for xii in xi_space]
-sharesF_space=[model([L,xii,gamma]).eq_mktshares()[1] for xii in xi_space]
+df["fees_L"] = fees[:, 0]
+df["fees_F"] = fees[:, 1]
 
-turnoverL_space=[model([L,xii,gamma]).eq_turnover()[0] for xii in xi_space]
-turnoverF_space=[model([L,xii,gamma]).eq_turnover()[1] for xii in xi_space]
+df["spread_L"] = spreads[:, 0]
+df["spread_F"] = spreads[:, 1]
 
-turnovershareL_space=[model([L,xii,gamma]).eq_turnover()[0]/model([L,xii,gamma]).eq_turnover().sum() for xii in xi_space]
-turnovershareF_space=[model([L,xii,gamma]).eq_turnover()[1]/model([L,xii,gamma]).eq_turnover().sum() for xii in xi_space]
+df["alpha_th"] = entry
 
-spreadL_space=[model([L,xii,gamma]).eq_spreads()[0] for xii in xi_space]
-spreadF_space=[model([L,xii,gamma]).eq_spreads()[1] for xii in xi_space]
+df["fees_F"] = np.where(df["alpha"] < df["alpha_th"], np.nan, df["fees_F"])
+df["spread_F"] = np.where(df["alpha"] < df["alpha_th"], np.nan, df["spread_F"])
 
-sizefigs_L=(14,6)
-fig=plt.figure(facecolor='white',figsize=sizefigs_L)
+df["fee_differential"] = df["fees_L"] - df["fees_F"]
+df["spread_differential"] = df["spread_F"] - df["spread_L"]
+
+
+plt.show()
+
+
+sizefigs_L = (16, 6)
+fig = plt.figure(facecolor="white", figsize=sizefigs_L)
 
 gs = gridspec.GridSpec(1, 2)
 
-
-
 # ---------
-ax=fig.add_subplot(gs[0, 0])
-ax=settings_plot(ax)
-
-plt.plot(xi_space,sharesL_space,ls='-',c='b',label=r'ETF $L$',lw=2)
-plt.plot(xi_space,sharesF_space,ls='--',c='r',label=r'ETF $F$',lw=2)
-plt.plot(xi_space,np.array(sharesL_space)-np.array(sharesF_space),ls='-.',c='g',label=r'ETF $L$ - ETF $F$')
-
-
-plt.legend(loc='best',frameon=False,fontsize=16)
-plt.xlabel(r'Investor horizon heterogeneity ($\xi$)',fontsize=16)
-plt.ylabel(r'Equilibrium market shares',fontsize=16)
-
-
-# ---------
-ax=fig.add_subplot(gs[0, 1])
-ax=settings_plot(ax)
-
-plt.plot(xi_space,np.array(feesL_space)-np.array(feesF_space),ls='-',c='r',label=r'Fee differential (ETF $L$ - ETF $F$)')
-plt.xlabel(r'Investor horizon heterogeneity ($\xi$)',fontsize=16)
-plt.ylabel(r'Equilibrium fee differential',fontsize=16)
-plt.legend(loc='upper right',frameon=False,fontsize=16)
-plt.xlim(1.05,1.35)
-
-ax2=ax.twinx()
-ax2=settings_plot2(ax2)
-
-plt.plot(xi_space,np.array(spreadF_space)-np.array(spreadL_space),ls='--',c='b',
-         label=r'Spread differential (ETF $F$ - ETF $L$)')
-
-plt.legend(loc='upper right',frameon=False,fontsize=16,bbox_to_anchor=(1,0.92))
-plt.xlabel(r'Investor horizon heterogeneity ($\xi$)',fontsize=16)
-plt.ylabel(r'Equilibrium spread differential',fontsize=16)
-#plt.ylim(0.35,0.38)
-
-
-
-plt.tight_layout(pad=3.0)
-
-plt.savefig(path+'compstat_RR2_differentials.png',bbox_inches='tight')
-
-import scipy.integrate as integrate
-
-
-def phi(L, xi, lmbda):
-    temp = 1 / np.log((L + xi) / (L - xi))
-
-    if lmbda < L - xi:
-        return 0
-    elif lmbda > L + xi:
-        return 0
-    else:
-        return temp / lmbda
-
-
-def Dwelfare(L, xi, gamma, G):
-    mod = model([L, xi, gamma])
-
-    lmarginal = mod.eq_lmg()
-    turnover = mod.eq_turnover()
-
-    costL = 0.5 * gamma * integrate.quad(lambda l: phi(L, xi, l), lmarginal, L + xi)[0] * (turnover[1] ** 2) / (
-                turnover[1] ** 2 + turnover[0] ** 2)
-    costF = 0.5 * gamma * integrate.quad(lambda l: phi(L, xi, l), L - xi, lmarginal)[0] * (turnover[0] ** 2) / (
-                turnover[1] ** 2 + turnover[0] ** 2)
-
-    return [G + costL + costF, costL, costF]
-
-G=0.02
-sizefigs_L=(12,8)
-fig=plt.figure(facecolor='white',figsize=sizefigs_L)
-
-ax=fig.add_subplot(111)
-ax=settings_plot(ax)
-
-xi_space=np.linspace(0.7*L,L-0.05,100)
-
-DWelfare_space=[Dwelfare(L,xii,gamma,G)[0] for xii in xi_space]
-DWelfare2_space=[Dwelfare(L,xii,gamma,2*G)[0] for xii in xi_space]
-
-plt.plot(xi_space,DWelfare_space,ls='-',c='b',label=r'Low fixed cost ($\Gamma=%1.2f$)'%G)
-plt.plot(xi_space,DWelfare2_space,ls='--',c='r',label=r'High fixed cost ($\Gamma=%1.2f$)'%(2*G))
-
-
-plt.legend(loc='best',frameon=False,fontsize=16)
-plt.xlabel(r'Investor horizon heterogeneity ($\xi$)',fontsize=16)
-plt.ylabel(r'Welfare loss',fontsize=16)
-
-plt.savefig(path+'WelfareLoss_v6_RR2.png',bbox_inches='tight')
-
-plt.clf()
-gs = gridspec.GridSpec(1, 1)
-
-
-def phi(L, xi, lmbda):
-    temp = 1 / np.log((L + xi) / (L - xi))
-
-    if lmbda < L - xi:
-        return 0
-    elif lmbda > L + xi:
-        return 0
-    else:
-        return temp / lmbda
-
-
-L_choice = [1, 1.5]
-xi_choice = [0.4, 0.6]
-
-sizefigs_L = (14, 8)
-
-lmbda_space = np.linspace(L_choice[0] - xi_choice[1] - 0.1, L_choice[1] + xi_choice[1], 1000)
-
-fig = plt.figure(facecolor='white', figsize=sizefigs_L)
-
 ax = fig.add_subplot(gs[0, 0])
 ax = settings_plot(ax)
 
-plt.plot(lmbda_space, [phi(L_choice[0], xi_choice[0], lmbdai) for lmbdai in lmbda_space],
-         label=r"$\xi=%2.1f$" % (xi_choice[0]), c='b', ls='-', lw=1.5)
-plt.plot(lmbda_space, [phi(L_choice[0], xi_choice[1], lmbdai) for lmbdai in lmbda_space],
-         label=r"$\xi=%2.1f$" % (xi_choice[1]), c='r', ls='--', lw=1.5)
+plt.plot(df["alpha"], df["fees_L"], label=r"ETF $L$ fee", c="b")
+plt.plot(df["alpha"], df["fees_F"], label=r"ETF $F$ fee", c="r")
+plt.plot(
+    df["alpha"], df["fee_differential"], label=r"Fee differential", ls="--", c="g", lw=2
+)
 
-plt.legend(loc='best', fontsize=18, frameon=False)
+plt.axvline(x=df["alpha_th"].iloc[0], ls="--", c="k", lw=1)
+plt.text(s=r"Follower entry", x=df["alpha_th"].iloc[-1] + 0.01, y=2.35, fontsize=16)
 
-plt.tick_params(
-    axis='x',  # changes apply to the x-axis
-    which='both',  # both major and minor ticks are affected
-    top=False)  # ticks along the top edge are off
+plt.legend(loc="best", frameon=False, fontsize=16)
+plt.xlabel(r"Share of high-turnover investors ($\alpha$)", fontsize=16)
+plt.ylabel(r"Equilibrium management fees", fontsize=16)
 
-plt.tick_params(
-    axis='y',  # changes apply to the x-axis
-    which='both',  # both major and minor ticks are affected
-    right=False)  # ticks along the top edge are off
 
-plt.xlabel(r'Investor arrival rate ($\lambda$)', fontsize=20)
-plt.ylabel(r'Density: $\phi\left(\lambda\right)$', fontsize=20)
+# ---------
+ax = fig.add_subplot(gs[0, 1])
+ax = settings_plot(ax)
 
-plt.savefig(path+"RR2_Density_xi.png",bbox_inches='tight')
+plt.plot(df["alpha"], df["spread_L"], label=r"ETF $L$ half-spread", c="b")
+plt.plot(df["alpha"], df["spread_F"], label=r"ETF $F$ half-spread", c="r")
+plt.plot(
+    df["alpha"],
+    df["spread_differential"],
+    label=r"Spread differential",
+    ls="--",
+    c="g",
+    lw=2,
+)
+
+plt.axvline(x=df["alpha_th"].iloc[0], ls="--", c="k", lw=1)
+plt.text(s=r"Follower entry", x=df["alpha_th"].iloc[-1] + 0.01, y=1, fontsize=16)
+
+plt.legend(loc="best", frameon=False, fontsize=16)
+plt.xlabel(r"Share of high-turnover investors ($\alpha$)", fontsize=16)
+plt.ylabel(r"Equilibrium bid-ask half-spread", fontsize=16)
+
+
+plt.tight_layout(pad=0.5)
+
+plt.savefig(path + "compstat_RR2_RFS_differentials.png", bbox_inches="tight")

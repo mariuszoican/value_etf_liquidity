@@ -1,3 +1,5 @@
+from hydra import compose, initialize
+from omegaconf import OmegaConf
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -35,10 +37,14 @@ def settings_plot(ax):
     return ax
 
 
-# load manager panel
-# --------------------------
-manager_data = pd.read_csv("../data/manager_panel.csv.gz", index_col=0)
-probit_file = pd.read_csv("../data/ETF_probitData_byIndex.csv")
+if __name__ == "__main__":
+    with initialize(version_base=None, config_path="../../conf"):
+        cfg = compose(config_name="config")
+
+    # Loading panels
+    # --------------------------
+    manager_data = pd.read_csv("../data/manager_panel.csv.gz", index_col=0)
+    probit_file = pd.read_csv("../data/ETF_probitData_byIndex.csv")
 
 
 # Load ETF panel and apply Broman-Shum (2018) filters
