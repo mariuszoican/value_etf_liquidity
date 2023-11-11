@@ -49,6 +49,7 @@ if __name__ == "__main__":
     manager_data["tax_extend"] = manager_data.groupby("permakey")["tax_extend"].apply(
         lambda x: x.fillna(method="ffill")
     )
+    manager_data = manager_data[manager_data.year >= 2016]  # keep data in our sample
     probit_file = pd.read_csv(f"{cfg.raw_folder}/probit_raw.csv", index_col=0)
 
     # Load ETF panel and apply Broman-Shum (2018) filters
@@ -484,7 +485,7 @@ if __name__ == "__main__":
         how="left",
     )
 
-    sizefigs_L = (18, 7)
+    sizefigs_L = (18, 6)
     fig = plt.figure(facecolor="white", figsize=sizefigs_L)
     gs = gridspec.GridSpec(1, 2)
 
@@ -501,9 +502,9 @@ if __name__ == "__main__":
         palette="Blues",
         orient="h",
     )
-    plt.xlabel("ETF management fee", fontsize=18)
-    plt.ylabel("Residual investor holding duration", fontsize=18)
-    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
+    plt.ylabel("ETF management fee", fontsize=18)
+    plt.xlabel("Residual investor holding duration", fontsize=18)
+    ax.set_yticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("Panel (b): Investor holding duration", fontsize=18)
 
     ax = fig.add_subplot(gs[0, 0])
@@ -518,9 +519,9 @@ if __name__ == "__main__":
         palette="Blues",
         orient="h",
     )
-    plt.xlabel("ETF management fee", fontsize=18)
-    plt.ylabel("Residual AUM share of transient investors", fontsize=18)
-    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
+    plt.ylabel("ETF management fee", fontsize=18)
+    plt.xlabel("Residual AUM share of transient investors", fontsize=18)
+    ax.set_yticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("Panel (a): AUM share of transient investors", fontsize=18)
 
     path = "../output/"

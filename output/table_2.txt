@@ -1,32 +1,32 @@
 		(1)	(2)	(3)	(4)	(5)	(6)
 VARIABLES	LABELS	ratio_tra	ratio_tra	ratio_tra	ratio_tra	ratio_tra	ratio_tra
 							
-highfee	High MER	0.06***	0.08***	0.05***	0.06***	0.05***	0.09***
-		(3.22)	(4.31)	(3.15)	(3.90)	(3.13)	(4.77)
+highfee	High MER	0.05***	0.07***	0.05***	0.06***	0.04**	0.09***
+		(3.06)	(4.04)	(2.99)	(3.62)	(2.82)	(4.54)
 stock_tweets_std	Stock tweets		0.00	0.00	0.00	0.00	0.00
-			(0.86)	(0.76)	(0.60)	(0.38)	(0.50)
-log_aum_index_std	Log index AUM		-0.07	-0.08	-0.09	-0.09	-0.07
-			(-1.07)	(-1.20)	(-1.27)	(-1.32)	(-1.00)
-lend_byaum_bps_std	Lending income (bps of AUM)		-0.03**		-0.03**	-0.02**	-0.03**
-			(-2.38)		(-2.48)	(-2.31)	(-2.43)
-marketing_fee_bps_std	Marketing expense (bps)		0.09***		0.03**	0.08***	0.05***
-			(4.13)		(2.35)	(3.42)	(3.60)
-net_expenses_std	Other net expenses		0.06**			0.06**	
-			(2.67)			(2.85)	
-tr_error_bps_std	Tracking error (bps)		0.01				0.01
-			(0.58)				(0.65)
+			(0.82)	(0.79)	(0.67)	(0.50)	(0.39)
+log_aum_index_std	Log index AUM		-0.10	-0.09	-0.10	-0.10	-0.09
+			(-1.38)	(-1.35)	(-1.41)	(-1.47)	(-1.31)
+lend_byaum_bps_std	Lending income (bps of AUM)		-0.02*		-0.03***	-0.02**	-0.02*
+			(-1.95)		(-2.88)	(-2.66)	(-1.97)
+marketing_fee_bps_std	Marketing expense (bps)		0.08***		0.03**	0.08***	0.03*
+			(3.51)		(2.14)	(3.48)	(2.05)
+net_expenses_std	Other net expenses		0.07***			0.06***	
+			(2.93)			(3.01)	
+tr_error_bps_std	Tracking error (bps)		0.00				0.00
+			(0.42)				(0.48)
 perf_drag_bps_std	Performance drag (bps)		-0.00				-0.00
-			(-0.38)				(-0.46)
+			(-0.47)				(-0.58)
 d_uit	Unit investment trust		-0.05				0.01
-			(-0.99)				(0.26)
-time_existence_std	ETF age (quarters)		-0.04**				-0.04**
-			(-2.39)				(-2.55)
-time_since_first_std	Time since first position		0.07**				0.08**
-			(2.61)				(2.81)
-Constant	Constant	0.19***	0.18***	0.19***	0.19***	0.20***	0.18***
-		(16.90)	(16.93)	(16.84)	(17.57)	(19.17)	(15.34)
+			(-0.92)				(0.40)
+time_existence_std	ETF age (quarters)		-0.04*				-0.04**
+			(-1.99)				(-2.13)
+time_since_first_std	Time since first position		0.03				0.04
+			(1.01)				(1.11)
+Constant	Constant	0.20***	0.19***	0.20***	0.20***	0.21***	0.18***
+		(17.10)	(17.23)	(17.07)	(17.66)	(19.60)	(15.35)
 							
-Observations		1,653	1,653	1,653	1,653	1,653	1,653
-Adjusted R-squared		0.52	0.57	0.53	0.54	0.55	0.56
+Observations		1,649	1,649	1,649	1,649	1,649	1,649
+Adjusted R-squared		0.51	0.54	0.51	0.52	0.54	0.53
 Robust t-statistics in parentheses							
 *** p<0.01, ** p<0.05, * p<0.1							
