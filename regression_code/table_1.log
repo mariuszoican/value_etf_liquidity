@@ -10,9 +10,9 @@ ___/   /   /___/   /   /___/       MP—Parallel Edition
                                    800-STATA-PC        https://www.stata.com
                                    979-696-4600        stata@stata.com
 
-Stata license: Single-user 8-core  perpetual
-Serial number: 501806221785
-  Licensed to: Marius Zoican
+Stata license: 5-user 32-core network perpetual
+Serial number: 501806221992
+  Licensed to: Nathaniel Baum−Snow
                University of Toronto
 
 Notes:
@@ -22,7 +22,7 @@ Notes:
       4. Maximum number of variables is set to 5,000 but can be increased;
           see help set_maxvar.
 
-. do table_1.do 
+. do table_1 
 
 . // Load data
 . // -------------------------------------
@@ -32,7 +32,7 @@ Notes:
 
 . 
 . cd ..
-D:\Research\kpz_etfliquidity
+/global/home/pc_mzoican/kpz_etfliquidity
 
 . local directory : pwd
 
@@ -51,7 +51,7 @@ D:\Research\kpz_etfliquidity
 . egen time_existence_std=std(time_existence)
 
 . egen time_since_first_std=std(time_since_first)
-(55 missing values generated)
+(56 missing values generated)
 
 . egen log_aum_index_std=std(log_aum_index)
 
@@ -392,6 +392,21 @@ D:\Research\kpz_etfliquidity
 95%            1              1       Skewness        .155721
 99%            1              1       Kurtosis       1.024249
 
+                          us_index
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               1,752
+25%            0              0       Sum of wgt.       1,752
+
+50%            1                      Mean           .6746575
+                        Largest       Std. dev.      .4686364
+75%            1              1
+90%            1              1       Variance       .2196201
+95%            1              1       Skewness      -.7455989
+99%            1              1       Kurtosis       1.555918
+
                          d_OwnIndex
 -------------------------------------------------------------
       Percentiles      Smallest
@@ -617,21 +632,6 @@ D:\Research\kpz_etfliquidity
 95%            1              1       Skewness       .0548151
 99%            1              1       Kurtosis       1.003005
 
-                          us_index
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs               1,752
-25%            0              0       Sum of wgt.       1,752
-
-50%            1                      Mean           .6746575
-                        Largest       Std. dev.      .4686364
-75%            1              1
-90%            1              1       Variance       .2196201
-95%            1              1       Skewness      -.7455989
-99%            1              1       Kurtosis       1.555918
-
                            is_etn
 -------------------------------------------------------------
       Percentiles      Smallest
@@ -756,121 +756,121 @@ D:\Research\kpz_etfliquidity
 -------------------------------------------------------------
       Percentiles      Smallest
  1%     .4408884              0
- 5%     1.259269              0
-10%     1.590737              0       Obs               1,697
-25%     2.289479       .0012559       Sum of wgt.       1,697
+ 5%     1.252922              0
+10%     1.628188              0       Obs               1,696
+25%     2.351886       .0012559       Sum of wgt.       1,696
 
-50%     3.264672                      Mean           3.331746
-                        Largest       Std. dev.      1.386708
-75%     4.257656       8.007271
-90%     5.315493       8.292539       Variance        1.92296
-95%     5.669639       8.328018       Skewness       .2773658
-99%     6.334822       8.754671       Kurtosis       2.896407
+50%     3.345229                      Mean           3.404375
+                        Largest       Std. dev.      1.412126
+75%      4.38432       8.292539
+90%     5.411043        8.37513       Variance         1.9941
+95%     5.742541       8.519404       Skewness        .224476
+99%     6.335212       8.754671       Kurtosis       2.817044
 
                       mgr_duration_tii
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%     .1354883              0
- 5%      .776893              0
-10%     1.111842              0       Obs               1,681
-25%     1.725285              0       Sum of wgt.       1,681
+ 1%     .1398509              0
+ 5%     .7906527              0
+10%       1.1587              0       Obs               1,679
+25%     1.784762              0       Sum of wgt.       1,679
 
-50%      2.57522                      Mean           2.997906
-                        Largest       Std. dev.      1.687959
-75%     4.161057       8.728792
-90%     5.526112       8.754671       Variance       2.849207
-95%      5.97248       8.754671       Skewness       .6456274
-99%     7.410152       8.879823       Kurtosis       2.863046
+50%     2.664522                      Mean           3.099313
+                        Largest       Std. dev.      1.724391
+75%     4.343245       8.754671
+90%     5.653444       8.754671       Variance       2.973525
+95%     6.080936       8.754671       Skewness       .5576263
+99%     7.410152       8.879823       Kurtosis       2.654276
 
                       mgr_duration_tsi
 -------------------------------------------------------------
       Percentiles      Smallest
  1%     .8349901              0
- 5%     3.639803              0
-10%     4.209543              0       Obs               1,582
-25%     5.346739              0       Sum of wgt.       1,582
+ 5%     3.700556              0
+10%     4.292335              0       Obs               1,574
+25%     5.357176              0       Sum of wgt.       1,574
 
-50%     6.105994                      Mean            5.73879
-                        Largest       Std. dev.      1.167421
-75%     6.441935       7.786857
-90%       6.7131       7.786857       Variance       1.362872
-95%     6.990842       7.820513       Skewness      -1.978637
-99%     7.384368       7.854928       Kurtosis       8.473391
+50%     6.099686                      Mean           5.743487
+                        Largest       Std. dev.      1.169697
+75%     6.441349       7.786857
+90%     6.722529       7.811979       Variance       1.368192
+95%     7.031142       7.820513       Skewness      -2.002849
+99%     7.384368       7.854928       Kurtosis       8.666759
 
                       time_since_first
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%            0      -.8463281
- 5%     .1028979      -.6036507
-10%     .2001532      -.2010538       Obs               1,697
-25%     .4999484      -.0879004       Sum of wgt.       1,697
+ 1%    -.0645939      -.9988452
+ 5%            0      -.6621699
+10%     .1407593      -.3142647       Obs               1,696
+25%     .4287407      -.1961274       Sum of wgt.       1,696
 
-50%     1.004444                      Mean           1.208636
-                        Largest       Std. dev.      .8841227
-75%      1.85866       3.445374
-90%     2.590066       3.675341       Variance        .781673
-95%      2.86828       3.985584       Skewness       .6470208
-99%      3.27173       4.328281       Kurtosis       2.427564
+50%     .9116607                      Mean           1.082452
+                        Largest       Std. dev.      .8223558
+75%     1.640376       3.226315
+90%     2.359303       3.398071       Variance       .6762691
+95%     2.660607       3.654123       Skewness       .6462485
+99%     2.984861       4.051201       Kurtosis       2.539963
 
                           ratio_tii
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%     16.16833       .0485172
- 5%     45.87636       7.427808
-10%     57.98963       7.680283       Obs               1,681
-25%     75.06169        8.37225       Sum of wgt.       1,681
+ 1%     14.19614       .0485172
+ 5%     43.80215        .958117
+10%      55.6606       7.427808       Obs               1,679
+25%     74.39552       7.680283       Sum of wgt.       1,679
 
-50%     87.00438                      Mean           81.70686
-                        Largest       Std. dev.      16.96824
-75%     93.20017            100
-90%       97.985            100       Variance        287.921
-95%          100            100       Skewness      -1.667418
-99%          100            100       Kurtosis       6.181187
+50%     86.59285                      Mean           81.11485
+                        Largest       Std. dev.      17.66976
+75%     93.10043            100
+90%     98.10172            100       Variance       312.2204
+95%          100            100       Skewness       -1.62579
+99%          100            100       Kurtosis       5.888692
 
                           ratio_tra
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%     .0039648       .0000101
- 5%     .0189201       .0000216
-10%      .034859       .0002041       Obs               1,653
-25%     .0805635       .0006801       Sum of wgt.       1,653
+ 1%     .0065223       .0000101
+ 5%      .020207       .0000261
+10%     .0350112       .0002076       Obs               1,649
+25%     .0823956       .0007037       Sum of wgt.       1,649
 
-50%     .1537128                      Mean           .2210678
-                        Largest       Std. dev.      .2099699
-75%     .2831311              1
-90%     .5220737              1       Variance       .0440874
-95%     .6714544              1       Skewness       1.771253
-99%     .9792964              1       Kurtosis       6.096524
+50%     .1574224                      Mean           .2258422
+                        Largest       Std. dev.      .2136727
+75%     .2916917              1
+90%     .5277443              1       Variance        .045656
+95%     .6953908              1       Skewness       1.730207
+99%     .9857426              1       Kurtosis        5.89619
 
                      mgr_duration_index
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%     .8617472       .5615579
- 5%     1.509307       .5615579
-10%     1.752313       .5923234       Obs               1,752
-25%     2.371469       .5923234       Sum of wgt.       1,752
+ 1%     .8464242        .535677
+ 5%     1.492741        .535677
+10%     1.784826       .5601652       Obs               1,752
+25%     2.410193       .5601652       Sum of wgt.       1,752
 
-50%     3.298719                      Mean           3.379838
-                        Largest       Std. dev.      1.264139
-75%     4.330067       6.234871
-90%     5.199009       6.234871       Variance       1.598048
-95%     5.617594       6.324784       Skewness       .1680248
-99%     5.911767       6.324784       Kurtosis       2.185495
+50%     3.406001                      Mean           3.450802
+                        Largest       Std. dev.      1.290734
+75%     4.479441       6.238043
+90%     5.336298       6.238043       Variance       1.665994
+95%     5.613675       6.324497       Skewness       .1017194
+99%     5.931597       6.324497       Kurtosis       2.106252
 
                         ratio_tra_ix
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%     .0088025       .0005833
- 5%     .0315322       .0005833
-10%     .0489245       .0006049       Obs               1,752
-25%     .1002477       .0006049       Sum of wgt.       1,752
+ 1%     .0094339       .0006049
+ 5%      .028729       .0006049
+10%     .0468118       .0006109       Obs               1,752
+25%     .1016114       .0006109       Sum of wgt.       1,752
 
-50%     .1724568                      Mean            .219304
-                        Largest       Std. dev.      .1789261
-75%      .270234       .9754641
-90%     .4988424       .9754641       Variance       .0320146
-95%     .5969998       .9795313       Skewness       1.680833
-99%     .8794099       .9795313       Kurtosis       5.993471
+50%     .1730299                      Mean           .2225789
+                        Largest       Std. dev.      .1810836
+75%     .2762294       .9795313
+90%     .4948413       .9795313       Variance       .0327913
+95%     .5979038       .9978157       Skewness        1.64781
+99%     .8797323       .9978157       Kurtosis       5.934249
 
                           aum_index
 -------------------------------------------------------------
@@ -967,15 +967,15 @@ D:\Research\kpz_etfliquidity
       Percentiles      Smallest
  1%            1              1
  5%            1              1
-10%            1              1       Obs               1,697
-25%            2              1       Sum of wgt.       1,697
+10%            1              1       Obs               1,696
+25%            2              1       Sum of wgt.       1,696
 
-50%            3                      Mean           2.986447
-                        Largest       Std. dev.      1.417688
+50%            3                      Mean           2.994693
+                        Largest       Std. dev.      1.417745
 75%            4              5
-90%            5              5       Variance        2.00984
-95%            5              5       Skewness       .0276548
-99%            5              5       Kurtosis       1.702452
+90%            5              5       Variance       2.010001
+95%            5              5       Skewness       .0193089
+99%            5              5       Kurtosis       1.697327
 
                        same_benchmark
 -------------------------------------------------------------
@@ -1000,12 +1000,12 @@ D:\Research\kpz_etfliquidity
 10%            0              0       Obs               1,752
 25%            0              0       Sum of wgt.       1,752
 
-50%            0                      Mean           .2180365
-                        Largest       Std. dev.      .4212448
-75%            0              2
-90%            1              2       Variance       .1774472
-95%            1              2       Skewness       1.502521
-99%            1              2       Kurtosis       3.664917
+50%            0                      Mean           .2009132
+                        Largest       Std. dev.      .4007977
+75%            0              1
+90%            1              1       Variance       .1606388
+95%            1              1       Skewness       1.492884
+99%            1              1       Kurtosis       3.228701
 
                      ETF age (quarters)
 -------------------------------------------------------------
@@ -1025,17 +1025,17 @@ D:\Research\kpz_etfliquidity
                   Time since first position
 -------------------------------------------------------------
       Percentiles      Smallest
- 1%    -1.367045      -2.324297
- 5%    -1.250661      -2.049813
-10%    -1.140659       -1.59445       Obs               1,697
-25%    -.8015712      -1.466466       Sum of wgt.       1,697
+ 1%     -1.39483      -2.530897
+ 5%    -1.316282      -2.121493
+10%    -1.145116      -1.698434       Obs               1,696
+25%    -.7949257      -1.554777       Sum of wgt.       1,696
 
-50%    -.2309536                      Mean          -7.19e-10
+50%     -.207686                      Mean          -2.40e-09
                         Largest       Std. dev.             1
-75%     .7352189       2.529896
-90%     1.562487       2.790004       Variance              1
-95%     1.877165       3.140909       Skewness       .6470208
-99%     2.333493       3.528521       Kurtosis       2.427564
+75%     .6784456       2.606977
+90%     1.552674       2.815835       Variance              1
+95%     1.919066       3.127199       Skewness       .6462485
+99%     2.313364       3.610054       Kurtosis       2.539963
 
                         Log index AUM
 -------------------------------------------------------------
@@ -1250,7 +1250,7 @@ D:\Research\kpz_etfliquidity
 Following variable is string, not included:  
 ticker  inception  index_id  log_profit  issuer  description  primary_benchmark
 >   tax_classification  asset_class  category  lead_market_maker  log_aum  
-D:\Research\kpz_etfliquidity\output\table_1.tex
+/global/home/pc_mzoican/kpz_etfliquidity\output\table_1.tex
 dir : seeout
 
 . 

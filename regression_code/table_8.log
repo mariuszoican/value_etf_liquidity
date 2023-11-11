@@ -10,9 +10,9 @@ ___/   /   /___/   /   /___/       MP—Parallel Edition
                                    800-STATA-PC        https://www.stata.com
                                    979-696-4600        stata@stata.com
 
-Stata license: Single-user 8-core  perpetual
-Serial number: 501806221785
-  Licensed to: Marius Zoican
+Stata license: 5-user 32-core network perpetual
+Serial number: 501806221992
+  Licensed to: Nathaniel Baum−Snow
                University of Toronto
 
 Notes:
@@ -22,7 +22,7 @@ Notes:
       4. Maximum number of variables is set to 5,000 but can be increased;
           see help set_maxvar.
 
-. do table_8.do 
+. do table_8 
 
 . // Load data
 . // -------------------------------------
@@ -32,14 +32,14 @@ Notes:
 
 . 
 . cd ..
-D:\Research\kpz_etfliquidity
+/global/home/pc_mzoican/kpz_etfliquidity
 
 . local directory : pwd
 
 . display "`working_dir'"
 
 
-. import delimited "`directory'\data\probit_data_processed.csv"
+. import delimited "`directory'/data/probit_data_processed.csv"
 (encoding automatically selected: ISO-8859-1)
 (12 vars, 1,071 obs)
 
@@ -101,9 +101,9 @@ Log pseudolikelihood = -149.6315                        Pseudo R2     = 0.3822
        _cons |  -11.10173    1.24976    -8.88   0.000    -13.55121   -8.652245
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_8.tex", replace tex tstat e(r2_p)  la
+. outreg2 using "`directory'/output/table_8.tex", replace tex tstat e(r2_p)  la
 > bel  dec(2) tdec(2) eqdrop(/) keep(*) 
-D:\Research\kpz_etfliquidity\output\table_8.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -131,9 +131,9 @@ major_bran~x |   .3232265    .168911     1.91   0.056    -.0078331     .654286
        _cons |  -10.55332   1.229884    -8.58   0.000    -12.96385   -8.142792
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+. outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_8.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -163,9 +163,9 @@ major_bran~x |   .3174044   .1697276     1.87   0.061    -.0152555    .6500643
        _cons |  -10.51358   1.261189    -8.34   0.000    -12.98546   -8.041693
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+. outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_8.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -196,9 +196,9 @@ spread_ind~d |   .3179377    .057075     5.57   0.000     .2060727    .4298027
        _cons |  -11.61747   1.333897    -8.71   0.000    -14.23186   -9.003084
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p) labe
+. outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p) labe
 > l  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_8.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -230,9 +230,9 @@ spread_ind~d |   .2638045   .0590377     4.47   0.000     .1480927    .3795163
        _cons |  -13.14156   1.782293    -7.37   0.000    -16.63479   -9.648332
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+. outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_8.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -266,9 +266,9 @@ spread_ind~d |   .2462373   .0587993     4.19   0.000     .1309928    .3614818
 ------------------------------------------------------------------------------
 Note: 5 failures and 0 successes completely determined.
 
-. outreg2 using "`directory'\output\table_8.tex", append tex tstat e(r2_p)  lab
+. outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_8.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 

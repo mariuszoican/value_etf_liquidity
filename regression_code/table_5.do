@@ -78,19 +78,19 @@ label variable mkt_share_fe "Market share"
 label variable mer_bps_fe "MER"
 
 rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
-outreg2 using "`directory'\output\table_5.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'/output/table_5.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
-outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
-outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
-outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
-outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
-outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)

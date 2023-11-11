@@ -10,9 +10,9 @@ ___/   /   /___/   /   /___/       MP—Parallel Edition
                                    800-STATA-PC        https://www.stata.com
                                    979-696-4600        stata@stata.com
 
-Stata license: Single-user 8-core  perpetual
-Serial number: 501806221785
-  Licensed to: Marius Zoican
+Stata license: 5-user 32-core network perpetual
+Serial number: 501806221992
+  Licensed to: Nathaniel Baum−Snow
                University of Toronto
 
 Notes:
@@ -22,7 +22,7 @@ Notes:
       4. Maximum number of variables is set to 5,000 but can be increased;
           see help set_maxvar.
 
-. do table_5.do 
+. do table_5 
 
 . 
 . // Table 5 - Shapley values
@@ -36,7 +36,7 @@ Notes:
 
 . 
 . cd ..
-D:\Research\kpz_etfliquidity
+/global/home/pc_mzoican/kpz_etfliquidity
 
 . local directory : pwd
 
@@ -52,7 +52,7 @@ D:\Research\kpz_etfliquidity
 . egen time_existence_std=std(time_existence)
 
 . egen time_since_first_std=std(time_since_first)
-(55 missing values generated)
+(56 missing values generated)
 
 . egen log_aum_index_std=std(log_aum_index)
 
@@ -67,14 +67,14 @@ D:\Research\kpz_etfliquidity
 . egen turnover_frac_std=std(turnover_frac)
 (2 missing values generated)
 
-. gen  net_expense_mer=net_expense-mer_bps/100
+. gen  net_expense_mer=other_expense-marketing_fee_bps/100+fee_waiver
 
 . egen net_expenses_std=std(net_expense_mer)
 
 . egen stock_tweets_std=std(stock_tweets)
 
 . egen ratio_tii_std=std(ratio_tii)
-(71 missing values generated)
+(73 missing values generated)
 
 . egen log_volume_std=std(log_volume)
 
@@ -128,7 +128,7 @@ D:\Research\kpz_etfliquidity
 . 
 . //
 . gen tii_return=ratio_tii * logret_q_lag
-(71 missing values generated)
+(73 missing values generated)
 
 . 
 . encode index_id, gen(index_no)
@@ -169,28 +169,28 @@ D:\Research\kpz_etfliquidity
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1 spread_bps_crs~d |   -.1180886 ***  .0313321   0.001    -0.3467     59.5164
- 2     stock_tweets |    .0148102 ***  .0041665   0.002     0.0504     20.3186
-   marketing_fee_~d |   -.0397952 ***  .0082943   0.000    -0.1161           
-   other_expense_~d |    .0291116 ***  .0054154   0.000     0.0867           
-     fee_waiver_std |    .0164031 **   .0060487   0.014     0.0490           
- 3    ratio_tii_std |    .0202113 **   .0089599   0.036     0.0600      1.5636
- 4 lend_byaum_bps~d |    .0400995 ***  .0027155   0.000     0.1190     18.6013
-   tr_error_bps_std |    .0446415 ***  .0113943   0.001     0.1325           
-   perf_drag_bps_~d |     -.01003      .0064022   0.134    -0.0298           
-              d_uit |    -.178429 ***   .025343   0.000    -0.0807           
- -        Intercept |    .0063661      .0055297   0.264     
+ 1 spread_bps_crs~d |   -.1187516 ***  .0315298   0.001    -0.3486     59.5320
+ 2     stock_tweets |    .0144079 ***  .0040779   0.002     0.0490     19.9273
+   marketing_fee_~d |   -.0390165 ***  .0082644   0.000    -0.1136           
+   other_expense_~d |    .0285342 ***  .0055862   0.000     0.0850           
+     fee_waiver_std |    .0165731 **   .0060602   0.013     0.0495           
+ 3    ratio_tii_std |    .0237433 **   .0085909   0.012     0.0704      2.1544
+ 4 lend_byaum_bps~d |    .0399642 ***  .0026745   0.000     0.1187     18.3863
+   tr_error_bps_std |    .0439234 ***  .0113584   0.001     0.1305           
+   perf_drag_bps_~d |   -.0103437      .0063645   0.121    -0.0308           
+              d_uit |   -.1757281 ***  .0261437   0.000    -0.0795           
+ -        Intercept |    .0065293      .0052779   0.231     
 --------------------+---------------------------------------------------------
-       Observations |        1681
-         Overall R2 |     0.18924
-           Root MSE |    .3044699
-      F-stat. Model |    111.6996 ***             0.000
-     Log Likelihood |   -380.7007
+       Observations |        1679
+         Overall R2 |     0.18954
+           Root MSE |    .3043502
+      F-stat. Model |    106.7644 ***             0.000
+     Log Likelihood |   -379.5813
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_5.tex", adjr2 replace tex tstat label
+. outreg2 using "`directory'/output/table_5.tex", adjr2 replace tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_5.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
 . 
@@ -201,28 +201,28 @@ dir : seeout
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1 turnover_frac_~d |    .1137181 ***  .0167794   0.000     0.3357     49.8031
- 2     stock_tweets |   -.0070744 *    .0036368   0.067    -0.0241     31.6290
-   marketing_fee_~d |   -.0648101 ***  .0072581   0.000    -0.1893           
-   other_expense_~d |    .0161606 **   .0074895   0.044     0.0482           
-     fee_waiver_std |    .0259032 ***  .0062575   0.001     0.0775           
- 3    ratio_tii_std |   -.0035079      .0075766   0.649    -0.0104      0.3041
- 4 lend_byaum_bps~d |    .0497477 ***  .0027171   0.000     0.1475     18.2639
-   tr_error_bps_std |   -.0136153      .0090433   0.149    -0.0404           
-   perf_drag_bps_~d |    .0063471      .0061033   0.311     0.0188           
-              d_uit |   -.1851114 ***  .0253791   0.000    -0.0838           
- -        Intercept |     .008898 *    .0048268   0.081     
+ 1 turnover_frac_~d |    .1137111 ***  .0168354   0.000     0.3359     49.9202
+ 2     stock_tweets |   -.0072241 *     .003654   0.063    -0.0246     31.3678
+   marketing_fee_~d |   -.0643395 ***  .0071895   0.000    -0.1876           
+   other_expense_~d |    .0157877 **   .0075379   0.050     0.0471           
+     fee_waiver_std |    .0260713 ***  .0062638   0.001     0.0780           
+ 3    ratio_tii_std |   -.0020701      .0072128   0.777    -0.0061      0.4768
+ 4 lend_byaum_bps~d |    .0495837 ***  .0026949   0.000     0.1471     18.2352
+   tr_error_bps_std |   -.0137261      .0090159   0.144    -0.0408           
+   perf_drag_bps_~d |    .0063467      .0060616   0.308     0.0188           
+              d_uit |   -.1838857 ***  .0253357   0.000    -0.0833           
+ -        Intercept |    .0091797 *    .0048165   0.072     
 --------------------+---------------------------------------------------------
-       Observations |        1679
-         Overall R2 |     0.16848
-           Root MSE |    .3081157
-      F-stat. Model |    679.2746 ***             0.000
-     Log Likelihood |   -400.2269
+       Observations |        1677
+         Overall R2 |     0.16774
+           Root MSE |    .3081882
+      F-stat. Model |    819.1993 ***             0.000
+     Log Likelihood |   -400.1382
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label 
+. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
 >  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_5.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
 . 
@@ -233,28 +233,28 @@ dir : seeout
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1   log_volume_std |    .2159114 ***  .0064212   0.000     0.6330     82.9750
- 2     stock_tweets |   -.0077356 ***   .001419   0.000    -0.0263      8.4757
-   marketing_fee_~d |   -.0131887 **     .00622   0.047    -0.0385           
-   other_expense_~d |    .0003716      .0025333   0.885     0.0011           
-     fee_waiver_std |   -.0109551 ***  .0030574   0.002    -0.0327           
- 3    ratio_tii_std |    .0106962       .007174   0.152     0.0317      0.2927
- 4 lend_byaum_bps~d |     .036831 ***  .0031235   0.000     0.1093      8.2567
-   tr_error_bps_std |    .0055881      .0078707   0.486     0.0166           
-   perf_drag_bps_~d |    .0041845       .007614   0.589     0.0124           
-              d_uit |    -.370174 ***  .0061875   0.000    -0.1674           
- -        Intercept |    .0117032 *    .0063349   0.080     
+ 1   log_volume_std |    .2167899 ***  .0062679   0.000     0.6328     82.9875
+ 2     stock_tweets |   -.0078705 ***  .0014796   0.000    -0.0268      8.3868
+   marketing_fee_~d |   -.0137722 **   .0061831   0.038    -0.0401           
+   other_expense_~d |    .0003839      .0025468   0.882     0.0011           
+     fee_waiver_std |   -.0113003 ***  .0030719   0.002    -0.0338           
+ 3    ratio_tii_std |    .0108619      .0064421   0.108     0.0322      0.3784
+ 4 lend_byaum_bps~d |    .0368538 ***  .0031104   0.000     0.1094      8.2473
+   tr_error_bps_std |     .005182      .0079476   0.522     0.0154           
+   perf_drag_bps_~d |    .0040155      .0076102   0.604     0.0120           
+              d_uit |   -.3713268 ***  .0063495   0.000    -0.1681           
+ -        Intercept |    .0115497 *    .0062321   0.079     
 --------------------+---------------------------------------------------------
-       Observations |        1681
-         Overall R2 |     0.40240
-           Root MSE |    .2613992
-      F-stat. Model |    1338.169 ***             0.000
-     Log Likelihood |   -124.3088
+       Observations |        1679
+         Overall R2 |     0.40257
+           Root MSE |    .2613065
+      F-stat. Model |    1912.551 ***             0.000
+     Log Likelihood |   -123.5591
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label 
+. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
 >  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_5.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
 . 
@@ -265,28 +265,28 @@ dir : seeout
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1 spread_bps_crs~d |   -2.682896 ***  .5058725   0.000    -0.2791     27.6562
- 2     stock_tweets |   -.2241982 ***  .0634209   0.002    -0.0270     27.4337
-   marketing_fee_~d |   -1.445242 ***  .1729095   0.000    -0.1494           
-   other_expense_~d |    1.266418 ***  .0799114   0.000     0.1336           
-     fee_waiver_std |    1.682882 ***   .077935   0.000     0.1781           
- 3    ratio_tii_std |    .9363991 ***  .1932447   0.000     0.0984      3.2264
- 4 lend_byaum_bps~d |    .3485071 ***  .1017719   0.003     0.0366     41.6838
-   tr_error_bps_std |    3.790937 ***  .4788005   0.000     0.3986           
-   perf_drag_bps_~d |     1.08129 ***  .3773463   0.010     0.1139           
-              d_uit |    4.801414 ***  .2429682   0.000     0.0769           
- -        Intercept |   -.0491208      .1308809   0.712     
+ 1 spread_bps_crs~d |   -2.690933 ***  .5054105   0.000    -0.2800     27.6188
+ 2     stock_tweets |   -.2313726 ***  .0651802   0.002    -0.0279     27.0689
+   marketing_fee_~d |   -1.414456 ***  .1747598   0.000    -0.1460           
+   other_expense_~d |    1.253049 ***  .0851165   0.000     0.1324           
+     fee_waiver_std |    1.686871 ***  .0796326   0.000     0.1788           
+ 3    ratio_tii_std |    .9867454 ***  .1989208   0.000     0.1038      3.7561
+ 4 lend_byaum_bps~d |    .3466889 ***  .1017686   0.003     0.0365     41.5562
+   tr_error_bps_std |    3.769489 ***  .4760812   0.000     0.3969           
+   perf_drag_bps_~d |    1.071732 **   .3770685   0.010     0.1131           
+              d_uit |    4.852809 ***  .2714288   0.000     0.0779           
+ -        Intercept |   -.0433391      .1344677   0.751     
 --------------------+---------------------------------------------------------
-       Observations |        1681
-         Overall R2 |     0.27071
-           Root MSE |    8.150646
-      F-stat. Model |    921.9234 ***             0.000
-     Log Likelihood |   -5906.619
+       Observations |        1679
+         Overall R2 |     0.27032
+           Root MSE |    8.146788
+      F-stat. Model |    756.7083 ***             0.000
+     Log Likelihood |    -5898.79
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label 
+. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
 >  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_5.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
 . 
@@ -297,28 +297,28 @@ dir : seeout
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1 turnover_frac_~d |    1.873506 ***  .2100376   0.000     0.1959     23.4509
- 2     stock_tweets |    -.558716 ***   .123082   0.000    -0.0674     41.0445
-   marketing_fee_~d |   -2.072673 ***  .2281216   0.000    -0.2144           
-   other_expense_~d |    1.225571 ***  .1197064   0.000     0.1294           
-     fee_waiver_std |    1.959281 ***  .0699083   0.000     0.2076           
- 3    ratio_tii_std |     .460777 **    .167217   0.013     0.0484      1.8585
- 4 lend_byaum_bps~d |    .5245531 ***  .0805199   0.000     0.0551     33.6461
-   tr_error_bps_std |     2.68384 ***  .2939064   0.000     0.2824           
-   perf_drag_bps_~d |    1.336175 ***   .439384   0.007     0.1402           
-              d_uit |    4.625481 ***  .3223983   0.000     0.0742           
- -        Intercept |   -.0196219      .2389787   0.935     
+ 1 turnover_frac_~d |    1.864434 ***  .2078981   0.000     0.1952     23.3962
+ 2     stock_tweets |   -.5591474 ***  .1236997   0.000    -0.0675     40.6820
+   marketing_fee_~d |   -2.046256 ***  .2351222   0.000    -0.2115           
+   other_expense_~d |    1.217956 ***  .1244736   0.000     0.1288           
+     fee_waiver_std |    1.963541 ***  .0720658   0.000     0.2083           
+ 3    ratio_tii_std |    .4726507 **   .1882613   0.021     0.0497      2.1884
+ 4 lend_byaum_bps~d |     .521736 ***  .0806582   0.000     0.0549     33.7334
+   tr_error_bps_std |    2.678651 ***  .2946949   0.000     0.2822           
+   perf_drag_bps_~d |    1.332306 ***  .4404749   0.007     0.1400           
+              d_uit |    4.649561 ***    .34141   0.000     0.0747           
+ -        Intercept |   -.0115137      .2442641   0.963     
 --------------------+---------------------------------------------------------
-       Observations |        1679
-         Overall R2 |     0.23213
-           Root MSE |    8.359683
-      F-stat. Model |    369.7356 ***             0.000
-     Log Likelihood |   -5942.103
+       Observations |        1677
+         Overall R2 |     0.23115
+           Root MSE |     8.35885
+      F-stat. Model |    334.1348 ***             0.000
+     Log Likelihood |   -5934.851
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label 
+. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
 >  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_5.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
 . 
@@ -329,28 +329,28 @@ dir : seeout
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1   log_volume_std |    1.820118 ***  .2093709   0.000     0.1890     25.2420
- 2     stock_tweets |   -.3469823 ***  .0948608   0.002    -0.0418     32.8236
-   marketing_fee_~d |   -1.711306 ***  .1625939   0.000    -0.1769           
-   other_expense_~d |    1.421951 ***  .0795136   0.000     0.1501           
-     fee_waiver_std |    1.739933 ***  .0844399   0.000     0.1841           
- 3    ratio_tii_std |    .6272401 ***   .180391   0.003     0.0659      2.4585
- 4 lend_byaum_bps~d |    .4170784 ***    .10523   0.001     0.0438     39.4759
-   tr_error_bps_std |    3.237554 ***  .4024393   0.000     0.3404           
-   perf_drag_bps_~d |    1.332451 ***  .4407214   0.007     0.1404           
-              d_uit |    3.026583 ***  .3794011   0.000     0.0485           
- -        Intercept |    .0057461      .2287849   0.980     
+ 1   log_volume_std |    1.794468 ***  .2092254   0.000     0.1857     24.7843
+ 2     stock_tweets |   -.3462157 ***  .0951747   0.002    -0.0418     32.7303
+   marketing_fee_~d |   -1.700639 ***  .1704381   0.000    -0.1756           
+   other_expense_~d |    1.422359 ***  .0851049   0.000     0.1503           
+     fee_waiver_std |    1.747221 ***  .0855639   0.000     0.1851           
+ 3    ratio_tii_std |    .6366545 ***  .1924662   0.004     0.0670      2.8246
+ 4 lend_byaum_bps~d |    .4176035 ***  .1050682   0.001     0.0440     39.6608
+   tr_error_bps_std |    3.228017 ***   .402561   0.000     0.3399           
+   perf_drag_bps_~d |    1.326248 ***  .4413939   0.007     0.1399           
+              d_uit |    3.066224 ***  .4003595   0.000     0.0492           
+ -        Intercept |    .0093247      .2329307   0.968     
 --------------------+---------------------------------------------------------
-       Observations |        1681
-         Overall R2 |     0.23541
-           Root MSE |    8.345547
-      F-stat. Model |    480.6087 ***             0.000
-     Log Likelihood |   -5946.343
+       Observations |        1679
+         Overall R2 |     0.23377
+           Root MSE |    8.348312
+      F-stat. Model |    416.6385 ***             0.000
+     Log Likelihood |   -5939.817
 ------------------------------------------------------------------------------
 
-. outreg2 using "`directory'\output\table_5.tex", adjr2 append tex tstat label 
+. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
 >  dec(2) tdec(2) eqdrop(/) keep(*)
-D:\Research\kpz_etfliquidity\output\table_5.tex
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
 . 
