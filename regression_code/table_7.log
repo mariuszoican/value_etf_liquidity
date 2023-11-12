@@ -55,7 +55,7 @@ Notes:
 . egen time_existence_std=std(time_existence)
 
 . egen time_since_first_std=std(time_since_first)
-(56 missing values generated)
+(33 missing values generated)
 
 . egen log_aum_index_std=std(log_aum_index)
 
@@ -77,7 +77,7 @@ Notes:
 . egen stock_tweets_std=std(stock_tweets)
 
 . egen ratio_tii_std = std(ratio_tii)
-(73 missing values generated)
+(49 missing values generated)
 
 . egen creation_fee_std=std(creation_fee)
 
@@ -205,31 +205,31 @@ Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 warning: missing F statistic; dropped variables due to collinearity or too few 
 > clusters
 
-HDFE Linear regression                            Number of obs   =      1,679
+HDFE Linear regression                            Number of obs   =      1,703
 Absorbing 2 HDFE groups                           F(  11,     19) =          .
 Statistics robust to heteroskedasticity           Prob > F        =          .
-                                                  R-squared       =     0.4659
-                                                  Adj R-squared   =     0.4395
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.4598
-Number of clusters (quarter) =         20         Root MSE        =     0.3745
+                                                  R-squared       =     0.4713
+                                                  Adj R-squared   =     0.4456
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.4663
+Number of clusters (quarter) =         20         Root MSE        =     0.3724
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
      highfee | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-  firstmover |   .5661361   .1037076     5.46   0.000     .3490737    .7831985
-marketing_~d |   .1340631   .1030317     1.30   0.209    -.0815847     .349711
-net_expens~d |   .1426106    .105797     1.35   0.194    -.0788251    .3640462
-stock_tweets |    .015385   .0073167     2.10   0.049     .0000711     .030699
-lend_byaum~d |  -.0638355   .0644612    -0.99   0.334    -.1987543    .0710833
-tr_error_b~d |   .0657242   .0259604     2.53   0.020     .0113884    .1200601
-creation_f~d |   .2444779   .0882537     2.77   0.012     .0597608     .429195
-perf_drag_~d |    .006011    .007239     0.83   0.417    -.0091403    .0211623
-different_~s |  -.2891284   .0506511    -5.71   0.000    -.3951423   -.1831145
-different_~m |   .0059381    .015518     0.38   0.706    -.0265415    .0384176
-ratio_tii_~d |   .0175548   .0231026     0.76   0.457    -.0307996    .0659092
-       _cons |   .3789939   .0334786    11.32   0.000     .3089224    .4490653
+  firstmover |   .5678094   .1034526     5.49   0.000     .3512805    .7843382
+marketing_~d |   .1363155   .1024126     1.33   0.199    -.0780367    .3506676
+net_expens~d |   .1463866   .1056972     1.38   0.182    -.0748402    .3676134
+stock_tweets |   .0151121   .0072323     2.09   0.050    -.0000252    .0302495
+lend_byaum~d |  -.0590778   .0667073    -0.89   0.387    -.1986978    .0805423
+tr_error_b~d |   .0662849   .0258366     2.57   0.019     .0122082    .1203616
+creation_f~d |   .2425219   .0877892     2.76   0.012      .058777    .4262668
+perf_drag_~d |   .0061991    .006506     0.95   0.353     -.007418    .0198163
+different_~s |  -.4035074   .0485026    -8.32   0.000    -.5050246   -.3019902
+different_~m |   .0023009   .0152725     0.15   0.882    -.0296648    .0342665
+ratio_tii_~d |   .0209676   .0239598     0.88   0.392    -.0291808     .071116
+       _cons |    .445562   .0360197    12.37   0.000      .370172    .5209521
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -257,32 +257,32 @@ Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 warning: missing F statistic; dropped variables due to collinearity or too few 
 > clusters
 
-HDFE Linear regression                            Number of obs   =      1,679
+HDFE Linear regression                            Number of obs   =      1,703
 Absorbing 2 HDFE groups                           F(  12,     19) =          .
 Statistics robust to heteroskedasticity           Prob > F        =          .
-                                                  R-squared       =     0.4663
-                                                  Adj R-squared   =     0.4396
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.4602
-Number of clusters (quarter) =         20         Root MSE        =     0.3744
+                                                  R-squared       =     0.4721
+                                                  Adj R-squared   =     0.4461
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.4671
+Number of clusters (quarter) =         20         Root MSE        =     0.3722
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
      highfee | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-  firstmover |   .5899083   .1324641     4.45   0.000     .3126577    .8671589
-firstmover~h |   -.050165   .1775974    -0.28   0.781    -.4218806    .3215507
-marketing_~d |   .1457309   .1089141     1.34   0.197    -.0822289    .3736907
-net_expens~d |   .1534008   .1056764     1.45   0.163    -.0677825    .3745841
-stock_tweets |   .0139113   .0085699     1.62   0.121    -.0040256    .0318482
-lend_byaum~d |  -.0615055   .0660216    -0.93   0.363    -.1996904    .0766793
-tr_error_b~d |   .0719928   .0312824     2.30   0.033      .006518    .1374675
-creation_f~d |   .2426306   .0866419     2.80   0.011     .0612869    .4239742
-perf_drag_~d |   .0080977   .0047671     1.70   0.106      -.00188    .0180754
-different_~s |  -.2697625   .0546558    -4.94   0.000    -.3841584   -.1553666
-different_~m |   .0052892   .0152988     0.35   0.733    -.0267315      .03731
-ratio_tii_~d |   .0194346   .0247873     0.78   0.443    -.0324459     .071315
-       _cons |   .3711433   .0330866    11.22   0.000     .3018922    .4403945
+  firstmover |   .5985971   .1329721     4.50   0.000     .3202833    .8769109
+firstmover~h |  -.0646052    .178464    -0.36   0.721    -.4381347    .3089243
+marketing_~d |   .1515235   .1085939     1.40   0.179    -.0757662    .3788132
+net_expens~d |   .1602313   .1057129     1.52   0.146    -.0610282    .3814909
+stock_tweets |   .0132091   .0084193     1.57   0.133    -.0044127    .0308308
+lend_byaum~d |  -.0560846   .0678426    -0.83   0.419    -.1980808    .0859116
+tr_error_b~d |   .0743306   .0318828     2.33   0.031      .007599    .1410621
+creation_f~d |    .240086   .0861971     2.79   0.012     .0596735    .4204985
+perf_drag_~d |   .0088154   .0045657     1.93   0.069    -.0007408    .0183716
+different_~s |  -.3814594   .0535409    -7.12   0.000    -.4935218    -.269397
+different_~m |    .001653   .0150148     0.11   0.913    -.0297734    .0330794
+ratio_tii_~d |   .0233073   .0256395     0.91   0.375    -.0303568    .0769714
+       _cons |   .4368741   .0352275    12.40   0.000     .3631421    .5106061
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -310,32 +310,32 @@ Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 warning: missing F statistic; dropped variables due to collinearity or too few 
 > clusters
 
-HDFE Linear regression                            Number of obs   =      1,679
+HDFE Linear regression                            Number of obs   =      1,703
 Absorbing 2 HDFE groups                           F(  12,     19) =          .
 Statistics robust to heteroskedasticity           Prob > F        =          .
-                                                  R-squared       =     0.4662
-                                                  Adj R-squared   =     0.4395
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.4601
-Number of clusters (quarter) =         20         Root MSE        =     0.3744
+                                                  R-squared       =     0.4717
+                                                  Adj R-squared   =     0.4456
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.4667
+Number of clusters (quarter) =         20         Root MSE        =     0.3724
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
      highfee | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-  firstmover |   .5327728    .209188     2.55   0.020     .0949374    .9706083
-firstmover~x |   .0475115    .250699     0.19   0.852    -.4772076    .5722305
-marketing_~d |   .1471744   .1527173     0.96   0.347    -.1724665    .4668154
-net_expens~d |   .1536153   .1416066     1.08   0.292    -.1427707    .4500013
-stock_tweets |   .0142016   .0101125     1.40   0.176    -.0069641    .0353674
-lend_byaum~d |  -.0669877   .0620925    -1.08   0.294    -.1969487    .0629734
-tr_error_b~d |   .0640453   .0285847     2.24   0.037     .0042169    .1238737
-creation_f~d |   .2481357   .0914953     2.71   0.014     .0566338    .4396377
-perf_drag_~d |   .0057538     .00773     0.74   0.466    -.0104253     .021933
-different_~s |  -.2898327   .0516475    -5.61   0.000    -.3979321   -.1817333
-different_~m |   .0062329   .0150228     0.41   0.683    -.0252102     .037676
-ratio_tii_~d |   .0194477   .0246328     0.79   0.440    -.0321094    .0710048
-       _cons |   .3795024   .0338013    11.23   0.000     .3087556    .4502493
+  firstmover |   .5341522   .2073266     2.58   0.018     .1002126    .9680918
+firstmover~x |   .0482694   .2493036     0.19   0.849     -.473529    .5700678
+marketing_~d |   .1497641   .1525902     0.98   0.339     -.169611    .4691391
+net_expens~d |   .1576965   .1418103     1.11   0.280     -.139116    .4545089
+stock_tweets |   .0138997   .0100646     1.38   0.183    -.0071657    .0349651
+lend_byaum~d |  -.0622685   .0642799    -0.97   0.345    -.1968079    .0722708
+tr_error_b~d |   .0644757    .028499     2.26   0.036     .0048266    .1241248
+creation_f~d |   .2460721   .0906776     2.71   0.014     .0562816    .4358625
+perf_drag_~d |   .0058917   .0073123     0.81   0.430    -.0094132    .0211965
+different_~s |  -.4045938   .0501185    -8.07   0.000    -.5094929   -.2996946
+different_~m |   .0024321   .0148491     0.16   0.872    -.0286474    .0335115
+ratio_tii_~d |    .022824    .025368     0.90   0.380    -.0302718    .0759198
+       _cons |   .4464628   .0367951    12.13   0.000     .3694498    .5234757
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -363,32 +363,32 @@ Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 warning: missing F statistic; dropped variables due to collinearity or too few 
 > clusters
 
-HDFE Linear regression                            Number of obs   =      1,679
+HDFE Linear regression                            Number of obs   =      1,703
 Absorbing 2 HDFE groups                           F(  12,     19) =          .
 Statistics robust to heteroskedasticity           Prob > F        =          .
-                                                  R-squared       =     0.4717
-                                                  Adj R-squared   =     0.4453
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.4657
-Number of clusters (quarter) =         20         Root MSE        =     0.3725
+                                                  R-squared       =     0.4762
+                                                  Adj R-squared   =     0.4503
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.4712
+Number of clusters (quarter) =         20         Root MSE        =     0.3708
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
      highfee | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-  firstmover |    .405902   .1856945     2.19   0.042     .0172389    .7945652
-firstmover~m |    .203985   .1750894     1.17   0.258    -.1624813    .5704514
-marketing_~d |   .1388107   .1032071     1.34   0.194    -.0772043    .3548256
-net_expens~d |   .1378362   .1020802     1.35   0.193      -.07582    .3514924
-stock_tweets |   .0185023   .0089579     2.07   0.053    -.0002468    .0372514
-lend_byaum~d |  -.0485617   .0685603    -0.71   0.487      -.19206    .0949367
-tr_error_b~d |   .0696315   .0262899     2.65   0.016      .014606     .124657
-creation_f~d |   .2249174   .0878639     2.56   0.019     .0410161    .4088188
-perf_drag_~d |   .0061806   .0075098     0.82   0.421    -.0095375    .0218987
-different_~s |  -.2659232    .073207    -3.63   0.002    -.4191472   -.1126992
-different_~m |  -.0939894   .0894497    -1.05   0.307    -.2812097    .0932309
-ratio_tii_~d |   .0184701   .0221318     0.83   0.414    -.0278523    .0647926
-       _cons |   .4443085   .0606835     7.32   0.000     .3172965    .5713205
+  firstmover |   .4230604   .1830426     2.31   0.032     .0399479     .806173
+firstmover~m |   .1848264   .1724208     1.07   0.297    -.1760545    .5457073
+marketing_~d |   .1411717    .102881     1.37   0.186    -.0741607    .3565041
+net_expens~d |   .1426357   .1023678     1.39   0.180    -.0716225     .356894
+stock_tweets |    .017911   .0086926     2.06   0.053    -.0002828    .0361048
+lend_byaum~d |  -.0452918   .0709919    -0.64   0.531    -.1938796     .103296
+tr_error_b~d |   .0699317   .0261778     2.67   0.015     .0151409    .1247225
+creation_f~d |   .2242176   .0873208     2.57   0.019      .041453    .4069822
+perf_drag_~d |   .0063826   .0067776     0.94   0.358    -.0078031    .0205684
+different_~s |  -.3738893   .0691343    -5.41   0.000     -.518589   -.2291895
+different_~m |  -.0904794   .0900454    -1.00   0.328    -.2789466    .0979878
+ratio_tii_~d |   .0219018   .0230963     0.95   0.355    -.0264393     .070243
+       _cons |   .5017267   .0638462     7.86   0.000     .3680951    .6353583
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:

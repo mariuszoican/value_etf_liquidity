@@ -55,7 +55,7 @@ Notes:
 . egen time_existence_std=std(time_existence)
 
 . egen time_since_first_std=std(time_since_first)
-(56 missing values generated)
+(33 missing values generated)
 
 . egen log_aum_index_std=std(log_aum_index)
 
@@ -112,21 +112,21 @@ Notes:
 . reghdfe ratio_tra highfee , absorb(index quarter) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 
-HDFE Linear regression                            Number of obs   =      1,649
-Absorbing 2 HDFE groups                           F(   1,     19) =       9.38
-Statistics robust to heteroskedasticity           Prob > F        =     0.0064
-                                                  R-squared       =     0.5260
-                                                  Adj R-squared   =     0.5052
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.0318
-Number of clusters (quarter) =         20         Root MSE        =     0.1503
+HDFE Linear regression                            Number of obs   =      1,673
+Absorbing 2 HDFE groups                           F(   1,     19) =       8.80
+Statistics robust to heteroskedasticity           Prob > F        =     0.0079
+                                                  R-squared       =     0.5224
+                                                  Adj R-squared   =     0.5019
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.0309
+Number of clusters (quarter) =         20         Root MSE        =     0.1501
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0536994   .0175303     3.06   0.006     .0170081    .0903908
-       _cons |   .1988785   .0116306    17.10   0.000     .1745354    .2232217
+     highfee |   .0528074   .0178058     2.97   0.008     .0155395    .0900753
+       _cons |   .1986657   .0118073    16.83   0.000     .1739528    .2233786
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -150,31 +150,31 @@ dir : seeout
 > ticker quarter)
 (MWFE estimator converged in 5 iterations)
 
-HDFE Linear regression                            Number of obs   =      1,649
-Absorbing 2 HDFE groups                           F(  11,     19) =       4.77
-Statistics robust to heteroskedasticity           Prob > F        =     0.0015
-                                                  R-squared       =     0.5661
-                                                  Adj R-squared   =     0.5442
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.1138
-Number of clusters (quarter) =         20         Root MSE        =     0.1442
+HDFE Linear regression                            Number of obs   =      1,673
+Absorbing 2 HDFE groups                           F(  11,     19) =       6.27
+Statistics robust to heteroskedasticity           Prob > F        =     0.0003
+                                                  R-squared       =     0.5653
+                                                  Adj R-squared   =     0.5438
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.1179
+Number of clusters (quarter) =         20         Root MSE        =     0.1437
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0735639     .01819     4.04   0.001     .0354918    .1116359
-stock_twee~d |   .0046873   .0056862     0.82   0.420    -.0072141    .0165888
-log_aum_in~d |  -.0959091   .0694165    -1.38   0.183    -.2411995    .0493814
-lend_byaum~d |  -.0198473    .010165    -1.95   0.066    -.0411229    .0014284
-marketing_~d |   .0843189   .0239922     3.51   0.002     .0341026    .1345351
-net_expens~d |   .0653031   .0222875     2.93   0.009     .0186547    .1119515
-tr_error_b~d |     .00402   .0095467     0.42   0.678    -.0159614    .0240014
-perf_drag_~d |   -.002002   .0042175    -0.47   0.640    -.0108293    .0068254
-       d_uit |  -.0523152   .0571562    -0.92   0.372    -.1719445    .0673141
-time_exist~d |  -.0354733   .0178339    -1.99   0.061    -.0728001    .0018534
-time_since~d |   .0333368   .0328924     1.01   0.324    -.0355077    .1021813
-       _cons |   .1922519   .0111606    17.23   0.000     .1688926    .2156113
+     highfee |   .0754561   .0183777     4.11   0.001     .0369911    .1139211
+stock_twee~d |   .0044416    .005611     0.79   0.438    -.0073024    .0161856
+log_aum_in~d |  -.0984311   .0688233    -1.43   0.169    -.2424799    .0456177
+lend_byaum~d |  -.0233867   .0109944    -2.13   0.047    -.0463982   -.0003752
+marketing_~d |   .0808601   .0219807     3.68   0.002     .0348539    .1268663
+net_expens~d |   .0606502   .0214601     2.83   0.011     .0157336    .1055668
+tr_error_b~d |   .0019072   .0097932     0.19   0.848    -.0185902    .0224046
+perf_drag_~d |  -.0032464   .0040273    -0.81   0.430    -.0116756    .0051828
+       d_uit |   -.045652    .055804    -0.82   0.423    -.1624511     .071147
+time_exist~d |  -.0366929   .0186613    -1.97   0.064    -.0757513    .0023656
+time_since~d |    .032367   .0433657     0.75   0.465    -.0583985    .1231325
+       _cons |   .1899573   .0111974    16.96   0.000     .1665208    .2133938
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -197,23 +197,23 @@ dir : seeout
 > uarter) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 
-HDFE Linear regression                            Number of obs   =      1,649
-Absorbing 2 HDFE groups                           F(   3,     19) =       5.46
-Statistics robust to heteroskedasticity           Prob > F        =     0.0071
-                                                  R-squared       =     0.5303
-                                                  Adj R-squared   =     0.5092
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.0407
-Number of clusters (quarter) =         20         Root MSE        =     0.1497
+HDFE Linear regression                            Number of obs   =      1,673
+Absorbing 2 HDFE groups                           F(   3,     19) =       5.50
+Statistics robust to heteroskedasticity           Prob > F        =     0.0068
+                                                  R-squared       =     0.5272
+                                                  Adj R-squared   =     0.5062
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.0405
+Number of clusters (quarter) =         20         Root MSE        =     0.1495
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0528867   .0176961     2.99   0.008     .0158484    .0899251
-stock_twee~d |   .0021743   .0027543     0.79   0.440    -.0035905    .0079391
-log_aum_in~d |  -.0934797   .0690542    -1.35   0.192    -.2380119    .0510525
-       _cons |   .2001216   .0117255    17.07   0.000     .1755799    .2246633
+     highfee |   .0519742   .0179868     2.89   0.009     .0143275    .0896209
+stock_twee~d |   .0023315   .0029214     0.80   0.435     -.003783    .0084459
+log_aum_in~d |  -.0974768   .0678123    -1.44   0.167    -.2394096     .044456
+       _cons |   .1998274   .0118957    16.80   0.000     .1749293    .2247254
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -235,25 +235,25 @@ dir : seeout
 > td marketing_fee_bps_std, absorb(index quarter) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 
-HDFE Linear regression                            Number of obs   =      1,649
-Absorbing 2 HDFE groups                           F(   5,     19) =       6.08
-Statistics robust to heteroskedasticity           Prob > F        =     0.0016
-                                                  R-squared       =     0.5441
-                                                  Adj R-squared   =     0.5230
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.0689
-Number of clusters (quarter) =         20         Root MSE        =     0.1476
+HDFE Linear regression                            Number of obs   =      1,673
+Absorbing 2 HDFE groups                           F(   5,     19) =       6.12
+Statistics robust to heteroskedasticity           Prob > F        =     0.0015
+                                                  R-squared       =     0.5449
+                                                  Adj R-squared   =     0.5241
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.0764
+Number of clusters (quarter) =         20         Root MSE        =     0.1467
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0609042   .0168225     3.62   0.002     .0256944     .096114
-stock_twee~d |   .0015859   .0023497     0.67   0.508     -.003332    .0065038
-log_aum_in~d |  -.0976142   .0691703    -1.41   0.174    -.2423894     .047161
-lend_byaum~d |  -.0250519   .0086849    -2.88   0.009    -.0432296   -.0068743
-marketing_~d |   .0276131   .0128767     2.14   0.045     .0006618    .0545644
-       _cons |   .1963792   .0111196    17.66   0.000     .1731056    .2196529
+     highfee |   .0615527   .0166522     3.70   0.002     .0266992    .0964062
+stock_twee~d |   .0015974   .0024352     0.66   0.520    -.0034995    .0066943
+log_aum_in~d |  -.1016472   .0680235    -1.49   0.152     -.244022    .0407275
+lend_byaum~d |  -.0289864   .0103429    -2.80   0.011    -.0506344   -.0073383
+marketing_~d |   .0301042   .0127328     2.36   0.029     .0034542    .0567543
+       _cons |   .1946229   .0110574    17.60   0.000     .1714796    .2177663
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -276,26 +276,26 @@ dir : seeout
 > er quarter)
 (MWFE estimator converged in 5 iterations)
 
-HDFE Linear regression                            Number of obs   =      1,649
-Absorbing 2 HDFE groups                           F(   6,     19) =       5.15
-Statistics robust to heteroskedasticity           Prob > F        =     0.0027
-                                                  R-squared       =     0.5573
-                                                  Adj R-squared   =     0.5365
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.0959
-Number of clusters (quarter) =         20         Root MSE        =     0.1455
+HDFE Linear regression                            Number of obs   =      1,673
+Absorbing 2 HDFE groups                           F(   6,     19) =       5.28
+Statistics robust to heteroskedasticity           Prob > F        =     0.0024
+                                                  R-squared       =     0.5566
+                                                  Adj R-squared   =     0.5361
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.1003
+Number of clusters (quarter) =         20         Root MSE        =     0.1449
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0439542    .015592     2.82   0.011     .0113197    .0765886
-stock_twee~d |   .0010332   .0020669     0.50   0.623    -.0032928    .0053592
-log_aum_in~d |   -.101144    .068766    -1.47   0.158    -.2450729    .0427848
-lend_byaum~d |  -.0231088   .0086885    -2.66   0.015    -.0412941   -.0049236
-marketing_~d |   .0817308   .0235172     3.48   0.003     .0325087     .130953
-net_expens~d |   .0648084   .0214982     3.01   0.007     .0198121    .1098047
-       _cons |   .2050454   .0104596    19.60   0.000     .1831532    .2269376
+     highfee |   .0450982   .0157367     2.87   0.010     .0121608    .0780356
+stock_twee~d |   .0011064   .0021735     0.51   0.617    -.0034428    .0056556
+log_aum_in~d |  -.1052437   .0676751    -1.56   0.136    -.2468894    .0364019
+lend_byaum~d |  -.0272819   .0101171    -2.70   0.014    -.0484572   -.0061066
+marketing_~d |   .0811655   .0228317     3.55   0.002     .0333782    .1289528
+net_expens~d |   .0611409   .0204334     2.99   0.007     .0183733    .1039084
+       _cons |   .2029639   .0104927    19.34   0.000     .1810024    .2249254
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -318,30 +318,30 @@ dir : seeout
 > nce_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 
-HDFE Linear regression                            Number of obs   =      1,649
-Absorbing 2 HDFE groups                           F(  10,     19) =       4.64
-Statistics robust to heteroskedasticity           Prob > F        =     0.0020
-                                                  R-squared       =     0.5536
-                                                  Adj R-squared   =     0.5314
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.0882
-Number of clusters (quarter) =         20         Root MSE        =     0.1463
+HDFE Linear regression                            Number of obs   =      1,673
+Absorbing 2 HDFE groups                           F(  10,     19) =       5.64
+Statistics robust to heteroskedasticity           Prob > F        =     0.0006
+                                                  R-squared       =     0.5545
+                                                  Adj R-squared   =     0.5327
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.0960
+Number of clusters (quarter) =         20         Root MSE        =     0.1454
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0904549   .0199022     4.54   0.000     .0487991    .1321107
-stock_twee~d |   .0013136   .0033851     0.39   0.702    -.0057714    .0083986
-log_aum_in~d |  -.0914001   .0699322    -1.31   0.207    -.2377698    .0549696
-lend_byaum~d |   -.021003   .0106481    -1.97   0.063    -.0432898    .0012838
-marketing_~d |   .0296163   .0144344     2.05   0.054    -.0005952    .0598277
-tr_error_b~d |   .0043152   .0089038     0.48   0.633    -.0143207     .022951
-perf_drag_~d |   -.002493   .0042807    -0.58   0.567    -.0114526    .0064666
-       d_uit |   .0143878   .0360725     0.40   0.694    -.0611129    .0898884
-time_exist~d |  -.0385914   .0181319    -2.13   0.047    -.0765418   -.0006409
-time_since~d |   .0362801   .0327842     1.11   0.282    -.0323379    .1048982
-       _cons |   .1820776   .0118654    15.35   0.000      .157243    .2069121
+     highfee |   .0916718   .0198699     4.61   0.000     .0500836    .1332599
+stock_twee~d |   .0012834   .0034649     0.37   0.715    -.0059688    .0085355
+log_aum_in~d |   -.093919   .0692858    -1.36   0.191    -.2389359    .0510979
+lend_byaum~d |  -.0246175   .0114283    -2.15   0.044    -.0485373   -.0006977
+marketing_~d |   .0304033    .013582     2.24   0.037     .0019759    .0588308
+tr_error_b~d |   .0021346   .0091931     0.23   0.819    -.0171067    .0213759
+perf_drag_~d |  -.0037157   .0040346    -0.92   0.369    -.0121601    .0047288
+       d_uit |   .0161062   .0362959     0.44   0.662    -.0598619    .0920743
+time_exist~d |  -.0399537   .0186909    -2.14   0.046    -.0790742   -.0008332
+time_since~d |   .0376758   .0430903     0.87   0.393    -.0525133    .1278648
+       _cons |   .1803171   .0118251    15.25   0.000     .1555669    .2050672
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:

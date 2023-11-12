@@ -216,7 +216,7 @@ if __name__ == "__main__":
 
     # load 13-F based duration measure and aggregate across managers (Cremers and Pareek, 2016)
     # -----------------------------------------------------------------------------------------
-    d13furg = pd.read_csv(f"{cfg.data_folder}/duration_13F.csv.gz", index_col=0)
+    d13furg = pd.read_csv(f"{cfg.data_folder}/duration_13F_v2.csv.gz", index_col=0)
     d13furg["year"] = d13furg["quarter"].apply(lambda x: int(x / 10))
     d13furg["dollar_pos"] = d13furg["shares"] * d13furg["prc_crsp"]
     d13furg = d13furg.merge(
@@ -464,17 +464,22 @@ if __name__ == "__main__":
     from linearmodels.panel import PanelOLS
 
     etf_graph = etf_graph.set_index(["index_id", "quarter"])
+    etf_graph["net_expense"] = (
+        etf_graph["other_expenses"]
+        - etf_graph["marketing_fee_bps"] / 100
+        + etf_graph["fee_waivers"]
+    )
     etf_graph = etf_graph.dropna()
     inv_dur_reg = PanelOLS.from_formula(
         """mgr_duration ~  EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
-                                    marketing_fee_bps + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first""",
+                                    marketing_fee_bps + net_expense + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first""",
         data=etf_graph,
     ).fit()
     etf_graph["dur_resid"] = inv_dur_reg.resids
 
     rat_tra_reg = PanelOLS.from_formula(
         """ratio_tra ~  EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
-                                    marketing_fee_bps + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first""",
+                                    marketing_fee_bps + net_expense + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first""",
         data=etf_graph,
     ).fit()
     etf_graph["tra_resid"] = rat_tra_reg.resids
@@ -490,24 +495,24 @@ if __name__ == "__main__":
     gs = gridspec.GridSpec(1, 2)
 
     # ---------
-    ax = fig.add_subplot(gs[0, 1])
+    ax = fig.add_subplot(gs[0, 0])
     ax = settings_plot(ax)
 
     sns.barplot(
         data=etf_graph,
         y="highfee",
-        x="dur_resid",
+        x="ratio_tra",
         capsize=0.1,
         errorbar="se",
         palette="Blues",
         orient="h",
     )
     plt.ylabel("ETF management fee", fontsize=18)
-    plt.xlabel("Residual investor holding duration", fontsize=18)
+    plt.xlabel("AUM share of transient investors", fontsize=18)
     ax.set_yticklabels(["Low fee", "High fee"], fontsize=18)
-    plt.title("Panel (b): Investor holding duration", fontsize=18)
+    plt.title("Panel (a): No controls", fontsize=18)
 
-    ax = fig.add_subplot(gs[0, 0])
+    ax = fig.add_subplot(gs[0, 1])
     ax = settings_plot(ax)
 
     sns.barplot(
@@ -522,7 +527,7 @@ if __name__ == "__main__":
     plt.ylabel("ETF management fee", fontsize=18)
     plt.xlabel("Residual AUM share of transient investors", fontsize=18)
     ax.set_yticklabels(["Low fee", "High fee"], fontsize=18)
-    plt.title("Panel (a): AUM share of transient investors", fontsize=18)
+    plt.title("Panel (b): All controls", fontsize=18)
 
     path = "../output/"
 
@@ -605,7 +610,7 @@ if __name__ == "__main__":
         fontsize=16,
         title_fontsize=18,
         frameon=False,
-        labels=["Transient", "Quasi-indexers"],
+        labels=["Quasi-indexers", "Transient"],
     )
     plt.title("Panel (c): Holding durations by investor horizon", fontsize=18)
 
