@@ -143,10 +143,10 @@ Notes:
 . 
 . 
 . 
-. reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std mar
-> keting_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit 
-> ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarte
-> r)
+. reghdfe mer_bps highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std
+>  marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_
+> uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker qu
+> arter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -166,19 +166,19 @@ Number of clusters (quarter) =         20         Root MSE        =     6.1438
              |               Robust
      mer_bps | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   10.94778   1.279792     8.55   0.000     8.269145    13.62642
-stock_tweets |  -.4040258   .3247184    -1.24   0.229    -1.083669    .2756176
-log_aum_in~d |  -.0491782   .1749432    -0.28   0.782    -.4153384     .316982
-lend_byaum~d |   1.445866   .6394328     2.26   0.036     .1075177    2.784214
-marketing_~d |  -3.353147   1.308423    -2.56   0.019    -6.091708   -.6145852
-net_expens~d |   -.577342   1.446096    -0.40   0.694    -3.604056    2.449372
-tr_error_b~d |   4.507675   1.256738     3.59   0.002     1.877291    7.138059
-perf_drag_~d |   1.573978   .6794618     2.32   0.032     .1518477    2.996107
-       d_uit |   2.468924   3.828274     0.64   0.527    -5.543746    10.48159
-   ratio_tii |  -.0036443   .0160531    -0.23   0.823    -.0372438    .0299552
-logret_q_lag |   1.830764   5.192792     0.35   0.728    -9.037874     12.6994
-  tii_return |  -.0133318    .092855    -0.14   0.887    -.2076796    .1810159
-       _cons |   20.21393   1.555858    12.99   0.000     16.95749    23.47038
+     highfee |   10.94778   1.279797     8.55   0.000     8.269136    13.62643
+stock_twee~d |    -.45368   .3646091    -1.24   0.229    -1.216816    .3094555
+log_aum_in~d |  -.0491782   .1751895    -0.28   0.782     -.415854    .3174976
+lend_byaum~d |   1.445866   .6394324     2.26   0.036     .1075185    2.784213
+marketing_~d |  -3.353147   1.308425    -2.56   0.019    -6.091711   -.6145823
+net_expens~d |   -.577342   1.446098    -0.40   0.694    -3.604059    2.449375
+tr_error_b~d |   4.507675   1.256736     3.59   0.002     1.877296    7.138054
+perf_drag_~d |   1.573978   .6794689     2.32   0.032     .1518327    2.996122
+       d_uit |   2.468924    3.82828     0.64   0.527    -5.543757    10.48161
+   ratio_tii |  -.0036443    .016052    -0.23   0.823    -.0372415     .029953
+logret_q_lag |   1.830764   5.192775     0.35   0.728    -9.037839    12.69937
+  tii_return |  -.0133318   .0928549    -0.14   0.887    -.2076793    .1810156
+       _cons |   20.20199   1.557476    12.97   0.000     16.94215    23.46182
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -196,10 +196,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std m
-> arketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_ui
-> t ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quar
-> ter)
+. reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_s
+> td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
+> d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker 
+> quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -220,18 +220,18 @@ Number of clusters (quarter) =         20         Root MSE        =     0.2589
    mkt_share | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
      highfee |   .3776701    .068923     5.48   0.000     .2334126    .5219277
-stock_tweets |   .0156018   .0155229     1.01   0.327     -.016888    .0480915
-log_aum_in~d |   .0271339   .0076964     3.53   0.002     .0110253    .0432426
+stock_twee~d |   .0175192   .0174307     1.01   0.327    -.0189638    .0540021
+log_aum_in~d |   .0271339   .0076949     3.53   0.002     .0110284    .0432395
 lend_byaum~d |   .1177254   .0309989     3.80   0.001      .052844    .1826068
-marketing_~d |  -.0881314   .0735486    -1.20   0.246    -.2420703    .0658074
+marketing_~d |  -.0881314   .0735486    -1.20   0.246    -.2420703    .0658075
 net_expens~d |   .0126017   .0900528     0.14   0.890     -.175881    .2010845
-tr_error_b~d |  -.0301595   .0263181    -1.15   0.266     -.085244     .024925
-perf_drag_~d |  -.0189881   .0103659    -1.83   0.083    -.0406842    .0027081
-       d_uit |  -.5065963   .1921212    -2.64   0.016    -.9087105    -.104482
-   ratio_tii |  -.0006431   .0009226    -0.70   0.494    -.0025742    .0012879
-logret_q_lag |   .2693387   .0307519     8.76   0.000     .2049742    .3337032
-  tii_return |  -.0046044   .0005235    -8.79   0.000    -.0057001   -.0035086
-       _cons |   .3728635   .0880714     4.23   0.000      .188528    .5571989
+tr_error_b~d |  -.0301595   .0263181    -1.15   0.266    -.0852439    .0249249
+perf_drag_~d |  -.0189881    .010366    -1.83   0.083    -.0406843    .0027082
+       d_uit |  -.5065963   .1921218    -2.64   0.016    -.9087118   -.1044807
+   ratio_tii |  -.0006431   .0009226    -0.70   0.494    -.0025742     .001288
+logret_q_lag |   .2693387   .0307499     8.76   0.000     .2049784    .3336989
+  tii_return |  -.0046044   .0005234    -8.80   0.000    -.0056999   -.0035088
+       _cons |   .3733248   .0881793     4.23   0.000     .1887634    .5578862
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -249,10 +249,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps
-> _std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_st
-> d d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticke
-> r quarter)
+. reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum
+> _bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bp
+> s_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl t
+> icker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -272,19 +272,19 @@ Number of clusters (quarter) =         20         Root MSE        =     6.6035
              |               Robust
 spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |  -3.141165   .8947754    -3.51   0.002    -5.013951   -1.268378
-stock_tweets |  -.2797755    .135986    -2.06   0.054    -.5643974    .0048464
-log_aum_in~d |  -3.798618   1.607164    -2.36   0.029    -7.162452   -.4347846
-lend_byaum~d |   -2.07834   .4005643    -5.19   0.000     -2.91673   -1.239949
-marketing_~d |   .8967083   .8837882     1.01   0.323    -.9530816    2.746498
-net_expens~d |  -1.154845   .7343219    -1.57   0.132    -2.691799    .3821082
-tr_error_b~d |  -1.488432   .6594617    -2.26   0.036    -2.868701   -.1081627
-perf_drag_~d |  -.0643977   .3091562    -0.21   0.837    -.7114692    .5826737
-       d_uit |   4.917001   1.573788     3.12   0.006     1.623024    8.210977
-   ratio_tii |   .0076895   .0210484     0.37   0.719    -.0363652    .0517442
-logret_q_lag |  -10.51803   8.205537    -1.28   0.215    -27.69242    6.656357
-  tii_return |    .158699   .1112468     1.43   0.170    -.0741432    .3915411
-       _cons |   7.244957   1.648251     4.40   0.000     3.795129    10.69479
+     highfee |  -3.141165   .8947638    -3.51   0.002    -5.013927   -1.268403
+stock_twee~d |  -.3141595   .1524537    -2.06   0.053    -.6332487    .0049297
+log_aum_in~d |  -3.798618   1.607164    -2.36   0.029    -7.162452   -.4347848
+lend_byaum~d |   -2.07834   .4005652    -5.19   0.000    -2.916732   -1.239947
+marketing_~d |   .8967083   .8837881     1.01   0.323    -.9530814    2.746498
+net_expens~d |  -1.154845   .7343228    -1.57   0.132      -2.6918      .38211
+tr_error_b~d |  -1.488432   .6594576    -2.26   0.036    -2.868692   -.1081714
+perf_drag_~d |  -.0643977   .3091263    -0.21   0.837    -.7114065     .582611
+       d_uit |   4.917001   1.573686     3.12   0.006     1.623238    8.210763
+   ratio_tii |   .0076895     .02105     0.37   0.719    -.0363687    .0517477
+logret_q_lag |  -10.51803   8.205577    -1.28   0.215     -27.6925    6.656442
+  tii_return |    .158699   .1112466     1.43   0.170    -.0741428    .3915407
+       _cons |   7.236685   1.649806     4.39   0.000     3.783601    10.68977
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -302,10 +302,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std 
-> marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_u
-> it ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker qua
-> rter)
+. reghdfe log_volume highfee stock_tweets_std log_aum_index_std lend_byaum_bps_
+> std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std
+>  d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker
+>  quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -325,19 +325,19 @@ Number of clusters (quarter) =         20         Root MSE        =     1.3444
              |               Robust
   log_volume | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   1.990575   .3002687     6.63   0.000     1.362106    2.619045
-stock_tweets |   .0800854   .0597062     1.34   0.196    -.0448812    .2050519
-log_aum_in~d |   1.567879   .0424341    36.95   0.000     1.479064    1.656695
-lend_byaum~d |   .5227236   .1506002     3.47   0.003     .2075138    .8379333
+     highfee |   1.990575   .3002689     6.63   0.000     1.362105    2.619045
+stock_twee~d |   .0899278   .0670435     1.34   0.196     -.050396    .2302515
+log_aum_in~d |   1.567879   .0424402    36.94   0.000     1.479051    1.656708
+lend_byaum~d |   .5227236   .1506001     3.47   0.003     .2075139    .8379332
 marketing_~d |  -.1556235   .3471573    -0.45   0.659    -.8822321    .5709851
-net_expens~d |   .1538811   .3867357     0.40   0.695    -.6555661    .9633283
-tr_error_b~d |     .27325   .1541239     1.77   0.092     -.049335     .595835
-perf_drag_~d |    .049107   .0547569     0.90   0.381    -.0655006    .1637145
-       d_uit |  -.5875296   .7648579    -0.77   0.452    -2.188396    1.013336
+net_expens~d |   .1538811   .3867355     0.40   0.695    -.6555656    .9633278
+tr_error_b~d |     .27325   .1541241     1.77   0.092    -.0493354    .5958354
+perf_drag_~d |    .049107   .0547559     0.90   0.381    -.0654984    .1637124
+       d_uit |  -.5875296   .7648584    -0.77   0.452    -2.188397    1.013337
    ratio_tii |   .0005472   .0048314     0.11   0.911    -.0095651    .0106594
-logret_q_lag |  -1.452656   1.598675    -0.91   0.375    -4.798721    1.893409
+logret_q_lag |  -1.452656   1.598676    -0.91   0.375    -4.798724    1.893412
   tii_return |   .0081669   .0200658     0.41   0.689    -.0338313    .0501652
-       _cons |   16.44048    .443745    37.05   0.000     15.51171    17.36925
+       _cons |   16.44285   .4440665    37.03   0.000     15.51341    17.37229
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -355,10 +355,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_s
-> td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
-> d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker 
-> quarter)
+. reghdfe turnover_frac highfee stock_tweets_std log_aum_index_std lend_byaum_b
+> ps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_
+> std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl tic
+> ker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -378,19 +378,19 @@ Number of clusters (quarter) =         20         Root MSE        =     5.3747
              |               Robust
 turnover_f~c | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |    5.45449   .9428018     5.79   0.000     3.481183    7.427797
-stock_tweets |   1.513174   .3504873     4.32   0.000     .7795955    2.246752
-log_aum_in~d |  -2.693261   1.323723    -2.03   0.056    -5.463846    .0773228
-lend_byaum~d |   .2328097   .2698493     0.86   0.399    -.3319915    .7976108
-marketing_~d |   3.131787   1.130462     2.77   0.012     .7657032    5.497871
-net_expens~d |   2.714337    1.16178     2.34   0.031     .2827042    5.145971
-tr_error_b~d |   2.675093   .6736726     3.97   0.001      1.26508    4.085106
-perf_drag_~d |   .1705231   .1701906     1.00   0.329    -.1856899     .526736
-       d_uit |  -.3148462   3.833033    -0.08   0.935    -8.337476    7.707783
-   ratio_tii |   .0474814   .0144172     3.29   0.004     .0173059    .0776569
-logret_q_lag |  -7.064472    5.48113    -1.29   0.213    -18.53661    4.407665
-  tii_return |   .0566676   .0898341     0.63   0.536    -.1313573    .2446925
-       _cons |  -.5812535   1.294922    -0.45   0.659    -3.291556    2.129049
+     highfee |    5.45449   .9428056     5.79   0.000     3.481175    7.427804
+stock_twee~d |   1.699141   .3935583     4.32   0.000      .875414    2.522868
+log_aum_in~d |  -2.693261   1.323724    -2.03   0.056    -5.463848    .0773253
+lend_byaum~d |   .2328097   .2698557     0.86   0.399    -.3320047    .7976241
+marketing_~d |   3.131787   1.130462     2.77   0.012     .7657024    5.497872
+net_expens~d |   2.714337    1.16178     2.34   0.031     .2827037    5.145971
+tr_error_b~d |   2.675093    .673676     3.97   0.001     1.265073    4.085113
+perf_drag_~d |   .1705231   .1702077     1.00   0.329    -.1857257    .5267719
+       d_uit |  -.3148461   3.833118    -0.08   0.935    -8.337654    7.707962
+   ratio_tii |   .0474814   .0144204     3.29   0.004     .0172991    .0776636
+logret_q_lag |  -7.064472   5.481117    -1.29   0.213    -18.53658    4.407638
+  tii_return |   .0566676   .0898348     0.63   0.536    -.1313587    .2446939
+       _cons |  -.5365117   1.294585    -0.41   0.683    -3.246108    2.173085
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -408,10 +408,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std mark
-> eting_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit r
-> atio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter
-> )
+. reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std 
+> marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_u
+> it ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker qua
+> rter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -432,18 +432,18 @@ Number of clusters (quarter) =         20         Root MSE        =     0.9313
       log_pr | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
      highfee |   1.706859    .226965     7.52   0.000     1.231815    2.181902
-stock_tweets |   .0064542   .0214155     0.30   0.766    -.0383688    .0512773
+stock_twee~d |   .0072475   .0240475     0.30   0.766    -.0430845    .0575794
 log_aum_in~d |   1.602297   .0819151    19.56   0.000     1.430846    1.773747
 lend_byaum~d |   .5572588   .1051306     5.30   0.000     .3372179    .7772997
 marketing_~d |  -.7821295   .2636305    -2.97   0.008    -1.333914   -.2303446
 net_expens~d |  -.2420297    .311375    -0.78   0.447     -.893745    .4096855
 tr_error_b~d |   .1582932   .1032084     1.53   0.142    -.0577244    .3743109
-perf_drag_~d |   .0283799   .0382125     0.74   0.467    -.0515998    .1083596
-       d_uit |  -.4852665   .3446135    -1.41   0.175    -1.206551    .2360179
-   ratio_tii |  -.0040686   .0036732    -1.11   0.282    -.0117567    .0036196
-logret_q_lag |   1.397407   .9437043     1.48   0.155     -.577789    3.372603
+perf_drag_~d |   .0283799   .0382121     0.74   0.467     -.051599    .1083588
+       d_uit |  -.4852665   .3446134    -1.41   0.175    -1.206551    .2360177
+   ratio_tii |  -.0040686   .0036733    -1.11   0.282    -.0117568    .0036197
+logret_q_lag |   1.397407   .9437032     1.48   0.155    -.5777867      3.3726
   tii_return |  -.0230332   .0119964    -1.92   0.070    -.0481418    .0020755
-       _cons |    24.3743   .3476681    70.11   0.000     23.64662    25.10197
+       _cons |   24.37449     .34798    70.05   0.000     23.64616    25.10282
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -464,10 +464,10 @@ dir : seeout
 . 
 . 
 . // Robustness
-. reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std mar
-> keting_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit 
-> ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(
-> cl ticker quarter)
+. reghdfe mer_bps highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std
+>  marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_
+> uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) 
+> vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -488,18 +488,18 @@ Number of clusters (quarter) =         20         Root MSE        =     3.2889
      mer_bps | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
      highfee |   8.404166   1.158042     7.26   0.000     5.980355    10.82798
-stock_tweets |  -.1279393   .1345344    -0.95   0.354    -.4095231    .1536444
-log_aum_in~d |   1.140573   .1061904    10.74   0.000     .9183137    1.362832
-lend_byaum~d |   .7996571   .7048997     1.13   0.271    -.6757151    2.275029
-marketing_~d |    4.93488   2.256428     2.19   0.041     .2121223    9.657638
+stock_twee~d |  -.1436629   .1510636    -0.95   0.354    -.4598426    .1725168
+log_aum_in~d |   1.140573   .1062182    10.74   0.000     .9182555     1.36289
+lend_byaum~d |   .7996571   .7048997     1.13   0.271     -.675715    2.275029
+marketing_~d |    4.93488   2.256428     2.19   0.041     .2121219    9.657638
 net_expens~d |   6.144886    2.21917     2.77   0.012     1.500109    10.78966
-tr_error_b~d |  -.7364834   .1098469    -6.70   0.000    -.9663957   -.5065712
-perf_drag_~d |  -.1241048   .0966901    -1.28   0.215    -.3264796      .07827
-       d_uit |   -3.15994   3.916639    -0.81   0.430    -11.35756    5.037679
-   ratio_tii |   .0016357   .0097822     0.17   0.869    -.0188387    .0221101
-logret_q_lag |  -3.093737   1.182533    -2.62   0.017    -5.568808   -.6186666
-  tii_return |  -.0036275   .0147284    -0.25   0.808    -.0344545    .0271995
-       _cons |   17.78775   .9664772    18.40   0.000     15.76489    19.81061
+tr_error_b~d |  -.7364834   .1098953    -6.70   0.000    -.9664969     -.50647
+perf_drag_~d |  -.1241048   .0967001    -1.28   0.215    -.3265005    .0782909
+       d_uit |   -3.15994   3.916634    -0.81   0.430    -11.35755    5.037669
+   ratio_tii |   .0016357    .009782     0.17   0.869    -.0188383    .0221096
+logret_q_lag |  -3.093737   1.183695    -2.61   0.017     -5.57124   -.6162344
+  tii_return |  -.0036275    .014742    -0.25   0.808    -.0344827    .0272278
+       _cons |   17.78397   .9658861    18.41   0.000     15.76235    19.80559
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -517,10 +517,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std m
-> arketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_ui
-> t ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vc
-> e(cl ticker quarter)
+. reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_s
+> td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
+> d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter
+> ) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -540,19 +540,19 @@ Number of clusters (quarter) =         20         Root MSE        =     0.2092
              |               Robust
    mkt_share | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .5672033   .0969863     5.85   0.000     .3642086     .770198
-stock_tweets |   .0047248   .0093888     0.50   0.621    -.0149261    .0243757
-log_aum_in~d |   .0264655   .0601462     0.44   0.665    -.0994219    .1523529
-lend_byaum~d |   .2268849   .1306687     1.74   0.099    -.0466079    .5003776
+     highfee |   .5672033   .0969878     5.85   0.000     .3642055    .7702011
+stock_twee~d |   .0053055   .0105425     0.50   0.621    -.0167603    .0273713
+log_aum_in~d |   .0264655   .0601471     0.44   0.665    -.0994239    .1523549
+lend_byaum~d |   .2268849   .1306688     1.74   0.099    -.0466081    .5003778
 marketing_~d |  -.2344027   .1125157    -2.08   0.051    -.4699007    .0010953
-net_expens~d |  -.2101175   .0852049    -2.47   0.023    -.3884534   -.0317816
-tr_error_b~d |  -.0679584   .0430908    -1.58   0.131    -.1581485    .0222316
-perf_drag_~d |  -.0215599   .0207679    -1.04   0.312    -.0650275    .0219078
-       d_uit |   -.393172   .1925873    -2.04   0.055    -.7962619    .0099179
+net_expens~d |  -.2101175   .0852048    -2.47   0.023    -.3884533   -.0317817
+tr_error_b~d |  -.0679584   .0430915    -1.58   0.131      -.15815    .0222331
+perf_drag_~d |  -.0215599   .0207671    -1.04   0.312    -.0650259    .0219062
+       d_uit |   -.393172   .1925804    -2.04   0.055    -.7962475    .0099034
    ratio_tii |  -.0011039   .0017361    -0.64   0.532    -.0047376    .0025299
-logret_q_lag |  -.3404714   .1459439    -2.33   0.031    -.6459354   -.0350073
-  tii_return |   .0029424   .0019499     1.51   0.148    -.0011388    .0070237
-       _cons |   .2768397   .1659382     1.67   0.112    -.0704729    .6241522
+logret_q_lag |  -.3404714   .1459421    -2.33   0.031    -.6459317   -.0350111
+  tii_return |   .0029424   .0019499     1.51   0.148    -.0011388    .0070236
+       _cons |   .2769794   .1659862     1.67   0.112    -.0704338    .6243926
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -570,10 +570,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps
-> _std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_st
-> d d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quart
-> er) vce(cl ticker quarter)
+. reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum
+> _bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bp
+> s_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index q
+> uarter) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -593,19 +593,19 @@ Number of clusters (quarter) =         20         Root MSE        =     5.5662
              |               Robust
 spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |  -3.983849   1.110786    -3.59   0.002     -6.30875   -1.658947
-stock_tweets |  -.2850595   .0774227    -3.68   0.002    -.4471071   -.1230118
+     highfee |  -3.983849   1.110845    -3.59   0.002    -6.308874   -1.658823
+stock_twee~d |  -.3200929   .0870026    -3.68   0.002    -.5021914   -.1379945
 log_aum_in~d |  -11.68111   7.331038    -1.59   0.128    -27.02515    3.662926
-lend_byaum~d |  -4.396565   1.663847    -2.64   0.016    -7.879036   -.9140936
-marketing_~d |  -2.873575   1.052667    -2.73   0.013    -5.076833   -.6703161
-net_expens~d |  -2.469749   .7689911    -3.21   0.005    -4.079266   -.8602322
-tr_error_b~d |   5.060201   1.757657     2.88   0.010     1.381383    8.739019
-perf_drag_~d |   1.485472   1.215185     1.22   0.236    -1.057938    4.028883
-       d_uit |   6.436951   1.681013     3.83   0.001      2.91855    9.955352
-   ratio_tii |  -.0022355   .0194073    -0.12   0.910    -.0428554    .0383844
-logret_q_lag |    5.97723   5.275739     1.13   0.271    -5.065019    17.01948
-  tii_return |   .0164448   .0751945     0.22   0.829    -.1409391    .1738287
-       _cons |   9.717621   1.788934     5.43   0.000     5.973338     13.4619
+lend_byaum~d |  -4.396565   1.663847    -2.64   0.016    -7.879037   -.9140925
+marketing_~d |  -2.873575   1.052685    -2.73   0.013     -5.07687   -.6702786
+net_expens~d |  -2.469749    .768994    -3.21   0.005    -4.079272   -.8602262
+tr_error_b~d |   5.060201   1.757691     2.88   0.010     1.381312     8.73909
+perf_drag_~d |   1.485472   1.215196     1.22   0.236    -1.057962    4.028907
+       d_uit |   6.436951   1.681141     3.83   0.001     2.918283    9.955619
+   ratio_tii |  -.0022355   .0194068    -0.12   0.910    -.0428545    .0383835
+logret_q_lag |    5.97723   5.275103     1.13   0.271    -5.063686    17.01815
+  tii_return |   .0164448   .0751802     0.22   0.829    -.1409092    .1737988
+       _cons |   9.709192   1.787484     5.43   0.000     5.967945    13.45044
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -623,10 +623,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std 
-> marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_u
-> it ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) v
-> ce(cl ticker quarter)
+. reghdfe log_volume highfee stock_tweets_std log_aum_index_std lend_byaum_bps_
+> std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std
+>  d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarte
+> r) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -646,19 +646,19 @@ Number of clusters (quarter) =         20         Root MSE        =     1.0264
              |               Robust
   log_volume | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   2.027307   .4404121     4.60   0.000     1.105514      2.9491
-stock_tweets |   .0045644   .0289809     0.16   0.877    -.0560933    .0652222
+     highfee |   2.027307   .4404122     4.60   0.000     1.105514      2.9491
+stock_twee~d |   .0051254   .0325429     0.16   0.877    -.0629877    .0732385
 log_aum_in~d |   1.574062    .430832     3.65   0.002     .6723202    2.475804
 lend_byaum~d |    .443511   .4299249     1.03   0.315    -.4563322    1.343354
 marketing_~d |  -1.252213     .57369    -2.18   0.042     -2.45296   -.0514659
 net_expens~d |  -1.442953   .4698203    -3.07   0.006    -2.426298   -.4596076
-tr_error_b~d |  -.2218336   .1870232    -1.19   0.250    -.6132777    .1696105
-perf_drag_~d |  -.0986514   .0806606    -1.22   0.236    -.2674761    .0701732
+tr_error_b~d |  -.2218336   .1870231    -1.19   0.250    -.6132774    .1696102
+perf_drag_~d |  -.0986514   .0806603    -1.22   0.236    -.2674754    .0701725
        d_uit |   1.331992   .8102345     1.64   0.117    -.3638487    3.027832
    ratio_tii |  -.0053819   .0075302    -0.71   0.483    -.0211428     .010379
-logret_q_lag |    -3.7377   1.834627    -2.04   0.056    -7.577617    .1022179
+logret_q_lag |    -3.7377   1.834626    -2.04   0.056    -7.577616    .1022168
   tii_return |   .0462811   .0201822     2.29   0.033     .0040392     .088523
-       _cons |   16.08628   .7411647    21.70   0.000     14.53501    17.63756
+       _cons |   16.08642   .7413152    21.70   0.000     14.53483    17.63801
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -676,10 +676,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_s
-> td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
-> d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter
-> ) vce(cl ticker quarter)
+. reghdfe turnover_frac highfee stock_tweets_std log_aum_index_std lend_byaum_b
+> ps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_
+> std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index qua
+> rter) vce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -699,19 +699,19 @@ Number of clusters (quarter) =         20         Root MSE        =     3.2715
              |               Robust
 turnover_f~c | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   1.613792   .9019338     1.79   0.090    -.2739772    3.501561
-stock_tweets |   1.307457   .3495069     3.74   0.001     .5759311    2.038984
-log_aum_in~d |  -.2591948   .7864388    -0.33   0.745     -1.90523     1.38684
-lend_byaum~d |   .5651489   .5684873     0.99   0.333    -.6247087    1.755007
-marketing_~d |  -1.058092   .9417136    -1.12   0.275    -3.029122    .9129368
-net_expens~d |    -1.9353   1.108272    -1.75   0.097    -4.254939    .3843402
-tr_error_b~d |  -.0653315   .4488514    -0.15   0.886    -1.004788    .8741253
-perf_drag_~d |  -.4543003   .2440649    -1.86   0.078    -.9651341    .0565335
-       d_uit |   9.279843   2.402173     3.86   0.001     4.252037    14.30765
-   ratio_tii |   .0078305   .0069377     1.13   0.273    -.0066904    .0223513
-logret_q_lag |  -10.55364   6.701684    -1.57   0.132    -24.58043    3.473142
-  tii_return |   .1344156   .0654568     2.05   0.054    -.0025871    .2714182
-       _cons |     1.0152   .9607924     1.06   0.304    -.9957613    3.026162
+     highfee |   1.613792   .9021784     1.79   0.090    -.2744893    3.502073
+stock_twee~d |   1.468142   .3924644     3.74   0.001     .6467047     2.28958
+log_aum_in~d |  -.2591948   .7866043    -0.33   0.745    -1.905577    1.387187
+lend_byaum~d |   .5651489   .5685169     0.99   0.333    -.6247706    1.755068
+marketing_~d |  -1.058092   .9417136    -1.12   0.275    -3.029121    .9129368
+net_expens~d |    -1.9353   1.108358    -1.75   0.097    -4.255119    .3845201
+tr_error_b~d |  -.0653315   .4488028    -0.15   0.886    -1.004687    .8740236
+perf_drag_~d |  -.4543003   .2441159    -1.86   0.078    -.9652408    .0566403
+       d_uit |   9.279843   2.402145     3.86   0.001     4.252095    14.30759
+   ratio_tii |   .0078305   .0069271     1.13   0.272    -.0066681     .022329
+logret_q_lag |  -10.55364   6.702531    -1.57   0.132     -24.5822    3.474914
+  tii_return |   .1344156   .0654676     2.05   0.054    -.0026097    .2714408
+       _cons |    1.05386   .9598665     1.10   0.286    -.9551642    3.062883
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -729,10 +729,10 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std mark
-> eting_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit r
-> atio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(c
-> l ticker quarter)
+. reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std 
+> marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_u
+> it ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) v
+> ce(cl ticker quarter)
 (MWFE estimator converged in 5 iterations)
 Warning: VCV matrix was non-positive semi-definite; adjustment from Cameron, Ge
 > lbach & Miller applied.
@@ -752,19 +752,19 @@ Number of clusters (quarter) =         20         Root MSE        =     0.7567
              |               Robust
       log_pr | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   2.198839   .3191339     6.89   0.000     1.530884    2.866794
-stock_tweets |   -.025245   .0176877    -1.43   0.170    -.0622659    .0117758
+     highfee |   2.198839   .3191343     6.89   0.000     1.530883    2.866795
+stock_twee~d |  -.0283476   .0198613    -1.43   0.170    -.0699178    .0132226
 log_aum_in~d |   1.615155   .2367197     6.82   0.000     1.119695    2.110615
-lend_byaum~d |   .5089952   .4621628     1.10   0.285    -.4583226    1.476313
-marketing_~d |  -1.059284   .3904393    -2.71   0.014    -1.876483   -.2420851
-net_expens~d |  -.9344272   .3020511    -3.09   0.006    -1.566627    -.302227
-tr_error_b~d |  -.2405883   .1573107    -1.53   0.143    -.5698434    .0886667
-perf_drag_~d |  -.0682896   .0619245    -1.10   0.284    -.1978991    .0613199
-       d_uit |  -.1302173   .5627784    -0.23   0.819    -1.308126    1.047691
-   ratio_tii |  -.0061986   .0060543    -1.02   0.319    -.0188704    .0064732
-logret_q_lag |  -1.324765   .6077095    -2.18   0.042    -2.596716   -.0528146
-  tii_return |   .0092288   .0084135     1.10   0.286    -.0083809    .0268385
-       _cons |   23.97513   .5861731    40.90   0.000     22.74825      25.202
+lend_byaum~d |   .5089952   .4621628     1.10   0.285    -.4583227    1.476313
+marketing_~d |  -1.059284   .3904394    -2.71   0.014    -1.876483    -.242085
+net_expens~d |  -.9344272   .3020511    -3.09   0.006    -1.566627   -.3022269
+tr_error_b~d |  -.2405883   .1573107    -1.53   0.143    -.5698435    .0886668
+perf_drag_~d |  -.0682896   .0619273    -1.10   0.284    -.1979049    .0613257
+       d_uit |  -.1302173   .5627793    -0.23   0.819    -1.308128    1.047693
+   ratio_tii |  -.0061986   .0060543    -1.02   0.319    -.0188703    .0064731
+logret_q_lag |  -1.324765   .6077139    -2.18   0.042    -2.596725   -.0528054
+  tii_return |   .0092288   .0084136     1.10   0.286     -.008381    .0268386
+       _cons |   23.97438   .5863378    40.89   0.000     22.74716     25.2016
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:

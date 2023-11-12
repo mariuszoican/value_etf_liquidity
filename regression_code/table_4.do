@@ -63,41 +63,41 @@ label variable log_aum "Log AUM"
 
 
 
-reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
+reghdfe mer_bps highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_4.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
+reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_4.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
+reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_4.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
+reghdfe log_volume highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_4.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
+reghdfe turnover_frac highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_4.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
+reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_4.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 
 
 // Robustness
-reghdfe mer_bps highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
+reghdfe mer_bps highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_E1.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
+reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_E1.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe spread_bps_crsp highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
+reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_E1.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_volume highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
+reghdfe log_volume highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_E1.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe turnover_frac highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
+reghdfe turnover_frac highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_E1.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe log_pr highfee stock_tweets log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
+reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii logret_q_lag tii_return if d_sameind==1, absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_E1.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
