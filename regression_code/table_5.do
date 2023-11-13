@@ -11,6 +11,7 @@ cd ..
 local directory : pwd
 display "`working_dir'"
 import delimited "`directory'/data/etf_panel_processed.csv"
+//import delimited "D:/Research/kpz_etfliquidity/data/etf_panel_processed.csv"
 
 drop spread_bps_crsp
 gen spread_bps_crsp=10000*quotedspread_percent_tw 
@@ -51,7 +52,14 @@ label variable log_volume_std "Log volume"
 label variable spread_bps_crsp_std "Relative spread"
 label variable creation_fee_std "Creation fee"
 
+gen qspread_bps=10000*quotedspread_percent_tw 
+gen qspread_dollar=100*quotedspread_dollar_tw 
 
+gen efspread_dollar=100*effectivespread_dollar_ave
+gen efspread_bps=10000*effectivespread_percent_ave
+
+gen rspread_dollar=100*dollarrealizedspread_lr_ave
+gen rspread_bps=10000*percentrealizedspread_lr_ave
 
 
 
@@ -61,6 +69,8 @@ gen tii_return=ratio_tii * logret_q_lag
 encode index_id, gen(index_no)
 
 // keep if marketing_fee_bps>0
+
+gen mer_diff=(mer_bps-mer_avg_ix)/mer_avg_ix
 
 quietly regress mer_bps i.index_no i.quarter
 predict mer_bps_fe, residuals
@@ -79,20 +89,52 @@ gen log_aum=log(aum)
 label variable mkt_share_fe "Market share"
 label variable mer_bps_fe "MER"
 
-rego mkt_share_fe   spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+label variable qspread_bps "Quoted spread (bps)"
+label variable qspread_dollar "Quoted spread (cents)"
+label variable efspread_bps "Effective spread (bps)"
+label variable efspread_dollar "Effective spread (cents)"
+label variable rspread_bps "Realized spread (bps)"
+label variable rspread_dollar "Realized spread (cents)"
+
+rego mkt_share_fe   qspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+rego mkt_share_fe   efspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mkt_share_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+rego mkt_share_fe   rspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    spread_bps_crsp_std \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+rego mkt_share_fe   qspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+rego mkt_share_fe   efspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe    log_volume_std  \ stock_tweets marketing_fee_bps_std other_expense_std fee_waiver_std \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl quarter)
+rego mkt_share_fe   rspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+
+rego mer_bps_fe   qspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mer_bps_fe   efspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mer_bps_fe   rspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mer_bps_fe   qspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mer_bps_fe   efspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mer_bps_fe   efspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
