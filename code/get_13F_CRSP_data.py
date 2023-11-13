@@ -13,8 +13,6 @@ if __name__ == "__main__":
 
     print("Connection successful. Get 13F data for Thomson Reuters")
 
-    gg
-
     data13f = conn.raw_sql(
         """ SELECT rdate, mgrno, mgrname, cusip, shares, ticker, prc, shrout2 FROM tr_13f.s34 
                             WHERE fdate>='12/31/2010' AND fdate<='6/30/2022' """,

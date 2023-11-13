@@ -1,1322 +1,1425 @@
-,ticker,index,d_sameind,launch_order
-0,AAXJ,Asia ex Japan,1,1.0
-1,ACES,CIBC Atlas Clean Energy Index,0,
-2,ACSG,MSCI ACWI ex USA ESG Leaders Index,0,
-3,ACSI,American Customer Satisfaction Investable Index,0,
-4,ACWF,MSCI ACWI Diversified MultiFactor Index,0,
-5,ACWI,All World,1,1.0
-6,ACWV,MSCI ACWI Minimum Vol (USD) NR USD,0,
-7,ACWX,MSCI ACWI ex-US Index,1,2.0
-8,ADRA,BONY Asia 50 ADR TR USD,0,
-9,ADRD,BONY Developed Markets 100 ADR TR USD,0,
-10,ADRE,BONY Emerging Markets 50 ADR TR USD,0,
-11,ADRU,BONY Europe 100 ADR TR,0,
-12,AFK,MV GDP Africa NR USD,0,
-13,AFTY,FTSE CHINA A50 INDEX,0,
-14,AGT,MSCI All Argentina 25/50 Index,1,2.0
-15,AIA,S&P Asia 50 TR USD,0,
-16,AIQ,Indxx Artificial Intelligence & Big Data Index,0,
-17,AIRR,Richard Bernstein Advisors American Industrial Renaissance USD,0,
-18,ALFA,AlphaClone Hedge Fund Long/Short TR USD,0,
-19,ALTL,Lunt Capital U.S. Large Cap Equity Rotation Index,0,
-20,AMCA,Russell 1000 Pure Domestic Exposure Index,0,
-21,AMER,Emles American Manufacturing Index,0,
-22,AMLP,Alerian MLP Infrastructure TR USD,0,
-23,ANEW,MSCI Global Transformational Changes Index,0,
-24,ARGT,MSCI All Argentina 25/50 Index,1,1.0
-25,ARMR,Armor US Equity Index,0,
-26,ASEA,FTSE/Asean 40,0,
-27,ASHR,CSI 300 USD,0,
-28,ASHS,China Securities 500 Index,0,
-29,ASHX,CSI 300 USD Hedged Index,0,
-30,AUSF,Adaptive Wealth Strategies U.S. Factor Index,0,
-31,AWAY,Prime Travel Technology Index,0,
-32,AXJL,WisdomTree Asia Pacific Ex Japan TR USD,0,
-33,BBAX,Morningstar Developed Asia Pacific ex-Japan Target Market Exposure Index,0,
-34,BBC,LifeSci Biotechnology Clinical Trials Index,0,
-35,BBCA,Canada,1,2.0
-36,BBEU,Morningstar Developed Europe Target Market Exposure Index,0,
-37,BBH,MV US Listed Biotech 25 NR USD,0,
-38,BBIN,Morningstar Developed Markets ex-North America Target Market Exposure Index,0,
-39,BBJP,Japan,1,2.0
-40,BBMC,Morningstar US Mid Cap Target Market Exposure Extended IndexSM,0,
-41,BBP,LifeSci Biotechnology Products Index,0,
-42,BBSC,Morningstar US Small Cap Target Market Exposure Extended Index,0,
-43,BBUS,Morningstar US Target Market Exposure Index,0,
-44,BETZ,Roundhill Sports Betting & iGaming Index,0,
-45,BFIT,Indxx Global Health & Wellness Thematic Index,0,
-46,BFOR,Barrons 400 TR USD,0,
-47,BIBL,Inspire 100 Index,0,
-48,BICK,ISE BICK USD,0,
-49,BIZD,MV US Business Dvlpmnt Companies GR USD,0,
-50,BJK,MV Global Gaming NR USD,0,
-51,BKEM,Morningstar Emerging Markets Large Cap Index,0,
-52,BKIE,Morningstar Developed Markets ex-US Large Cap Index,0,
-53,BKLC,Morningstar US Large Cap Index,0,
-54,BKMC,Morningstar US Mid Cap Index,0,
-55,BKSE,Morningstar US Small Cap Index,0,
-56,BLCN,Reality Shares NASDAQ Blockchain Economy Index,0,
-57,BLES,Inspire Global Hope Large Cap Equal Weight Index,0,
-58,BNE,Blue Horizon New Energy Economy 100 Index,0,
-59,BOSS,Solactive U.S. Founder-Run Companies Index,0,
-60,BOTZ,Indxx Global Robotics & Artificial Intelligence Thematic Index,0,
-61,BOUT,IBD Breakout Stocks Index,0,
-62,BRF,MV Brazil Small Cap NR USD,0,
-63,BTAL,DJ US Thematic Mkt Neut Anti-Beta TR USD,0,
-64,BTEC,NASDAQ U.S. Healthcare Innovators Index,0,
-65,BUG,Indxx Cybersecurity Index,0,
-66,BUL,S&P 900 Pure Growth Index,0,
-67,BUY,SummerHaven Private Equity Strategy Index,0,
-68,BUYN,SummerHaven Private Equity Natural Resources Strategy Index,0,
-69,BVAL,BrandTransact50 Index,0,
-70,CALF,Pacer US Small Cap Cash Cows Index,0,
-71,CARZ,NASDAQ OMX Global Automobile TR USD,0,
-72,CATH,S&P 500 Catholic Values Index,0,
-73,CCON,Solactive Connected Consumer Index,0,
-74,CDC,CEMP U.S. Large Cap High Dividend 100 Long/Cash Volatility Weigh,0,
-75,CDL,CEMP US Large Cap High Dividend 100 Volatility Weighted Index,0,
-76,CEFA,S&P Developed ex-U.S. Catholic Values Index,0,
-77,CEY,CEMP Emerging Market High Dividend 100 Volatility Weighted Index,0,
-78,CEZ,CEMP Emerging Market 500 Volatility Weighted Index,0,
-79,CFA,CEMP U.S. Large Cap 500 Volatility Weighted Index,0,
-80,CFO,CEMP U.S. Large Cap 500 Long/Cash Volatility Weighted Index,0,
-81,CGW,S&P Global Water NR,0,
-82,CHB,Solactive China Biotech Innovation Index,0,
-83,CHEP,DJ US Thematic Mkt Neut Value TR USD,0,
-84,CHGX,Change Finance Diversified Impact U.S. Large Cap Fossil Fuel Free Index,0,
-85,CHIC,MSCI China Communication Services 10/50 Index,0,
-86,CHIE,Solactive China Energy TR USD,0,
-87,CHIH,MSCI China Health Care 10/50 Index,0,
-88,CHII,Solactive China Industrials TR USD,0,
-89,CHIK,MSCI China Information Technology 10/50 Index,0,
-90,CHIL,MSCI China Top 50 10/50 Index,0,
-91,CHIM,Solactive China Materials TR USD,0,
-92,CHIQ,Solactive China Consumer TR USD,0,
-93,CHIR,MSCI China Real Estate 10/50 Index,0,
-94,CHIS,MSCI China Consumer Staples 10/50 Index,0,
-95,CHIU,MSCI China Utilities 10/50 Index,0,
-96,CHIX,Solactive China Financials TR USD,0,
-97,CHNA,Loncar China BioPharma Index,0,
-98,CIBR,Nasdaq CTA Cybersecurity Index,0,
-99,CID,CEMP International High Dividend 100 Volatility Weighted Index,0,
-100,CIL,CEMP International 500 Volatility Weighted Index,0,
-101,CIZ,CEMP International 500 Long/Cash Volatility Weighted Index,0,
-102,CLOU,Indxx Global Cloud Computing Index,0,
-103,CLRG,NASDAQ Chaikin Power US Large Cap Index,0,
-104,CN,MSCI China All Shares Index,1,1.0
-105,CNCR,Loncar Cancer Immunotherapy Index,0,
-106,CNHX,MSCI China A International with CNH 100% Hedged to USD Index,0,
-107,CNRG,S&PKensho Clean Power Index,0,
-108,CNXT,SME-ChiNext 100 Index,0,
-109,CNYA,MSCI China A International index,0,
-110,COPX,Solactive Global Copper Miners TR USD,0,
-111,COWZ,Pacer US Cash Cows 100 Index,0,
-112,CQQQ,China Technology Sector,1,1.0
-113,CRAK,Market Vectors Global Oil Refiners Index,0,
-114,CRBN,MSCI ACWI Low Carbon Target Index,1,2.0
-115,CROP,IQ Global Agribusiness Small Cap TR USD,0,
-116,CSA,CEMP US Small Cap 500 Volatility Weighted Index,0,
-117,CSB,CEMP US Small Cap High Dividend 100 Volatility Weighted Index,0,
-118,CSD,Beacon Spin-Off TR USD,0,
-119,CSF,CEMP U.S. Small Cap 500 Long/Cash Volatility Weighted Index,0,
-120,CSM,Credit Suisse 130/30 Large Cap USD,0,
-121,CSML,NASDAQ Chaikin Power US Small Cap Index,0,
-122,CTEC,Indxx Global CleanTech Index,0,
-123,CUT,Beacon Global Timber USD,0,
-124,CWI,MSCI ACWI ex-US Index,1,1.0
-125,CXSE,WisdomTree China ex-State-Owned Enterprises Index,0,
-126,CZA,Zacks Mid-Cap Core USD,0,
-127,DALI,Nasdaq DorseyWright DALI 1 Index,0,
-128,DAX,DAX Index,0,
-129,DBAW,MSCI ACWI ex USA US Dollar Hedged USD,0,
-130,DBEF,MSCI EAFE 100% Hedged NR USD,0,
-131,DBEM,MSCI EM 100% Hedged to USD,0,
-132,DBEU,MSCI Europe US Dollar Hedged USD,0,
-133,DBEZ,MSCI EMU IMI U.S. Dollar Hedged Index,0,
-134,DBGR,MSCI Germany Hdg PR USD,0,
-135,DBJP,MSCI Japan 100% Hedged NR USD,0,
-136,DDIV,Dorsey Wright Momentum Plus Dividend Yield Index,0,
-137,DDLS,WisdomTree Dynamic Currency Hedged International SmallCap Equity,0,
-138,DDWM,WisdomTree Dynamic Currency Hedged International Equity Index,0,
-139,DEEF,FTSE Developed ex US Comprehensive Factor Net Tax (US RIC) Index,0,
-140,DEEP,Acquirers Deep Value Index,0,
-141,DEF,Sabrient Defensive Equity TR USD,0,
-142,DEFA,MSCI EAFE Adaptive Hedge to USD Index,0,
-143,DEM,WisdomTree EM Equity Income TR USD,0,
-144,DEMZ,DEMZ Political Contribution Index,0,
-145,DES,WisdomTree SmallCap Dividend TR USD,0,
-146,DEUS,Russell 1000 Comprehensive Factor Index,0,
-147,DEW,WisdomTree Global Equity Income TR USD,0,
-148,DFE,WisdomTree Europe SC Dividend TR USD,0,
-149,DFJ,WisdomTree Japan SC Dividend TR USD,0,
-150,DFND,Reality Shares DIVCON Dividend Defender Index,0,
-151,DGRO,Morningstar US Dividend Growth Index,0,
-152,DGRS,WisdomTree US Sm Cap Div Growth TR USD,0,
-153,DGRW,WisdomTree U.S. Dividend Growth TR USD,0,
-154,DGS,WisdomTree EM SmallCap Dividend TR USD,0,
-155,DGT,DJ Global TR USD,0,
-156,DHDG,WisdomTree Dynamic Currency Hedged International Quality Dividen,0,
-157,DHS,WisdomTree Equity Income TR USD,0,
-158,DIA,DJ Industrial Average TR USD,0,
-159,DIET,BlueStar Food and Agriculture Sustainability Index,0,
-160,DIM,WisdomTree Intl MidCap Dividend TR USD,0,
-161,DIV,INDXX SuperDividend US Low Volat TR USD,0,
-162,DIVA,INDXX Hedged Dividend Income Index,0,
-163,DIVB,Morningstar U.S. Dividend and Buyback Index,0,
-164,DJD,Dow Jones Industrial Average Yield Weighted,0,
-165,DLN,WisdomTree LargeCap Dividend TR USD,0,
-166,DLS,WisdomTree Intl SmallCap Dividend TR USD,0,
-167,DMDV,S&P Developed Ex-U.S. Dividend and Free Cash Flow Yield Index,0,
-168,DMXF,MSCI EAFE Choice ESG Screened Index,0,
-169,DNL,WisdomTree Global Ex Us Growth TR USD,0,
-170,DOGS,AI Dogs of the World ex US Total Return Index,0,
-171,DOL,WisdomTree Intl LargeCap Dividend TR USD,0,
-172,DON,WisdomTree MidCap Dividend TR USD,0,
-173,DOO,WisdomTree Intl Dividend Ex Fincl TR USD,0,
-174,DRIV,Solactive Autonomous & Electric Vehicles Index,0,
-175,DSI,MSCI KLD 400 Social GR USD,0,
-176,DSTL,Distillate Fundamental Stability & Value Index,0,
-177,DSTX,Distillate International Fundamental Stability & Value Index,0,
-178,DTD,WisdomTree Dividend TR USD,0,
-179,DTEC,Indxx Disruptive Technologies Index,0,
-180,DTH,WisdomTree DEFA Equity Income TR USD,0,
-181,DTN,WisdomTree Dividend Ex Financials TR USD,0,
-182,DUAL,North Shore Dual Share Class Index,0,
-183,DURA,Morningstar US Dividend Valuation Index,0,
-184,DVEM,WisdomTree Emerging Markets Dividend Index,0,
-185,DVLU,Dorsey Wright Momentum Plus Value Index,0,
-186,DVOL,Dorsey Wright Momentum Plus Low Volatility Index,0,
-187,DVP,TWM Deep Value Index,0,
-188,DVY,DJ US Select Dividend TR USD,0,
-189,DVYA,DJ Asia Pac Select Dividend 30 TR USD,0,
-190,DVYE,DJ Emerging Markets Sel Dividend TR USD,0,
-191,DWAQ,Dorsey Wright Technical leaders TR USD,0,
-192,DWAS,DorseyWright SmlCap Tech Leaders TR USD,0,
-193,DWCR,Dorsey Wright Country and Stock Momentum Index,0,
-194,DWM,WisdomTree DEFA TR USD,0,
-195,DWPP,Nasdaq Dorsey Wright Peoples Portfolio Index,0,
-196,DWTR,Dorsey Wright Sector 4 Index,0,
-197,DWX,S&P Intl Dividend Opportunities TR USD,0,
-198,DXGE,WisdomTree Germany Hedged Equity USD,0,
-199,DXJ,WisdomTree Japan Hedged Equity TR USD,0,
-200,DXJS,WisdomTree Japan Hedged Sm Cap Eq TR USD,0,
-201,DYHG,Salt truVol US Large Cap Dynamic Hedge Index,0,
-202,EASG,MSCI Emerging Markets ESG Leaders Index,1,1.0
-203,EBIZ,Solactive E-commerce Index,0,
-204,EBLU,Tortoise Global Water ESG Index,0,
-205,ECH,MSCI Chile IMI 25-50 NR USD,0,
-206,ECNS,MSCI China Small NR USD,0,
-207,ECON,DJ EM Consumer Titans 30 TR USD,0,
-208,ECOW,FTSE Emerging Markets Index,0,
-209,EDEN,MSCI Denmark IMI 25/50 NR USD,0,
-210,EDIV,S&P EM Dividend Opportunities TR USD,0,
-211,EDOC,Solactive Telemedicine & Digital Health Index,0,
-212,EDOG,S-Network Emerging Sector Dividend Dogs USD,0,
-213,EDOW,Dow Jones Industrial Average Equal Weight Index,0,
-214,EDUT,Indxx Global Education Thematic Index,0,
-215,EEB,BNY Mellon BRIC Select DR USD,0,
-216,EELV,S&P BMI EM Low Volatility TR USD,0,
-217,EEM,Emerging Markets,1,1.0
-218,EEMA,MSCI EM Asia NR USD,0,
-219,EEMD,S&P Emerging Markets Dividend and Free Cash Flow Yield Index,0,
-220,EEMO,S&P Momentum Emerging Plus LargeMidCap Index,0,
-221,EEMS,MSCI EM Small NR USD,0,
-222,EEMV,MSCI EM Minimum Volatility (USD) NR USD,0,
-223,EEMX,MSCI Emerging Markets ex Fossil Fuels Index,0,
-224,EES,WisdomTree SmallCap Earnings TR USD,0,
-225,EFA,MSCI EAFE NR USD,0,
-226,EFAD,MSCI EAFE Dividend Masters Index,0,
-227,EFAS,MSCI EAFE Top 50 Dividend Index,0,
-228,EFAV,MSCI EAFE Minimum Volatility NR USD,0,
-229,EFAX,MSCI EAFE ex Fossil Fuels Index,0,
-230,EFG,MSCI EAFE Growth NR USD,0,
-231,EFIV,S&P 500 ESG Index,0,
-232,EFNL,MSCI Finland IMI 25/50 NR USD,0,
-233,EFV,MSCI EAFE Value NR USD,0,
-234,EGPT,MV Egypt NR USD,0,
-235,EIDO,MSCI Indonesia IMI NR USD,0,
-236,EINC,MVIS North America Energy Infrastructure Index,0,
-237,EIRL,MSCI Ireland Capped NR USD,0,
-238,EIS,MSCI Israel Capped NR USD,0,
-239,EKAR,Innovation Labs Next Generation Vehicles Index,0,
-240,EMDV,MSCI Emerging Markets Dividend Masters Index,0,
-241,EMEM,Solactive Most Favored Nations Emerging Markets Index,0,
-242,EMFM,Solactive Next Emerging & Frontier USD,0,
-243,EMGF,MSCI Emerging Market Diversified Multiple-Factor Index,0,
-244,EMIF,S&P Emerging Markets Infrastructure TR,0,
-245,EMQQ,The Emerging Markets Internet & Ecommerce Index,0,
-246,EMSG,MSCI Emerging Markets ESG Leaders Index,1,2.0
-247,EMTY,Solactive-ProShares Bricks and Mortar Retail Store Index,0,
-248,EMXC,MSCI Emerging Markets ex China Index,0,
-249,EMXF,MSCI Emerging Markets Choice ESG Screened 5% Issuer Capped Index,0,
-250,ENFR,Alerian Energy Infrastructure USD,0,
-251,ENOR,MSCI Norway IMI 25/50 Index,1,2.0
-252,ENTR,Entrepreneur 30 Index,0,
-253,ENZL,MSCI New Zealand IMI 25/50 NR USD,0,
-254,EPHE,MSCI Philippines IMI NR USD,0,
-255,EPI,WisdomTree India Earnings TR USD,0,
-256,EPOL,MSCI Poland IMI 25/50 NR USD,0,
-257,EPP,MSCI Pacific Ex Japan NR USD,0,
-258,EPRF,S&P U.S. High Quality Preferred Stock Index,0,
-259,EPS,WisdomTree Earnings 500 TR USD,0,
-260,EPU,MSCI All Peru Capped NR USD,0,
-261,EQAL,Russell 1000 Equal Weight Index,0,
-262,EQL,ML Equal Sector Weight USD,0,
-263,EQRR,Nasdaq U.S. Large Cap Equities for Rising Rates Index,0,
-264,EQWL,Russell Top 200 Equal Weight Index,0,
-265,ERSX,Entrepreneur Non-US Small Cap Index,0,
-266,ERUS,Russia,1,2.0
-267,ESG,STOXX US ESG Impact Index,0,
-268,ESGD,MSCI EAFE ESG Select Index,0,
-269,ESGE,MSCI Emerging Markets ESG Select Index,0,
-270,ESGF,OFI Revenue Weighted Global ESG Index,0,
-271,ESGG,STOXX Global ESG Impact Index,0,
-272,ESGL,OFI Revenue Weighted ESG Index,0,
-273,ESGN,Beta Advantage Sustainable International Equity Income 100 Index,0,
-274,ESGS,Beta Advantage Sustainable U.S. Equity Income 100 Index,0,
-275,ESGU,MSCI USA ESG Focus Index,0,
-276,ESGV,FTSE US All Cap Choice Index,0,
-277,ESGW,Beta Advantage Sustainable Global Equity Income 200 Index,0,
-278,ESML,MSCI USA Small Cap Extended ESG Focus Index,0,
-279,ESNG,MSCI USA ESG Universal Top - Bottom 150/50 Return Spread Index,0,
-280,ESPO,MVIS Global Video Gaming and eSports Index,0,
-281,ETHO,Etho Climate Leadership Index,0,
-282,EUDG,WisdomTree Europe Dividend Growth Index,0,
-283,EUDV,MSCI Europe Dividend Masters Index,0,
-284,EUFN,MSCI Europe/Financials NR USD,0,
-285,EUMV,MSCI Europe Minimum Volatility Index,0,
-286,EURZ,NASDAQ Eurozone Large Mid Cap Index,0,
-287,EUSA,MSCI USA NR USD,0,
-288,EUSC,WisdomTree Europe Hedged SmallCap Equity Index,0,
-289,EVX,NYSE Arca Environmental Services USD,0,
-290,EWA,Australia,1,1.0
-291,EWC,Canada,1,1.0
-292,EWCO,S&P 500 Equal Weight Communication Services Plus Index,0,
-293,EWD,MSCI Sweden NR USD,0,
-294,EWEB,Nasdaq CTA Emerging Markets Internet & E-commerce Index,0,
-295,EWEM,MSCI EM Equal Weighted NR USD,0,
-296,EWG,Germany,1,1.0
-297,EWGS,MSCI Germany Small Cap NR USD,0,
-298,EWH,Hong Kong,1,1.0
-299,EWI,MSCI Italy 25/50 NR USD,0,
-300,EWJ,Japan,1,1.0
-301,EWJE,MSCI Japan Equal Weighted Index,0,
-302,EWJV,MSCI Japan Value Index,0,
-303,EWK,MSCI Belgium IMI 25/50 NR USD,0,
-304,EWL,Switzerland,1,1.0
-305,EWM,MSCI Malaysia NR USD,0,
-306,EWMC,S&P MidCap 400 Equal Weight Index,0,
-307,EWN,MSCI Netherlands IMI NR USD,0,
-308,EWO,MSCI Austria IMI 25/50 NR USD,0,
-309,EWP,MSCI Spain 25/50 TR USD,0,
-310,EWQ,France,1,1.0
-311,EWS,MSCI Singapore NR USD,0,
-312,EWSC,S&P SmallCap 600 Equal Weight Index,0,
-313,EWT,Taiwan,1,1.0
-314,EWU,UK,1,1.0
-315,EWUS,MSCI UK Small Cap NR USD,0,
-316,EWW,Mexico,1,1.0
-317,EWX,S&P EM Cap Rng<2 Bil TR USD,0,
-318,EWY,Korea,1,1.0
-319,EWZ,Brazil,1,1.0
-320,EWZS,MSCI Brazil Small NR USD,0,
-321,EXI,S&P Global 1200 Sec/Industrials TR,0,
-322,EXT,WisdomTree Earnings TR USD,0,
-323,EYLD,Cambria Emerging Shareholder Yield Index,0,
-324,EZA,South Africa,1,1.0
-325,EZM,WisdomTree MidCap Earnings TR USD,0,
-326,EZU,Eurozone,1,1.0
-327,FAB,Defined Multi Cap Value TR USD,0,
-328,FAD,Defined Multi Cap Growth TR USD,0,
-329,FAN,ISE Global Wind Energy USD,0,
-330,FAUS,Defined Australia TR USD,0,
-331,FBT,NYSE Arca Biotechnology TR USD,0,
-332,FBZ,Defined Brazil USD,0,
-333,FCA,Defined China USD,0,
-334,FCAN,Defined Canada TR USD,0,
-335,FCG,ISE Revere Natural Gas USD,0,
-336,FCOM,MSCI USA IMI Telecommu Serv 25/50 USD,0,
-337,FCPI,Fidelity Stocks for Inflation Factor Index,0,
-338,FDD,STOXX Europe Select Dividend 30 NR USD,0,
-339,FDEM,Fidelity Targeted Emerging Markets Factor Index,0,
-340,FDEV,Fidelity Targeted International Factor Index,0,
-341,FDIS,MSCI USA IMI Consumer Discretionary USD,0,
-342,FDL,Morningstar Dividend Leaders TR USD,0,
-343,FDLO,Fidelity U.S. Low Volatility Factor Index,0,
-344,FDM,DJ Select Micro Cap TR USD,0,
-345,FDMO,Fidelity U.S. Momentum Factor Index,0,
-346,FDN,US Internet Sector,1,1.0
-347,FDNI,Dow Jones International Internet Index,0,
-348,FDRR,Fidelity Dividend Index for Rising Rates,0,
-349,FDT,Defined Developed Markets Ex-US USD,0,
-350,FDTS,Defined Developed Markets SC TR USD,0,
-351,FDVV,Fidelity Core Dividend Index,0,
-352,FEDX,Emles Federal Contractors Index,0,
-353,FEM,Defined Emerging Markets USD,0,
-354,FEMS,Defined Emerging Markets SC TR USD,0,
-355,FENY,MSCI USA IMI Energy USD,0,
-356,FEP,Defined Europe USD,0,
-357,FEUZ,NASDAQ AlphaDEX Eurozone Index,0,
-358,FEX,Defined Large Cap Core TR USD,0,
-359,FEZ,Europe,1,2.0
-360,FGD,DJ Global Select Dividend TR USD,0,
-361,FGM,Defined Germany TR USD,0,
-362,FHK,Defined Hong Kong TR USD,0,
-363,FHLC,MSCI USA IMI Health Care USD,0,
-364,FICS,International Developed Capital Strength Index,0,
-365,FID,S&P International Dividend Aristocrats Index,0,
-366,FIDI,Fidelity International High Dividend Index,0,
-367,FIDU,MSCI USA IMI Industrials USD,0,
-368,FILL,MSCI ACWI Select Energy Prod IMI NR USD,0,
-369,FINX,Indxx Global Fintech Thematic Index,0,
-370,FITE,S&P Kensho Future Security Index,0,
-371,FIVA,Fidelity International Value Factor Index,0,
-372,FIVG,BlueStar 5G Communications Index,0,
-373,FIW,ISE Water,0,
-374,FJP,Defined Japan USD,0,
-375,FKO,Defined South Korea USD,0,
-376,FKU,Defined United Kingdom TR USD,0,
-377,FLAU,Australia,1,2.0
-378,FLAX,Asia ex Japan,1,2.0
-379,FLBR,Brazil,1,2.0
-380,FLCA,FTSE Canada Capped Index,0,
-381,FLCH,FTSE China Capped Index,0,
-382,FLEE,FTSE Developed Europe Capped Index,0,
-383,FLEH,FTSE Developed Europe Capped Hedged Index,0,
-384,FLFR,France,1,2.0
-385,FLGB,UK,1,2.0
-386,FLGR,FTSE Germany Capped Index,0,
-387,FLHK,Hong Kong,1,2.0
-388,FLIN,FTSE India Capped Index,0,
-389,FLIY,FTSE Italy Capped Index,0,
-390,FLJH,FTSE Japan Capped Hedged Index,0,
-391,FLJP,FTSE Japan Capped Index,0,
-392,FLKR,Korea,1,2.0
-393,FLLA,FTSE Latin America Capped Index,0,
-394,FLM,ISE Global Engineering and Construction USD,0,
-395,FLMX,Mexico,1,2.0
-396,FLN,Defined Latin America USD,0,
-397,FLQD,LibertyQ Global Dividend Index,0,
-398,FLQE,LibertyQ Emerging Markets Index,0,
-399,FLQG,LibertyQ Global Equity Index,0,
-400,FLQH,LibertyQ International Equity Hedged Index,0,
-401,FLQL,LibertyQ US Large Cap Equity Index,0,
-402,FLQM,LibertyQ Mid Cap Index,0,
-403,FLQS,LibertyQ Small Cap Index,0,
-404,FLRG,Fidelity U.S. Multifactor Index,0,
-405,FLRU,FTSE Russia Capped Index,0,
-406,FLSA,FTSE Saudi Arabia Capped Index,0,
-407,FLSW,Switzerland,1,2.0
-408,FLTW,Taiwan,1,2.0
-409,FLZA,South Africa,1,2.0
-410,FM,MSCI Frontier Markets 100 NR USD,0,
-411,FMAT,MSCI USA IMI Materials USD,0,
-412,FMK,Defined Mega Cap USD,0,
-413,FNCL,MSCI USA IMI Financials USD,0,
-414,FNDA,Russell Fundamental US SC TR USD,0,
-415,FNDB,Russell Fundamental US TR USD,0,
-416,FNDC,Russell Fundamental Dv ex US SC NR USD,0,
-417,FNDE,Russell Fundamental Em Mkts LC NR USD,0,
-418,FNDF,Russell Fundamental Dv ex US LC NR USD,0,
-419,FNDX,Russell Fundamental US LC TR USD,0,
-420,FNI,ISE Chindia TR USD,0,
-421,FNK,Defined Mid Cap Value USD,0,
-422,FNX,Defined Mid Cap Core TR USD,0,
-423,FNY,Defined Mid Cap Growth USD,0,
-424,FOVL,FTSE Focused Value Select Index,0,
-425,FPA,Defined Asia Pacific Ex-Japan USD,0,
-426,FPX,IPOX 100 TR USD,0,
-427,FPXE,IPOX 100 Europe Index,0,
-428,FPXI,IPOX International Index,0,
-429,FQAL,Fidelity U.S. Quality Factor Index,0,
-430,FRAK,MV Global Unconventional Oil&Gas NR USD,0,
-431,FRDM,Life + Liberty Freedom 100 Emerging Markets Index,0,
-432,FRN,BONY New Frontier DR TR USD,0,
-433,FSMD,Fidelity Small-Mid Factor Index,0,
-434,FSTA,MSCI USA IMI Consumer Staples USD,0,
-435,FSZ,Defined Switzerland TR USD,0,
-436,FTA,Defined Large Cap Value USD,0,
-437,FTAG,Indxx Global Agriculture Index,0,
-438,FTC,Defined Large Cap Growth USD,0,
-439,FTCS,Capital Strength TR USD,0,
-440,FTEC,MSCI USA IMI Information Technology USD,0,
-441,FTRI,Indxx Global Natural Resources Income Index,0,
-442,FTXD,Nasdaq US Smart Retail Index,0,
-443,FTXG,Nasdaq US Smart Food & Beverage Index,0,
-444,FTXH,Nasdaq US Smart Pharmaceuticals Index,0,
-445,FTXL,Nasdaq US Smart Semiconductor Index,0,
-446,FTXN,Nasdaq US Smart Oil & Gas Index,0,
-447,FTXO,Nasdaq US Smart Banks Index,0,
-448,FTXR,Nasdaq US Smart Transportation Index,0,
-449,FUTY,MSCI USA IMI Utilities USD,0,
-450,FV,Dorsey Wright Focus Five USD,0,
-451,FVAL,Fidelity U.S. Value Factor Index,0,
-452,FVC,Dorsey Wright Dynamic Focus Five Index,0,
-453,FVD,Value Line Dividend TR USD,0,
-454,FVL,Value Line 100 TR USD,0,
-455,FXD,StrataQuant Consumer Disc TR USD,0,
-456,FXG,StrataQuant Consumer Staples TR USD,0,
-457,FXH,StrataQuant Health Care TR USD,0,
-458,FXI,FTSE China 25 TR USD,0,
-459,FXL,StrataQuant Technology TR USD,0,
-460,FXN,StrataQuant Energy TR USD,0,
-461,FXO,StrataQuant Financials TR USD,0,
-462,FXR,StrataQuant Industrials TR USD,0,
-463,FXU,StrataQuant Utilities TR USD,0,
-464,FXZ,StrataQuant Materials TR USD,0,
-465,FYC,Defined Small Cap Growth USD,0,
-466,FYLD,Cambria Foreign Shareholder Yield USD,0,
-467,FYT,Defined Small Cap Value USD,0,
-468,FYX,Defined Small Cap Core USD,0,
-469,GAMR,EEFund Video Game Tech Index,0,
-470,GARD,Reality Shares DIVCON Dividend Guard Index,0,
-471,GBDV,Global Beta Smart Income Index,0,
-472,GBGR,Global Beta Momentum-Growth Factor Index,0,
-473,GBLO,Global Beta Low Beta Factor Index,0,
-474,GBUY,Motif New Age Consumer Index,0,
-475,GCOW,Pacer Global Cash Cows Dividends 100 Index,0,
-476,GDAT,Motif Data Driven World Index,0,
-477,GDNA,Motif Human Evolution Index,0,
-478,GDX,NYSE Arca Gold Miners TR USD,0,
-479,GDXJ,MV Global Junior Gold Miners NR USD,0,
-480,GEM,Goldman Sachs ActiveBeta Emerging Markets Equity Index,0,
-481,GENY,NASDAQ Global Millennial Opportunity Index,0,
-482,GERM,"Prime Treatments, Testing and Advancements Index",0,
-483,GFIN,Motif Finance Reimagined Index,0,
-484,GHII,S&P High Income Infrastructure Index,0,
-485,GII,S&P Global Infrastructure Index,1,1.0
-486,GINN,Solactive Innovative Global Equity Index,0,
-487,GLCN,MarketGrader China All-Cap Growth Leaders Index,0,
-488,GLIN,MarketGrader India All-Cap Growth Leaders Index,0,
-489,GMAN,Motif Manufacturing Revolution Index,0,
-490,GMF,S&P Asia Pacific Emerging BMI TR USD,0,
-491,GNOM,Solactive Genomics Index,0,
-492,GNR,S&P Global Natural Resources TR USD,0,
-493,GOAT,Morningstar Global Wide Moat Focus Index,0,
-494,GOAU,U.S. Global GO GOLD and Precious Metal Miners Index,0,
-495,GOEX,Solactive Global Gold Explorers ETF Index,0,
-496,GREK,FTSE/Athex 20 Capped TR USD,0,
-497,GRES,IQ Global Resources TR USD,0,
-498,GRID,NASDAQ OMX ClnEdge SmartGridInfra PR USD,0,
-499,GSEE,Solactive GBS Emerging Markets Large & Mid Cap Index,0,
-500,GSEU,Goldman Sachs ActiveBeta Europe Equity Index,0,
-501,GSEW,Solactive US Large Cap Equal Weight Index,0,
-502,GSID,Solactive GBS Developed Markets ex North America Large & Mid Cap Index,0,
-503,GSIE,Goldman Sachs ActiveBeta International Equity Index,0,
-504,GSJY,Goldman Sachs ActiveBeta Japan Equity Index,0,
-505,GSLC,Goldman Sachs ActiveBeta U.S. Large Cap Equity Index,0,
-506,GSSC,Goldman Sachs ActiveBeta U.S. Small Cap Equity Index,0,
-507,GSUS,Solactive GBS United States Large & Mid Cap Index,0,
-508,GULF,WisdomTree Middle East Dividend TR USD,0,
-509,GUNR,Morningstar Gbl Upstream Ntl Res TR USD,0,
-510,GURU,Solactive Guru TR USD,0,
-511,GVAL,Cambria Global Value USD,0,
-512,GVIP,Goldman Sachs Hedge Fund VIP Index TR,0,
-513,GWX,S&P Developed Ex US Under USD2 BL TR USD,0,
-514,GXC,S&P China BMI TR USD,0,
-515,GXF,FTSE Nordic 30 TR USD,0,
-516,GXG,FTSE Columbia 20 TR USD,0,
-517,HACK,ISE Cyber Security Index,0,
-518,HAIL,S&P Kensho Smart Transportation Index,0,
-519,HAO,AlphaShares China SC TR USD,0,
-520,HAP,Rogers-Van Eck Hard Assets Prod TR USD,0,
-521,HAUD,MSCI Australia 100% Hedged to USD Index,0,
-522,HAUZ,iSTOXX Developed and Emerging Markets ex USA PK VN Real Estate Index,0,
-523,HAWX,MSCI ACWI ex USA 100% Hedged to USD Index,0,
-524,HDAW,MSCI ACWI ex USA High Dividend Yield US Dollar Hedged Index,0,
-525,HDEF,MSCI EAFE High Dividend Yield U.S. Dollar Hedged Index,0,
-526,HDV,Morningstar Dividend Yield Focus TR,0,
-527,HEDJ,WisdomTree Europe Hedged Equity TR USD,0,
-528,HEEM,MSCI Emerging Markets 100% USD Hedged Index,0,
-529,HEFA,MSCI EAFE 100% Hedged NR USD,0,
-530,HERD,"Pacer US Cash Cows 100 Index, Pacer US Small Cap Cash Cows Index, Pacer US Cash Cows Growth Index, Pacer Global Cash Cows Divide",0,
-531,HEWC,MSCI Canada 100% Hedged to USD Index,0,
-532,HEWG,MSCI Germany 100% Hedged NR USD,0,
-533,HEWI,MSCI Italy 25/50 100% Hedged to USD Index,0,
-534,HEWJ,MSCI Japan 100% Hedged NR USD,0,
-535,HEWL,MSCI Switzerland 25/50 100% Hedged to USD Index,0,
-536,HEWP,MSCI Spain 25/50 100% Hedged to USD Index,0,
-537,HEWU,MSCI United Kingdom 100% Hedged to USD Index,0,
-538,HEWW,MSCI Mexico IMI 25/50 100% Hedged to USD Index,0,
-539,HEWY,MSCI South Korea 25/50 100% Hedged to USD Index,0,
-540,HEZU,MSCI EMU 100% USD Hedged Index,0,
-541,HFXE,FTSE Developed Europe 50% Hedged to USD Index,0,
-542,HFXI,FTSE Developed ex North America 50% Hedged to USD Index,0,
-543,HFXJ,FTSE Japan 50% Hedged to USD Index,0,
-544,HIPR,Russell 1000 Hyper Growth Index,0,
-545,HJPX,JPX-Nikkei 400 Total Return USD Hedged Index,0,
-546,HLAL,FTSE Shariah USA Index,0,
-547,HOMZ,Hoya Capital Housing 100 Index,0,
-548,HSCZ,MSCI EAFE Small-Cap 100% Hedged to USD Index,0,
-549,HTEC,ROBO Global Healthcare Technology and Innovation Index,0,
-550,IAI,DJ US Select Investment Svcs TR USD,0,
-551,IAK,DJ US Select Insurc TR USD,0,
-552,IAT,DJ US Select Regional Banks TR USD,0,
-553,IBB,NASDAQ Biotechnology TR USD,0,
-554,IBBJ,Nasdaq Junior Biotechnology Index,0,
-555,IBUY,EQM Online Retail Index,0,
-556,ICLN,S&P Global Clean Energy TR USD,0,
-557,ICOL,MSCI All Colombia Capped NR USD,0,
-558,ICOW,Pacer Developed Markets International Cash Cows 100 Index,0,
-559,IDEV,MSCI World ex USA Investable Market Index,0,
-560,IDHD,S&P EPAC Ex-Korea Low Volatility High Dividend Index,0,
-561,IDHQ,S&P Intl Dev Hi Quality Ranking TR USD,0,
-562,IDLB,FTSE Developed ex US Low Beta Equal Weight Index,0,
-563,IDLV,S&P BMI Intl Dev Low Volatility TR USD,0,
-564,IDMO,S&P Momentum Developed ex-U.S. & South Korea LargeMidCap Index,0,
-565,IDNA,NYSE FactSet Global Genomics and Immuno Biopharma Index,0,
-566,IDOG,S-Network Intl Sec Dividend Dog NR USD,0,
-567,IDRV,NYSE FactSet Global Autonomous Driving and Electric Vehicle Index,0,
-568,IDU,DJ US Utilities TR USD,0,
-569,IDV,DJ EPAC Select Dividend TR USD,0,
-570,IDX,MV Indonesia NR USD,0,
-571,IEFA,EAFE,1,2.0
-572,IEMG,MSCI EM IMI NR USD,0,
-573,IEO,DJ US Select Oil Explor&Prodtn TR USD,0,
-574,IEUR,MSCI Europe Investable Market Index,0,
-575,IEUS,MSCI Europe Small Cap Index,0,
-576,IEV,Europe,1,1.0
-577,IEZ,DJ US Select Oil Equip&Svcs TR USD,0,
-578,IFLY,Reality Shares Drone Index,0,
-579,IFRA,NYSE FactSet U.S. Infrastructure Index,0,
-580,IFV,Dorsey Wright International Focus Five Index,0,
-581,IGE,S&P North American Natural Resources TR,0,
-582,IGF,S&P Global Infrastructure Index,1,2.0
-583,IGM,S&P North American Technology TR,0,
-584,IGN,S&P North American Tech Networking TR,0,
-585,IGRO,Morningstar Global ex-US Dividend Growth Index,0,
-586,IGV,S&P North American Tech Software TR,0,
-587,IHAK,NYSE FactSet Global Cyber Security Index,0,
-588,IHDG,WisdomTree International Hedged Dividend Growth Index,0,
-589,IHE,DJ US Select Pharms TR USD,0,
-590,IHF,DJ US Select HC Providers TR USD,0,
-591,IHI,DJ US Select Medical Equip TR USD,0,
-592,IJH,S&P Midcap 400 Index,1,2.0
-593,IJJ,S&P Midcap 400 Value Index,1,1.0
-594,IJK,S&P Midcap 400 Growth Index,1,1.0
-595,IJR,S&P SmallCap 600 Index,1,1.0
-596,IJS,S&P Smallcap 600 Value Index,1,1.0
-597,IJT,S&P Smallcap 600 Growth Index,1,1.0
-598,ILF,S&P Latin America 40 TR,0,
-599,IMTM,MSCI World ex USA Momentum Index,0,
-600,INCO,INDXX India Consumer TR USD,0,
-601,INDA,MSCI India NR USD,0,
-602,INDF,MSCI USA Industrials Diversified Multiple-Factor Capped Index,0,
-603,INDY,IISL S&P/CNX Nifty TR INR,0,
-604,INFR,RARE Global Infrastructure Index,0,
-605,INTF,MSCI World ex USA Diversified Multi-Factor Index,0,
-606,IOO,S&P Global 100 TR,0,
-607,IPAC,MSCI Pacific Investable Market Index,0,
-608,IPAY,ISE Mobile Payments Index,0,
-609,IPFF,S&P Intl Preferred Stock TR USD,0,
-610,IPKW,NASDAQ International BuyBack Achievers USD,0,
-611,IPO,Renaissance IPO USD,0,
-612,IPOS,Renaissance International IPO Index,0,
-613,IQDE,Northern Trust Intl Quality Div TR USD,0,
-614,IQDF,Northern Trust Intl Quality Div TR USD,0,
-615,IQDG,WisdomTree International Quality Dividend Growth Index,0,
-616,IQDY,Northern Trust Intl Quality Div TR USD,0,
-617,IQIN,IQ 500 International Index,0,
-618,IQLT,MSCI World ex USA Sector Neutral Quality Index,0,
-619,IQSI,IQ Candriam ESG International Equity Index,0,
-620,IQSU,IQ Candriam ESG US Equity Index,0,
-621,IRBO,NYSE FactSet Global Robotics and Artificial Intelligence Index,0,
-622,ISCF,MSCI World ex USA Small Cap Diversified MultiFactor Index,0,
-623,ISDS,Invesco Strategic Developed ex-US Small Company Index,0,
-624,ISDX,Invesco Strategic Developed ex-US Index,0,
-625,ISEM,Invesco Strategic Emerging Markets Index,0,
-626,ISMD,Inspire Small/Mid Cap Impact Equal Weight Index,0,
-627,ISRA,BlueStar Israel Global TR USD,0,
-628,ISZE,MSCI World ex USA Risk Weighted Index,0,
-629,ITA,US Defense Sector,1,2.0
-630,ITB,DJ US Select Home Builders TR USD,0,
-631,ITEQ,TASE-Bluestar Israel Global Technology Index,0,
-632,ITOT,US Total Market,1,2.0
-633,IUS,Invesco Strategic US Index,0,
-634,IUSG,Russell 3000 Growth Index,0,
-635,IUSS,Invesco Strategic US Small Company Index,0,
-636,IUSV,Russell 3000 Value Index,0,
-637,IVE,S&P 500 Value Index,1,1.0
-638,IVES,Dan Ives Global Cloud Technology Prime Index,0,
-639,IVLU,MSCI World ex USA Enhanced Value Index,0,
-640,IVOG,S&P Midcap 400 Growth Index,1,3.0
-641,IVOO,S&P Midcap 400 Index,1,3.0
-642,IVOV,S&P Midcap 400 Value Index,1,3.0
-643,IVV,S&P 500 Index,1,2.0
-644,IVW,S&P 500 Growth Index,1,1.0
-645,IWB,Russell 1000 Index,1,1.0
-646,IWC,Russell Micro Cap TR USD,0,
-647,IWD,Russell 1000 Value Index,1,1.0
-648,IWF,Russell 1000 Growth Index,1,1.0
-649,IWFH,NYSE FactSet Global Virtual Work and Life Index,0,
-650,IWL,Russell Top 200 TR USD,0,
-651,IWM,Russell 2000 Index,1,1.0
-652,IWN,Russell 2000 Value Index,1,1.0
-653,IWO,Russell 2000 Growth Index,1,1.0
-654,IWP,Russell Mid Cap Growth TR USD,0,
-655,IWR,Russell Mid Cap TR USD,0,
-656,IWS,Russell Mid Cap Value TR USD,0,
-657,IWV,Russell 3000 Index,1,1.0
-658,IWX,Russell Top 200 Value TR USD,0,
-659,IWY,Russell Top 200 Growth TR USD,0,
-660,IXC,S&P Global 1200 Sec/Energy TR,0,
-661,IXG,S&P Global 1200 Sec/Financials TR,0,
-662,IXJ,S&P Global 1200 Sec/Health Care TR,0,
-663,IXN,S&P Global 1200 Sec/Info Tech TR,0,
-664,IXP,S&P Global 1200 Sec/Telecom Svcs TR USD,0,
-665,IXSE,WisdomTree India ex-State-Owned Enterprises Index,0,
-666,IXUS,MSCI ACWI Ex USA IMI NR USD,0,
-667,IYC,DJ US Consumer Svcs TR USD,0,
-668,IYE,DJ US Oil&Gas TR USD,0,
-669,IYF,DJ US Financial TR USD,0,
-670,IYG,DJ US Financial Services TR USD,0,
-671,IYH,DJ US Health Care TR USD,0,
-672,IYJ,DJ US Industrials TR USD,0,
-673,IYK,DJ US Consumer Goods TR USD,0,
-674,IYM,DJ US Basic Materials TR USD,0,
-675,IYT,DJ Transportation Average TR USD,0,
-676,IYW,DJ US Technology TR USD,0,
-677,IYY,DJ US TR USD,0,
-678,IYZ,DJ US Select Telecom TR USD,0,
-679,IZRL,ARK Israeli Innovation Index,0,
-680,JCTR,JPMAM Carbon Transition US Equity Index,0,
-681,JDIV,JP Morgan US Dividend Index,0,
-682,JETS,U.S. Global Jets Index,0,
-683,JGLD,EQM Pure Junior Gold Miners Index,0,
-684,JHCS,John Hancock Dimensional Media and Communications Index,0,
-685,JHEM,John Hancock Dimensional Emerging Markets Index,0,
-686,JHMA,John Hancock Dimensional Materials Index,0,
-687,JHMD,John Hancock Dimensional Developed International Index,0,
-688,JHME,John Hancock Dimensional Energy Index,0,
-689,JHMI,John Hancock Dimensional Industrials Index,0,
-690,JHMS,John Hancock Dimensional Consumer Staples Index,0,
-691,JHMU,John Hancock Dimensional Utilities Index,0,
-692,JHSC,John Hancock Dimensional Small Cap Index,0,
-693,JKD,Morningstar Large Core TR USD,0,
-694,JKE,Morningstar Large Growth TR USD,0,
-695,JKF,Morningstar Large Value TR USD,0,
-696,JKG,Morningstar Mid Core TR USD,0,
-697,JKH,Morningstar Mid Growth TR USD,0,
-698,JKI,Morningstar Mid Value TR USD,0,
-699,JKJ,Morningstar Small Core TR USD,0,
-700,JKK,Morningstar Small Growth TR USD,0,
-701,JKL,Morningstar Small Value TR USD,0,
-702,JMIN,JP Morgan US Minimum Volatility Index,0,
-703,JMOM,JP Morgan US Momentum Factor Index,0,
-704,JOYY,MSCI Global Consumer Champions Index,0,
-705,JPEM,FTSE Emerging Diversified Factor Index,0,
-706,JPEU,FTSE Developed Europe Diversified Factor Index,0,
-707,JPGE,FTSE Developed Diversified Factor Index,0,
-708,JPIN,FTSE Developed ex North America Diversified Factor Index,0,
-709,JPME,Russell Midcap Diversified Factor Index,0,
-710,JPMV,MSCI Japan Minimum Volatility Index,0,
-711,JPN,JPX-Nikkei 400 Net Total Return Index,1,2.0
-712,JPSE,Russell 2000 Diversified Factor Index,0,
-713,JPUS,Russell 1000 Diversified Factor Index,0,
-714,JPXN,JPX-Nikkei 400 Net Total Return Index,1,1.0
-715,JQUA,JP Morgan US Quality Factor Index,0,
-716,JSMD,Janus Small/Mid Cap Growth Alpha Index,0,
-717,JSML,Janus Small Cap Growth Alpha Index,0,
-718,JSTC,Adasina Social Justice Index,0,
-719,JUST,JUST US Large Cap Diversified Index,0,
-720,JVAL,JP Morgan US Value Factor Index,0,
-721,JXI,S&P Global 1200 Sec/Utilities TR,0,
-722,KALL,MSCI China All Shares Index,1,2.0
-723,KARS,Solactive Electric Vehicles and Future Mobility Index,0,
-724,KBA,MSCI China A USD,0,
-725,KBE,S&P Banks Select Industry TR USD,0,
-726,KBUY,CICC China Consumer Leaders Index,0,
-727,KBWB,KBW Bank TR USD,0,
-728,KBWD,KBW Fin Sector Divi Yield TR USD,0,
-729,KBWP,KBW Property & Casualty TR USD,0,
-730,KBWR,KBW Regional Banking TR USD,0,
-731,KCE,S&P Capital Markets Select Indust TR USD,0,
-732,KEMQ,Solactive Emerging Markets Consumer Technology Index,0,
-733,KEMX,MSCI Emerging Markets ex China Index,0,
-734,KESG,MSCI China ESG Leaders 10/40 Index,0,
-735,KFVG,CICC China 5G and Semiconductor Leaders Index,0,
-736,KFYP,CSI Overseas China Five-Year Plan GR USD,0,
-737,KGRN,MSCI China IMI Environment 10/40 Index,0,
-738,KIE,S&P Insurance Select Industry TR USD,0,
-739,KLCD,Russell 1000 Dividend Select Equal Weight Index,0,
-740,KLDW,Gavekal Knowledge Leaders Developed World Index,0,
-741,KMED,Solactive Emerging Markets Healthcare Index,0,
-742,KNG,S&P 500 Dividend Aristocrats Index,1,2.0
-743,KNOW,Sabrient Multi-Cap Insider QW TR USD,0,
-744,KOIN,Innovation Labs Blockchain Innovators Index,0,
-745,KOKU,MSCI Kokusai Net Total Return Index,0,
-746,KOL,MV Global Coal NR USD,0,
-747,KOMP,S&P Kensho New Economies Composite Index,0,
-748,KRE,S&P Regional Banks Select Indust TR USD,0,
-749,KRMA,Concinnity Conscious Companies Index,0,
-750,KSA,MSCI Saudi Arabia IMI 25/50 Index,0,
-751,KSCD,Russell 2000 Dividend Select Equal Weight Index,0,
-752,KURE,MSCI China All Shares Health Care 10/40 Index,0,
-753,KVLE,Value Line Dynamic Core Equity Index,0,
-754,KWEB,China Technology Sector,1,2.0
-755,KXI,S&P Global 1200 Sec/Cons Staples TR,0,
-756,LDEM,MSCI EM Extended ESG Leaders 5% Issuer Capped Net Index,0,
-757,LDRS,IBD ETF Leaders Index,0,
-758,LEAD,Reality Shares DIVCON Leaders Dividend Index,0,
-759,LEGR,Indxx Blockchain Index,0,
-760,LEND,CrowdBureau Peer-to-Peer Lending and Equity Crowdfunding Index,0,
-761,LGLV,Russell 1000 Low Volatility TR USD,0,
-762,LIT,Solactive Global Lithium TR USD,0,
-763,LIV,Emles Home Lifestyle Index,0,
-764,LNGR,Indxx Global Longevity Thematic Index,0,
-765,LOUP,Loup Frontier Tech Index,0,
-766,LOWC,MSCI ACWI Low Carbon Target Index,1,1.0
-767,LRGF,MSCI USA Diversified Multi-Factor Index,0,
-768,LSAF,AlphaFactor US Core Equity Index,0,
-769,LSLT,Salt Low truBeta US Market Index,0,
-770,LUXE,Emles Global Luxury 50 Index,0,
-771,LVHB,Lunt Capital US Large Cap Equity Rotation Index,0,
-772,LVHD,QS Low Volatility High Dividend Index,0,
-773,LVHE,QS Emerging Markets Low Volatility High Dividend Hedged Index,0,
-774,LVHI,QS International Low Volatility High Dividend Hedged Index,0,
-775,LVL,S&P Global Dividend Opport NR USD,0,
-776,LVUS,Hartford Multifactor Low Volatility US Equity Index,0,
-777,MAGA,Point Bridge GOP Stock Tracker Index,0,
-778,MCHI,MSCI China NR USD,0,
-779,MDY,S&P Midcap 400 Index,1,1.0
-780,MDYG,S&P Midcap 400 Growth Index,1,2.0
-781,MDYV,S&P Midcap 400 Value Index,1,2.0
-782,MFDX,RAFI Dynamic Multi-Factor Developed ExUS Index,0,
-783,MFEM,RAFI Dynamic Multi-Factor Emerging Market Index,0,
-784,MFUS,RAFI Dynamic Multi-Factor U.S. Index,0,
-785,MGC,CRSP US Mega Cap TR USD,0,
-786,MGK,CRSP US Mega Cap Growth TR USD,0,
-787,MGV,CRSP US Mega Cap Value TR USD,0,
-788,MIDF,MSCI USA Mid Cap Diversified Multiple-Factor Index,0,
-789,MILN,Indxx Millennials Thematic Index,0,
-790,MJ,Prime Alternative Harvest Index,0,
-791,MLPA,Solactive MLP TR USD,0,
-792,MLPX,Solactive MLP & Energy Infrastruc TR USD,0,
-793,MMTM,S&P 1500 Positive Momentum Tilt TR USD,0,
-794,MNA,IQ Hedge Merger Arbitrage TR USD,0,
-795,MOAT,Morningstar Wide Moat Focus TR USD,0,
-796,MOM,DJ US Thematic Market Neut Momen TR USD,0,
-797,MOO,Market Vectors Gbl Agribusiness USD,0,
-798,MOON,S&P Kensho Moonshots Index,0,
-799,MOTI,Morningstar Global ex-US Moat Focus Index,0,
-800,MRGR,S&P Merger Arbitrage TR USD,0,
-801,MTUM,MSCI USA Momentum GR USD,0,
-802,MXDE,TOBAM Maximum Diversification Emerging Index,0,
-803,MXDU,TOBAM Maximum Diversification USA Index,0,
-804,MXI,S&P Global 1200 Sec/Materials TR,0,
-805,NACP,Morningstar Minority Empowerment Index,0,
-806,NANR,S&P BMI North American Natural Resources Index,0,
-807,NERD,Roundhill BITKRAFT Esports Index,0,
-808,NETL,Fundamental Income Net Lease Real Estate Index,0,
-809,NFO,Sabrient Insider Sentiment TR USD,0,
-810,NFRA,STOXX Global Broad Infrastructure USD,0,
-811,NFTY,NIFTY 50 Equal Weight Index,0,
-812,NGE,Solactive Nigeria TR USD,0,
-813,NIFE,Indxx US Fallen Knives Index,0,
-814,NLR,Market Vectors Global Uranium and Nuclear Energy USD,0,
-815,NOBL,S&P 500 Dividend Aristocrats Index,1,1.0
-816,NORW,MSCI Norway IMI 25/50 Index,1,1.0
-817,NUDM,TIAA ESG International Developed Markets Equity Index,0,
-818,NUEM,TIAA ESG Emerging Markets Equity Index,0,
-819,NULC,TIAA ESG USA Large-Cap Index,0,
-820,NULG,TIAA ESG USA Large-Cap Growth Index,0,
-821,NULV,TIAA ESG USA Large-Cap Value Index,0,
-822,NUMG,TIAA ESG USA Mid-Cap Growth Index,0,
-823,NUMV,TIAA ESG USA Mid-Cap Value Index,0,
-824,NUSC,TIAA ESG USA Small-Cap Index,0,
-825,NXTG,Indxx 5G & NextG Thematic Index,0,
-826,OBOR,MSCI Global China Infrastructure Exposure Index,0,
-827,OEF,S&P 100 TR,0,
-828,OEUR,FTSE Developed Europe Qual/Vol/Yield Factor 5% Capped Index,0,
-829,OGIG,O Shares Global Internet Giants Index,0,
-830,OIH,MV US Listed Oil Services 25 NR USD,0,
-831,OLD,Solactive Long-Term Care Index,0,
-832,OMFL,Russell 1000 OFI Dynamic Multifactor Index,0,
-833,OMFS,Russell 2000 OFI Dynamic Multifactor Index,0,
-834,OMOM,Russell 1000 Momentum Factor Index,0,
-835,ONEO,Russell 1000 Momentum Focused Factor Index,0,
-836,ONEQ,NASDAQ Composite TR USD,0,
-837,ONEV,Russell 1000 Low Volatility Focused Factor Index,0,
-838,ONEY,Russell 1000 Yield Focused Factor Index,0,
-839,ONLN,ProShares Online Retail Index,0,
-840,OQAL,Russell 1000 Quality Factor Index,0,
-841,ORG,Solactive Organics Index,0,
-842,OSIZ,Russell 1000 Size Factor Index,0,
-843,OUSA,FTSE U.S. Qual/Vol/Yield Factor 5% Capped Index,0,
-844,OUSM,FTSE USA Small Cap Qual/Vol/Yield Factor 3% Capped Index,0,
-845,OVLU,Russell 1000 Value Factor Index,0,
-846,OVOL,Russell 1000 Volatility Factor Index,0,
-847,OYLD,Russell 1000 Yield Factor Index,0,
-848,PACA,MSCI Latin America Pacific Alliance Capped Index,0,
-849,PAK,MSCI All Pakistan Select 25/50 Index,0,
-850,PALC,Lunt Capital U.S. Large Cap Multi-Factor Rotation Index,0,
-851,PAMC,Lunt Capital U.S. MidCap Multi-Factor Rotation Index,0,
-852,PAVE,INDXX U.S. Infrastructure Development Index,0,
-853,PAWZ,FactSet Pet Care Index,0,
-854,PBD,WilderHill New Energy Glbl Innovation TR USD,0,
-855,PBDM,FTSE Developed ex North America Index,0,
-856,PBE,Dynamic Biotech&Genome Intellidex TR USD,0,
-857,PBEE,FTSE Emerging Index,0,
-858,PBJ,Dynamic Food&Beverage Intellidex TR USD,0,
-859,PBS,Dynamic Media Intellidex TR USD,0,
-860,PBSM,MSCI USA Small Cap Index,0,
-861,PBUS,MSCI USA Index,0,
-862,PBW,WilderHill Clean Energy Mod EW TR USD,0,
-863,PDEV,Nasdaq Developed Select Leaders Core Index,0,
-864,PDN,FTSE RAFI Dv Ex US Mid Small 1500 NR USD,0,
-865,PDP,Dorsey Wright Technical leaders TR USD,0,
-866,PEJ,Dynamic Leis&Entertnmt Intellidex TR USD,0,
-867,PEK,CSI 300 TR CNY,0,
-868,PEX,LPX Direct Listed Private Equity TR USD,0,
-869,PEXL,Pacer US Export Leaders Index,0,
-870,PEY,NASDAQ US Dividend Achievers 50 TR USD,0,
-871,PEZ,DWA Consumer Cyclicals Technical Leaders USD,0,
-872,PFF,Preferred Shares,1,1.0
-873,PFFD,BofA Merrill Lynch Diversified Core U.S. Preferred Securities Index,0,
-874,PFFV,ICE U.S. Variable Rate Preferred Securities Index,0,
-875,PFI,DWA Financials Technical Leaders USD,0,
-876,PFM,NASDAQ US Broad Div Achievers TR USD,0,
-877,PFXF,WellsFargo Hybrid&Pref Sec exFinc TR USD,0,
-878,PGAL,FTSE Portugal 20 USD,0,
-879,PGF,Wells Fargo Hybrid&Pref Secs Finc TR USD,0,
-880,PGJ,NASDAQ Halter USX China TR USD,0,
-881,PGX,Preferred Shares,1,2.0
-882,PHO,NASDAQ OMX US Water TR USD,0,
-883,PICK,MSCI ACWI Select Mt&MP Ex G&S IMI NR USD,0,
-884,PID,NASDAQ Intl Div Achievers TR USD,0,
-885,PIE,Dorsey Wright Em Mrkt Tech Ldrs NR USD,0,
-886,PIN,Indus India,0,
-887,PIO,NASDAQ OMX Global Water TR USD,0,
-888,PIZ,Dorsey Wright Dev Mrkt Tech Ldrs NR USD,0,
-889,PJP,Dynamic Pharmaceutical Intellidex TR USD,0,
-890,PKB,Dynamic Building&Const Intellidex TR USD,0,
-891,PKW,NASDAQ Buyback Achievers USD,0,
-892,PLAT,WisdomTree Modern Tech Platforms Index,0,
-893,PLC,Nasdaq US Large Cap Select Leaders Core Index,0,
-894,PMOM,Nasdaq U.S. Sustainable Momentum Index,0,
-895,PMR,Dynamic Retail Intellidex TR USD,0,
-896,PNQI,US Internet Sector,1,2.0
-897,POTX,Cannabis Index,0,
-898,PPA,US Defense Sector,1,1.0
-899,PPH,MV US Listed Pharmaceutical 25 NR USD,0,
-900,PRF,FTSE RAFI US 1000 TR USD,0,
-901,PRFZ,FTSE RAFI US Mid Small 1500 TR USD,0,
-902,PRN,DWA Industrials Technical Leaders USD,0,
-903,PRNT,Total 3D-Printing Index,0,
-904,PSC,NASDAQ U.S. Small Cap Select Leaders Index,0,
-905,PSCC,S&P SmallCap 600 Capped Cons Staples USD,0,
-906,PSCD,S&P SmallCap 600 Capped Cons Disc USD,0,
-907,PSCE,S&P SmallCap 600 Capped Energy USD,0,
-908,PSCF,S&P SmallCap 600 Capped Financials USD,0,
-909,PSCH,S&P SmallCap 600 Capped HealthCare USD,0,
-910,PSCI,S&P 600 Capped Industrials TR,0,
-911,PSCM,S&P SmallCap 600 Capped Materials USD,0,
-912,PSCT,S&P SmallCap 600 Cap Info Tech USD,0,
-913,PSCU,S&P SmallCap 600 Cap Util&Tele serv USD,0,
-914,PSET,NASDAQ U.S. Price Setters Index,0,
-915,PSI,Dynamic Semiconductor Intellidex TR USD,0,
-916,PSJ,Dynamic Software Intellidex TR USD,0,
-917,PSK,Wells Fargo Hybrid and Preferred Securities Aggregate TR USD,0,
-918,PSL,DWA Consumer Staples Technical Leaders USD,0,
-919,PSM,Nasdaq US Small Mid Cap Select Leaders Core Index,0,
-920,PSP,Red Rocks Gbl Listed Private Eqty TR USD,0,
-921,PTEU,Pacer Trendpilot European Index,0,
-922,PTF,DWA Technology Technical Leaders USD,0,
-923,PTH,DWA Healthcare Technical Leaders USD,0,
-924,PTIN,S&P Developed Ex-US Large Cap Local Currency Total Return Index,0,
-925,PTLC,Pacer Wilshire US Large-Cap Trendpilot Index,0,
-926,PTMC,Pacer Wilshire US Mid-Cap Trendpilot Index,0,
-927,PTNQ,Pacer NASDAQ-100 Trendpilot Index,0,
-928,PUI,DWA Utilities Technical Leaders USD,0,
-929,PVAL,Nasdaq U.S. Contrarian Value Index,0,
-930,PWB,Dynamic Large Cap Intellidex TR USD,0,
-931,PWC,Dynamic Market Intellidex TR USD,0,
-932,PWV,Dynamic Large Cap Valu Intellidex TR USD,0,
-933,PXE,Dynamic Enr Explo&Prod Intellidex GR USD,0,
-934,PXF,FTSE RAFI Dvlp ex US 1000 TR USD,0,
-935,PXH,FTSE RAFI Emerging TR USD,0,
-936,PXI,DWA Energy Technical Leaders USD,0,
-937,PXJ,Dynamic Oil Services Intellidex TR USD,0,
-938,PXQ,Dynamic Networking Intellidex TR USD,0,
-939,PY,NASDAQ U.S. Shareholder Yield Index,0,
-940,PYZ,DWA Basic Materials Technical Leaders USD,0,
-941,PZD,AMEX Cleantech TR USD,0,
-942,QABA,NASDAQ OMX ABA Community Bank TR USD,0,
-943,QARP,Russell 1000 2Qual/Val 5% Capped Factor Index,0,
-944,QAT,MSCI All Qatar Capped Index,0,
-945,QCLN,NASDAQ Clean Edge US Liq PR USD,0,
-946,QDEF,Northern Trust Quality Div Defensive USD,0,
-947,QDF,Northern Trust Quality Dividend USD,0,
-948,QDIV,S&P 500 Quality High Dividend Index,0,
-949,QDYN,Northern Trust Quality Dividend Dyn USD,0,
-950,QEFA,MSCI EAFE Quality Mix Index,0,
-951,QEMM,MSCI Emerging Markets Quality Mix Index,0,
-952,QGRO,iSTOXX American Century USA Quality Growth Index,0,
-953,QINT,Alpha Vee American Century Diversified International Equity Index,0,
-954,QLC,Northern Trust Quality Large Cap Index,0,
-955,QLV,Northern Trust Quality Low Volatility Index,0,
-956,QLVD,Northern Trust Developed Markets ex-US Quality Low Volatility Index,0,
-957,QLVE,Northern Trust Emerging Markets Quality Low Volatility Index,0,
-958,QMJ,S&P 500 150/50 Quality 0.30% Decrement Index,0,
-959,QMN,IQ Hedge Market Neutral USD,0,
-960,QQEW,NASDAQ-100 Equal Weighted Index,1,1.0
-961,QQQ,NASDAQ 100 TR USD,0,
-962,QQQE,NASDAQ-100 Equal Weighted Index,1,2.0
-963,QQQJ,NASDAQ Next Generation 100 Index,0,
-964,QQQM,NASDAQ-100 Index,0,
-965,QQXT,NASDAQ 100 Ex Technology TR USD,0,
-966,QTEC,NASDAQ 100 Technology NTTR TR USD,0,
-967,QTUM,BlueStar Quantum Computing and Machine Learning Index,0,
-968,QUAL,MSCI USA Quality GR USD,0,
-969,QUS,MSCI USA Quality Mix A-Series Index,0,
-970,QVM,A.I. Quality Value Momentum Index,0,
-971,QWLD,MSCI World Quality Mix Index,0,
-972,QYLD,CBOE NASDAQ-100 BuyWrite USD,0,
-973,QYLG,CBOE Nasdaq-100 Half BuyWrite V2 Index,0,
-974,RAFE,RAFI ESG US Index,0,
-975,RBIN,R Risk-Based International Index,0,
-976,RBUS,R Risk-Based US Index,0,
-977,RCD,S&P 500 Equal Weighted Cons Disc TR USD,0,
-978,RDIV,Revenue Weighted Ultra Dividend USD,0,
-979,RDVY,NASDAQ US Rising Dividend Achievers TR USD,0,
-980,RECS,Beta Advantage Research Enhanced U.S. Equity Index,0,
-981,REDV,FTSE Custom Emerging Ultra Dividend Revenue Index,0,
-982,REEM,MSCI OFI Revenue Weighted Emerging Markets Index,0,
-983,REFA,MSCI OFI Revenue Weighted International Index,0,
-984,REGL,S&P MidCap 400 Dividend Aristocrats Index,0,
-985,REMX,Rare Earth/Strategic Metals USD,0,
-986,RENW,Morningstar North America Renewable Energy Index,0,
-987,REVS,Beta Advantage Research Enhanced U.S. Value Index,0,
-988,RFG,S&P MidCap 400 Pure Growth TR,0,
-989,RFV,S&P MidCap 400 Pure Value TR,0,
-990,RGI,S&P 500 Equal Weighted Indl TR USD,0,
-991,RGLB,MSCI OFI Revenue Weighted Global Index,0,
-992,RHS,S&P 500 Equal Weighted Cons Stpl TR USD,0,
-993,RIDV,FTSE Custom Developed ex US Ultra Dividend Revenue Index,0,
-994,RING,MSCI ACWI Select Gold Miners IMI NR USD,0,
-995,RNDM,Nasdaq Riskalyze Developed International Equity Select Index,0,
-996,RNDV,Nasdaq Riskalyze US Equity Dividend Select Index,0,
-997,RNEM,Nasdaq Riskalyze Emerging Markets Equity Select Index,0,
-998,RNLC,Nasdaq Riskalyze US Large Cap Index,0,
-999,RNMC,Nasdaq Riskalyze US Mid Cap Index,0,
-1000,RNSC,Nasdaq Riskalyze US Small Cap Index,0,
-1001,ROAM,Lattice Risk-Optimized Advancing Markets Strategy Index,0,
-1002,ROBO,Robo-Stox Global Robotics and Autom USD,0,
-1003,ROBT,Nasdaq CTA Artificial Intelligence and Robotics Index,0,
-1004,RODE,Hartford Multifactor Diversified International Index,0,
-1005,RODM,Lattice Risk-Optimized Developed Markets (ex-US) Strategy Index,0,
-1006,ROKT,S&PKensho Final Frontiers Index,0,
-1007,ROSC,Hartford Multifactor Small Cap Index,0,
-1008,ROUS,Lattice Risk-Optimized US Large Cap Equity Strategy Index,0,
-1009,RPV,S&P 500 Pure Value TR,0,
-1010,RSP,S&P 500 Equal Weighted TR USD,0,
-1011,RSX,Russia,1,1.0
-1012,RSXJ,MV Russia Small Cap NR USD,0,
-1013,RTH,MV US Listed Retail 25 NR USD,0,
-1014,RTM,S&P 500 Equal Weighted Materials TR USD,0,
-1015,RVRS,Reverse Cap Weighted U.S. Large Cap Index,0,
-1016,RWCD,MSCI USA Cyclical Sectors  USA Defensive Sectors 150/50 Return Spread Index,0,
-1017,RWDC,MSCI USA Defensive Sectors  USA Cyclical Sectors 150/50 Return Spread Index,0,
-1018,RWDE,MSCI EAFE IMI - Emerging Markets IMI 150/50 Return Spread Index,0,
-1019,RWED,MSCI Emerging Markets IMI - EAFE IMI 150/50 Return Spread Index,0,
-1020,RWGV,Russell 1000 Growth/Value 150/50 Net Spread Index,0,
-1021,RWIU,FTSE All-World ex US/Russell 1000 150/50 Net Spread Index,0,
-1022,RWJ,RevShares Small Cap Fund TR USD,0,
-1023,RWK,RevShares Mid Cap Fund TR USD,0,
-1024,RWL,RevShares Large Cap Fund TR USD,0,
-1025,RWLS,Russell 1000/Russell 2000 150/50 Net Spread Index,0,
-1026,RWSL,Russell 2000/Russell 1000 150/50 Net Spread Index,0,
-1027,RWUI,Russell 1000/FTSE All-World ex US 150/50 Net Spread Index,0,
-1028,RWVG,Russell 1000 Value/Growth 150/50 Net Spread Index,0,
-1029,RWW,RevShares Large Cap Fund Fincls TR USD,0,
-1030,RXI,S&P Global 1200 Sec/Cons Disc TR,0,
-1031,RYE,S&P 500 Equal Weighted Energy TR USD,0,
-1032,RYF,S&P 500 Equal Weighted Financials TR USD,0,
-1033,RYH,S&P 500 Equal Weighted HC TR USD,0,
-1034,RYJ,RaymondJames SB1 Equity Incorporated USD,0,
-1035,RYLD,Cboe Russell 2000 BuyWrite Index,0,
-1036,RYT,S&P 500 Equal Weighted IT TR USD,0,
-1037,RYU,S&P 500 Equal Weighted Util&Teles TR USD,0,
-1038,RZG,S&P SmallCap 600 Pure Growth TR,0,
-1039,RZV,S&P SmallCap 600 Pure Value TR,0,
-1040,SBIO,Poliwogg Medical Breakthroughs Index,0,
-1041,SCHA,DJ US TSM Small Cap TR USD,0,
-1042,SCHB,DJ US Broad Stock Market TR USD,0,
-1043,SCHC,EAFE Small Cap,1,2.0
-1044,SCHD,DJ US Dividend 100 TR USD,0,
-1045,SCHE,FTSE Emerging NR USD,0,
-1046,SCHF,FTSE Dv Ex US NR USD,0,
-1047,SCHG,DJ US TSM Large Cap Growth TR USD,0,
-1048,SCHK,Schwab 1000 Index,0,
-1049,SCHM,DJ US TSM Mid Cap TR USD,0,
-1050,SCHV,DJ US TSM Large Cap Value TR USD,0,
-1051,SCHX,DJ US TSM Large Cap TR USD,0,
-1052,SCID,Scientific Beta Extended Europe Multi-Beta Multi-Strategy Equal,0,
-1053,SCIF,MV India Small Cap NR USD,0,
-1054,SCIJ,Scientific Beta Japan Multi-Beta Multi-Strategy Equal Risk Contr,0,
-1055,SCIU,Scientific Beta United States Multi-Beta Multi-Strategy Equal Ri,0,
-1056,SCIX,Scientific Beta Developed Asia-Pacific ex Japan Multi-Beta Multi,0,
-1057,SCJ,MSCI Japan Small Cap NR USD,0,
-1058,SCZ,EAFE Small Cap,1,1.0
-1059,SDEM,Indxx SuperDividend Emerging Markets Index,0,
-1060,SDG,MSCI ACWI Sustainable Impact Index,0,
-1061,SDGA,Morningstar Societal Development Index,0,
-1062,SDIV,Solactive Global SuperDividend TR USD,0,
-1063,SDOG,S-Network Sector Dividend Dogs USD,0,
-1064,SDVY,NASDAQ US Small Mid Cap Rising Dividend Achievers Index,0,
-1065,SDY,S&P High Yield Dividend Aristcrts TR USD,0,
-1066,SEA,Dow Jones Global Shipping USD,0,
-1067,SFY,Solactive SoFi US 500 Growth Index,0,
-1068,SFYF,Solactive SoFi US 50 Growth Index,0,
-1069,SFYX,Solactive SoFi US Next 500 Growth Index,0,
-1070,SGDJ,Sprott Zacks Junior Gold Miners Index,0,
-1071,SGDM,Sprott Zacks Gold Miners Index,0,
-1072,SHE,SSGA Gender Diversity Index,0,
-1073,SHLD,Nasdaq Yewno Aerospace & Defense Index,0,
-1074,SIL,Solactive Global Silver Miners TR USD,0,
-1075,SILJ,ISE Junior Silver (SM Miners/Explor) USD,0,
-1076,SIMS,S&P Kensho Intelligent Infrastructure Index,0,
-1077,SIZE,MSCI USA Risk Weighted GR USD,0,
-1078,SKYY,ISE Cloud Computing USD,0,
-1079,SLIM,Solactive Obesity Index,0,
-1080,SLT,Salt truBeta High Exposure Index,0,
-1081,SLVP,MSCI ACWI Select Silver Miner IMI NR USD,0,
-1082,SLX,NYSE Arca Steel TR USD,0,
-1083,SLY,S&P SmallCap 600 Index,1,2.0
-1084,SLYG,S&P Smallcap 600 Growth Index,1,2.0
-1085,SLYV,S&P Smallcap 600 Value Index,1,2.0
-1086,SMDV,Russell 2000 Dividend Growth Index,0,
-1087,SMDY,Syntax Stratified MidCap Index,0,
-1088,SMEZ,EURO STOXX Small Index,0,
-1089,SMH,MV US Listed Semiconductor 25 NR USD,0,
-1090,SMIN,MSCI India Small NR USD,0,
-1091,SMLF,MSCI USA Small Cap Diversified Multi-Factor Index,0,
-1092,SMLV,Russell 2000 Low Volatility TR USD,0,
-1093,SMMD,US Small Caps,1,2.0
-1094,SMMV,MSCI USA Small Cap Minimum Volatility (USD) Index,0,
-1095,SMOG,Ardour Global Index Extra Liquid,0,
-1096,SNPE,S&P 500 ESG Index,0,
-1097,SNSR,Indxx Global Internet of Things Thematic Index,0,
-1098,SOCL,Solactive Social Media USD,0,
-1099,SOIL,Solactive Global F/P TR USD,0,
-1100,SOXX,PHLX Semiconductor Sector USD,0,
-1101,SPAK,Indxx SPAC & NextGen IPO Index,0,
-1102,SPDV,S&P 500 Dividend & Free Cash Flow Yield Index,0,
-1103,SPDW,S&P Developed Ex-U.S. BMI Index,0,
-1104,SPEM,S&P Emerging BMI Index,0,
-1105,SPEU,STOXX Europe Total Market Index,0,
-1106,SPFF,S&P Enhded Yld Nor Amer Preferred Stock USD,0,
-1107,SPGM,MSCI ACWI IMI Index,0,
-1108,SPGP,S&P 500 Growth at a Reasonable Price Index,0,
-1109,SPHB,S&P 500 High Beta USD,0,
-1110,SPHD,S&P 500 Low Volatility High Dividend USD,0,
-1111,SPHQ,S&P 500 High Quality TR USD,0,
-1112,SPLG,SSGA Large Cap Index,0,
-1113,SPLV,S&P 500 Low Volatility TR USD,0,
-1114,SPMD,S&P 1000 Index,0,
-1115,SPMO,S&P 500 Momentum Index,0,
-1116,SPMV,S&P 500 Minimum Volatility Index,0,
-1117,SPQQ,Siren Large Cap Blend Index,0,
-1118,SPSM,SSGA Small Cap Index,0,
-1119,SPTM,SSGA Total Stock Market Index,0,
-1120,SPUS,S&P 500 Shariah Industry Exclusions Index,0,
-1121,SPVU,S&P 500 Enhanced Value Index,0,
-1122,SPXE,S&P 500 Ex-Energy Index,0,
-1123,SPXN,S&P 500 Ex-Financials Index,0,
-1124,SPXT,S&P 500 Ex-Information Technology & Telecommunication Services I,0,
-1125,SPXV,S&P 500 Ex-Health Care Index,0,
-1126,SPY,S&P 500 Index,1,1.0
-1127,SPYB,S&P 500 Buyback Index,0,
-1128,SPYD,S&P 500 High Dividend Index,0,
-1129,SPYG,S&P 500 Growth Index,1,2.0
-1130,SPYV,S&P 500 Value Index,1,2.0
-1131,SPYX,S&P 500 Fossil Fuel Free Index,0,
-1132,SQLV,Royce Small-Cap Quality Value Index,0,
-1133,SSLY,Syntax Stratified SmallCap Index,0,
-1134,SSPY,Syntax Stratified LargeCap Index,0,
-1135,STLC,Russell US Large Cap Factors Blend Style Index,0,
-1136,STLG,Russell US Large Cap Factors Growth Style Index,0,
-1137,STLV,Russell US Large Cap Factors Value Style Index,0,
-1138,STMB,Russell US Mid Cap Factors Blend Style Index,0,
-1139,STSB,Russell US Small Cap Factors Blend Style Index,0,
-1140,SUSA,MSCI USA Extended ESG Select Index,0,
-1141,SUSL,MSCI USA Extended ESG Leaders Index,0,
-1142,SVAL,Russell 2000 Focused Value Select Index,0,
-1143,SZNE,Pacer CFRA-Stovall Equal Weight Seasonal Rotation Index,0,
-1144,TAN,MAC Global Solar Energy TR USD,0,
-1145,TBLU,Tortoise Water Index,0,
-1146,TDIV,NASDAQ Technology Dividend USD,0,
-1147,TDV,S&PTechnology Dividend AristocratsIndex,0,
-1148,TECB,NYSE FactSet U.S. Tech Breakthrough Index,0,
-1149,THCX,Innovation Labs Cannabis Index,0,
-1150,THD,MSCI Thailand IMI 25-50 NR USD,0,
-1151,THNQ,ROBO Global Artificial Intelligence Index,0,
-1152,TILT,Morningstar US Mkt Factor Tilt TR USD,0,
-1153,TLDH,Morningstar Developed Markets ex-US Factor Tilt Hedged Index,0,
-1154,TLEH,Morningstar Emerging Markets Factor Tilt Hedged Index,0,
-1155,TLTD,Morningstar Dev Mkt ex-US Ft Tilt GR USD,0,
-1156,TLTE,Morningstar Emg Mkts Factor Tilt NR USD,0,
-1157,TMDV,Russell 3000 Dividend Elite Index,0,
-1158,TMFC,Motley Fool 100 index,0,
-1159,TOK,MSCI Kokusai NR USD,0,
-1160,TOLZ,Dow Jones Brookfield Global Infrastructure Composite USD,0,
-1161,TPAY,Tortoise Global Digital Payments Infrastructure Index,0,
-1162,TPHD,Victory U.S. Large Cap High Dividend Volatility Weighted BRI Index,0,
-1163,TPIF,Victory International 500 Volatility Weighted BRI Index,0,
-1164,TPLC,Victory US Large Cap Volatility Weighted BRI Index,0,
-1165,TPSC,Victory US Small Cap Volatility Weighted BRI Index,0,
-1166,TPYP,Tortoise North American Pipeline Index,0,
-1167,TRND,"Pacer Trendpilot US Large Cap Index, Pacer Trendpilot US Mid Cap Index, Pacer NASDAQ-100 Trendpilot Index, Pacer Trendpilot Inte",0,
-1168,TTTN,Nasdaq China US Internet Tiger Index,0,
-1169,TUR,MSCI Turkey IMI NR USD,0,
-1170,TUSA,NASDAQ AlphaDEX Total US Market Index,0,
-1171,UAE,MSCI All UAE Capped Index,0,
-1172,UEVM,MSCI Emerg Markets Select Value Momentum Blend Index,0,
-1173,UFO,S-Network Space Index,0,
-1174,UIVM,MSCI World ex USA Select Value Momentum Blend Index,0,
-1175,ULVM,MSCI USA Select Value Momentum Blend Index,0,
-1176,URA,Solactive Global Uranium TR USD,0,
-1177,URNM,North Shore Global Uranium Mining Index,0,
-1178,URTH,MSCI World NR USD,0,
-1179,USAI,American Energy Independence Index,0,
-1180,USEQ,Russell 1000 Enhanced Value Equal Weight Index,0,
-1181,USLB,Russell 1000 Low Beta Equal Weight Index,0,
-1182,USMC,Nasdaq US Mega Cap Select Leaders Index,0,
-1183,USMF,WisdomTree U.S. Multifactor Index,0,
-1184,USMV,MSCI USA Minimum Volatility (USD) NR USD,0,
-1185,USSG,MSCI USA ESG Leaders Index,0,
-1186,USVM,MSCI USA Sm Cap Select Value Momentum Blend Index,0,
-1187,USXF,MSCI USA Choice ESG Screened Index,0,
-1188,VALQ,iSTOXX American Century USA Quality Value Index,0,
-1189,VAW,US Materials Sector,1,2.0
-1190,VB,MSCI US Small Cap 1750 NR USD,0,
-1191,VBK,MSCI US Small Cap Growth NR USD,0,
-1192,VBR,MSCI US Small Cap Value NR USD,0,
-1193,VCR,Consumer Discretionary Sector,1,2.0
-1194,VDC,Consumer Staples Sector,1,2.0
-1195,VDE,Energy Sector,1,2.0
-1196,VEA,EAFE,1,1.0
-1197,VEGI,MSCI ACWI Select Agricul Prod IMI NR USD,0,
-1198,VEGN,US Vegan Climate Index,0,
-1199,VETS,Military Times Best for Vets Index,0,
-1200,VEU,All World Ex US,1,1.0
-1201,VFH,US Financials Sector,1,2.0
-1202,VGK,Eurozone,1,2.0
-1203,VGT,US Technology Sector,1,2.0
-1204,VHT,US Healthcare Sector,1,2.0
-1205,VIDI,Vident International Equity USD,0,
-1206,VIG,NASDAQ US Div Achievers Select TR USD,0,
-1207,VIGI,NASDAQ International Dividend Achievers Select Index,0,
-1208,VIOG,S&P Smallcap 600 Growth Index,1,3.0
-1209,VIOO,S&P SmallCap 600 Index,1,3.0
-1210,VIOV,S&P Smallcap 600 Value Index,1,3.0
-1211,VIRS,LifeSci BioThreat Strategy Index,0,
-1212,VIS,US Industrials Sector,1,2.0
-1213,VLU,S&P 1500 Low Valuation Tilt TR USD,0,
-1214,VLUE,MSCI USA Value Weighted GR USD,0,
-1215,VMOT,Alpha Architect Value Momentum Trend Index,0,
-1216,VNM,MV Vietnam NR USD,0,
-1217,VO,CRSP US Mid Cap TR USD,0,
-1218,VOE,CRSP US Mid Cap Value TR USD,0,
-1219,VONE,Russell 1000 Index,1,2.0
-1220,VONG,Russell 1000 Growth Index,1,2.0
-1221,VONV,Russell 1000 Value Index,1,2.0
-1222,VOO,S&P 500 Index,1,3.0
-1223,VOOG,S&P 500 Growth Index,1,3.0
-1224,VOOV,S&P 500 Value Index,1,3.0
-1225,VOT,CRSP US Mid Cap Growth TR USD,0,
-1226,VOX,US Communications Sector,1,1.0
-1227,VPL,FTSE Developed Asia Pacific NR USD,0,
-1228,VPN,Solactive Data Center REITs & Digital Infrastructure Index,0,
-1229,VPU,US Utilities Sector,1,2.0
-1230,VRAI,Indxx Real Asset Income Index,0,
-1231,VRP,Wells FargoÃ‚Â® Hybrid and Preferred Securities Floating and Variable Rate USD,0,
-1232,VSDA,Nasdaq Victory Dividend Accelerator Index,0,
-1233,VSGX,FTSE Global All Cap ex US Choice Index,0,
-1234,VSL,Volshares Large Cap Index,0,
-1235,VSMV,Nasdaq Victory US Multi-Factor Minimum Volatility Index,0,
-1236,VSS,FTSE Gbl SmallCap Ex US TR USD,0,
-1237,VT,All World,1,2.0
-1238,VTHR,Russell 3000 Index,1,2.0
-1239,VTI,US Total Market,1,1.0
-1240,VTRN,Veterans Select Index,0,
-1241,VTV,MSCI US Prime Market Value NR USD,0,
-1242,VTWG,Russell 2000 Growth Index,1,2.0
-1243,VTWO,Russell 2000 Index,1,2.0
-1244,VTWV,Russell 2000 Value Index,1,2.0
-1245,VUG,MSCI US Prime Market Growth NR USD,0,
-1246,VUSE,Vident Core U.S. Equity USD,0,
-1247,VV,MSCI US Prime Market 750 NR USD,0,
-1248,VWO,Emerging Markets,1,2.0
-1249,VXF,US Small Caps,1,1.0
-1250,VXUS,All World Ex US,1,2.0
-1251,VYM,FTSE High Dividend Yield TR USD,0,
-1252,VYMI,FTSE All-World ex US High Dividend Yield Index,0,
-1253,WBIY,Solactive Power Factor High Dividend Index,0,
-1254,WCHN,S&P China 500 Index,0,
-1255,WCLD,BVP Nasdaq Emerging Cloud Index,0,
-1256,WDIV,S&P Global Dividend Aristocrats TR USD,0,
-1257,WFH,Solactive Remote Work Index,0,
-1258,WLDR,Thomson Reuters StarMine Affinity World Leaders Index,0,
-1259,WOMN,Morningstar Women s Empowerment Index,0,
-1260,WOOD,S&P Global Timber and Forestry TR USD,0,
-1261,WWJD,Inspire International ESG Index,0,
-1262,WWOW,Indxx US Circular Economy Index,0,
-1263,XAR,S&P Aerospace & Defense Select Industry TR USD,0,
-1264,XBI,S&P Biotechnology Select Industry TR USD,0,
-1265,XBUY,EQM International Ecommerce Index,0,
-1266,XCEM,EGAI Emerging Markets ex-China Index,0,
-1267,XDIV,Solactive US Ex-Dividends Index Series 2027,0,
-1268,XES,S&P Oil&Gas Equip&Svcs Sel Indust TR USD,0,
-1269,XHB,S&P Homebuilders Select Industry TR USD,0,
-1270,XHE,S&P HealthCare Equip Sel Industry TR USD,0,
-1271,XHS,S&P Health Care Services Select Industry TR USD,0,
-1272,XITK,FactSet Innovative Technology Index,0,
-1273,XJH,S&P MidCap 400 Sustainability Screened Index,0,
-1274,XJR,S&P SmallCap 600 Sustainability Screened Index,0,
-1275,XLB,US Materials Sector,1,1.0
-1276,XLC,US Communications Sector,1,2.0
-1277,XLE,Energy Sector,1,1.0
-1278,XLF,US Financials Sector,1,1.0
-1279,XLG,Russell Top 50 Mega CapTR USD,0,
-1280,XLI,US Industrials Sector,1,1.0
-1281,XLK,US Technology Sector,1,1.0
-1282,XLP,Consumer Staples Sector,1,1.0
-1283,XLU,US Utilities Sector,1,1.0
-1284,XLV,US Healthcare Sector,1,1.0
-1285,XLY,Consumer Discretionary Sector,1,1.0
-1286,XME,S&P Metals&Mining Select Industry TR USD,0,
-1287,XMHQ,S&P MidCap 400 Quality Index,0,
-1288,XMLV,S&P MidCap 400 Low Volatility TR USD,0,
-1289,XMMO,S&P MidCap 400 Momentum Index,0,
-1290,XMVM,S&P 400 High Momentum Value Index,0,
-1291,XNTK,NYSE Technology Index,0,
-1292,XOP,S&P Oil&Gas Explor&Pro Sel Indust TR USD,0,
-1293,XOUT,XOUT U.S. Large Cap Index,0,
-1294,XPH,S&P Pharms Select Industry TR USD,0,
-1295,XRLV,S&P 500 Low Volatility Rate Response Index,0,
-1296,XRT,S&P Retail Select Industry TR USD,0,
-1297,XSD,S&P Semi Select Industry TR USD,0,
-1298,XSHD,S&P SmallCap 600 Low Volatility High Dividend Index,0,
-1299,XSHQ,S&P SmallCap 600 Quality Index,0,
-1300,XSLV,S&P SmallCap 600 Low Volatility TR USD,0,
-1301,XSMO,S&P SmallCap 600 Momentum Index,0,
-1302,XSOE,WisdomTree Emerging Markets ex-State-Owned Enterprises Index,0,
-1303,XSVM,S&P 600 High Momentum Value Index,0,
-1304,XSW,S&P Soft&Sevs Select Industry TR USD,0,
-1305,XT,Morningstar Exponential Technologies Index,0,
-1306,XTH,S&P Technology Hardware Select Industry Index,0,
-1307,XTL,S&P Telecom Select Industry TR USD,0,
-1308,XTN,S&P Transpt Select Industry TR USD,0,
-1309,XVV,S&P 500 Sustainability Screened Index,0,
-1310,XWEB,S&P Internet Select Industry Index,0,
-1311,XYLD,CBOE S&P500 BuyWrite Index,0,
-1312,XYLG,CBOE S&P 500 Half BuyWrite Index,0,
-1313,YLCO,Indxx Global YieldCo Index,0,
-1314,ZCAN,Solactive GBS Canada Large & Mid Cap Index,0,
-1315,ZDEU,Germany,1,2.0
-1316,ZGBR,Solactive GBS United Kingdom Large & Mid Cap Index,0,
-1317,ZHOK,Solactive GBS Hong Kong Large & Mid Cap USD Index,0,
-1318,ZIG,Acquirers Index,0,
-1319,ZJPN,Solactive GBS Japan Large & Mid Cap Index,0,
-1320,ZMLP,Zacks MLP USD,0,
+,ticker,index,d_sameind,launch_order,CUSIP
+0,AAXJ,Asia ex Japan,1,1.0,46428818
+1,ACES,CIBC Atlas Clean Energy Index,0,,00162Q46
+2,ACSG,MSCI ACWI ex USA ESG Leaders Index,0,,23305119
+3,ACSI,American Customer Satisfaction Investable Index,0,,26922A77
+4,ACSI,American Customer Satisfaction Investable Index,0,,88636471
+5,ACWF,MSCI ACWI Diversified MultiFactor Index,0,,46434V31
+6,ACWI,All World,1,1.0,46428825
+7,ACWV,MSCI ACWI Minimum Vol (USD) NR USD,0,,46428652
+8,ACWX,MSCI ACWI ex-US Index,1,2.0,46428824
+9,ADRA,BONY Asia 50 ADR TR USD,0,,00653H10
+10,ADRA,BONY Asia 50 ADR TR USD,0,,46090C10
+11,ADRD,BONY Developed Markets 100 ADR TR USD,0,,46090C20
+12,ADRE,BONY Emerging Markets 50 ADR TR USD,0,,46090C30
+13,ADRU,BONY Europe 100 ADR TR,0,,46090C40
+14,AFK,MV GDP Africa NR USD,0,,92189F86
+15,AFTY,FTSE CHINA A50 INDEX,0,,12649L10
+16,AFTY,FTSE CHINA A50 INDEX,0,,69374H62
+17,AGT,MSCI All Argentina 25/50 Index,1,2.0,46435G27
+18,AIA,S&P Asia 50 TR USD,0,,46428843
+19,AIQ,Indxx Artificial Intelligence & Big Data Index,0,,37954Y63
+20,AIQ,Indxx Artificial Intelligence & Big Data Index,0,,01860630
+21,AIRR,Richard Bernstein Advisors American Industrial Renaissance USD,0,,33738R70
+22,ALFA,AlphaClone Hedge Fund Long/Short TR USD,0,,26922A30
+23,ALTL,Lunt Capital U.S. Large Cap Equity Rotation Index,0,,69374H71
+24,AMCA,Russell 1000 Pure Domestic Exposure Index,0,,46435G16
+25,AMER,Emles American Manufacturing Index,0,,29136170
+26,AMLP,Alerian MLP Infrastructure TR USD,0,,00162Q45
+27,ANEW,MSCI Global Transformational Changes Index,0,,74347G79
+28,ARGT,MSCI All Argentina 25/50 Index,1,1.0,37950E25
+29,ARMR,Armor US Equity Index,0,,30151E76
+30,ASEA,FTSE/Asean 40,0,,37950E64
+31,ASHR,CSI 300 USD,0,,23305187
+32,ASHS,China Securities 500 Index,0,,23305175
+33,ASHX,CSI 300 USD Hedged Index,0,,23305152
+34,AUSF,Adaptive Wealth Strategies U.S. Factor Index,0,,37954Y57
+35,AWAY,Prime Travel Technology Index,0,,43739Q10
+36,AWAY,Prime Travel Technology Index,0,,26924G77
+37,AXJL,WisdomTree Asia Pacific Ex Japan TR USD,0,,97717W82
+38,BBAX,Morningstar Developed Asia Pacific ex-Japan Target Market Exposure Index,0,,46641Q23
+39,BBC,LifeSci Biotechnology Clinical Trials Index,0,,26923G30
+40,BBCA,Canada,1,2.0,46641Q22
+41,BBEU,Morningstar Developed Europe Target Market Exposure Index,0,,46641Q19
+42,BBH,MV US Listed Biotech 25 NR USD,0,,92189F72
+43,BBIN,Morningstar Developed Markets ex-North America Target Market Exposure Index,0,,46641Q37
+44,BBJP,Japan,1,2.0,46641Q21
+45,BBMC,Morningstar US Mid Cap Target Market Exposure Extended IndexSM,0,,46641Q34
+46,BBP,LifeSci Biotechnology Products Index,0,,26923G20
+47,BBSC,Morningstar US Small Cap Target Market Exposure Extended Index,0,,46641Q29
+48,BBUS,Morningstar US Target Market Exposure Index,0,,46641Q39
+49,BETZ,Roundhill Sports Betting & iGaming Index,0,,53656F78
+50,BFIT,Indxx Global Health & Wellness Thematic Index,0,,37954Y79
+51,BFOR,Barrons 400 TR USD,0,,00162Q72
+52,BIBL,Inspire 100 Index,0,,66538H53
+53,BICK,ISE BICK USD,0,,33733H10
+54,BIZD,MV US Business Dvlpmnt Companies GR USD,0,,92189F41
+55,BJK,MV Global Gaming NR USD,0,,92189F88
+56,BKEM,Morningstar Emerging Markets Large Cap Index,0,,09661T50
+57,BKIE,Morningstar Developed Markets ex-US Large Cap Index,0,,09661T40
+58,BKLC,Morningstar US Large Cap Index,0,,09661T10
+59,BKMC,Morningstar US Mid Cap Index,0,,09661T20
+60,BKSE,Morningstar US Small Cap Index,0,,09661T30
+61,BLCN,Reality Shares NASDAQ Blockchain Economy Index,0,,75605A70
+62,BLCN,Reality Shares NASDAQ Blockchain Economy Index,0,,82965820
+63,BLES,Inspire Global Hope Large Cap Equal Weight Index,0,,66538H65
+64,BNE,Blue Horizon New Energy Economy 100 Index,0,,26922B30
+65,BOSS,Solactive U.S. Founder-Run Companies Index,0,,37954Y68
+66,BOTZ,Indxx Global Robotics & Artificial Intelligence Thematic Index,0,,37954Y71
+67,BOUT,IBD Breakout Stocks Index,0,,45782C76
+68,BRF,MV Brazil Small Cap NR USD,0,,92189F82
+69,BTAL,DJ US Thematic Mkt Neut Anti-Beta TR USD,0,,00110G40
+70,BTEC,NASDAQ U.S. Healthcare Innovators Index,0,,74255Y40
+71,BUG,Indxx Cybersecurity Index,0,,37954Y38
+72,BUL,S&P 900 Pure Growth Index,0,,69374H66
+73,BUY,SummerHaven Private Equity Strategy Index,0,,90290T60
+74,BUYN,SummerHaven Private Equity Natural Resources Strategy Index,0,,90290T70
+75,BVAL,BrandTransact50 Index,0,,26922A69
+76,CALF,Pacer US Small Cap Cash Cows Index,0,,69374H85
+77,CARZ,NASDAQ OMX Global Automobile TR USD,0,,33734X30
+78,CATH,S&P 500 Catholic Values Index,0,,37954Y88
+79,CCON,Solactive Connected Consumer Index,0,,25460G72
+80,CDC,CEMP U.S. Large Cap High Dividend 100 Long/Cash Volatility Weigh,0,,92647N82
+81,CDL,CEMP US Large Cap High Dividend 100 Volatility Weighted Index,0,,92647N86
+82,CEFA,S&P Developed ex-U.S. Catholic Values Index,0,,37954Y36
+83,CEY,CEMP Emerging Market High Dividend 100 Volatility Weighted Index,0,,92647N80
+84,CEZ,CEMP Emerging Market 500 Volatility Weighted Index,0,,92647N85
+85,CFA,CEMP U.S. Large Cap 500 Volatility Weighted Index,0,,92647N76
+86,CFO,CEMP U.S. Large Cap 500 Long/Cash Volatility Weighted Index,0,,92647N78
+87,CGW,S&P Global Water NR,0,,46138E26
+88,CGW,S&P Global Water NR,0,,18383Q50
+89,CHB,Solactive China Biotech Innovation Index,0,,37954Y25
+90,CHEP,DJ US Thematic Mkt Neut Value TR USD,0,,00110G20
+91,CHGX,Change Finance Diversified Impact U.S. Large Cap Fossil Fuel Free Index,0,,26922A56
+92,CHGX,Change Finance Diversified Impact U.S. Large Cap Fossil Fuel Free Index,0,,46144X10
+93,CHIC,MSCI China Communication Services 10/50 Index,0,,37950E80
+94,CHIE,Solactive China Energy TR USD,0,,37950E50
+95,CHIH,MSCI China Health Care 10/50 Index,0,,37954Y54
+96,CHII,Solactive China Industrials TR USD,0,,37950E70
+97,CHIK,MSCI China Information Technology 10/50 Index,0,,37954Y53
+98,CHIL,MSCI China Top 50 10/50 Index,0,,37954Y56
+99,CHIM,Solactive China Materials TR USD,0,,37950E24
+100,CHIQ,Solactive China Consumer TR USD,0,,37950E40
+101,CHIR,MSCI China Real Estate 10/50 Index,0,,37960A68
+102,CHIS,MSCI China Consumer Staples 10/50 Index,0,,37954Y55
+103,CHIU,MSCI China Utilities 10/50 Index,0,,37954Y51
+104,CHIX,Solactive China Financials TR USD,0,,37950E60
+105,CHNA,Loncar China BioPharma Index,0,,73935B88
+106,CHNA,Loncar China BioPharma Index,0,,26922A37
+107,CIBR,Nasdaq CTA Cybersecurity Index,0,,33734X84
+108,CID,CEMP International High Dividend 100 Volatility Weighted Index,0,,92647N88
+109,CIL,CEMP International 500 Volatility Weighted Index,0,,92647N84
+110,CIZ,CEMP International 500 Long/Cash Volatility Weighted Index,0,,92647N81
+111,CLOU,Indxx Global Cloud Computing Index,0,,37954Y44
+112,CLRG,NASDAQ Chaikin Power US Large Cap Index,0,,45409B38
+113,CN,MSCI China All Shares Index,1,1.0,23305176
+114,CNCR,Loncar Cancer Immunotherapy Index,0,,26922A82
+115,CNHX,MSCI China A International with CNH 100% Hedged to USD Index,0,,12649L20
+116,CNRG,S&PKensho Clean Power Index,0,,78468R65
+117,CNXT,SME-ChiNext 100 Index,0,,92189F62
+118,CNYA,MSCI China A International index,0,,46434V51
+119,COPX,Solactive Global Copper Miners TR USD,0,,37954Y83
+120,COWZ,Pacer US Cash Cows 100 Index,0,,69374H88
+121,CQQQ,China Technology Sector,1,1.0,46138E80
+122,CQQQ,China Technology Sector,1,1.0,18383Q13
+123,CRAK,Market Vectors Global Oil Refiners Index,0,,92189F58
+124,CRBN,MSCI ACWI Low Carbon Target Index,1,2.0,46434V46
+125,CROP,IQ Global Agribusiness Small Cap TR USD,0,,45409B83
+126,CSA,CEMP US Small Cap 500 Volatility Weighted Index,0,,92647N83
+127,CSB,CEMP US Small Cap High Dividend 100 Volatility Weighted Index,0,,92647N87
+128,CSD,Beacon Spin-Off TR USD,0,,46137V15
+129,CSD,Beacon Spin-Off TR USD,0,,18383M60
+130,CSF,CEMP U.S. Small Cap 500 Long/Cash Volatility Weighted Index,0,,92647N77
+131,CSM,Credit Suisse 130/30 Large Cap USD,0,,74347R24
+132,CSML,NASDAQ Chaikin Power US Small Cap Index,0,,45409B39
+133,CTEC,Indxx Global CleanTech Index,0,,37954Y22
+134,CUT,Beacon Global Timber USD,0,,46138E54
+135,CUT,Beacon Global Timber USD,0,,18383Q87
+136,CWI,MSCI ACWI ex-US Index,1,1.0,78463X84
+137,CXSE,WisdomTree China ex-State-Owned Enterprises Index,0,,97717X71
+138,CZA,Zacks Mid-Cap Core USD,0,,46137Y40
+139,CZA,Zacks Mid-Cap Core USD,0,,18383M72
+140,DALI,Nasdaq DorseyWright DALI 1 Index,0,,33738R71
+141,DAX,DAX Index,0,,44053G20
+142,DAX,DAX Index,0,,37954Y49
+143,DBAW,MSCI ACWI ex USA US Dollar Hedged USD,0,,23305182
+144,DBEF,MSCI EAFE 100% Hedged NR USD,0,,23305120
+145,DBEM,MSCI EM 100% Hedged to USD,0,,23305110
+146,DBEU,MSCI Europe US Dollar Hedged USD,0,,23305185
+147,DBEZ,MSCI EMU IMI U.S. Dollar Hedged Index,0,,23305169
+148,DBGR,MSCI Germany Hdg PR USD,0,,23305140
+149,DBJP,MSCI Japan 100% Hedged NR USD,0,,23305150
+150,DDIV,Dorsey Wright Momentum Plus Dividend Yield Index,0,,33738R69
+151,DDLS,WisdomTree Dynamic Currency Hedged International SmallCap Equity,0,,97717X27
+152,DDWM,WisdomTree Dynamic Currency Hedged International Equity Index,0,,97717X26
+153,DEEF,FTSE Developed ex US Comprehensive Factor Net Tax (US RIC) Index,0,,23305151
+154,DEEP,Acquirers Deep Value Index,0,,26922A70
+155,DEF,Sabrient Defensive Equity TR USD,0,,46138J77
+156,DEF,Sabrient Defensive Equity TR USD,0,,18383M87
+157,DEFA,MSCI EAFE Adaptive Hedge to USD Index,0,,46435G65
+158,DEM,WisdomTree EM Equity Income TR USD,0,,97717W31
+159,DEMZ,DEMZ Political Contribution Index,0,,00774Q34
+160,DES,WisdomTree SmallCap Dividend TR USD,0,,97717W60
+161,DEUS,Russell 1000 Comprehensive Factor Index,0,,23305148
+162,DEW,WisdomTree Global Equity Income TR USD,0,,97717W87
+163,DFE,WisdomTree Europe SC Dividend TR USD,0,,97717W86
+164,DFJ,WisdomTree Japan SC Dividend TR USD,0,,97717W83
+165,DFND,Reality Shares DIVCON Dividend Defender Index,0,,75605A50
+166,DFND,Reality Shares DIVCON Dividend Defender Index,0,,82965840
+167,DGRO,Morningstar US Dividend Growth Index,0,,46434V62
+168,DGRS,WisdomTree US Sm Cap Div Growth TR USD,0,,97717X65
+169,DGRW,WisdomTree U.S. Dividend Growth TR USD,0,,97717X66
+170,DGS,WisdomTree EM SmallCap Dividend TR USD,0,,97717W28
+171,DGT,DJ Global TR USD,0,,78464A70
+172,DHDG,WisdomTree Dynamic Currency Hedged International Quality Dividen,0,,97717Y70
+173,DHS,WisdomTree Equity Income TR USD,0,,97717W20
+174,DIA,DJ Industrial Average TR USD,0,,78467X10
+175,DIET,BlueStar Food and Agriculture Sustainability Index,0,,26922A18
+176,DIM,WisdomTree Intl MidCap Dividend TR USD,0,,97717W77
+177,DIV,INDXX SuperDividend US Low Volat TR USD,0,,37950E29
+178,DIVA,INDXX Hedged Dividend Income Index,0,,00110G88
+179,DIVB,Morningstar U.S. Dividend and Buyback Index,0,,46435U86
+180,DJD,Dow Jones Industrial Average Yield Weighted,0,,18383M17
+181,DJD,Dow Jones Industrial Average Yield Weighted,0,,46137V60
+182,DLN,WisdomTree LargeCap Dividend TR USD,0,,97717W30
+183,DLS,WisdomTree Intl SmallCap Dividend TR USD,0,,97717W76
+184,DMDV,S&P Developed Ex-U.S. Dividend and Free Cash Flow Yield Index,0,,26922A34
+185,DMXF,MSCI EAFE Choice ESG Screened Index,0,,46436E75
+186,DNL,WisdomTree Global Ex Us Growth TR USD,0,,97717W84
+187,DOGS,AI Dogs of the World ex US Total Return Index,0,,04276569
+188,DOL,WisdomTree Intl LargeCap Dividend TR USD,0,,97717W79
+189,DON,WisdomTree MidCap Dividend TR USD,0,,97717W50
+190,DOO,WisdomTree Intl Dividend Ex Fincl TR USD,0,,97717W78
+191,DRIV,Solactive Autonomous & Electric Vehicles Index,0,,37954Y62
+192,DRIV,Solactive Autonomous & Electric Vehicles Index,0,,25388B10
+193,DSI,MSCI KLD 400 Social GR USD,0,,46428857
+194,DSTL,Distillate Fundamental Stability & Value Index,0,,26922A32
+195,DSTX,Distillate International Fundamental Stability & Value Index,0,,26922B50
+196,DTD,WisdomTree Dividend TR USD,0,,97717W10
+197,DTEC,Indxx Disruptive Technologies Index,0,,00162Q47
+198,DTH,WisdomTree DEFA Equity Income TR USD,0,,97717W80
+199,DTN,WisdomTree Dividend Ex Financials TR USD,0,,97717W40
+200,DUAL,North Shore Dual Share Class Index,0,,30150565
+201,DURA,Morningstar US Dividend Valuation Index,0,,92189H10
+202,DVEM,WisdomTree Emerging Markets Dividend Index,0,,97717X21
+203,DVLU,Dorsey Wright Momentum Plus Value Index,0,,33741L20
+204,DVOL,Dorsey Wright Momentum Plus Low Volatility Index,0,,33741L10
+205,DVP,TWM Deep Value Index,0,,26922A70
+206,DVY,DJ US Select Dividend TR USD,0,,46428716
+207,DVYA,DJ Asia Pac Select Dividend 30 TR USD,0,,46428629
+208,DVYE,DJ Emerging Markets Sel Dividend TR USD,0,,46428631
+209,DWAQ,Dorsey Wright Technical leaders TR USD,0,,46137V82
+210,DWAS,DorseyWright SmlCap Tech Leaders TR USD,0,,46138E84
+211,DWCR,Dorsey Wright Country and Stock Momentum Index,0,,04276568
+212,DWM,WisdomTree DEFA TR USD,0,,97717W70
+213,DWPP,Nasdaq Dorsey Wright Peoples Portfolio Index,0,,33733E88
+214,DWTR,Dorsey Wright Sector 4 Index,0,,46138E82
+215,DWX,S&P Intl Dividend Opportunities TR USD,0,,78463X77
+216,DXGE,WisdomTree Germany Hedged Equity USD,0,,97717W44
+217,DXJ,WisdomTree Japan Hedged Equity TR USD,0,,97717W85
+218,DXJS,WisdomTree Japan Hedged Sm Cap Eq TR USD,0,,97717W52
+219,DYHG,Salt truVol US Large Cap Dynamic Hedge Index,0,,25460G74
+220,EASG,MSCI Emerging Markets ESG Leaders Index,1,1.0,23305121
+221,EBIZ,Solactive E-commerce Index,0,,37954Y46
+222,EBLU,Tortoise Global Water ESG Index,0,,56167N75
+223,ECH,MSCI Chile IMI 25-50 NR USD,0,,46428664
+224,ECNS,MSCI China Small NR USD,0,,46429B20
+225,ECON,DJ EM Consumer Titans 30 TR USD,0,,19762B50
+226,ECOW,FTSE Emerging Markets Index,0,,69374H86
+227,EDEN,MSCI Denmark IMI 25/50 NR USD,0,,46429B52
+228,EDIV,S&P EM Dividend Opportunities TR USD,0,,78463X53
+229,EDOC,Solactive Telemedicine & Digital Health Index,0,,37954Y28
+230,EDOG,S-Network Emerging Sector Dividend Dogs USD,0,,00162Q66
+231,EDOW,Dow Jones Industrial Average Equal Weight Index,0,,33733A20
+232,EDUT,Indxx Global Education Thematic Index,0,,37960A71
+233,EEB,BNY Mellon BRIC Select DR USD,0,,46137V20
+234,EEB,BNY Mellon BRIC Select DR USD,0,,18383M10
+235,EELV,S&P BMI EM Low Volatility TR USD,0,,46138E29
+236,EEM,Emerging Markets,1,1.0,46428723
+237,EEMA,MSCI EM Asia NR USD,0,,46428642
+238,EEMD,S&P Emerging Markets Dividend and Free Cash Flow Yield Index,0,,26922A58
+239,EEMO,S&P Momentum Emerging Plus LargeMidCap Index,0,,46138E28
+240,EEMS,MSCI EM Small NR USD,0,,46428647
+241,EEMV,MSCI EM Minimum Volatility (USD) NR USD,0,,46428653
+242,EEMX,MSCI Emerging Markets ex Fossil Fuels Index,0,,78470E20
+243,EES,WisdomTree SmallCap Earnings TR USD,0,,97717W56
+244,EFA,MSCI EAFE NR USD,0,,46428746
+245,EFAD,MSCI EAFE Dividend Masters Index,0,,74347B83
+246,EFAS,MSCI EAFE Top 50 Dividend Index,0,,37954Y69
+247,EFAV,MSCI EAFE Minimum Volatility NR USD,0,,46429B68
+248,EFAX,MSCI EAFE ex Fossil Fuels Index,0,,78470E10
+249,EFG,MSCI EAFE Growth NR USD,0,,46428888
+250,EFIV,S&P 500 ESG Index,0,,78468R53
+251,EFNL,MSCI Finland IMI 25/50 NR USD,0,,46429B51
+252,EFV,MSCI EAFE Value NR USD,0,,46428887
+253,EGPT,MV Egypt NR USD,0,,92189F77
+254,EIDO,MSCI Indonesia IMI NR USD,0,,46429B30
+255,EINC,MVIS North America Energy Infrastructure Index,0,,92189H87
+256,EIRL,MSCI Ireland Capped NR USD,0,,46429B50
+257,EIS,MSCI Israel Capped NR USD,0,,46428663
+258,EKAR,Innovation Labs Next Generation Vehicles Index,0,,30150575
+259,EMDV,MSCI Emerging Markets Dividend Masters Index,0,,74347B84
+260,EMEM,Solactive Most Favored Nations Emerging Markets Index,0,,26923G83
+261,EMFM,Solactive Next Emerging & Frontier USD,0,,37950E21
+262,EMGF,MSCI Emerging Market Diversified Multiple-Factor Index,0,,46434G88
+263,EMIF,S&P Emerging Markets Infrastructure TR,0,,46428821
+264,EMQQ,The Emerging Markets Internet & Ecommerce Index,0,,30150588
+265,EMSG,MSCI Emerging Markets ESG Leaders Index,1,2.0,23305122
+266,EMTY,Solactive-ProShares Bricks and Mortar Retail Store Index,0,,74347B36
+267,EMXC,MSCI Emerging Markets ex China Index,0,,46434G76
+268,EMXF,MSCI Emerging Markets Choice ESG Screened 5% Issuer Capped Index,0,,46436E74
+269,ENFR,Alerian Energy Infrastructure USD,0,,00162Q67
+270,ENOR,MSCI Norway IMI 25/50 Index,1,2.0,46429B49
+271,ENTR,Entrepreneur 30 Index,0,,29382880
+272,ENTR,Entrepreneur 30 Index,0,,29384R10
+273,ENZL,MSCI New Zealand IMI 25/50 NR USD,0,,46428912
+274,EPHE,MSCI Philippines IMI NR USD,0,,46429B40
+275,EPI,WisdomTree India Earnings TR USD,0,,97717W42
+276,EPOL,MSCI Poland IMI 25/50 NR USD,0,,46429B60
+277,EPP,MSCI Pacific Ex Japan NR USD,0,,46428666
+278,EPRF,S&P U.S. High Quality Preferred Stock Index,0,,45783G20
+279,EPRF,S&P U.S. High Quality Preferred Stock Index,0,,45783Y82
+280,EPS,WisdomTree Earnings 500 TR USD,0,,97717W58
+281,EPU,MSCI All Peru Capped NR USD,0,,46428984
+282,EQAL,Russell 1000 Equal Weight Index,0,,46138E42
+283,EQL,ML Equal Sector Weight USD,0,,00162Q20
+284,EQRR,Nasdaq U.S. Large Cap Equities for Rising Rates Index,0,,74347B39
+285,EQWL,Russell Top 200 Equal Weight Index,0,,46137V44
+286,ERSX,Entrepreneur Non-US Small Cap Index,0,,29382888
+287,ERUS,Russia,1,2.0,46429B70
+288,ERUS,Russia,1,2.0,46434G79
+289,ESG,STOXX US ESG Impact Index,0,,33939L69
+290,ESGD,MSCI EAFE ESG Select Index,0,,46435G51
+291,ESGE,MSCI Emerging Markets ESG Select Index,0,,46434G86
+292,ESGF,OFI Revenue Weighted Global ESG Index,0,,68386C78
+293,ESGF,OFI Revenue Weighted Global ESG Index,0,,46138G81
+294,ESGG,STOXX Global ESG Impact Index,0,,33939L68
+295,ESGL,OFI Revenue Weighted ESG Index,0,,68386C77
+296,ESGL,OFI Revenue Weighted ESG Index,0,,46138J62
+297,ESGN,Beta Advantage Sustainable International Equity Income 100 Index,0,,19761L20
+298,ESGS,Beta Advantage Sustainable U.S. Equity Income 100 Index,0,,19761L30
+299,ESGU,MSCI USA ESG Focus Index,0,,46435G42
+300,ESGV,FTSE US All Cap Choice Index,0,,92191073
+301,ESGW,Beta Advantage Sustainable Global Equity Income 200 Index,0,,19761L10
+302,ESML,MSCI USA Small Cap Extended ESG Focus Index,0,,46435U66
+303,ESNG,MSCI USA ESG Universal Top - Bottom 150/50 Return Spread Index,0,,25460G30
+304,ESPO,MVIS Global Video Gaming and eSports Index,0,,92189F11
+305,ETHO,Etho Climate Leadership Index,0,,26924G88
+306,EUDG,WisdomTree Europe Dividend Growth Index,0,,97717X61
+307,EUDV,MSCI Europe Dividend Masters Index,0,,74347B54
+308,EUFN,MSCI Europe/Financials NR USD,0,,46428918
+309,EUMV,MSCI Europe Minimum Volatility Index,0,,46434V72
+310,EURZ,NASDAQ Eurozone Large Mid Cap Index,0,,23305156
+311,EUSA,MSCI USA NR USD,0,,46428668
+312,EUSC,WisdomTree Europe Hedged SmallCap Equity Index,0,,97717X55
+313,EVX,NYSE Arca Environmental Services USD,0,,92189F30
+314,EWA,Australia,1,1.0,46428610
+315,EWC,Canada,1,1.0,46428650
+316,EWCO,S&P 500 Equal Weight Communication Services Plus Index,0,,46137Y60
+317,EWD,MSCI Sweden NR USD,0,,46428675
+318,EWEB,Nasdaq CTA Emerging Markets Internet & E-commerce Index,0,,37960A69
+319,EWEM,MSCI EM Equal Weighted NR USD,0,,78355W53
+320,EWEM,MSCI EM Equal Weighted NR USD,0,,46138E55
+321,EWG,Germany,1,1.0,46428680
+322,EWGS,MSCI Germany Small Cap NR USD,0,,46429B46
+323,EWH,Hong Kong,1,1.0,46428687
+324,EWI,MSCI Italy 25/50 NR USD,0,,46434G83
+325,EWJ,Japan,1,1.0,46434G82
+326,EWJE,MSCI Japan Equal Weighted Index,0,,46435U38
+327,EWJV,MSCI Japan Value Index,0,,46435U37
+328,EWK,MSCI Belgium IMI 25/50 NR USD,0,,46428630
+329,EWL,Switzerland,1,1.0,46428674
+330,EWM,MSCI Malaysia NR USD,0,,46434G81
+331,EWMC,S&P MidCap 400 Equal Weight Index,0,,78355W57
+332,EWMC,S&P MidCap 400 Equal Weight Index,0,,46137V22
+333,EWN,MSCI Netherlands IMI NR USD,0,,46428681
+334,EWO,MSCI Austria IMI 25/50 NR USD,0,,46428620
+335,EWP,MSCI Spain 25/50 TR USD,0,,46428676
+336,EWQ,France,1,1.0,46428670
+337,EWS,MSCI Singapore NR USD,0,,46434G78
+338,EWSC,S&P SmallCap 600 Equal Weight Index,0,,78355W58
+339,EWSC,S&P SmallCap 600 Equal Weight Index,0,,46137V18
+340,EWT,Taiwan,1,1.0,46434G77
+341,EWU,UK,1,1.0,46435G33
+342,EWUS,MSCI UK Small Cap NR USD,0,,46429B41
+343,EWW,Mexico,1,1.0,46428682
+344,EWX,S&P EM Cap Rng<2 Bil TR USD,0,,78463X75
+345,EWY,Korea,1,1.0,46428677
+346,EWZ,Brazil,1,1.0,46428640
+347,EWZS,MSCI Brazil Small NR USD,0,,46428913
+348,EXI,S&P Global 1200 Sec/Industrials TR,0,,46428872
+349,EXT,WisdomTree Earnings TR USD,0,,97717W59
+350,EYLD,Cambria Emerging Shareholder Yield Index,0,,13206170
+351,EZA,South Africa,1,1.0,46428678
+352,EZM,WisdomTree MidCap Earnings TR USD,0,,97717W57
+353,EZU,Eurozone,1,1.0,46428660
+354,FAB,Defined Multi Cap Value TR USD,0,,33733C10
+355,FAD,Defined Multi Cap Growth TR USD,0,,33733F10
+356,FAN,ISE Global Wind Energy USD,0,,33736G10
+357,FAUS,Defined Australia TR USD,0,,33737J21
+358,FBT,NYSE Arca Biotechnology TR USD,0,,33733E20
+359,FBZ,Defined Brazil USD,0,,33737J13
+360,FCA,Defined China USD,0,,33737J14
+361,FCAN,Defined Canada TR USD,0,,33737J20
+362,FCG,ISE Revere Natural Gas USD,0,,33733E80
+363,FCG,ISE Revere Natural Gas USD,0,,33734J10
+364,FCOM,MSCI USA IMI Telecommu Serv 25/50 USD,0,,31609287
+365,FCPI,Fidelity Stocks for Inflation Factor Index,0,,31609238
+366,FDD,STOXX Europe Select Dividend 30 NR USD,0,,33735T10
+367,FDEM,Fidelity Targeted Emerging Markets Factor Index,0,,31609254
+368,FDEV,Fidelity Targeted International Factor Index,0,,31609253
+369,FDIS,MSCI USA IMI Consumer Discretionary USD,0,,31609220
+370,FDL,Morningstar Dividend Leaders TR USD,0,,33691710
+371,FDLO,Fidelity U.S. Low Volatility Factor Index,0,,31609282
+372,FDM,DJ Select Micro Cap TR USD,0,,33718M10
+373,FDMO,Fidelity U.S. Momentum Factor Index,0,,31609281
+374,FDN,US Internet Sector,1,1.0,33733E30
+375,FDNI,Dow Jones International Internet Index,0,,33734X77
+376,FDRR,Fidelity Dividend Index for Rising Rates,0,,31609283
+377,FDT,Defined Developed Markets Ex-US USD,0,,33737J17
+378,FDTS,Defined Developed Markets SC TR USD,0,,33737J40
+379,FDVV,Fidelity Core Dividend Index,0,,31609284
+380,FEDX,Emles Federal Contractors Index,0,,29136187
+381,FEM,Defined Emerging Markets USD,0,,33737J18
+382,FEMS,Defined Emerging Markets SC TR USD,0,,33737J30
+383,FENY,MSCI USA IMI Energy USD,0,,31609240
+384,FEP,Defined Europe USD,0,,33737J11
+385,FEUZ,NASDAQ AlphaDEX Eurozone Index,0,,33737J50
+386,FEX,Defined Large Cap Core TR USD,0,,33734K10
+387,FEZ,Europe,1,2.0,78463X20
+388,FGD,DJ Global Select Dividend TR USD,0,,33734X20
+389,FGM,Defined Germany TR USD,0,,33737J19
+390,FHK,Defined Hong Kong TR USD,0,,33737J24
+391,FHLC,MSCI USA IMI Health Care USD,0,,31609260
+392,FICS,International Developed Capital Strength Index,0,,33738R66
+393,FID,S&P International Dividend Aristocrats Index,0,,33738R68
+394,FIDI,Fidelity International High Dividend Index,0,,31609272
+395,FIDU,MSCI USA IMI Industrials USD,0,,31609270
+396,FILL,MSCI ACWI Select Energy Prod IMI NR USD,0,,46428634
+397,FINX,Indxx Global Fintech Thematic Index,0,,37954Y81
+398,FITE,S&P Kensho Future Security Index,0,,78468R67
+399,FIVA,Fidelity International Value Factor Index,0,,31609271
+400,FIVG,BlueStar 5G Communications Index,0,,26922A28
+401,FIW,ISE Water,0,,33733B10
+402,FJP,Defined Japan USD,0,,33737J15
+403,FKO,Defined South Korea USD,0,,33737J16
+404,FKU,Defined United Kingdom TR USD,0,,33737J22
+405,FLAU,Australia,1,2.0,35473P84
+406,FLAX,Asia ex Japan,1,2.0,35473P66
+407,FLBR,Brazil,1,2.0,35473P83
+408,FLCA,FTSE Canada Capped Index,0,,35473P82
+409,FLCH,FTSE China Capped Index,0,,35473P81
+410,FLEE,FTSE Developed Europe Capped Index,0,,35473P65
+411,FLEH,FTSE Developed Europe Capped Hedged Index,0,,35473P64
+412,FLFR,France,1,2.0,35473P79
+413,FLGB,UK,1,2.0,35473P67
+414,FLGR,FTSE Germany Capped Index,0,,35473P78
+415,FLHK,Hong Kong,1,2.0,35473P77
+416,FLIN,FTSE India Capped Index,0,,35473P76
+417,FLIY,FTSE Italy Capped Index,0,,35473P75
+418,FLJH,FTSE Japan Capped Hedged Index,0,,35473P63
+419,FLJP,FTSE Japan Capped Index,0,,35473P74
+420,FLKR,Korea,1,2.0,35473P71
+421,FLLA,FTSE Latin America Capped Index,0,,35473P56
+422,FLM,ISE Global Engineering and Construction USD,0,,33736M10
+423,FLMX,Mexico,1,2.0,35473P73
+424,FLN,Defined Latin America USD,0,,33737J12
+425,FLQD,LibertyQ Global Dividend Index,0,,35473P30
+426,FLQE,LibertyQ Emerging Markets Index,0,,35473P20
+427,FLQG,LibertyQ Global Equity Index,0,,35473P40
+428,FLQH,LibertyQ International Equity Hedged Index,0,,35473P10
+429,FLQL,LibertyQ US Large Cap Equity Index,0,,35473P80
+430,FLQM,LibertyQ Mid Cap Index,0,,35473P88
+431,FLQS,LibertyQ Small Cap Index,0,,35473P87
+432,FLRG,Fidelity U.S. Multifactor Index,0,,31609237
+433,FLRU,FTSE Russia Capped Index,0,,35473P72
+434,FLSA,FTSE Saudi Arabia Capped Index,0,,35473P58
+435,FLSW,Switzerland,1,2.0,35473P69
+436,FLTW,Taiwan,1,2.0,35473P68
+437,FLZA,South Africa,1,2.0,35473P57
+438,FM,MSCI Frontier Markets 100 NR USD,0,,46428614
+439,FMAT,MSCI USA IMI Materials USD,0,,31609288
+440,FMK,Defined Mega Cap USD,0,,33737M50
+441,FNCL,MSCI USA IMI Financials USD,0,,31609250
+442,FNDA,Russell Fundamental US SC TR USD,0,,80852476
+443,FNDB,Russell Fundamental US TR USD,0,,80852478
+444,FNDC,Russell Fundamental Dv ex US SC NR USD,0,,80852474
+445,FNDE,Russell Fundamental Em Mkts LC NR USD,0,,80852473
+446,FNDF,Russell Fundamental Dv ex US LC NR USD,0,,80852475
+447,FNDX,Russell Fundamental US LC TR USD,0,,80852477
+448,FNI,ISE Chindia TR USD,0,,33733A10
+449,FNK,Defined Mid Cap Value USD,0,,33737M20
+450,FNX,Defined Mid Cap Core TR USD,0,,33735B10
+451,FNY,Defined Mid Cap Growth USD,0,,33737M10
+452,FOVL,FTSE Focused Value Select Index,0,,46435U33
+453,FPA,Defined Asia Pacific Ex-Japan USD,0,,33737J10
+454,FPX,IPOX 100 TR USD,0,,33692010
+455,FPXE,IPOX 100 Europe Index,0,,33734X78
+456,FPXI,IPOX International Index,0,,33734X85
+457,FQAL,Fidelity U.S. Quality Factor Index,0,,31609279
+458,FRAK,MV Global Unconventional Oil&Gas NR USD,0,,92189H70
+459,FRDM,Life + Liberty Freedom 100 Emerging Markets Index,0,,02072L60
+460,FRN,BONY New Frontier DR TR USD,0,,46138E77
+461,FRN,BONY New Frontier DR TR USD,0,,18383Q83
+462,FSMD,Fidelity Small-Mid Factor Index,0,,31609252
+463,FSTA,MSCI USA IMI Consumer Staples USD,0,,31609230
+464,FSZ,Defined Switzerland TR USD,0,,33737J23
+465,FTA,Defined Large Cap Value USD,0,,33735J10
+466,FTAG,Indxx Global Agriculture Index,0,,33734X81
+467,FTC,Defined Large Cap Growth USD,0,,33735K10
+468,FTCS,Capital Strength TR USD,0,,33733E10
+469,FTEC,MSCI USA IMI Information Technology USD,0,,31609280
+470,FTRI,Indxx Global Natural Resources Income Index,0,,33734X83
+471,FTXD,Nasdaq US Smart Retail Index,0,,33738R82
+472,FTXG,Nasdaq US Smart Food & Beverage Index,0,,33738R85
+473,FTXH,Nasdaq US Smart Pharmaceuticals Index,0,,33738R83
+474,FTXL,Nasdaq US Smart Semiconductor Index,0,,33738R81
+475,FTXN,Nasdaq US Smart Oil & Gas Index,0,,33738R84
+476,FTXO,Nasdaq US Smart Banks Index,0,,33738R86
+477,FTXR,Nasdaq US Smart Transportation Index,0,,33738R79
+478,FUTY,MSCI USA IMI Utilities USD,0,,31609286
+479,FV,Dorsey Wright Focus Five USD,0,,33738R60
+480,FVAL,Fidelity U.S. Value Factor Index,0,,31609278
+481,FVC,Dorsey Wright Dynamic Focus Five Index,0,,33738R87
+482,FVD,Value Line Dividend TR USD,0,,33734H10
+483,FVL,Value Line 100 TR USD,0,,33735G10
+484,FXD,StrataQuant Consumer Disc TR USD,0,,33734X10
+485,FXG,StrataQuant Consumer Staples TR USD,0,,33734X11
+486,FXH,StrataQuant Health Care TR USD,0,,33734X14
+487,FXI,FTSE China 25 TR USD,0,,46428718
+488,FXL,StrataQuant Technology TR USD,0,,33734X17
+489,FXN,StrataQuant Energy TR USD,0,,33734X12
+490,FXO,StrataQuant Financials TR USD,0,,33734X13
+491,FXR,StrataQuant Industrials TR USD,0,,33734X15
+492,FXU,StrataQuant Utilities TR USD,0,,33734X18
+493,FXZ,StrataQuant Materials TR USD,0,,33734X16
+494,FYC,Defined Small Cap Growth USD,0,,33737M30
+495,FYLD,Cambria Foreign Shareholder Yield USD,0,,13206130
+496,FYT,Defined Small Cap Value USD,0,,33737M40
+497,FYX,Defined Small Cap Core USD,0,,33734Y10
+498,GAMR,EEFund Video Game Tech Index,0,,26924G70
+499,GARD,Reality Shares DIVCON Dividend Guard Index,0,,75605A60
+500,GBDV,Global Beta Smart Income Index,0,,37959X10
+501,GBGR,Global Beta Momentum-Growth Factor Index,0,,37959X30
+502,GBLO,Global Beta Low Beta Factor Index,0,,37959X20
+503,GBUY,Motif New Age Consumer Index,0,,38143025
+504,GBUY,Motif New Age Consumer Index,0,,38149W78
+505,GCOW,Pacer Global Cash Cows Dividends 100 Index,0,,69374H70
+506,GDAT,Motif Data Driven World Index,0,,38143034
+507,GDNA,Motif Human Evolution Index,0,,38143029
+508,GDX,NYSE Arca Gold Miners TR USD,0,,92189F10
+509,GDXJ,MV Global Junior Gold Miners NR USD,0,,92189F79
+510,GEM,Goldman Sachs ActiveBeta Emerging Markets Equity Index,0,,38143020
+511,GENY,NASDAQ Global Millennial Opportunity Index,0,,74255Y50
+512,GERM,"Prime Treatments, Testing and Advancements Index",0,,26924G76
+513,GFIN,Motif Finance Reimagined Index,0,,38143032
+514,GHII,S&P High Income Infrastructure Index,0,,18383Q72
+515,GHII,S&P High Income Infrastructure Index,0,,46138E25
+516,GII,S&P Global Infrastructure Index,1,1.0,78463X85
+517,GINN,Solactive Innovative Global Equity Index,0,,38149W82
+518,GLCN,MarketGrader China All-Cap Growth Leaders Index,0,,92189F75
+519,GLIN,MarketGrader India All-Cap Growth Leaders Index,0,,92189F76
+520,GMAN,Motif Manufacturing Revolution Index,0,,38269P10
+521,GMAN,Motif Manufacturing Revolution Index,0,,38143027
+522,GMF,S&P Asia Pacific Emerging BMI TR USD,0,,78463X30
+523,GNOM,Solactive Genomics Index,0,,37954Y43
+524,GNR,S&P Global Natural Resources TR USD,0,,78463X54
+525,GOAT,Morningstar Global Wide Moat Focus Index,0,,92189F12
+526,GOAU,U.S. Global GO GOLD and Precious Metal Miners Index,0,,26922A71
+527,GOEX,Solactive Global Gold Explorers ETF Index,0,,37954Y86
+528,GREK,FTSE/Athex 20 Capped TR USD,0,,37954Y31
+529,GRES,IQ Global Resources TR USD,0,,45409B88
+530,GRID,NASDAQ OMX ClnEdge SmartGridInfra PR USD,0,,33737A10
+531,GSEE,Solactive GBS Emerging Markets Large & Mid Cap Index,0,,38143016
+532,GSEU,Goldman Sachs ActiveBeta Europe Equity Index,0,,38143030
+533,GSEW,Solactive US Large Cap Equal Weight Index,0,,38143043
+534,GSID,Solactive GBS Developed Markets ex North America Large & Mid Cap Index,0,,38143018
+535,GSIE,Goldman Sachs ActiveBeta International Equity Index,0,,38143010
+536,GSJY,Goldman Sachs ActiveBeta Japan Equity Index,0,,38143040
+537,GSLC,Goldman Sachs ActiveBeta U.S. Large Cap Equity Index,0,,38143050
+538,GSSC,Goldman Sachs ActiveBeta U.S. Small Cap Equity Index,0,,38143060
+539,GSUS,Solactive GBS United States Large & Mid Cap Index,0,,38143012
+540,GULF,WisdomTree Middle East Dividend TR USD,0,,97717X30
+541,GUNR,Morningstar Gbl Upstream Ntl Res TR USD,0,,33939L40
+542,GURU,Solactive Guru TR USD,0,,37950E34
+543,GVAL,Cambria Global Value USD,0,,13206140
+544,GVIP,Goldman Sachs Hedge Fund VIP Index TR,0,,38143054
+545,GWX,S&P Developed Ex US Under USD2 BL TR USD,0,,78463X87
+546,GXC,S&P China BMI TR USD,0,,78463X40
+547,GXF,FTSE Nordic 30 TR USD,0,,37950E10
+548,GXG,FTSE Columbia 20 TR USD,0,,37954Y32
+549,HACK,ISE Cyber Security Index,0,,26924G20
+550,HAIL,S&P Kensho Smart Transportation Index,0,,78468R68
+551,HAO,AlphaShares China SC TR USD,0,,46138E70
+552,HAO,AlphaShares China SC TR USD,0,,18383Q85
+553,HAP,Rogers-Van Eck Hard Assets Prod TR USD,0,,92189F84
+554,HAUD,MSCI Australia 100% Hedged to USD Index,0,,46435G60
+555,HAUZ,iSTOXX Developed and Emerging Markets ex USA PK VN Real Estate Index,0,,23305184
+556,HAWX,MSCI ACWI ex USA 100% Hedged to USD Index,0,,46435G84
+557,HDAW,MSCI ACWI ex USA High Dividend Yield US Dollar Hedged Index,0,,23305159
+558,HDEF,MSCI EAFE High Dividend Yield U.S. Dollar Hedged Index,0,,23305163
+559,HDV,Morningstar Dividend Yield Focus TR,0,,46429B66
+560,HEDJ,WisdomTree Europe Hedged Equity TR USD,0,,97717X70
+561,HEEM,MSCI Emerging Markets 100% USD Hedged Index,0,,46434G50
+562,HEFA,MSCI EAFE 100% Hedged NR USD,0,,46434V80
+563,HERD,"Pacer US Cash Cows 100 Index, Pacer US Small Cap Cash Cows Index, Pacer US Cash Cows Growth Index, Pacer Global Cash Cows Divide",0,,69374H65
+564,HEWC,MSCI Canada 100% Hedged to USD Index,0,,46435G70
+565,HEWG,MSCI Germany 100% Hedged NR USD,0,,46434V70
+566,HEWI,MSCI Italy 25/50 100% Hedged to USD Index,0,,46435G82
+567,HEWJ,MSCI Japan 100% Hedged NR USD,0,,46434V88
+568,HEWL,MSCI Switzerland 25/50 100% Hedged to USD Index,0,,46435G87
+569,HEWP,MSCI Spain 25/50 100% Hedged to USD Index,0,,46435G81
+570,HEWU,MSCI United Kingdom 100% Hedged to USD Index,0,,46435G86
+571,HEWW,MSCI Mexico IMI 25/50 100% Hedged to USD Index,0,,46435G80
+572,HEWY,MSCI South Korea 25/50 100% Hedged to USD Index,0,,46435G88
+573,HEZU,MSCI EMU 100% USD Hedged Index,0,,46434V63
+574,HFXE,FTSE Developed Europe 50% Hedged to USD Index,0,,45409B55
+575,HFXI,FTSE Developed ex North America 50% Hedged to USD Index,0,,45409B56
+576,HFXJ,FTSE Japan 50% Hedged to USD Index,0,,45409B53
+577,HIPR,Russell 1000 Hyper Growth Index,0,,25460G76
+578,HJPX,JPX-Nikkei 400 Total Return USD Hedged Index,0,,46435G72
+579,HLAL,FTSE Shariah USA Index,0,,53656F60
+580,HOMZ,Hoya Capital Housing 100 Index,0,,26922A23
+581,HSCZ,MSCI EAFE Small-Cap 100% Hedged to USD Index,0,,46435G83
+582,HTEC,ROBO Global Healthcare Technology and Innovation Index,0,,30150572
+583,IAI,DJ US Select Investment Svcs TR USD,0,,46428879
+584,IAK,DJ US Select Insurc TR USD,0,,46428878
+585,IAT,DJ US Select Regional Banks TR USD,0,,46428877
+586,IBB,NASDAQ Biotechnology TR USD,0,,46428755
+587,IBBJ,Nasdaq Junior Biotechnology Index,0,,26922A14
+588,IBUY,EQM Online Retail Index,0,,03210810
+589,ICLN,S&P Global Clean Energy TR USD,0,,46428822
+590,ICOL,MSCI All Colombia Capped NR USD,0,,46434G20
+591,ICOW,Pacer Developed Markets International Cash Cows 100 Index,0,,69374H87
+592,IDEV,MSCI World ex USA Investable Market Index,0,,46435G32
+593,IDHD,S&P EPAC Ex-Korea Low Volatility High Dividend Index,0,,46138E24
+594,IDHQ,S&P Intl Dev Hi Quality Ranking TR USD,0,,46138E21
+595,IDLB,FTSE Developed ex US Low Beta Equal Weight Index,0,,46138E76
+596,IDLV,S&P BMI Intl Dev Low Volatility TR USD,0,,46138E23
+597,IDMO,S&P Momentum Developed ex-U.S. & South Korea LargeMidCap Index,0,,46138E22
+598,IDNA,NYSE FactSet Global Genomics and Immuno Biopharma Index,0,,46435U19
+599,IDOG,S-Network Intl Sec Dividend Dog NR USD,0,,00162Q71
+600,IDRV,NYSE FactSet Global Autonomous Driving and Electric Vehicle Index,0,,46435U36
+601,IDU,DJ US Utilities TR USD,0,,46428769
+602,IDV,DJ EPAC Select Dividend TR USD,0,,46428844
+603,IDX,MV Indonesia NR USD,0,,92189F83
+604,IEFA,EAFE,1,2.0,46432F84
+605,IEMG,MSCI EM IMI NR USD,0,,46434G10
+606,IEO,DJ US Select Oil Explor&Prodtn TR USD,0,,46428885
+607,IEUR,MSCI Europe Investable Market Index,0,,46434V73
+608,IEUS,MSCI Europe Small Cap Index,0,,46428849
+609,IEV,Europe,1,1.0,46428786
+610,IEZ,DJ US Select Oil Equip&Svcs TR USD,0,,46428884
+611,IFLY,Reality Shares Drone Index,0,,26924G80
+612,IFRA,NYSE FactSet U.S. Infrastructure Index,0,,46435U71
+613,IFV,Dorsey Wright International Focus Five Index,0,,33738R88
+614,IGE,S&P North American Natural Resources TR,0,,46428737
+615,IGF,S&P Global Infrastructure Index,1,2.0,46428837
+616,IGM,S&P North American Technology TR,0,,46428754
+617,IGN,S&P North American Tech Networking TR,0,,46428753
+618,IGRO,Morningstar Global ex-US Dividend Growth Index,0,,46435G52
+619,IGV,S&P North American Tech Software TR,0,,46428751
+620,IHAK,NYSE FactSet Global Cyber Security Index,0,,46435U13
+621,IHDG,WisdomTree International Hedged Dividend Growth Index,0,,97717X59
+622,IHE,DJ US Select Pharms TR USD,0,,46428883
+623,IHF,DJ US Select HC Providers TR USD,0,,46428882
+624,IHI,DJ US Select Medical Equip TR USD,0,,46428881
+625,IJH,S&P Midcap 400 Index,1,2.0,46428750
+626,IJJ,S&P Midcap 400 Value Index,1,1.0,46428770
+627,IJK,S&P Midcap 400 Growth Index,1,1.0,46428760
+628,IJR,S&P SmallCap 600 Index,1,1.0,46428780
+629,IJS,S&P Smallcap 600 Value Index,1,1.0,46428787
+630,IJT,S&P Smallcap 600 Growth Index,1,1.0,46428788
+631,ILF,S&P Latin America 40 TR,0,,46428739
+632,IMTM,MSCI World ex USA Momentum Index,0,,46434V44
+633,INCO,INDXX India Consumer TR USD,0,,19762B70
+634,INDA,MSCI India NR USD,0,,46429B59
+635,INDF,MSCI USA Industrials Diversified Multiple-Factor Capped Index,0,,46435G55
+636,INDF,MSCI USA Industrials Diversified Multiple-Factor Capped Index,0,,30150564
+637,INDY,IISL S&P/CNX Nifty TR INR,0,,46428952
+638,INFR,RARE Global Infrastructure Index,0,,52468L70
+639,INFR,RARE Global Infrastructure Index,0,,35473P44
+640,INTF,MSCI World ex USA Diversified Multi-Factor Index,0,,46434V27
+641,IOO,S&P Global 100 TR,0,,46428757
+642,IPAC,MSCI Pacific Investable Market Index,0,,46434V69
+643,IPAY,ISE Mobile Payments Index,0,,26924G40
+644,IPFF,S&P Intl Preferred Stock TR USD,0,,46429B13
+645,IPKW,NASDAQ International BuyBack Achievers USD,0,,46138E64
+646,IPO,Renaissance IPO USD,0,,75993720
+647,IPOS,Renaissance International IPO Index,0,,75993730
+648,IQDE,Northern Trust Intl Quality Div TR USD,0,,33939L81
+649,IQDF,Northern Trust Intl Quality Div TR USD,0,,33939L83
+650,IQDG,WisdomTree International Quality Dividend Growth Index,0,,97717X13
+651,IQDY,Northern Trust Intl Quality Div TR USD,0,,33939L82
+652,IQIN,IQ 500 International Index,0,,45409B36
+653,IQLT,MSCI World ex USA Sector Neutral Quality Index,0,,46434V45
+654,IQSI,IQ Candriam ESG International Equity Index,0,,45409B45
+655,IQSU,IQ Candriam ESG US Equity Index,0,,45409B46
+656,IRBO,NYSE FactSet Global Robotics and Artificial Intelligence Index,0,,46435U55
+657,ISCF,MSCI World ex USA Small Cap Diversified MultiFactor Index,0,,46434V26
+658,ISDS,Invesco Strategic Developed ex-US Small Company Index,0,,46138J71
+659,ISDX,Invesco Strategic Developed ex-US Index,0,,46138J72
+660,ISEM,Invesco Strategic Emerging Markets Index,0,,46138J69
+661,ISMD,Inspire Small/Mid Cap Impact Equal Weight Index,0,,66538H64
+662,ISRA,BlueStar Israel Global TR USD,0,,92189F63
+663,ISZE,MSCI World ex USA Risk Weighted Index,0,,46435G50
+664,ITA,US Defense Sector,1,2.0,46428876
+665,ITB,DJ US Select Home Builders TR USD,0,,46428875
+666,ITEQ,TASE-Bluestar Israel Global Technology Index,0,,26924G87
+667,ITOT,US Total Market,1,2.0,46428715
+668,IUS,Invesco Strategic US Index,0,,46138J74
+669,IUSG,Russell 3000 Growth Index,0,,46428767
+670,IUSS,Invesco Strategic US Small Company Index,0,,46138J73
+671,IUSV,Russell 3000 Value Index,0,,46428766
+672,IVE,S&P 500 Value Index,1,1.0,46428740
+673,IVES,Dan Ives Global Cloud Technology Prime Index,0,,26924G80
+674,IVLU,MSCI World ex USA Enhanced Value Index,0,,46435G40
+675,IVOG,S&P Midcap 400 Growth Index,1,3.0,92193286
+676,IVOO,S&P Midcap 400 Index,1,3.0,92193288
+677,IVOV,S&P Midcap 400 Value Index,1,3.0,92193284
+678,IVV,S&P 500 Index,1,2.0,46428720
+679,IVW,S&P 500 Growth Index,1,1.0,46428730
+680,IWB,Russell 1000 Index,1,1.0,46428762
+681,IWC,Russell Micro Cap TR USD,0,,46428886
+682,IWD,Russell 1000 Value Index,1,1.0,46428759
+683,IWF,Russell 1000 Growth Index,1,1.0,46428761
+684,IWFH,NYSE FactSet Global Virtual Work and Life Index,0,,46436E58
+685,IWL,Russell Top 200 TR USD,0,,46428944
+686,IWM,Russell 2000 Index,1,1.0,46428765
+687,IWN,Russell 2000 Value Index,1,1.0,46428763
+688,IWO,Russell 2000 Growth Index,1,1.0,46428764
+689,IWP,Russell Mid Cap Growth TR USD,0,,46428748
+690,IWR,Russell Mid Cap TR USD,0,,46428749
+691,IWS,Russell Mid Cap Value TR USD,0,,46428747
+692,IWV,Russell 3000 Index,1,1.0,46428768
+693,IWX,Russell Top 200 Value TR USD,0,,46428942
+694,IWY,Russell Top 200 Growth TR USD,0,,46428943
+695,IXC,S&P Global 1200 Sec/Energy TR,0,,46428734
+696,IXG,S&P Global 1200 Sec/Financials TR,0,,46428733
+697,IXJ,S&P Global 1200 Sec/Health Care TR,0,,46428732
+698,IXN,S&P Global 1200 Sec/Info Tech TR,0,,46428729
+699,IXP,S&P Global 1200 Sec/Telecom Svcs TR USD,0,,46428727
+700,IXSE,WisdomTree India ex-State-Owned Enterprises Index,0,,97717Y73
+701,IXUS,MSCI ACWI Ex USA IMI NR USD,0,,46432F83
+702,IYC,DJ US Consumer Svcs TR USD,0,,46428758
+703,IYE,DJ US Oil&Gas TR USD,0,,46428779
+704,IYF,DJ US Financial TR USD,0,,46428778
+705,IYG,DJ US Financial Services TR USD,0,,46428777
+706,IYH,DJ US Health Care TR USD,0,,46428776
+707,IYJ,DJ US Industrials TR USD,0,,46428775
+708,IYK,DJ US Consumer Goods TR USD,0,,46428781
+709,IYM,DJ US Basic Materials TR USD,0,,46428783
+710,IYT,DJ Transportation Average TR USD,0,,46428719
+711,IYW,DJ US Technology TR USD,0,,46428772
+712,IYY,DJ US TR USD,0,,46428784
+713,IYZ,DJ US Select Telecom TR USD,0,,46428771
+714,IZRL,ARK Israeli Innovation Index,0,,00214Q60
+715,JCTR,JPMAM Carbon Transition US Equity Index,0,,46641Q28
+716,JDIV,JP Morgan US Dividend Index,0,,46641Q79
+717,JETS,U.S. Global Jets Index,0,,26922A84
+718,JGLD,EQM Pure Junior Gold Miners Index,0,,03210883
+719,JHCS,John Hancock Dimensional Media and Communications Index,0,,47804J82
+720,JHEM,John Hancock Dimensional Emerging Markets Index,0,,47804J83
+721,JHMA,John Hancock Dimensional Materials Index,0,,47804J80
+722,JHMD,John Hancock Dimensional Developed International Index,0,,47804J85
+723,JHME,John Hancock Dimensional Energy Index,0,,47804J70
+724,JHMI,John Hancock Dimensional Industrials Index,0,,47804J88
+725,JHMS,John Hancock Dimensional Consumer Staples Index,0,,47804J87
+726,JHMU,John Hancock Dimensional Utilities Index,0,,47804J86
+727,JHSC,John Hancock Dimensional Small Cap Index,0,,47804J84
+728,JKD,Morningstar Large Core TR USD,0,,46428712
+729,JKE,Morningstar Large Growth TR USD,0,,46428711
+730,JKF,Morningstar Large Value TR USD,0,,46428810
+731,JKG,Morningstar Mid Core TR USD,0,,46428820
+732,JKH,Morningstar Mid Growth TR USD,0,,46428830
+733,JKI,Morningstar Mid Value TR USD,0,,46428840
+734,JKJ,Morningstar Small Core TR USD,0,,46428850
+735,JKK,Morningstar Small Growth TR USD,0,,46428860
+736,JKL,Morningstar Small Value TR USD,0,,46428870
+737,JMIN,JP Morgan US Minimum Volatility Index,0,,46641Q78
+738,JMOM,JP Morgan US Momentum Factor Index,0,,46641Q77
+739,JOYY,MSCI Global Consumer Champions Index,0,,45687D10
+740,JPEM,FTSE Emerging Diversified Factor Index,0,,46641Q30
+741,JPEU,FTSE Developed Europe Diversified Factor Index,0,,46641Q60
+742,JPGE,FTSE Developed Diversified Factor Index,0,,46641Q10
+743,JPIN,FTSE Developed ex North America Diversified Factor Index,0,,46641Q20
+744,JPME,Russell Midcap Diversified Factor Index,0,,46641Q88
+745,JPMV,MSCI Japan Minimum Volatility Index,0,,46434V71
+746,JPN,JPX-Nikkei 400 Net Total Return Index,1,2.0,23305166
+747,JPSE,Russell 2000 Diversified Factor Index,0,,46641Q84
+748,JPUS,Russell 1000 Diversified Factor Index,0,,46641Q40
+749,JPXN,JPX-Nikkei 400 Net Total Return Index,1,1.0,46428738
+750,JQUA,JP Morgan US Quality Factor Index,0,,46641Q76
+751,JSMD,Janus Small/Mid Cap Growth Alpha Index,0,,47103U20
+752,JSML,Janus Small Cap Growth Alpha Index,0,,47103U10
+753,JSTC,Adasina Social Justice Index,0,,88636487
+754,JUST,JUST US Large Cap Diversified Index,0,,38143039
+755,JVAL,JP Morgan US Value Factor Index,0,,46641Q75
+756,JXI,S&P Global 1200 Sec/Utilities TR,0,,46428871
+757,KALL,MSCI China All Shares Index,1,2.0,50076780
+758,KARS,Solactive Electric Vehicles and Future Mobility Index,0,,50076782
+759,KBA,MSCI China A USD,0,,50076740
+760,KBE,S&P Banks Select Industry TR USD,0,,78464A79
+761,KBUY,CICC China Consumer Leaders Index,0,,50076759
+762,KBWB,KBW Bank TR USD,0,,46138E62
+763,KBWD,KBW Fin Sector Divi Yield TR USD,0,,46138E61
+764,KBWP,KBW Property & Casualty TR USD,0,,46138E58
+765,KBWR,KBW Regional Banking TR USD,0,,46138E57
+766,KCE,S&P Capital Markets Select Indust TR USD,0,,78464A77
+767,KEMQ,Solactive Emerging Markets Consumer Technology Index,0,,50076787
+768,KEMX,MSCI Emerging Markets ex China Index,0,,50076776
+769,KESG,MSCI China ESG Leaders 10/40 Index,0,,50076766
+770,KFVG,CICC China 5G and Semiconductor Leaders Index,0,,50076761
+771,KFYP,CSI Overseas China Five-Year Plan GR USD,0,,50076720
+772,KGRN,MSCI China IMI Environment 10/40 Index,0,,50076785
+773,KIE,S&P Insurance Select Industry TR USD,0,,78464A78
+774,KLCD,Russell 1000 Dividend Select Equal Weight Index,0,,50076772
+775,KLDW,Gavekal Knowledge Leaders Developed World Index,0,,30151E60
+776,KLDW,Gavekal Knowledge Leaders Developed World Index,0,,46143U84
+777,KMED,Solactive Emerging Markets Healthcare Index,0,,50076781
+778,KNG,S&P 500 Dividend Aristocrats Index,1,2.0,26922A53
+779,KNG,S&P 500 Dividend Aristocrats Index,1,2.0,33739Q70
+780,KNOW,Sabrient Multi-Cap Insider QW TR USD,0,,25459Y76
+781,KOIN,Innovation Labs Blockchain Innovators Index,0,,30150576
+782,KOKU,MSCI Kokusai Net Total Return Index,0,,23305113
+783,KOL,MV Global Coal NR USD,0,,92189H88
+784,KOMP,S&P Kensho New Economies Composite Index,0,,78468R64
+785,KRE,S&P Regional Banks Select Indust TR USD,0,,78464A69
+786,KRMA,Concinnity Conscious Companies Index,0,,37954Y73
+787,KSA,MSCI Saudi Arabia IMI 25/50 Index,0,,46434V42
+788,KSCD,Russell 2000 Dividend Select Equal Weight Index,0,,50076771
+789,KURE,MSCI China All Shares Health Care 10/40 Index,0,,50076783
+790,KVLE,Value Line Dynamic Core Equity Index,0,,50076764
+791,KWEB,China Technology Sector,1,2.0,50076730
+792,KXI,S&P Global 1200 Sec/Cons Staples TR,0,,46428873
+793,LDEM,MSCI EM Extended ESG Leaders 5% Issuer Capped Net Index,0,,46436E60
+794,LDRS,IBD ETF Leaders Index,0,,45782C20
+795,LEAD,Reality Shares DIVCON Leaders Dividend Index,0,,75605A40
+796,LEAD,Reality Shares DIVCON Leaders Dividend Index,0,,82965830
+797,LEGR,Indxx Blockchain Index,0,,33741X20
+798,LEND,CrowdBureau Peer-to-Peer Lending and Equity Crowdfunding Index,0,,03210886
+799,LGLV,Russell 1000 Low Volatility TR USD,0,,78468R80
+800,LIT,Solactive Global Lithium TR USD,0,,37954Y85
+801,LIV,Emles Home Lifestyle Index,0,,29136110
+802,LNGR,Indxx Global Longevity Thematic Index,0,,37954Y77
+803,LOUP,Loup Frontier Tech Index,0,,45782C86
+804,LOWC,MSCI ACWI Low Carbon Target Index,1,1.0,78463X19
+805,LRGF,MSCI USA Diversified Multi-Factor Index,0,,46434V28
+806,LSAF,AlphaFactor US Core Equity Index,0,,90214Q77
+807,LSLT,Salt Low truBeta US Market Index,0,,79590A10
+808,LSLT,Salt Low truBeta US Market Index,0,,26922A16
+809,LSLT,Salt Low truBeta US Market Index,0,,69374H59
+810,LUXE,Emles Global Luxury 50 Index,0,,29136188
+811,LVHB,Lunt Capital US Large Cap Equity Rotation Index,0,,45783G10
+812,LVHD,QS Low Volatility High Dividend Index,0,,52468L40
+813,LVHE,QS Emerging Markets Low Volatility High Dividend Hedged Index,0,,52468L60
+814,LVHI,QS International Low Volatility High Dividend Hedged Index,0,,52468L50
+815,LVL,S&P Global Dividend Opport NR USD,0,,46138E27
+816,LVL,S&P Global Dividend Opport NR USD,0,,18383M86
+817,LVUS,Hartford Multifactor Low Volatility US Equity Index,0,,51841670
+818,MAGA,Point Bridge GOP Stock Tracker Index,0,,26922A62
+819,MCHI,MSCI China NR USD,0,,46429B67
+820,MDY,S&P Midcap 400 Index,1,1.0,78467Y10
+821,MDYG,S&P Midcap 400 Growth Index,1,2.0,78464A82
+822,MDYV,S&P Midcap 400 Value Index,1,2.0,78464A83
+823,MFDX,RAFI Dynamic Multi-Factor Developed ExUS Index,0,,72202L37
+824,MFEM,RAFI Dynamic Multi-Factor Emerging Market Index,0,,72202L38
+825,MFUS,RAFI Dynamic Multi-Factor U.S. Index,0,,72202L36
+826,MGC,CRSP US Mega Cap TR USD,0,,92191087
+827,MGK,CRSP US Mega Cap Growth TR USD,0,,92191081
+828,MGV,CRSP US Mega Cap Value TR USD,0,,92191084
+829,MIDF,MSCI USA Mid Cap Diversified Multiple-Factor Index,0,,46435U14
+830,MILN,Indxx Millennials Thematic Index,0,,37954Y76
+831,MJ,Prime Alternative Harvest Index,0,,26924G50
+832,MLPA,Solactive MLP TR USD,0,,37954Y34
+833,MLPX,Solactive MLP & Energy Infrastruc TR USD,0,,37954Y29
+834,MMTM,S&P 1500 Positive Momentum Tilt TR USD,0,,78468R70
+835,MNA,IQ Hedge Merger Arbitrage TR USD,0,,45409B80
+836,MOAT,Morningstar Wide Moat Focus TR USD,0,,92189F64
+837,MOM,DJ US Thematic Market Neut Momen TR USD,0,,00110G10
+838,MOO,Market Vectors Gbl Agribusiness USD,0,,92189F70
+839,MOON,S&P Kensho Moonshots Index,0,,25460G73
+840,MOTI,Morningstar Global ex-US Moat Focus Index,0,,92189F59
+841,MRGR,S&P Merger Arbitrage TR USD,0,,74348A56
+842,MTUM,MSCI USA Momentum GR USD,0,,46432F39
+843,MXDE,TOBAM Maximum Diversification Emerging Index,0,,26922A64
+844,MXDU,TOBAM Maximum Diversification USA Index,0,,26922A65
+845,MXI,S&P Global 1200 Sec/Materials TR,0,,46428869
+846,NACP,Morningstar Minority Empowerment Index,0,,45259A20
+847,NANR,S&P BMI North American Natural Resources Index,0,,78463X15
+848,NERD,Roundhill BITKRAFT Esports Index,0,,53656F70
+849,NETL,Fundamental Income Net Lease Real Estate Index,0,,26922A24
+850,NFO,Sabrient Insider Sentiment TR USD,0,,46137V55
+851,NFO,Sabrient Insider Sentiment TR USD,0,,18383M20
+852,NFRA,STOXX Global Broad Infrastructure USD,0,,33939L79
+853,NFTY,NIFTY 50 Equal Weight Index,0,,33737J80
+854,NGE,Solactive Nigeria TR USD,0,,37954Y66
+855,NIFE,Indxx US Fallen Knives Index,0,,25460G75
+856,NLR,Market Vectors Global Uranium and Nuclear Energy USD,0,,92189F60
+857,NOBL,S&P 500 Dividend Aristocrats Index,1,1.0,74348A46
+858,NORW,MSCI Norway IMI 25/50 Index,1,1.0,37950E74
+859,NORW,MSCI Norway IMI 25/50 Index,1,1.0,37950E10
+860,NUDM,TIAA ESG International Developed Markets Equity Index,0,,67092P80
+861,NUEM,TIAA ESG Emerging Markets Equity Index,0,,67092P88
+862,NULC,TIAA ESG USA Large-Cap Index,0,,67092P86
+863,NULG,TIAA ESG USA Large-Cap Growth Index,0,,67092P20
+864,NULV,TIAA ESG USA Large-Cap Value Index,0,,67092P30
+865,NUMG,TIAA ESG USA Mid-Cap Growth Index,0,,67092P40
+866,NUMV,TIAA ESG USA Mid-Cap Value Index,0,,67092P50
+867,NUSC,TIAA ESG USA Small-Cap Index,0,,67092P60
+868,NXTG,Indxx 5G & NextG Thematic Index,0,,33737K20
+869,OBOR,MSCI Global China Infrastructure Exposure Index,0,,50076786
+870,OEF,S&P 100 TR,0,,46428710
+871,OEUR,FTSE Developed Europe Qual/Vol/Yield Factor 5% Capped Index,0,,35168084
+872,OEUR,FTSE Developed Europe Qual/Vol/Yield Factor 5% Capped Index,0,,67110P50
+873,OEUR,FTSE Developed Europe Qual/Vol/Yield Factor 5% Capped Index,0,,00162Q37
+874,OGIG,O Shares Global Internet Giants Index,0,,67110P70
+875,OGIG,O Shares Global Internet Giants Index,0,,00162Q36
+876,OIH,MV US Listed Oil Services 25 NR USD,0,,92189H60
+877,OLD,Solactive Long-Term Care Index,0,,47103U40
+878,OMFL,Russell 1000 OFI Dynamic Multifactor Index,0,,68386C72
+879,OMFL,Russell 1000 OFI Dynamic Multifactor Index,0,,46138J61
+880,OMFS,Russell 2000 OFI Dynamic Multifactor Index,0,,68386C11
+881,OMFS,Russell 2000 OFI Dynamic Multifactor Index,0,,46138J59
+882,OMOM,Russell 1000 Momentum Factor Index,0,,68386C68
+883,OMOM,Russell 1000 Momentum Factor Index,0,,46138G75
+884,ONEO,Russell 1000 Momentum Focused Factor Index,0,,78468R76
+885,ONEQ,NASDAQ Composite TR USD,0,,31591280
+886,ONEV,Russell 1000 Low Volatility Focused Factor Index,0,,78468R75
+887,ONEY,Russell 1000 Yield Focused Factor Index,0,,78468R77
+888,ONLN,ProShares Online Retail Index,0,,74347B16
+889,OQAL,Russell 1000 Quality Factor Index,0,,68386C67
+890,OQAL,Russell 1000 Quality Factor Index,0,,46138G74
+891,ORG,Solactive Organics Index,0,,47103U60
+892,OSIZ,Russell 1000 Size Factor Index,0,,68386C69
+893,OSIZ,Russell 1000 Size Factor Index,0,,46138G73
+894,OUSA,FTSE U.S. Qual/Vol/Yield Factor 5% Capped Index,0,,35168085
+895,OUSA,FTSE U.S. Qual/Vol/Yield Factor 5% Capped Index,0,,67110P40
+896,OUSA,FTSE U.S. Qual/Vol/Yield Factor 5% Capped Index,0,,00162Q38
+897,OUSM,FTSE USA Small Cap Qual/Vol/Yield Factor 3% Capped Index,0,,67110P10
+898,OUSM,FTSE USA Small Cap Qual/Vol/Yield Factor 3% Capped Index,0,,00162Q39
+899,OVLU,Russell 1000 Value Factor Index,0,,68386C65
+900,OVLU,Russell 1000 Value Factor Index,0,,46138G72
+901,OVOL,Russell 1000 Volatility Factor Index,0,,68386C66
+902,OVOL,Russell 1000 Volatility Factor Index,0,,46138G76
+903,OYLD,Russell 1000 Yield Factor Index,0,,68386C71
+904,OYLD,Russell 1000 Yield Factor Index,0,,46138G71
+905,PACA,MSCI Latin America Pacific Alliance Capped Index,0,,23305153
+906,PAK,MSCI All Pakistan Select 25/50 Index,0,,37954Y33
+907,PALC,Lunt Capital U.S. Large Cap Multi-Factor Rotation Index,0,,69374H81
+908,PAMC,Lunt Capital U.S. MidCap Multi-Factor Rotation Index,0,,69374H72
+909,PAVE,INDXX U.S. Infrastructure Development Index,0,,37954Y67
+910,PAWZ,FactSet Pet Care Index,0,,74348A14
+911,PBD,WilderHill New Energy Glbl Innovation TR USD,0,,46138G84
+912,PBDM,FTSE Developed ex North America Index,0,,46138E48
+913,PBE,Dynamic Biotech&Genome Intellidex TR USD,0,,46137V78
+914,PBEE,FTSE Emerging Index,0,,46138E47
+915,PBJ,Dynamic Food&Beverage Intellidex TR USD,0,,46137V75
+916,PBS,Dynamic Media Intellidex TR USD,0,,46137V69
+917,PBSM,MSCI USA Small Cap Index,0,,46138E45
+918,PBUS,MSCI USA Index,0,,46138E46
+919,PBW,WilderHill Clean Energy Mod EW TR USD,0,,46137V13
+920,PDEV,Nasdaq Developed Select Leaders Core Index,0,,74255Y79
+921,PDN,FTSE RAFI Dv Ex US Mid Small 1500 NR USD,0,,46138E73
+922,PDP,Dorsey Wright Technical leaders TR USD,0,,46137V83
+923,PEJ,Dynamic Leis&Entertnmt Intellidex TR USD,0,,46137V72
+924,PEK,CSI 300 TR CNY,0,,92189F75
+925,PEX,LPX Direct Listed Private Equity TR USD,0,,74348A53
+926,PEXL,Pacer US Export Leaders Index,0,,69374H40
+927,PEY,NASDAQ US Dividend Achievers 50 TR USD,0,,46137V56
+928,PEZ,DWA Consumer Cyclicals Technical Leaders USD,0,,46137V80
+929,PFF,Preferred Shares,1,1.0,46428868
+930,PFFD,BofA Merrill Lynch Diversified Core U.S. Preferred Securities Index,0,,37954Y65
+931,PFFV,ICE U.S. Variable Rate Preferred Securities Index,0,,37954Y37
+932,PFI,DWA Financials Technical Leaders USD,0,,46137V86
+933,PFM,NASDAQ US Broad Div Achievers TR USD,0,,46137V50
+934,PFXF,WellsFargo Hybrid&Pref Sec exFinc TR USD,0,,92189F42
+935,PGAL,FTSE Portugal 20 USD,0,,37950E19
+936,PGF,Wells Fargo Hybrid&Pref Secs Finc TR USD,0,,46137V62
+937,PGJ,NASDAQ Halter USX China TR USD,0,,46137V57
+938,PGX,Preferred Shares,1,2.0,46138E51
+939,PHO,NASDAQ OMX US Water TR USD,0,,46137V14
+940,PICK,MSCI ACWI Select Mt&MP Ex G&S IMI NR USD,0,,46434G84
+941,PID,NASDAQ Intl Div Achievers TR USD,0,,46137V54
+942,PIE,Dorsey Wright Em Mrkt Tech Ldrs NR USD,0,,46138E86
+943,PIN,Indus India,0,,46137R10
+944,PIO,NASDAQ OMX Global Water TR USD,0,,46138E65
+945,PIZ,Dorsey Wright Dev Mrkt Tech Ldrs NR USD,0,,46138E87
+946,PJP,Dynamic Pharmaceutical Intellidex TR USD,0,,46137V66
+947,PKB,Dynamic Building&Const Intellidex TR USD,0,,46137V77
+948,PKW,NASDAQ Buyback Achievers USD,0,,46137V30
+949,PLAT,WisdomTree Modern Tech Platforms Index,0,,97717Y71
+950,PLC,Nasdaq US Large Cap Select Leaders Core Index,0,,74255Y78
+951,PMOM,Nasdaq U.S. Sustainable Momentum Index,0,,74255Y85
+952,PMR,Dynamic Retail Intellidex TR USD,0,,46137V65
+953,PNQI,US Internet Sector,1,2.0,46137V53
+954,POTX,Cannabis Index,0,,37954Y14
+955,PPA,US Defense Sector,1,1.0,46137V10
+956,PPH,MV US Listed Pharmaceutical 25 NR USD,0,,92189F69
+957,PRF,FTSE RAFI US 1000 TR USD,0,,46137V61
+958,PRFZ,FTSE RAFI US Mid Small 1500 TR USD,0,,46137V59
+959,PRN,DWA Industrials Technical Leaders USD,0,,46137V84
+960,PRNT,Total 3D-Printing Index,0,,00214Q50
+961,PSC,NASDAQ U.S. Small Cap Select Leaders Index,0,,74255Y60
+962,PSCC,S&P SmallCap 600 Capped Cons Staples USD,0,,46138E17
+963,PSCD,S&P SmallCap 600 Capped Cons Disc USD,0,,46138E18
+964,PSCE,S&P SmallCap 600 Capped Energy USD,0,,46138E16
+965,PSCF,S&P SmallCap 600 Capped Financials USD,0,,46138E15
+966,PSCH,S&P SmallCap 600 Capped HealthCare USD,0,,46138E14
+967,PSCI,S&P 600 Capped Industrials TR,0,,46138E12
+968,PSCM,S&P SmallCap 600 Capped Materials USD,0,,46138G20
+969,PSCT,S&P SmallCap 600 Cap Info Tech USD,0,,46138E11
+970,PSCU,S&P SmallCap 600 Cap Util&Tele serv USD,0,,46138G40
+971,PSET,NASDAQ U.S. Price Setters Index,0,,74255Y20
+972,PSI,Dynamic Semiconductor Intellidex TR USD,0,,46137V64
+973,PSJ,Dynamic Software Intellidex TR USD,0,,46137V63
+974,PSK,Wells Fargo Hybrid and Preferred Securities Aggregate TR USD,0,,78464A29
+975,PSL,DWA Consumer Staples Technical Leaders USD,0,,46137V88
+976,PSM,Nasdaq US Small Mid Cap Select Leaders Core Index,0,,74255Y77
+977,PSP,Red Rocks Gbl Listed Private Eqty TR USD,0,,46137V58
+978,PTEU,Pacer Trendpilot European Index,0,,69374H80
+979,PTF,DWA Technology Technical Leaders USD,0,,46137V81
+980,PTH,DWA Healthcare Technical Leaders USD,0,,46137V85
+981,PTIN,S&P Developed Ex-US Large Cap Local Currency Total Return Index,0,,69374H68
+982,PTLC,Pacer Wilshire US Large-Cap Trendpilot Index,0,,69374H10
+983,PTMC,Pacer Wilshire US Mid-Cap Trendpilot Index,0,,69374H20
+984,PTNQ,Pacer NASDAQ-100 Trendpilot Index,0,,69374H30
+985,PUI,DWA Utilities Technical Leaders USD,0,,46137V79
+986,PVAL,Nasdaq U.S. Contrarian Value Index,0,,74255Y86
+987,PVAL,Nasdaq U.S. Contrarian Value Index,0,,74672930
+988,PWB,Dynamic Large Cap Intellidex TR USD,0,,46137V74
+989,PWC,Dynamic Market Intellidex TR USD,0,,46137V71
+990,PWV,Dynamic Large Cap Valu Intellidex TR USD,0,,46137V73
+991,PXE,Dynamic Enr Explo&Prod Intellidex GR USD,0,,46137V76
+992,PXF,FTSE RAFI Dvlp ex US 1000 TR USD,0,,46138E74
+993,PXH,FTSE RAFI Emerging TR USD,0,,46138E72
+994,PXI,DWA Energy Technical Leaders USD,0,,46137V87
+995,PXJ,Dynamic Oil Services Intellidex TR USD,0,,46137V67
+996,PXQ,Dynamic Networking Intellidex TR USD,0,,46137V68
+997,PY,NASDAQ U.S. Shareholder Yield Index,0,,74255Y30
+998,PYZ,DWA Basic Materials Technical Leaders USD,0,,46137V70
+999,PZD,AMEX Cleantech TR USD,0,,46137V40
+1000,QABA,NASDAQ OMX ABA Community Bank TR USD,0,,33736Q10
+1001,QARP,Russell 1000 2Qual/Val 5% Capped Factor Index,0,,23305124
+1002,QAT,MSCI All Qatar Capped Index,0,,46434V77
+1003,QCLN,NASDAQ Clean Edge US Liq PR USD,0,,33733E50
+1004,QDEF,Northern Trust Quality Div Defensive USD,0,,33939L84
+1005,QDF,Northern Trust Quality Dividend USD,0,,33939L86
+1006,QDIV,S&P 500 Quality High Dividend Index,0,,37954Y61
+1007,QDYN,Northern Trust Quality Dividend Dyn USD,0,,33939L85
+1008,QEFA,MSCI EAFE Quality Mix Index,0,,78463X43
+1009,QEMM,MSCI Emerging Markets Quality Mix Index,0,,78463X42
+1010,QGRO,iSTOXX American Century USA Quality Growth Index,0,,02507230
+1011,QINT,Alpha Vee American Century Diversified International Equity Index,0,,02507240
+1012,QLC,Northern Trust Quality Large Cap Index,0,,33939L74
+1013,QLV,Northern Trust Quality Low Volatility Index,0,,33939L65
+1014,QLVD,Northern Trust Developed Markets ex-US Quality Low Volatility Index,0,,33939L64
+1015,QLVE,Northern Trust Emerging Markets Quality Low Volatility Index,0,,33939L63
+1016,QMJ,S&P 500 150/50 Quality 0.30% Decrement Index,0,,25460G40
+1017,QMN,IQ Hedge Market Neutral USD,0,,45409B50
+1018,QQEW,NASDAQ-100 Equal Weighted Index,1,1.0,33734410
+1019,QQQ,NASDAQ 100 TR USD,0,,46090E10
+1020,QQQE,NASDAQ-100 Equal Weighted Index,1,2.0,25459Y20
+1021,QQQJ,NASDAQ Next Generation 100 Index,0,,46138G63
+1022,QQQM,NASDAQ-100 Index,0,,46138G64
+1023,QQXT,NASDAQ 100 Ex Technology TR USD,0,,33733E40
+1024,QTEC,NASDAQ 100 Technology NTTR TR USD,0,,33734510
+1025,QTUM,BlueStar Quantum Computing and Machine Learning Index,0,,26922A42
+1026,QUAL,MSCI USA Quality GR USD,0,,46432F33
+1027,QUS,MSCI USA Quality Mix A-Series Index,0,,78468R81
+1028,QVM,A.I. Quality Value Momentum Index,0,,04276578
+1029,QWLD,MSCI World Quality Mix Index,0,,78463X41
+1030,QYLD,CBOE NASDAQ-100 BuyWrite USD,0,,44053G10
+1031,QYLD,CBOE NASDAQ-100 BuyWrite USD,0,,37954Y48
+1032,QYLG,CBOE Nasdaq-100 Half BuyWrite V2 Index,0,,37954Y26
+1033,RAFE,RAFI ESG US Index,0,,72201T34
+1034,RBIN,R Risk-Based International Index,0,,26922A66
+1035,RBUS,R Risk-Based US Index,0,,26922A67
+1036,RCD,S&P 500 Equal Weighted Cons Disc TR USD,0,,46137V38
+1037,RCD,S&P 500 Equal Weighted Cons Disc TR USD,0,,78355W88
+1038,RDIV,Revenue Weighted Ultra Dividend USD,0,,68386C40
+1039,RDIV,Revenue Weighted Ultra Dividend USD,0,,46138G65
+1040,RDVY,NASDAQ US Rising Dividend Achievers TR USD,0,,33738R50
+1041,RECS,Beta Advantage Research Enhanced U.S. Equity Index,0,,19761L70
+1042,REDV,FTSE Custom Emerging Ultra Dividend Revenue Index,0,,68386C74
+1043,REDV,FTSE Custom Emerging Ultra Dividend Revenue Index,0,,46138G82
+1044,REEM,MSCI OFI Revenue Weighted Emerging Markets Index,0,,68386C86
+1045,REEM,MSCI OFI Revenue Weighted Emerging Markets Index,0,,46138G83
+1046,REFA,MSCI OFI Revenue Weighted International Index,0,,68386C75
+1047,REFA,MSCI OFI Revenue Weighted International Index,0,,46138G78
+1048,REGL,S&P MidCap 400 Dividend Aristocrats Index,0,,74347B68
+1049,REMX,Rare Earth/Strategic Metals USD,0,,92189H80
+1050,RENW,Morningstar North America Renewable Energy Index,0,,26922A52
+1051,RENW,Morningstar North America Renewable Energy Index,0,,41151J80
+1052,REVS,Beta Advantage Research Enhanced U.S. Value Index,0,,19761L80
+1053,RFG,S&P MidCap 400 Pure Growth TR,0,,46137V21
+1054,RFG,S&P MidCap 400 Pure Growth TR,0,,78355W60
+1055,RFV,S&P MidCap 400 Pure Value TR,0,,46137V19
+1056,RFV,S&P MidCap 400 Pure Value TR,0,,78355W50
+1057,RGI,S&P 500 Equal Weighted Indl TR USD,0,,46137V32
+1058,RGI,S&P 500 Equal Weighted Indl TR USD,0,,78355W83
+1059,RGLB,MSCI OFI Revenue Weighted Global Index,0,,68386C76
+1060,RGLB,MSCI OFI Revenue Weighted Global Index,0,,46138G79
+1061,RHS,S&P 500 Equal Weighted Cons Stpl TR USD,0,,46137V37
+1062,RHS,S&P 500 Equal Weighted Cons Stpl TR USD,0,,78355W87
+1063,RIDV,FTSE Custom Developed ex US Ultra Dividend Revenue Index,0,,68386C73
+1064,RIDV,FTSE Custom Developed ex US Ultra Dividend Revenue Index,0,,46138G77
+1065,RING,MSCI ACWI Select Gold Miners IMI NR USD,0,,46434G85
+1066,RNDM,Nasdaq Riskalyze Developed International Equity Select Index,0,,33738R78
+1067,RNDV,Nasdaq Riskalyze US Equity Dividend Select Index,0,,33738R73
+1068,RNEM,Nasdaq Riskalyze Emerging Markets Equity Select Index,0,,33738R77
+1069,RNLC,Nasdaq Riskalyze US Large Cap Index,0,,33738R76
+1070,RNMC,Nasdaq Riskalyze US Mid Cap Index,0,,33738R75
+1071,RNSC,Nasdaq Riskalyze US Small Cap Index,0,,33738R74
+1072,ROAM,Lattice Risk-Optimized Advancing Markets Strategy Index,0,,51841620
+1073,ROBO,Robo-Stox Global Robotics and Autom USD,0,,30150570
+1074,ROBT,Nasdaq CTA Artificial Intelligence and Robotics Index,0,,33738R72
+1075,RODE,Hartford Multifactor Diversified International Index,0,,51841660
+1076,RODM,Lattice Risk-Optimized Developed Markets (ex-US) Strategy Index,0,,51841610
+1077,ROKT,S&PKensho Final Frontiers Index,0,,78468R63
+1078,ROSC,Hartford Multifactor Small Cap Index,0,,51841650
+1079,ROUS,Lattice Risk-Optimized US Large Cap Equity Strategy Index,0,,51841640
+1080,RPV,S&P 500 Pure Value TR,0,,46137V25
+1081,RPV,S&P 500 Pure Value TR,0,,78355W30
+1082,RSP,S&P 500 Equal Weighted TR USD,0,,46137V35
+1083,RSP,S&P 500 Equal Weighted TR USD,0,,78355W10
+1084,RSX,Russia,1,1.0,92189F40
+1085,RSXJ,MV Russia Small Cap NR USD,0,,92189F73
+1086,RTH,MV US Listed Retail 25 NR USD,0,,92189F68
+1087,RTM,S&P 500 Equal Weighted Materials TR USD,0,,46137V31
+1088,RTM,S&P 500 Equal Weighted Materials TR USD,0,,78355W82
+1089,RVRS,Reverse Cap Weighted U.S. Large Cap Index,0,,26922A68
+1090,RWCD,MSCI USA Cyclical Sectors  USA Defensive Sectors 150/50 Return Spread Index,0,,25460E41
+1091,RWDC,MSCI USA Defensive Sectors  USA Cyclical Sectors 150/50 Return Spread Index,0,,25460E39
+1092,RWDE,MSCI EAFE IMI - Emerging Markets IMI 150/50 Return Spread Index,0,,25460E37
+1093,RWED,MSCI Emerging Markets IMI - EAFE IMI 150/50 Return Spread Index,0,,25460E38
+1094,RWGV,Russell 1000 Growth/Value 150/50 Net Spread Index,0,,25460E44
+1095,RWIU,FTSE All-World ex US/Russell 1000 150/50 Net Spread Index,0,,25460E46
+1096,RWJ,RevShares Small Cap Fund TR USD,0,,46138G66
+1097,RWJ,RevShares Small Cap Fund TR USD,0,,68386C30
+1098,RWK,RevShares Mid Cap Fund TR USD,0,,46138G67
+1099,RWK,RevShares Mid Cap Fund TR USD,0,,68386C20
+1100,RWL,RevShares Large Cap Fund TR USD,0,,46138G69
+1101,RWL,RevShares Large Cap Fund TR USD,0,,68386C10
+1102,RWLS,Russell 1000/Russell 2000 150/50 Net Spread Index,0,,25460E43
+1103,RWSL,Russell 2000/Russell 1000 150/50 Net Spread Index,0,,25460E42
+1104,RWUI,Russell 1000/FTSE All-World ex US 150/50 Net Spread Index,0,,25460E47
+1105,RWVG,Russell 1000 Value/Growth 150/50 Net Spread Index,0,,25460E45
+1106,RWW,RevShares Large Cap Fund Fincls TR USD,0,,46138G68
+1107,RWW,RevShares Large Cap Fund Fincls TR USD,0,,68386C80
+1108,RXI,S&P Global 1200 Sec/Cons Disc TR,0,,46428874
+1109,RYE,S&P 500 Equal Weighted Energy TR USD,0,,46137V36
+1110,RYE,S&P 500 Equal Weighted Energy TR USD,0,,78355W86
+1111,RYF,S&P 500 Equal Weighted Financials TR USD,0,,46137V34
+1112,RYF,S&P 500 Equal Weighted Financials TR USD,0,,78355W85
+1113,RYH,S&P 500 Equal Weighted HC TR USD,0,,46137V33
+1114,RYH,S&P 500 Equal Weighted HC TR USD,0,,78355W84
+1115,RYJ,RaymondJames SB1 Equity Incorporated USD,0,,46137V52
+1116,RYJ,RaymondJames SB1 Equity Incorporated USD,0,,18383M61
+1117,RYLD,Cboe Russell 2000 BuyWrite Index,0,,37954Y45
+1118,RYT,S&P 500 Equal Weighted IT TR USD,0,,46137V28
+1119,RYT,S&P 500 Equal Weighted IT TR USD,0,,78355W81
+1120,RYU,S&P 500 Equal Weighted Util&Teles TR USD,0,,46137V27
+1121,RYU,S&P 500 Equal Weighted Util&Teles TR USD,0,,78355W79
+1122,RZG,S&P SmallCap 600 Pure Growth TR,0,,46137V17
+1123,RZG,S&P SmallCap 600 Pure Growth TR,0,,78355W80
+1124,RZV,S&P SmallCap 600 Pure Value TR,0,,46137V16
+1125,RZV,S&P SmallCap 600 Pure Value TR,0,,78355W70
+1126,SBIO,Poliwogg Medical Breakthroughs Index,0,,00162Q59
+1127,SCHA,DJ US TSM Small Cap TR USD,0,,80852460
+1128,SCHB,DJ US Broad Stock Market TR USD,0,,80852410
+1129,SCHC,EAFE Small Cap,1,2.0,80852488
+1130,SCHD,DJ US Dividend 100 TR USD,0,,80852479
+1131,SCHE,FTSE Emerging NR USD,0,,80852470
+1132,SCHF,FTSE Dv Ex US NR USD,0,,80852480
+1133,SCHG,DJ US TSM Large Cap Growth TR USD,0,,80852430
+1134,SCHK,Schwab 1000 Index,0,,80852472
+1135,SCHM,DJ US TSM Mid Cap TR USD,0,,80852450
+1136,SCHV,DJ US TSM Large Cap Value TR USD,0,,80852440
+1137,SCHX,DJ US TSM Large Cap TR USD,0,,80852420
+1138,SCID,Scientific Beta Extended Europe Multi-Beta Multi-Strategy Equal,0,,37954Y30
+1139,SCIF,MV India Small Cap NR USD,0,,92189F76
+1140,SCIJ,Scientific Beta Japan Multi-Beta Multi-Strategy Equal Risk Contr,0,,37954Y50
+1141,SCIU,Scientific Beta United States Multi-Beta Multi-Strategy Equal Ri,0,,37954Y10
+1142,SCIX,Scientific Beta Developed Asia-Pacific ex Japan Multi-Beta Multi,0,,37954Y40
+1143,SCJ,MSCI Japan Small Cap NR USD,0,,46428658
+1144,SCZ,EAFE Small Cap,1,1.0,46428827
+1145,SDEM,Indxx SuperDividend Emerging Markets Index,0,,37960A67
+1146,SDG,MSCI ACWI Sustainable Impact Index,0,,46435G53
+1147,SDGA,Morningstar Societal Development Index,0,,45259A30
+1148,SDIV,Solactive Global SuperDividend TR USD,0,,37960A66
+1149,SDOG,S-Network Sector Dividend Dogs USD,0,,00162Q85
+1150,SDVY,NASDAQ US Small Mid Cap Rising Dividend Achievers Index,0,,33741X10
+1151,SDY,S&P High Yield Dividend Aristcrts TR USD,0,,78464A76
+1152,SEA,Dow Jones Global Shipping USD,0,,46138G60
+1153,SEA,Dow Jones Global Shipping USD,0,,26922B86
+1154,SEA,Dow Jones Global Shipping USD,0,,18383Q79
+1155,SFY,Solactive SoFi US 500 Growth Index,0,,88636420
+1156,SFY,Solactive SoFi US 500 Growth Index,0,,82836G10
+1157,SFYF,Solactive SoFi US 50 Growth Index,0,,88636440
+1158,SFYX,Solactive SoFi US Next 500 Growth Index,0,,88636430
+1159,SGDJ,Sprott Zacks Junior Gold Miners Index,0,,00162Q58
+1160,SGDJ,Sprott Zacks Junior Gold Miners Index,0,,85210B20
+1161,SGDM,Sprott Zacks Gold Miners Index,0,,00162Q64
+1162,SGDM,Sprott Zacks Gold Miners Index,0,,85210B10
+1163,SHE,SSGA Gender Diversity Index,0,,78468R74
+1164,SHLD,Nasdaq Yewno Aerospace & Defense Index,0,,92647X87
+1165,SHLD,Nasdaq Yewno Aerospace & Defense Index,0,,81235010
+1166,SIL,Solactive Global Silver Miners TR USD,0,,37954Y84
+1167,SILJ,ISE Junior Silver (SM Miners/Explor) USD,0,,26924G10
+1168,SIMS,S&P Kensho Intelligent Infrastructure Index,0,,78468R69
+1169,SIZE,MSCI USA Risk Weighted GR USD,0,,46432F37
+1170,SKYY,ISE Cloud Computing USD,0,,33734X19
+1171,SLIM,Solactive Obesity Index,0,,47103U50
+1172,SLT,Salt truBeta High Exposure Index,0,,26922A47
+1173,SLT,Salt truBeta High Exposure Index,0,,69374H61
+1174,SLVP,MSCI ACWI Select Silver Miner IMI NR USD,0,,46428632
+1175,SLX,NYSE Arca Steel TR USD,0,,92189F20
+1176,SLY,S&P SmallCap 600 Index,1,2.0,78464A81
+1177,SLYG,S&P Smallcap 600 Growth Index,1,2.0,78464A20
+1178,SLYV,S&P Smallcap 600 Value Index,1,2.0,78464A30
+1179,SMDV,Russell 2000 Dividend Growth Index,0,,74347B69
+1180,SMDY,Syntax Stratified MidCap Index,0,,87166N20
+1181,SMEZ,EURO STOXX Small Index,0,,78463X39
+1182,SMH,MV US Listed Semiconductor 25 NR USD,0,,92189F67
+1183,SMIN,MSCI India Small NR USD,0,,46429B61
+1184,SMLF,MSCI USA Small Cap Diversified Multi-Factor Index,0,,46434V29
+1185,SMLV,Russell 2000 Low Volatility TR USD,0,,78468R88
+1186,SMMD,US Small Caps,1,2.0,46435G26
+1187,SMMV,MSCI USA Small Cap Minimum Volatility (USD) Index,0,,46435G43
+1188,SMOG,Ardour Global Index Extra Liquid,0,,92189F50
+1189,SNPE,S&P 500 ESG Index,0,,23305114
+1190,SNSR,Indxx Global Internet of Things Thematic Index,0,,37954Y78
+1191,SOCL,Solactive Social Media USD,0,,37950E41
+1192,SOIL,Solactive Global F/P TR USD,0,,37950E49
+1193,SOXX,PHLX Semiconductor Sector USD,0,,46428752
+1194,SPAK,Indxx SPAC & NextGen IPO Index,0,,26922B20
+1195,SPDV,S&P 500 Dividend & Free Cash Flow Yield Index,0,,26922A59
+1196,SPDW,S&P Developed Ex-U.S. BMI Index,0,,78463X88
+1197,SPEM,S&P Emerging BMI Index,0,,78463X50
+1198,SPEU,STOXX Europe Total Market Index,0,,78463X10
+1199,SPFF,S&P Enhded Yld Nor Amer Preferred Stock USD,0,,37950E33
+1200,SPGM,MSCI ACWI IMI Index,0,,78463X47
+1201,SPGP,S&P 500 Growth at a Reasonable Price Index,0,,46137V43
+1202,SPHB,S&P 500 High Beta USD,0,,46138E37
+1203,SPHD,S&P 500 Low Volatility High Dividend USD,0,,46138E36
+1204,SPHQ,S&P 500 High Quality TR USD,0,,46137V24
+1205,SPLG,SSGA Large Cap Index,0,,78464A85
+1206,SPLV,S&P 500 Low Volatility TR USD,0,,46138E35
+1207,SPMD,S&P 1000 Index,0,,78464A84
+1208,SPMO,S&P 500 Momentum Index,0,,46138E33
+1209,SPMV,S&P 500 Minimum Volatility Index,0,,46138E34
+1210,SPQQ,Siren Large Cap Blend Index,0,,82965810
+1211,SPSM,SSGA Small Cap Index,0,,78468R85
+1212,SPTM,SSGA Total Stock Market Index,0,,78464A80
+1213,SPUS,S&P 500 Shariah Industry Exclusions Index,0,,88636480
+1214,SPVU,S&P 500 Enhanced Value Index,0,,46138E39
+1215,SPXE,S&P 500 Ex-Energy Index,0,,74347B58
+1216,SPXN,S&P 500 Ex-Financials Index,0,,74347B57
+1217,SPXT,S&P 500 Ex-Information Technology & Telecommunication Services I,0,,74347B55
+1218,SPXV,S&P 500 Ex-Health Care Index,0,,74347B56
+1219,SPY,S&P 500 Index,1,1.0,78462F10
+1220,SPYB,S&P 500 Buyback Index,0,,78468R82
+1221,SPYD,S&P 500 High Dividend Index,0,,78468R78
+1222,SPYG,S&P 500 Growth Index,1,2.0,78464A40
+1223,SPYV,S&P 500 Value Index,1,2.0,78464A50
+1224,SPYX,S&P 500 Fossil Fuel Free Index,0,,78468R79
+1225,SQLV,Royce Small-Cap Quality Value Index,0,,52468L87
+1226,SSLY,Syntax Stratified SmallCap Index,0,,87166N30
+1227,SSPY,Syntax Stratified LargeCap Index,0,,87166N10
+1228,STLC,Russell US Large Cap Factors Blend Style Index,0,,46436E79
+1229,STLG,Russell US Large Cap Factors Growth Style Index,0,,46436E40
+1230,STLV,Russell US Large Cap Factors Value Style Index,0,,46436E30
+1231,STMB,Russell US Mid Cap Factors Blend Style Index,0,,46436E78
+1232,STSB,Russell US Small Cap Factors Blend Style Index,0,,46436E77
+1233,SUSA,MSCI USA Extended ESG Select Index,0,,46428880
+1234,SUSL,MSCI USA Extended ESG Leaders Index,0,,46435U21
+1235,SVAL,Russell 2000 Focused Value Select Index,0,,46436E53
+1236,SZNE,Pacer CFRA-Stovall Equal Weight Seasonal Rotation Index,0,,69374H69
+1237,TAN,MAC Global Solar Energy TR USD,0,,18383Q73
+1238,TAN,MAC Global Solar Energy TR USD,0,,46138G70
+1239,TBLU,Tortoise Water Index,0,,56167N75
+1240,TDIV,NASDAQ Technology Dividend USD,0,,33738R11
+1241,TDV,S&PTechnology Dividend AristocratsIndex,0,,74347G60
+1242,TDV,S&PTechnology Dividend AristocratsIndex,0,,23305240
+1243,TECB,NYSE FactSet U.S. Tech Breakthrough Index,0,,46436E50
+1244,THCX,Innovation Labs Cannabis Index,0,,84858T40
+1245,THD,MSCI Thailand IMI 25-50 NR USD,0,,46428662
+1246,THNQ,ROBO Global Artificial Intelligence Index,0,,30150573
+1247,TILT,Morningstar US Mkt Factor Tilt TR USD,0,,33939L10
+1248,TLDH,Morningstar Developed Markets ex-US Factor Tilt Hedged Index,0,,33939L72
+1249,TLEH,Morningstar Emerging Markets Factor Tilt Hedged Index,0,,33939L71
+1250,TLTD,Morningstar Dev Mkt ex-US Ft Tilt GR USD,0,,33939L80
+1251,TLTE,Morningstar Emg Mkts Factor Tilt NR USD,0,,33939L30
+1252,TMDV,Russell 3000 Dividend Elite Index,0,,74347G50
+1253,TMFC,Motley Fool 100 index,0,,74933W60
+1254,TOK,MSCI Kokusai NR USD,0,,46428826
+1255,TOLZ,Dow Jones Brookfield Global Infrastructure Composite USD,0,,74347B50
+1256,TPAY,Tortoise Global Digital Payments Infrastructure Index,0,,56167N54
+1257,TPHD,Victory U.S. Large Cap High Dividend Volatility Weighted BRI Index,0,,88743232
+1258,TPIF,Victory International 500 Volatility Weighted BRI Index,0,,88743233
+1259,TPLC,Victory US Large Cap Volatility Weighted BRI Index,0,,88743235
+1260,TPSC,Victory US Small Cap Volatility Weighted BRI Index,0,,88743234
+1261,TPYP,Tortoise North American Pipeline Index,0,,61177620
+1262,TPYP,Tortoise North American Pipeline Index,0,,56167N72
+1263,TRND,"Pacer Trendpilot US Large Cap Index, Pacer Trendpilot US Mid Cap Index, Pacer NASDAQ-100 Trendpilot Index, Pacer Trendpilot Inte",0,,69374H67
+1264,TTTN,Nasdaq China US Internet Tiger Index,0,,88680T10
+1265,TUR,MSCI Turkey IMI NR USD,0,,46428671
+1266,TUSA,NASDAQ AlphaDEX Total US Market Index,0,,33733E70
+1267,UAE,MSCI All UAE Capped Index,0,,46434V76
+1268,UEVM,MSCI Emerg Markets Select Value Momentum Blend Index,0,,90291F40
+1269,UEVM,MSCI Emerg Markets Select Value Momentum Blend Index,0,,92647N54
+1270,UFO,S-Network Space Index,0,,74280R20
+1271,UIVM,MSCI World ex USA Select Value Momentum Blend Index,0,,90291F30
+1272,UIVM,MSCI World ex USA Select Value Momentum Blend Index,0,,92647N55
+1273,ULVM,MSCI USA Select Value Momentum Blend Index,0,,90291F10
+1274,ULVM,MSCI USA Select Value Momentum Blend Index,0,,92647N57
+1275,URA,Solactive Global Uranium TR USD,0,,37954Y87
+1276,URNM,North Shore Global Uranium Mining Index,0,,30150571
+1277,URNM,North Shore Global Uranium Mining Index,0,,85208P30
+1278,URTH,MSCI World NR USD,0,,46428639
+1279,USAI,American Energy Independence Index,0,,26922A55
+1280,USAI,American Energy Independence Index,0,,69374H63
+1281,USEQ,Russell 1000 Enhanced Value Equal Weight Index,0,,46138E43
+1282,USLB,Russell 1000 Low Beta Equal Weight Index,0,,46138E41
+1283,USMC,Nasdaq US Mega Cap Select Leaders Index,0,,74255Y87
+1284,USMF,WisdomTree U.S. Multifactor Index,0,,97717Y85
+1285,USMV,MSCI USA Minimum Volatility (USD) NR USD,0,,46429B69
+1286,USSG,MSCI USA ESG Leaders Index,0,,23305115
+1287,USVM,MSCI USA Sm Cap Select Value Momentum Blend Index,0,,90291F20
+1288,USVM,MSCI USA Sm Cap Select Value Momentum Blend Index,0,,92647N56
+1289,USXF,MSCI USA Choice ESG Screened Index,0,,46436E76
+1290,VALQ,iSTOXX American Century USA Quality Value Index,0,,02507220
+1291,VAW,US Materials Sector,1,2.0,92204A80
+1292,VB,MSCI US Small Cap 1750 NR USD,0,,92290875
+1293,VBK,MSCI US Small Cap Growth NR USD,0,,92290859
+1294,VBR,MSCI US Small Cap Value NR USD,0,,92290861
+1295,VCR,Consumer Discretionary Sector,1,2.0,92204A10
+1296,VDC,Consumer Staples Sector,1,2.0,92204A20
+1297,VDE,Energy Sector,1,2.0,92204A30
+1298,VEA,EAFE,1,1.0,92194385
+1299,VEGI,MSCI ACWI Select Agricul Prod IMI NR USD,0,,46428635
+1300,VEGN,US Vegan Climate Index,0,,26922A29
+1301,VETS,Military Times Best for Vets Index,0,,69374H83
+1302,VEU,All World Ex US,1,1.0,92204277
+1303,VFH,US Financials Sector,1,2.0,92204A40
+1304,VGK,Eurozone,1,2.0,92204287
+1305,VGT,US Technology Sector,1,2.0,92204A70
+1306,VHT,US Healthcare Sector,1,2.0,92204A50
+1307,VIDI,Vident International Equity USD,0,,26922A40
+1308,VIG,NASDAQ US Div Achievers Select TR USD,0,,92190884
+1309,VIGI,NASDAQ International Dividend Achievers Select Index,0,,92194681
+1310,VIOG,S&P Smallcap 600 Growth Index,1,3.0,92193279
+1311,VIOO,S&P SmallCap 600 Index,1,3.0,92193282
+1312,VIOV,S&P Smallcap 600 Value Index,1,3.0,92193277
+1313,VIRS,LifeSci BioThreat Strategy Index,0,,69374H75
+1314,VIS,US Industrials Sector,1,2.0,92204A60
+1315,VLU,S&P 1500 Low Valuation Tilt TR USD,0,,78464A12
+1316,VLUE,MSCI USA Value Weighted GR USD,0,,46432F38
+1317,VMOT,Alpha Architect Value Momentum Trend Index,0,,02072L50
+1318,VNM,MV Vietnam NR USD,0,,92189F81
+1319,VO,CRSP US Mid Cap TR USD,0,,92290862
+1320,VOE,CRSP US Mid Cap Value TR USD,0,,92290851
+1321,VONE,Russell 1000 Index,1,2.0,92206C73
+1322,VONG,Russell 1000 Growth Index,1,2.0,92206C68
+1323,VONV,Russell 1000 Value Index,1,2.0,92206C71
+1324,VOO,S&P 500 Index,1,3.0,92290836
+1325,VOOG,S&P 500 Growth Index,1,3.0,92193250
+1326,VOOV,S&P 500 Value Index,1,3.0,92193270
+1327,VOT,CRSP US Mid Cap Growth TR USD,0,,92290853
+1328,VOX,US Communications Sector,1,1.0,92204A88
+1329,VPL,FTSE Developed Asia Pacific NR USD,0,,92204286
+1330,VPN,Solactive Data Center REITs & Digital Infrastructure Index,0,,37954Y23
+1331,VPU,US Utilities Sector,1,2.0,92204A87
+1332,VRAI,Indxx Real Asset Income Index,0,,26923G78
+1333,VRP,Wells FargoÃ‚Â® Hybrid and Preferred Securities Floating and Variable Rate USD,0,,46138G87
+1334,VSDA,Nasdaq Victory Dividend Accelerator Index,0,,92647N66
+1335,VSGX,FTSE Global All Cap ex US Choice Index,0,,92191072
+1336,VSL,Volshares Large Cap Index,0,,26922A49
+1337,VSMV,Nasdaq Victory US Multi-Factor Minimum Volatility Index,0,,92647N69
+1338,VSS,FTSE Gbl SmallCap Ex US TR USD,0,,92204271
+1339,VT,All World,1,2.0,92204274
+1340,VTHR,Russell 3000 Index,1,2.0,92206C59
+1341,VTI,US Total Market,1,1.0,92290876
+1342,VTRN,Veterans Select Index,0,,92647X88
+1343,VTV,MSCI US Prime Market Value NR USD,0,,92290874
+1344,VTWG,Russell 2000 Growth Index,1,2.0,92206C62
+1345,VTWO,Russell 2000 Index,1,2.0,92206C66
+1346,VTWV,Russell 2000 Value Index,1,2.0,92206C64
+1347,VUG,MSCI US Prime Market Growth NR USD,0,,92290873
+1348,VUSE,Vident Core U.S. Equity USD,0,,26922A50
+1349,VV,MSCI US Prime Market 750 NR USD,0,,92290863
+1350,VWO,Emerging Markets,1,2.0,92204285
+1351,VXF,US Small Caps,1,1.0,92290865
+1352,VXUS,All World Ex US,1,2.0,92190976
+1353,VYM,FTSE High Dividend Yield TR USD,0,,92194640
+1354,VYMI,FTSE All-World ex US High Dividend Yield Index,0,,92194679
+1355,WBIY,Solactive Power Factor High Dividend Index,0,,00400R85
+1356,WCHN,S&P China 500 Index,0,,97717Y83
+1357,WCLD,BVP Nasdaq Emerging Cloud Index,0,,97717Y69
+1358,WDIV,S&P Global Dividend Aristocrats TR USD,0,,78463X45
+1359,WFH,Solactive Remote Work Index,0,,25460G77
+1360,WLDR,Thomson Reuters StarMine Affinity World Leaders Index,0,,90214Q10
+1361,WOMN,Morningstar Women s Empowerment Index,0,,45259A10
+1362,WOOD,S&P Global Timber and Forestry TR USD,0,,46428817
+1363,WWJD,Inspire International ESG Index,0,,66538H41
+1364,WWOW,Indxx US Circular Economy Index,0,,25460G64
+1365,XAR,S&P Aerospace & Defense Select Industry TR USD,0,,78464A63
+1366,XBI,S&P Biotechnology Select Industry TR USD,0,,78464A87
+1367,XBUY,EQM International Ecommerce Index,0,,03210887
+1368,XCEM,EGAI Emerging Markets ex-China Index,0,,19762B20
+1369,XDIV,Solactive US Ex-Dividends Index Series 2027,0,,59140L20
+1370,XES,S&P Oil&Gas Equip&Svcs Sel Indust TR USD,0,,78468R54
+1371,XHB,S&P Homebuilders Select Industry TR USD,0,,78464A88
+1372,XHE,S&P HealthCare Equip Sel Industry TR USD,0,,78464A58
+1373,XHS,S&P Health Care Services Select Industry TR USD,0,,78464A57
+1374,XITK,FactSet Innovative Technology Index,0,,78464A11
+1375,XJH,S&P MidCap 400 Sustainability Screened Index,0,,46436E55
+1376,XJR,S&P SmallCap 600 Sustainability Screened Index,0,,46436E54
+1377,XLB,US Materials Sector,1,1.0,81369Y10
+1378,XLC,US Communications Sector,1,2.0,81369Y85
+1379,XLE,Energy Sector,1,1.0,81369Y50
+1380,XLF,US Financials Sector,1,1.0,81369Y60
+1381,XLG,Russell Top 50 Mega CapTR USD,0,,46137V23
+1382,XLG,Russell Top 50 Mega CapTR USD,0,,78355W20
+1383,XLI,US Industrials Sector,1,1.0,81369Y70
+1384,XLK,US Technology Sector,1,1.0,81369Y80
+1385,XLP,Consumer Staples Sector,1,1.0,81369Y30
+1386,XLU,US Utilities Sector,1,1.0,81369Y88
+1387,XLV,US Healthcare Sector,1,1.0,81369Y20
+1388,XLY,Consumer Discretionary Sector,1,1.0,81369Y40
+1389,XME,S&P Metals&Mining Select Industry TR USD,0,,78464A75
+1390,XMHQ,S&P MidCap 400 Quality Index,0,,46137V47
+1391,XMLV,S&P MidCap 400 Low Volatility TR USD,0,,46138E19
+1392,XMMO,S&P MidCap 400 Momentum Index,0,,46137V46
+1393,XMVM,S&P 400 High Momentum Value Index,0,,46137V45
+1394,XNTK,NYSE Technology Index,0,,78464A10
+1395,XOP,S&P Oil&Gas Explor&Pro Sel Indust TR USD,0,,78468R55
+1396,XOUT,XOUT U.S. Large Cap Index,0,,38747R60
+1397,XPH,S&P Pharms Select Industry TR USD,0,,78464A72
+1398,XRLV,S&P 500 Low Volatility Rate Response Index,0,,46138E38
+1399,XRT,S&P Retail Select Industry TR USD,0,,78464A71
+1400,XSD,S&P Semi Select Industry TR USD,0,,78464A86
+1401,XSHD,S&P SmallCap 600 Low Volatility High Dividend Index,0,,46138E13
+1402,XSHQ,S&P SmallCap 600 Quality Index,0,,46138G30
+1403,XSLV,S&P SmallCap 600 Low Volatility TR USD,0,,46138G10
+1404,XSMO,S&P SmallCap 600 Momentum Index,0,,46137V49
+1405,XSOE,WisdomTree Emerging Markets ex-State-Owned Enterprises Index,0,,97717X57
+1406,XSVM,S&P 600 High Momentum Value Index,0,,46137V48
+1407,XSW,S&P Soft&Sevs Select Industry TR USD,0,,78464A59
+1408,XT,Morningstar Exponential Technologies Index,0,,46434V38
+1409,XTH,S&P Technology Hardware Select Industry Index,0,,78468R11
+1410,XTL,S&P Telecom Select Industry TR USD,0,,78464A54
+1411,XTN,S&P Transpt Select Industry TR USD,0,,78464A53
+1412,XVV,S&P 500 Sustainability Screened Index,0,,46436E56
+1413,XWEB,S&P Internet Select Industry Index,0,,78468R12
+1414,XYLD,CBOE S&P500 BuyWrite Index,0,,37954Y47
+1415,XYLG,CBOE S&P 500 Half BuyWrite Index,0,,37954Y27
+1416,YLCO,Indxx Global YieldCo Index,0,,37954Y70
+1417,ZCAN,Solactive GBS Canada Large & Mid Cap Index,0,,78463X37
+1418,ZDEU,Germany,1,2.0,78463X35
+1419,ZGBR,Solactive GBS United Kingdom Large & Mid Cap Index,0,,78463X33
+1420,ZHOK,Solactive GBS Hong Kong Large & Mid Cap USD Index,0,,78463X14
+1421,ZIG,Acquirers Index,0,,26922A26
+1422,ZJPN,Solactive GBS Japan Large & Mid Cap Index,0,,78463X36
+1423,ZMLP,Zacks MLP USD,0,,25460G79

@@ -1,4 +1,5 @@
 import pandas as pd
+import wrds
 from hydra import compose, initialize
 from omegaconf import OmegaConf
 import numpy as np
@@ -44,22 +45,28 @@ if __name__ == "__main__":
     # load index data
     probit_file = pd.read_csv(f"{cfg.raw_folder}/probit_raw.csv")
     # load ticker to index correspondence file which includes launch order
-    meta = pd.read_csv(f"{cfg.raw_folder}/all_tickers_meta.csv", index_col=0)[
-        ["ticker", "index"]
-    ]
-    meta = meta.rename(columns={"index": "index_id"})
+    meta = pd.read_csv(f"{cfg.raw_folder}/all_tickers_meta.csv", index_col=0)
+    meta = meta.rename(columns={"CUSIP": "cusip", "index": "index_id"})
 
-    crsp_data = pd.read_csv("../data/crsp_all_etf_volume.gz", index_col=0)
-    ggg
+    list_cusip = meta.cusip.drop_duplicates().tolist()
+    conn = wrds.Connection(wrds_username=cfg.wrds_user)  # login to WRDS account
+
+    print("Load bid-ask spreads from CRSP")
+    crsp_data = conn.raw_sql(
+        f""" SELECT date, cusip, permco, issuno, prc, vol, openprc, askhi, bidlo, bid, ask, numtrd, shrout
+            FROM crsp_a_stock.dsf
+            WHERE (cusip IN {tuple(list_cusip)}) AND date>='1/1/2015' AND date<='12/30/2022'"""
+    )
+    crsp_data = crsp_data.merge(meta[["cusip", "ticker"]], on="cusip", how="left")
     crsp_data = crsp_data.rename(columns={"TICKER": "ticker"})
     crsp_data["price"] = np.where(
-        crsp_data["PRC"] < 0, -crsp_data["PRC"], crsp_data["PRC"]
+        crsp_data["prc"] < 0, -crsp_data["prc"], crsp_data["prc"]
     )
     crsp_data["relative_spread"] = (
         10000
         * 2
-        * (crsp_data["ASK"] - crsp_data["BID"])
-        / (crsp_data["ASK"] + crsp_data["BID"])
+        * (crsp_data["ask"] - crsp_data["bid"])
+        / (crsp_data["ask"] + crsp_data["bid"])
     )
     crsp_data["relative_spread"] = np.where(
         crsp_data["relative_spread"] <= 0,
@@ -68,20 +75,18 @@ if __name__ == "__main__":
             crsp_data["relative_spread"] >= 10000, np.nan, crsp_data["relative_spread"]
         ),
     )
-    crsp_data["as_of_date"] = crsp_data["date"].apply(
-        lambda x: dt.datetime.strptime(x, "%Y-%m-%d")
-    )
-    crsp_data["volume_usd"] = crsp_data["PRC"] * crsp_data["VOL"]
+    crsp_data["as_of_date"] = crsp_data["date"]
+    crsp_data["volume_usd"] = crsp_data["prc"] * crsp_data["vol"]
 
-    wrds_file = pd.read_csv(
-        "../data/etf_all_indices_data.csv.gz", compression="gzip", index_col=0
-    )
-    wrds_file["as_of_date"] = wrds_file["as_of_date"].apply(
-        lambda x: dt.datetime.strptime(x, "%Y-%m-%d")
+    print("Load ETFG data")
+    wrds_file = conn.raw_sql(
+        f""" SELECT as_of_date, etfg_date, composite_ticker, issuer, description, inception_date, primary_benchmark, tax_classification, is_etn, aum, avg_daily_trading_volume, asset_class, is_levered, levered_amount, is_active, listing_exchange, creation_unit_size, creation_fee, num_holdings, bid_ask_spread, management_fee, other_expenses, total_expenses, fee_waivers, net_expenses, lead_market_maker
+                FROM etfg_industry.industry
+                WHERE (composite_ticker IN {tuple(meta.ticker.drop_duplicates().tolist())}) AND as_of_date>='1/1/2015' AND as_of_date<='3/3/2023'"""
     )
     wrds_file = wrds_file[
-        (wrds_file["as_of_date"] >= dt.datetime(2016, 1, 1))
-        & (wrds_file["as_of_date"] <= dt.datetime(2020, 12, 31))
+        (wrds_file["as_of_date"] >= dt.date(2016, 1, 1))
+        & (wrds_file["as_of_date"] <= dt.date(2020, 12, 31))
     ]
     wrds_file = wrds_file.rename(columns={"composite_ticker": "ticker"})
     wrds_file = wrds_file.merge(meta, on="ticker", how="left")
@@ -105,18 +110,20 @@ if __name__ == "__main__":
     ].transform(np.mean)
 
     mean_data = (
-        wrds_file.groupby("index_id")
-        .mean()[["aum_index", "num_hold_index", "volume_index", "spread_index"]]
+        wrds_file.groupby("index_id")[
+            ["aum_index", "num_hold_index", "volume_index", "spread_index"]
+        ]
+        .mean()
         .reset_index()
     )
 
-    data13f = pd.read_csv("../data/data_13F_RR_complete.csv.gz", index_col=0)
+    data13f = pd.read_csv(f"{cfg.data_folder}/data_13F.csv.gz", index_col=0)
     data13f = data13f[data13f["rdate"].apply(lambda x: x[0:4] == "2020")]
     data13f = data13f[data13f.ticker.isin(meta["ticker"].tolist())]
 
     data13f = data13f.merge(meta[["ticker", "index_id"]], on="ticker", how="left")
     # Bushee data on manager classification
-    mgr_classification = pd.read_csv("../data/iiclass.csv")
+    mgr_classification = pd.read_csv(f"{cfg.raw_folder}/iiclass.csv")
 
     def transient(x):
         if x == "TRA":
@@ -131,7 +138,7 @@ if __name__ == "__main__":
     )
     mgr_classification["tax_extend"] = mgr_classification.groupby("permakey")[
         "tax_extend"
-    ].apply(lambda x: x.fillna(method="ffill"))
+    ].transform(lambda x: x.fillna(method="ffill"))
 
     data13f = data13f.merge(
         mgr_classification[["mgrno", "horizon_perma", "tax_extend"]],
