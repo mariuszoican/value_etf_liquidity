@@ -468,41 +468,98 @@ if __name__ == "__main__":
     spreads_q = spreads.groupby(["ticker", "quarter"]).mean().reset_index()
 
     # merge with spread values
-    etf_graph=etf_graph.merge(spreads_q[['ticker','quarter','effectivespread_dollar_ave',
-       'effectivespread_percent_ave', 'effectivespread_dollar_dw',
-       'effectivespread_dollar_sw', 'effectivespread_percent_dw',
-       'effectivespread_percent_sw', 'dollarrealizedspread_lr_ave',
-       'percentrealizedspread_lr_ave','dollarrealizedspread_lr_sw',
-       'dollarrealizedspread_lr_dw', 'percentrealizedspread_lr_sw',
-       'percentrealizedspread_lr_dw','dollarpriceimpact_lr_ave',
-       'percentpriceimpact_lr_ave','dollarpriceimpact_lr_sw',
-       'dollarpriceimpact_lr_dw', 'percentpriceimpact_lr_sw',
-       'percentpriceimpact_lr_dw']],on=['ticker','quarter'],how='left')
+    etf_graph = etf_graph.merge(
+        spreads_q[
+            [
+                "ticker",
+                "quarter",
+                "effectivespread_dollar_ave",
+                "effectivespread_percent_ave",
+                "effectivespread_dollar_dw",
+                "effectivespread_dollar_sw",
+                "effectivespread_percent_dw",
+                "effectivespread_percent_sw",
+                "dollarrealizedspread_lr_ave",
+                "percentrealizedspread_lr_ave",
+                "dollarrealizedspread_lr_sw",
+                "dollarrealizedspread_lr_dw",
+                "percentrealizedspread_lr_sw",
+                "percentrealizedspread_lr_dw",
+                "dollarpriceimpact_lr_ave",
+                "percentpriceimpact_lr_ave",
+                "dollarpriceimpact_lr_sw",
+                "dollarpriceimpact_lr_dw",
+                "percentpriceimpact_lr_sw",
+                "percentpriceimpact_lr_dw",
+            ]
+        ],
+        on=["ticker", "quarter"],
+        how="left",
+    )
 
-    etf_graph_for_cs=etf_graph.copy()
-    etf_graph_for_cs['volume']=etf_graph_for_cs['log_volume'].map(np.exp)
-    etf_graph_for_cs['aum_index']=etf_graph_for_cs['log_aum_index'].map(np.exp)
-    etf_graph_for_cs['net_expense_mer']=etf_graph_for_cs['other_expenses']-etf_graph_for_cs['marketing_fee_bps']/100+etf_graph_for_cs['fee_waivers']
-    cs_panel=etf_graph_for_cs.groupby(['ticker','index_id'])[['lend_byAUM_bps','mer_bps','spread_bps_crsp','volume','tr_error_bps','perf_drag_bps','turnover_frac',
-                            'd_UIT','mkt_share','marketing_fee_bps','aum','aum_index','log_aum_index','highfee','other_expenses','fee_waivers','net_expense_mer','mgr_duration','mgr_duration_tii','mgr_duration_tsi','ratio_tra','ratio_tii','stock_tweets','effectivespread_dollar_ave',
-       'effectivespread_percent_ave', 'effectivespread_dollar_dw',
-       'effectivespread_dollar_sw', 'effectivespread_percent_dw',
-       'effectivespread_percent_sw', 'dollarrealizedspread_lr_ave',
-       'percentrealizedspread_lr_ave', 'dollarrealizedspread_lr_sw',
-       'dollarrealizedspread_lr_dw', 'percentrealizedspread_lr_sw',
-       'percentrealizedspread_lr_dw', 'dollarpriceimpact_lr_ave',
-       'percentpriceimpact_lr_ave', 'dollarpriceimpact_lr_sw',
-       'dollarpriceimpact_lr_dw', 'percentpriceimpact_lr_sw',
-       'percentpriceimpact_lr_dw']].mean().reset_index()
-    cs_panel['log_volume']=cs_panel['volume'].map(np.log)
-    #cs_panel['log_aum_index']=cs_panel['aum_index'].map(np.log)
+    etf_graph_for_cs = etf_graph.copy()
+    etf_graph_for_cs["volume"] = etf_graph_for_cs["log_volume"].map(np.exp)
+    etf_graph_for_cs["aum_index"] = etf_graph_for_cs["log_aum_index"].map(np.exp)
+    etf_graph_for_cs["net_expense_mer"] = (
+        etf_graph_for_cs["other_expenses"]
+        - etf_graph_for_cs["marketing_fee_bps"] / 100
+        + etf_graph_for_cs["fee_waivers"]
+    )
+    cs_panel = (
+        etf_graph_for_cs.groupby(["ticker", "index_id"])[
+            [
+                "lend_byAUM_bps",
+                "mer_bps",
+                "spread_bps_crsp",
+                "volume",
+                "tr_error_bps",
+                "perf_drag_bps",
+                "turnover_frac",
+                "d_UIT",
+                "mkt_share",
+                "marketing_fee_bps",
+                "aum",
+                "aum_index",
+                "highfee",
+                "other_expenses",
+                "fee_waivers",
+                "net_expense_mer",
+                "mgr_duration",
+                "mgr_duration_tii",
+                "mgr_duration_tsi",
+                "ratio_tra",
+                "ratio_tii",
+                "stock_tweets",
+                "effectivespread_dollar_ave",
+                "effectivespread_percent_ave",
+                "effectivespread_dollar_dw",
+                "effectivespread_dollar_sw",
+                "effectivespread_percent_dw",
+                "effectivespread_percent_sw",
+                "dollarrealizedspread_lr_ave",
+                "percentrealizedspread_lr_ave",
+                "dollarrealizedspread_lr_sw",
+                "dollarrealizedspread_lr_dw",
+                "percentrealizedspread_lr_sw",
+                "percentrealizedspread_lr_dw",
+                "dollarpriceimpact_lr_ave",
+                "percentpriceimpact_lr_ave",
+                "dollarpriceimpact_lr_sw",
+                "dollarpriceimpact_lr_dw",
+                "percentpriceimpact_lr_sw",
+                "percentpriceimpact_lr_dw",
+            ]
+        ]
+        .mean()
+        .reset_index()
+    )
+    cs_panel["log_volume"] = cs_panel["volume"].map(np.log)
+    cs_panel["log_aum_index"] = cs_panel["aum_index"].map(np.log)
     cs_panel.to_csv(f"{cfg.data_folder}/cs_panel.csv")
 
     ggg
 
     etf_graph.to_csv(f"{cfg.data_folder}/etf_panel_processed.csv")
-
-
 
     from linearmodels.panel import PanelOLS
 
