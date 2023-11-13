@@ -491,6 +491,8 @@ if __name__ == "__main__":
                 "dollarpriceimpact_lr_dw",
                 "percentpriceimpact_lr_sw",
                 "percentpriceimpact_lr_dw",
+                "quotedspread_dollar_tw",
+                "quotedspread_percent_tw",
             ]
         ],
         on=["ticker", "quarter"],
@@ -548,6 +550,8 @@ if __name__ == "__main__":
                 "dollarpriceimpact_lr_dw",
                 "percentpriceimpact_lr_sw",
                 "percentpriceimpact_lr_dw",
+                "quotedspread_dollar_tw",
+                "quotedspread_percent_tw",
             ]
         ]
         .mean()
@@ -556,8 +560,6 @@ if __name__ == "__main__":
     cs_panel["log_volume"] = cs_panel["volume"].map(np.log)
     cs_panel["log_aum_index"] = cs_panel["aum_index"].map(np.log)
     cs_panel.to_csv(f"{cfg.data_folder}/cs_panel.csv")
-
-    ggg
 
     etf_graph.to_csv(f"{cfg.data_folder}/etf_panel_processed.csv")
 
