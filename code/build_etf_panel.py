@@ -203,6 +203,7 @@ if __name__ == "__main__":
                 "is_levered",
                 "is_active",
                 "creation_fee",
+                "management_fee",
                 "other_expenses",
                 "total_expenses",
                 "fee_waivers",
@@ -561,9 +562,11 @@ if __name__ == "__main__":
     cs_panel["log_aum_index"] = cs_panel["aum_index"].map(np.log)
     cs_panel.to_csv(f"{cfg.data_folder}/cs_panel.csv")
 
-    ggg
-
     etf_graph['mer_avg_ix']=etf_graph.groupby(['index_id','quarter'])['mer_bps'].transform('mean')
+
+    crsp_data=pd.read_csv("../data/data_crsp.csv.gz")
+    etf_graph.merge(crsp_data[['ticker','quarter','prc']].drop_duplicates(subset=['ticker','quarter'],keep='last'),on=['ticker','quarter'],how='left')
+
     etf_graph.to_csv(f"{cfg.data_folder}/etf_panel_processed.csv")
 
     from linearmodels.panel import PanelOLS
