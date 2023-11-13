@@ -45,7 +45,7 @@ Notes:
 
 . import delimited "`directory'/data/etf_panel_processed.csv"
 (encoding automatically selected: ISO-8859-1)
-(71 vars, 1,752 obs)
+(89 vars, 1,752 obs)
 
 . 
 . 

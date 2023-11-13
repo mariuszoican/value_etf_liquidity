@@ -459,6 +459,26 @@ if __name__ == "__main__":
         count_benchmarks, on=["index_id", "quarter"], how="left"
     )
 
+    ## Add effective and realized spread measures
+    spreads = pd.read_csv(f"{cfg.data_folder}/etf_spread_measures.csv", index_col=0)
+    spreads["date"] = spreads["date"].apply(
+        lambda x: dt.datetime.strptime(x, "%Y-%m-%d")
+    )
+    spreads["quarter"] = spreads["date"].apply(lambda x: 10 * x.year + x.quarter)
+    spreads_q = spreads.groupby(["ticker", "quarter"]).mean().reset_index()
+
+    # merge with spread values
+    etf_graph=etf_graph.merge(spreads_q[['ticker','quarter','effectivespread_dollar_ave',
+       'effectivespread_percent_ave', 'effectivespread_dollar_dw',
+       'effectivespread_dollar_sw', 'effectivespread_percent_dw',
+       'effectivespread_percent_sw', 'dollarrealizedspread_lr_ave',
+       'percentrealizedspread_lr_ave','dollarrealizedspread_lr_sw',
+       'dollarrealizedspread_lr_dw', 'percentrealizedspread_lr_sw',
+       'percentrealizedspread_lr_dw','dollarpriceimpact_lr_ave',
+       'percentpriceimpact_lr_ave','dollarpriceimpact_lr_sw',
+       'dollarpriceimpact_lr_dw', 'percentpriceimpact_lr_sw',
+       'percentpriceimpact_lr_dw']],on=['ticker','quarter'],how='left')
+
     etf_graph.to_csv(f"{cfg.data_folder}/etf_panel_processed.csv")
 
     from linearmodels.panel import PanelOLS
