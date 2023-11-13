@@ -45,16 +45,10 @@ label variable stock_tweets_std "Stock tweets"
 
 
 
-reghdfe mgr_duration highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+reghdfe mgr_duration_tii highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_3.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mgr_duration  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
-outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
-
-reghdfe mgr_duration  highfee turnover_frac_std stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
-outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
-
-reghdfe mgr_duration_tii highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+reghdfe mgr_duration_tii  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std  time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 reghdfe mgr_duration_tii  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
@@ -66,7 +60,25 @@ outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  de
 reghdfe mgr_duration_tsi highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
+reghdfe mgr_duration_tsi  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std  time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
 reghdfe mgr_duration_tsi  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
 outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe mgr_duration highfee time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe mgr_duration  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std  time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe mgr_duration  highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe mgr_duration  highfee turnover_frac_std stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit time_existence_std time_since_first_std , absorb(index quarter) vce(cl ticker quarter)
+outreg2 using "`directory'/output/table_3.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+
+
 
 

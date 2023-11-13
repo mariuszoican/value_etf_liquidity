@@ -1,34 +1,34 @@
-		(1)	(2)	(3)	(4)	(5)	(6)	(7)	(8)
-VARIABLES	LABELS	Investor holding duration	Investor holding duration	Investor holding duration	mgr_duration_tii	mgr_duration_tii	mgr_duration_tii	mgr_duration_tsi	mgr_duration_tsi
-									
-highfee	High MER	-0.18	-0.15	-0.04	-0.37**	-0.27**	-0.13	0.23**	0.16*
-		(-1.56)	(-1.56)	(-0.56)	(-2.62)	(-2.32)	(-1.36)	(2.64)	(1.79)
-turnover_frac_std	ETF turnover			-0.24***			-0.36***		
-				(-3.56)			(-3.70)		
-stock_tweets_std	Stock tweets		-0.04	0.00		-0.05	0.02*		-0.04
-			(-1.43)	(0.27)		(-1.67)	(1.89)		(-1.65)
-log_aum_index_std	Log index AUM		0.08	-0.01		0.33	0.20		-0.12
-			(0.29)	(-0.05)		(0.94)	(0.53)		(-0.44)
-lend_byaum_bps_std	Lending income (bps of AUM)		0.05	0.03		0.01	-0.01		-0.02
-			(1.18)	(0.80)		(0.26)	(-0.16)		(-0.46)
-marketing_fee_bps_std	Marketing expense (bps)		-0.38***	-0.27***		-0.55***	-0.38***		-0.20
-			(-4.27)	(-3.28)		(-4.20)	(-3.54)		(-1.69)
-net_expenses_std	Other net expenses		-0.06	0.02		-0.29*	-0.16		0.07
-			(-0.69)	(0.32)		(-2.02)	(-1.42)		(0.60)
-tr_error_bps_std	Tracking error (bps)		-0.04	0.04		-0.08	0.02		0.07*
-			(-0.74)	(0.92)		(-0.94)	(0.39)		(2.00)
-perf_drag_bps_std	Performance drag (bps)		-0.01	-0.00		-0.01	-0.01		0.02
-			(-0.47)	(-0.14)		(-0.38)	(-0.33)		(1.37)
-d_uit	Unit investment trust		-0.21	-0.26		-0.20	-0.27		0.15
-			(-0.69)	(-1.14)		(-0.66)	(-1.37)		(0.58)
-time_existence_std	ETF age (quarters)	0.32***	0.29***	0.35***	0.42***	0.39***	0.48***	0.03	0.04
-		(3.57)	(3.60)	(4.36)	(3.75)	(3.64)	(4.61)	(0.45)	(0.63)
-time_since_first_std	Time since first position	-0.12	-0.46*	-0.42*	-0.08	-0.37	-0.32	0.29**	0.01
-		(-0.58)	(-2.05)	(-1.94)	(-0.34)	(-1.32)	(-1.20)	(2.67)	(0.12)
-Constant	Constant	5.35***	5.34***	5.30***	5.53***	5.49***	5.42***	5.76***	5.80***
-		(82.38)	(105.14)	(132.05)	(67.09)	(82.84)	(103.08)	(123.99)	(108.41)
-									
-Observations		1,719	1,719	1,717	1,703	1,703	1,701	1,596	1,596
-Adjusted R-squared		0.41	0.47	0.49	0.31	0.36	0.40	0.41	0.45
-Robust t-statistics in parentheses									
-*** p<0.01, ** p<0.05, * p<0.1									
+		(1)	(2)	(3)	(4)	(5)	(6)	(7)	(8)	(9)	(10)	(11)
+VARIABLES	LABELS	mgr_duration_tii	mgr_duration_tii	mgr_duration_tii	mgr_duration_tii	mgr_duration_tsi	mgr_duration_tsi	mgr_duration_tsi	Investor holding duration	Investor holding duration	Investor holding duration	Investor holding duration
+												
+highfee	High MER	-0.37**	-0.38**	-0.27**	-0.13	0.23**	0.19**	0.16*	-0.18	-0.17*	-0.15	-0.04
+		(-2.62)	(-2.79)	(-2.32)	(-1.36)	(2.64)	(2.35)	(1.79)	(-1.56)	(-1.79)	(-1.56)	(-0.56)
+turnover_frac_std	ETF turnover				-0.36***							-0.24***
+					(-3.70)							(-3.56)
+stock_tweets_std	Stock tweets		-0.06**	-0.05	0.02*		-0.03***	-0.04		-0.06**	-0.04	0.00
+			(-2.61)	(-1.67)	(1.89)		(-2.94)	(-1.65)		(-2.40)	(-1.43)	(0.27)
+log_aum_index_std	Log index AUM		0.33	0.33	0.20		-0.13	-0.12		0.08	0.08	-0.01
+			(0.94)	(0.94)	(0.53)		(-0.45)	(-0.44)		(0.27)	(0.29)	(-0.05)
+lend_byaum_bps_std	Lending income (bps of AUM)		0.02	0.01	-0.01		-0.02	-0.02		0.05	0.05	0.03
+			(0.38)	(0.26)	(-0.16)		(-0.51)	(-0.46)		(1.20)	(1.18)	(0.80)
+marketing_fee_bps_std	Marketing expense (bps)		-0.29***	-0.55***	-0.38***		-0.27***	-0.20		-0.32***	-0.38***	-0.27***
+			(-3.92)	(-4.20)	(-3.54)		(-4.86)	(-1.69)		(-6.35)	(-4.27)	(-3.28)
+net_expenses_std	Other net expenses			-0.29*	-0.16			0.07			-0.06	0.02
+				(-2.02)	(-1.42)			(0.60)			(-0.69)	(0.32)
+tr_error_bps_std	Tracking error (bps)			-0.08	0.02			0.07*			-0.04	0.04
+				(-0.94)	(0.39)			(2.00)			(-0.74)	(0.92)
+perf_drag_bps_std	Performance drag (bps)			-0.01	-0.01			0.02			-0.01	-0.00
+				(-0.38)	(-0.33)			(1.37)			(-0.47)	(-0.14)
+d_uit	Unit investment trust			-0.20	-0.27			0.15			-0.21	-0.26
+				(-0.66)	(-1.37)			(0.58)			(-0.69)	(-1.14)
+time_existence_std	ETF age (quarters)	0.42***	0.39***	0.39***	0.48***	0.03	0.05	0.04	0.32***	0.29***	0.29***	0.35***
+		(3.75)	(3.70)	(3.64)	(4.61)	(0.45)	(0.73)	(0.63)	(3.57)	(3.63)	(3.60)	(4.36)
+time_since_first_std	Time since first position	-0.08	-0.39	-0.37	-0.32	0.29**	0.01	0.01	-0.12	-0.46*	-0.46*	-0.42*
+		(-0.34)	(-1.40)	(-1.32)	(-1.20)	(2.67)	(0.09)	(0.12)	(-0.58)	(-2.06)	(-2.05)	(-1.94)
+Constant	Constant	5.53***	5.54***	5.49***	5.42***	5.76***	5.78***	5.80***	5.35***	5.35***	5.34***	5.30***
+		(67.09)	(74.57)	(82.84)	(103.08)	(123.99)	(112.03)	(108.41)	(82.38)	(101.38)	(105.14)	(132.05)
+												
+Observations		1,703	1,703	1,703	1,701	1,596	1,596	1,596	1,719	1,719	1,719	1,717
+Adjusted R-squared		0.31	0.34	0.36	0.40	0.41	0.45	0.45	0.41	0.47	0.47	0.49
+Robust t-statistics in parentheses												
+*** p<0.01, ** p<0.05, * p<0.1												
