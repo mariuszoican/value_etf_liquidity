@@ -561,6 +561,9 @@ if __name__ == "__main__":
     cs_panel["log_aum_index"] = cs_panel["aum_index"].map(np.log)
     cs_panel.to_csv(f"{cfg.data_folder}/cs_panel.csv")
 
+    ggg
+
+    etf_graph['mer_avg_ix']=etf_graph.groupby(['index_id','quarter'])['mer_bps'].transform('mean')
     etf_graph.to_csv(f"{cfg.data_folder}/etf_panel_processed.csv")
 
     from linearmodels.panel import PanelOLS
