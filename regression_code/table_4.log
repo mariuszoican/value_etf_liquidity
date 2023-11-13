@@ -45,9 +45,13 @@ Notes:
 
 . import delimited "`directory'/data/etf_panel_processed.csv"
 (encoding automatically selected: ISO-8859-1)
-(89 vars, 1,752 obs)
+(91 vars, 1,752 obs)
 
 . 
+. drop spread_bps_crsp
+
+. gen spread_bps_crsp=10000*quotedspread_percent_tw 
+
 . 
 . // // Label variables
 . // // ---------------------------------
@@ -262,29 +266,29 @@ warning: missing F statistic; dropped variables due to collinearity or too few
 HDFE Linear regression                            Number of obs   =      1,703
 Absorbing 2 HDFE groups                           F(  12,     19) =          .
 Statistics robust to heteroskedasticity           Prob > F        =          .
-                                                  R-squared       =     0.5833
-                                                  Adj R-squared   =     0.5627
-Number of clusters (ticker)  =        104         Within R-sq.    =     0.1925
-Number of clusters (quarter) =         20         Root MSE        =     6.6035
+                                                  R-squared       =     0.6709
+                                                  Adj R-squared   =     0.6546
+Number of clusters (ticker)  =        104         Within R-sq.    =     0.2912
+Number of clusters (quarter) =         20         Root MSE        =     5.1781
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
 spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |  -3.141165   .8947638    -3.51   0.002    -5.013927   -1.268403
-stock_twee~d |  -.3141595   .1524537    -2.06   0.053    -.6332487    .0049297
-log_aum_in~d |  -3.798618   1.607164    -2.36   0.029    -7.162452   -.4347848
-lend_byaum~d |   -2.07834   .4005652    -5.19   0.000    -2.916732   -1.239947
-marketing_~d |   .8967083   .8837881     1.01   0.323    -.9530814    2.746498
-net_expens~d |  -1.154845   .7343228    -1.57   0.132      -2.6918      .38211
-tr_error_b~d |  -1.488432   .6594576    -2.26   0.036    -2.868692   -.1081714
-perf_drag_~d |  -.0643977   .3091263    -0.21   0.837    -.7114065     .582611
-       d_uit |   4.917001   1.573686     3.12   0.006     1.623238    8.210763
-   ratio_tii |   .0076895     .02105     0.37   0.719    -.0363687    .0517477
-logret_q_lag |  -10.51803   8.205577    -1.28   0.215     -27.6925    6.656442
-  tii_return |    .158699   .1112466     1.43   0.170    -.0741428    .3915407
-       _cons |   7.236685   1.649806     4.39   0.000     3.783601    10.68977
+     highfee |  -3.019583   .7284648    -4.15   0.001    -4.544277   -1.494889
+stock_twee~d |  -.1657244    .074542    -2.22   0.039    -.3217426   -.0097063
+log_aum_in~d |  -6.088106   1.791425    -3.40   0.003    -9.837601    -2.33861
+lend_byaum~d |  -2.231113   .3591114    -6.21   0.000    -2.982742   -1.479484
+marketing_~d |   .2044698   .8245788     0.25   0.807    -1.521393    1.930333
+net_expens~d |  -1.879456   .7900096    -2.38   0.028    -3.532965   -.2259471
+tr_error_b~d |  -1.565143   .6475786    -2.42   0.026    -2.920541   -.2097457
+perf_drag_~d |  -.2123501   .3198291    -0.66   0.515      -.88176    .4570599
+       d_uit |   4.626806   1.125415     4.11   0.001     2.271286    6.982326
+   ratio_tii |   .0214466   .0161962     1.32   0.201    -.0124524    .0553456
+logret_q_lag |   2.498455   .9636233     2.59   0.018     .4815681    4.515342
+  tii_return |  -.0301253    .025922    -1.16   0.260    -.0843807    .0241301
+       _cons |   7.084709   1.294997     5.47   0.000     4.374249    9.795169
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
@@ -583,29 +587,29 @@ warning: missing F statistic; dropped variables due to collinearity or too few
 HDFE Linear regression                            Number of obs   =        790
 Absorbing 2 HDFE groups                           F(  12,     19) =          .
 Statistics robust to heteroskedasticity           Prob > F        =          .
-                                                  R-squared       =     0.6916
-                                                  Adj R-squared   =     0.6698
-Number of clusters (ticker)  =         49         Within R-sq.    =     0.2262
-Number of clusters (quarter) =         20         Root MSE        =     5.5662
+                                                  R-squared       =     0.7024
+                                                  Adj R-squared   =     0.6815
+Number of clusters (ticker)  =         49         Within R-sq.    =     0.2530
+Number of clusters (quarter) =         20         Root MSE        =     5.3339
 
                         (Std. err. adjusted for 20 clusters in ticker quarter)
 ------------------------------------------------------------------------------
              |               Robust
 spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |  -3.983849   1.110845    -3.59   0.002    -6.308874   -1.658823
-stock_twee~d |  -.3200929   .0870026    -3.68   0.002    -.5021914   -.1379945
-log_aum_in~d |  -11.68111   7.331038    -1.59   0.128    -27.02515    3.662926
-lend_byaum~d |  -4.396565   1.663847    -2.64   0.016    -7.879037   -.9140925
-marketing_~d |  -2.873575   1.052685    -2.73   0.013     -5.07687   -.6702786
-net_expens~d |  -2.469749    .768994    -3.21   0.005    -4.079272   -.8602262
-tr_error_b~d |   5.060201   1.757691     2.88   0.010     1.381312     8.73909
-perf_drag_~d |   1.485472   1.215196     1.22   0.236    -1.057962    4.028907
-       d_uit |   6.436951   1.681141     3.83   0.001     2.918283    9.955619
-   ratio_tii |  -.0022355   .0194068    -0.12   0.910    -.0428545    .0383835
-logret_q_lag |    5.97723   5.275103     1.13   0.271    -5.063686    17.01815
-  tii_return |   .0164448   .0751802     0.22   0.829    -.1409092    .1737988
-       _cons |   9.709192   1.787484     5.43   0.000     5.967945    13.45044
+     highfee |  -4.055646   1.344701    -3.02   0.007    -6.870137   -1.241156
+stock_twee~d |  -.2569848   .0982279    -2.62   0.017    -.4625782   -.0513915
+log_aum_in~d |  -18.70736    8.59368    -2.18   0.042    -36.69414   -.7205821
+lend_byaum~d |  -2.487294    1.05925    -2.35   0.030    -4.704331   -.2702575
+marketing_~d |   -2.94356   1.320908    -2.23   0.038    -5.708252   -.1788671
+net_expens~d |  -3.474628   .9641291    -3.60   0.002    -5.492574   -1.456683
+tr_error_b~d |   2.958277   1.710538     1.73   0.100    -.6219202    6.538474
+perf_drag_~d |   .9861643   .8992317     1.10   0.286    -.8959493    2.868278
+       d_uit |   7.448304   2.076236     3.59   0.002     3.102693    11.79392
+   ratio_tii |   .0124661   .0220443     0.57   0.578    -.0336731    .0586053
+logret_q_lag |   16.46965   5.681738     2.90   0.009     4.577632    28.36166
+  tii_return |  -.0785868   .0384501    -2.04   0.055    -.1590637    .0018901
+       _cons |   9.401339   2.034114     4.62   0.000      5.14389    13.65879
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:

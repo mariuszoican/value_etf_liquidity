@@ -45,7 +45,12 @@ Notes:
 
 . import delimited "`directory'/data/cs_panel.csv"
 (encoding automatically selected: ISO-8859-1)
-(45 vars, 105 obs)
+(47 vars, 105 obs)
+
+. 
+. drop spread_bps_crsp
+
+. gen spread_bps_crsp=10000*quotedspread_percent_tw 
 
 . 
 . 
@@ -121,41 +126,43 @@ Notes:
 . 
 . reghdfe mer_bps highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std
 >  marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_
-> uit ratio_tii_std , absorb(index_id)vce(robust)
+> uit ratio_tii_std , absorb(index_id) vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =     170.79
-                                                  Prob > F        =     0.0000
+Absorbing 1 HDFE group                            F(  10,     47) =     173.36
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
                                                   R-squared       =     0.9334
                                                   Adj R-squared   =     0.8489
                                                   Within R-sq.    =     0.7810
-                                                  Root MSE        =     7.2630
+Number of clusters (index_id) =         48        Root MSE        =     7.2630
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
      mer_bps | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   9.490811   1.382731     6.86   0.000     6.705848    12.27578
-stock_twee~d |  -1.051064   .3735823    -2.81   0.007    -1.803497   -.2986304
-log_aum_in~d |    14.0584   17.65162     0.80   0.430    -21.49378    49.61059
-lend_byaum~d |   2.360935    1.13843     2.07   0.044     .0680195     4.65385
-marketing_~d |  -2.269946   2.413267    -0.94   0.352    -7.130515    2.590622
-net_expens~d |   .6543711   2.826857     0.23   0.818    -5.039212    6.347954
-tr_error_b~d |   10.63072   2.123951     5.01   0.000     6.352866    14.90858
-perf_drag_~d |   3.906122   1.818079     2.15   0.037     .2443223    7.567921
-       d_uit |   6.271419   4.825906     1.30   0.200    -3.448455    15.99129
-ratio_tii_~d |   .1584931   .9446059     0.17   0.868    -1.744041    2.061027
-       _cons |   21.30063   1.108049    19.22   0.000     19.06891    23.53236
+     highfee |   9.490811   1.348558     7.04   0.000     6.777862    12.20376
+stock_twee~d |  -1.051064   .3712934    -2.83   0.007     -1.79801   -.3041178
+log_aum_in~d |    14.0584   17.04826     0.82   0.414    -20.23827    48.35508
+lend_byaum~d |   2.360935   1.130862     2.09   0.042      .085934    4.635936
+marketing_~d |  -2.269946   2.375446    -0.96   0.344    -7.048727    2.508834
+net_expens~d |   .6543711   2.808231     0.23   0.817     -4.99506    6.303802
+tr_error_b~d |   10.63072   2.098504     5.07   0.000     6.409077    14.85237
+perf_drag_~d |   3.906122   1.799143     2.17   0.035     .2867126    7.525531
+       d_uit |   6.271419   4.796483     1.31   0.197    -3.377861     15.9207
+ratio_tii_~d |   .1584931   .9111399     0.17   0.863    -1.674484     1.99147
+       _cons |   21.30063   .8433308    25.26   0.000     19.60407     22.9972
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 replace tex tstat labe
 > l  dec(2) tdec(2) eqdrop(/) keep(*)
@@ -165,41 +172,43 @@ dir : seeout
 . 
 . reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_s
 > td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
-> d_uit ratio_tii_std , absorb(index_id)vce(robust)
+> d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =     169.00
-                                                  Prob > F        =     0.0000
+Absorbing 1 HDFE group                            F(  10,     47) =     175.99
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
                                                   R-squared       =     0.5800
                                                   Adj R-squared   =     0.0480
                                                   Within R-sq.    =     0.5656
-                                                  Root MSE        =     0.3441
+Number of clusters (index_id) =         48        Root MSE        =     0.3441
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
    mkt_share | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .3385272   .1091567     3.10   0.003     .1186743    .5583802
-stock_twee~d |   .0766983   .0253865     3.02   0.004     .0255672    .1278294
-log_aum_in~d |   2.259773   .9199486     2.46   0.018     .4069017    4.112645
-lend_byaum~d |   .1201621   .0655526     1.83   0.073    -.0118676    .2521917
-marketing_~d |  -.0817635    .140541    -0.58   0.564    -.3648275    .2013005
-net_expens~d |   .1411424   .1895821     0.74   0.460    -.2406955    .5229803
-tr_error_b~d |   -.045283   .0747773    -0.61   0.548    -.1958923    .1053262
-perf_drag_~d |  -.0872935    .068997    -1.27   0.212    -.2262606    .0516737
-       d_uit |  -.9270022   .2633379    -3.52   0.001    -1.457392   -.3966124
-ratio_tii_~d |  -.0722302   .0500789    -1.44   0.156    -.1730943    .0286339
-       _cons |   .3968843   .0870637     4.56   0.000      .221529    .5722395
+     highfee |   .3385272   .1084599     3.12   0.003     .1203341    .5567203
+stock_twee~d |   .0766983   .0247166     3.10   0.003     .0269748    .1264217
+log_aum_in~d |   2.259773   .8749575     2.58   0.013     .4995859    4.019961
+lend_byaum~d |   .1201621   .0648456     1.85   0.070    -.0102904    .2506145
+marketing_~d |  -.0817635   .1396861    -0.59   0.561    -.3627756    .1992486
+net_expens~d |   .1411424   .1881072     0.75   0.457    -.2372805    .5195652
+tr_error_b~d |   -.045283   .0742511    -0.61   0.545    -.1946569    .1040908
+perf_drag_~d |  -.0872935   .0685997    -1.27   0.209    -.2252984    .0507114
+       d_uit |  -.9270022   .2586538    -3.58   0.001    -1.447347   -.4066579
+ratio_tii_~d |  -.0722302   .0395814    -1.82   0.074    -.1518578    .0073973
+       _cons |   .3968843   .0766175     5.18   0.000     .2427496    .5510189
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)
@@ -209,41 +218,43 @@ dir : seeout
 . 
 . reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum
 > _bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bp
-> s_std d_uit ratio_tii_std , absorb(index_id)vce(robust)
+> s_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =       7.10
-                                                  Prob > F        =     0.0000
-                                                  R-squared       =     0.8542
-                                                  Adj R-squared   =     0.6695
-                                                  Within R-sq.    =     0.6602
-                                                  Root MSE        =     5.2916
+Absorbing 1 HDFE group                            F(  10,     47) =       6.68
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
+                                                  R-squared       =     0.8643
+                                                  Adj R-squared   =     0.6924
+                                                  Within R-sq.    =     0.6153
+Number of clusters (index_id) =         48        Root MSE        =     5.0008
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
 spread_bps~p | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |  -1.701302   1.297999    -1.31   0.197    -4.315606     .913001
-stock_twee~d |  -.3398215   .2410403    -1.41   0.165    -.8253015    .1456585
-log_aum_in~d |  -21.68806   13.21559    -1.64   0.108    -48.30562    4.929496
-lend_byaum~d |  -2.394952   .7829728    -3.06   0.004     -3.97194   -.8179637
-marketing_~d |  -.4446818   1.592899    -0.28   0.781    -3.652944    2.763581
-net_expens~d |  -3.684863    1.72111    -2.14   0.038    -7.151357   -.2183696
-tr_error_b~d |  -4.777538   1.785875    -2.68   0.010    -8.374475     -1.1806
-perf_drag_~d |   1.427179   1.557452     0.92   0.364     -1.70969    4.564048
-       d_uit |   6.525007   2.562281     2.55   0.014     1.364309    11.68571
-ratio_tii_~d |   .9670137   .5561318     1.74   0.089    -.1530933    2.087121
-       _cons |   7.476505   1.022748     7.31   0.000     5.416585    9.536425
+     highfee |  -2.212802   1.239938    -1.78   0.081    -4.707235    .2816307
+stock_twee~d |  -.3986668   .2501441    -1.59   0.118    -.9018918    .1045582
+log_aum_in~d |  -25.59313   13.04596    -1.96   0.056    -51.83822    .6519705
+lend_byaum~d |   -2.36131   .8197319    -2.88   0.006    -4.010397   -.7122217
+marketing_~d |  -.5033724   1.540658    -0.33   0.745    -3.602776    2.596031
+net_expens~d |  -3.946186   1.734014    -2.28   0.027    -7.434573   -.4577992
+tr_error_b~d |  -3.063931   1.690071    -1.81   0.076    -6.463915    .3360531
+perf_drag_~d |    .711042     1.5902     0.45   0.657    -2.488027    3.910111
+       d_uit |   7.161102   2.703609     2.65   0.011     1.722142    12.60006
+ratio_tii_~d |   .7273742   .5466087     1.33   0.190    -.3722608    1.827009
+       _cons |    8.77574   .8810842     9.96   0.000     7.003227    10.54825
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)
@@ -253,41 +264,43 @@ dir : seeout
 . 
 . reghdfe log_volume highfee stock_tweets_std log_aum_index_std lend_byaum_bps_
 > std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std
->  d_uit ratio_tii_std , absorb(index_id)vce(robust)
+>  d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =  180577.65
-                                                  Prob > F        =     0.0000
+Absorbing 1 HDFE group                            F(  10,     47) =  182527.78
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
                                                   R-squared       =     0.8032
                                                   Adj R-squared   =     0.5539
                                                   Within R-sq.    =     0.6085
-                                                  Root MSE        =     1.7304
+Number of clusters (index_id) =         48        Root MSE        =     1.7304
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
   log_volume | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   1.523494   .4839322     3.15   0.003     .5488048    2.498184
-stock_twee~d |   .3400052   .1089669     3.12   0.003     .1205346    .5594759
-log_aum_in~d |   13.77331    4.47654     3.08   0.004     4.757093    22.78952
-lend_byaum~d |   .6065849   .2422154     2.50   0.016     .1187381    1.094432
-marketing_~d |   .0716794   .6893062     0.10   0.918    -1.316654    1.460013
-net_expens~d |    .895788   .8462432     1.06   0.295    -.8086334    2.600209
-tr_error_b~d |   .7029747   .3940073     1.78   0.081    -.0905966    1.496546
-perf_drag_~d |  -.2228681   .2762269    -0.81   0.424    -.7792175    .3334814
-       d_uit |  -2.282784   1.220783    -1.87   0.068    -4.741566     .175999
-ratio_tii_~d |  -.2377645   .2515108    -0.95   0.350    -.7443333    .2688043
-       _cons |   16.98232   .3839132    44.23   0.000     16.20908    17.75556
+     highfee |   1.523494   .4785748     3.18   0.003     .5607262    2.486263
+stock_twee~d |   .3400052   .1061433     3.20   0.002     .1264725     .553538
+log_aum_in~d |   13.77331   4.007179     3.44   0.001     5.711903    21.83471
+lend_byaum~d |   .6065849   .2379027     2.55   0.014     .1279865    1.085183
+marketing_~d |   .0716794   .6849536     0.10   0.917     -1.30627    1.449628
+net_expens~d |    .895788   .8403471     1.07   0.292    -.7947723    2.586348
+tr_error_b~d |   .7029747   .3909523     1.80   0.079    -.0835199    1.489469
+perf_drag_~d |  -.2228681   .2723664    -0.82   0.417    -.7707985    .3250624
+       d_uit |  -2.282784   1.197457    -1.91   0.063    -4.691757    .1261895
+ratio_tii_~d |  -.2377645   .1955019    -1.22   0.230    -.6310635    .1555345
+       _cons |   16.98232   .3168689    53.59   0.000     16.34486    17.61978
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)
@@ -297,41 +310,43 @@ dir : seeout
 . 
 . reghdfe turnover_frac highfee stock_tweets_std log_aum_index_std lend_byaum_b
 > ps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_
-> std d_uit ratio_tii_std , absorb(index_id)vce(robust)
+> std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =     109.41
-                                                  Prob > F        =     0.0000
+Absorbing 1 HDFE group                            F(  10,     47) =     111.31
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
                                                   R-squared       =     0.7520
                                                   Adj R-squared   =     0.4379
                                                   Within R-sq.    =     0.5832
-                                                  Root MSE        =     5.8561
+Number of clusters (index_id) =         48        Root MSE        =     5.8561
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
 turnover_f~c | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   4.190784   1.313925     3.19   0.003     1.544403    6.837165
-stock_twee~d |   2.317312   .2780135     8.34   0.000     1.757364     2.87726
-log_aum_in~d |   4.124868   12.15516     0.34   0.736    -20.35687    28.60661
-lend_byaum~d |   .5387138   .3969831     1.36   0.182    -.2608512    1.338279
-marketing_~d |   4.637564   1.991393     2.33   0.024     .6266933    8.648435
-net_expens~d |   4.236395   2.345524     1.81   0.078    -.4877319    8.960522
-tr_error_b~d |    4.36831   1.639039     2.67   0.011     1.067116    7.669503
-perf_drag_~d |   -.179489   1.062284    -0.17   0.867     -2.31904    1.960062
-       d_uit |  -5.669129   3.570353    -1.59   0.119    -12.86019     1.52193
-ratio_tii_~d |   1.047465   .7510425     1.39   0.170     -.465212    2.560142
-       _cons |   4.073666   1.019071     4.00   0.000     2.021152     6.12618
+     highfee |   4.190784    1.28868     3.25   0.002     1.598294    6.783274
+stock_twee~d |   2.317312   .2756948     8.41   0.000     1.762686    2.871939
+log_aum_in~d |   4.124868   11.28728     0.37   0.716    -18.58221    26.83195
+lend_byaum~d |   .5387138   .3877125     1.39   0.171    -.2412632    1.318691
+marketing_~d |   4.637564   1.972431     2.35   0.023      .669545    8.605584
+net_expens~d |   4.236395   2.331574     1.82   0.076    -.4541269    8.926917
+tr_error_b~d |    4.36831   1.624882     2.69   0.010     1.099468    7.637152
+perf_drag_~d |   -.179489   1.046329    -0.17   0.865    -2.284432    1.925453
+       d_uit |  -5.669129   3.538225    -1.60   0.116    -12.78712    1.448861
+ratio_tii_~d |   1.047465   .6986672     1.50   0.141    -.3580719    2.453002
+       _cons |   4.073666   .7957521     5.12   0.000     2.472819    5.674513
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)
@@ -341,41 +356,43 @@ dir : seeout
 . 
 . reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std 
 > marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_u
-> it ratio_tii_std , absorb(index_id)vce(robust)
+> it ratio_tii_std , absorb(index_id)vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =      79.61
-                                                  Prob > F        =     0.0000
+Absorbing 1 HDFE group                            F(  10,     47) =      81.32
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
                                                   R-squared       =     0.8533
                                                   Adj R-squared   =     0.6674
                                                   Within R-sq.    =     0.7287
-                                                  Root MSE        =     1.2178
+Number of clusters (index_id) =         48        Root MSE        =     1.2178
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
       log_pr | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |    1.43574   .3740114     3.84   0.000     .6824422    2.189037
-stock_twee~d |   .1359222   .0852231     1.59   0.118    -.0357258    .3075703
-log_aum_in~d |   12.07732   3.488061     3.46   0.001     5.052006    19.10264
-lend_byaum~d |   .6286941    .193804     3.24   0.002     .2383528    1.019035
-marketing_~d |  -.7601015   .5000456    -1.52   0.135    -1.767245    .2470421
-net_expens~d |   .2855561   .6392296     0.45   0.657    -1.001918    1.573031
-tr_error_b~d |   .5069062   .3095628     1.64   0.109    -.1165852    1.130398
-perf_drag_~d |   -.117864   .2498974    -0.47   0.639    -.6211832    .3854552
-       d_uit |  -1.527596   .8612898    -1.77   0.083    -3.262322    .2071311
-ratio_tii_~d |  -.3342584   .1791847    -1.87   0.069    -.6951549    .0266382
-       _cons |   24.31669   .3007938    80.84   0.000     23.71086    24.92252
+     highfee |    1.43574   .3710357     3.87   0.000     .6893123    2.182167
+stock_twee~d |   .1359222   .0829504     1.64   0.108    -.0309524    .3027969
+log_aum_in~d |   12.07732   3.320028     3.64   0.001     5.398286    18.75636
+lend_byaum~d |   .6286941   .1916221     3.28   0.002     .2432001    1.014188
+marketing_~d |  -.7601015   .4964936    -1.53   0.132    -1.758918    .2387149
+net_expens~d |   .2855561   .6338935     0.45   0.654     -.989673    1.560785
+tr_error_b~d |   .5069062   .3073686     1.65   0.106    -.1114397    1.125252
+perf_drag_~d |   -.117864    .247645    -0.48   0.636    -.6160616    .3803336
+       d_uit |  -1.527596   .8464783    -1.80   0.078     -3.23049     .175299
+ratio_tii_~d |  -.3342584    .145782    -2.29   0.026     -.627534   -.0409827
+       _cons |   24.31669   .2673158    90.97   0.000     23.77892    24.85446
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)
@@ -385,41 +402,43 @@ dir : seeout
 . 
 . reghdfe ratio_tra highfee stock_tweets_std log_aum_index_std lend_byaum_bps_s
 > td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
-> d_uit ratio_tii_std , absorb(index_id)vce(robust)
+> d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 (dropped 1 singleton observations)
 (MWFE estimator converged in 1 iterations)
 
 HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     45) =      12.66
-                                                  Prob > F        =     0.0000
+Absorbing 1 HDFE group                            F(  10,     47) =      13.60
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
                                                   R-squared       =     0.8194
                                                   Adj R-squared   =     0.5907
                                                   Within R-sq.    =     0.4154
-                                                  Root MSE        =     0.1242
+Number of clusters (index_id) =         48        Root MSE        =     0.1242
 
+                              (Std. err. adjusted for 48 clusters in index_id)
 ------------------------------------------------------------------------------
              |               Robust
    ratio_tra | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     highfee |   .0548354   .0273003     2.01   0.051    -.0001501     .109821
-stock_twee~d |   .0048394   .0059055     0.82   0.417    -.0070549    .0167336
-log_aum_in~d |  -.7394919    .366567    -2.02   0.050    -1.477796    -.001188
-lend_byaum~d |  -.0208172   .0197425    -1.05   0.297    -.0605806    .0189462
-marketing_~d |   .0841564   .0292287     2.88   0.006     .0252867     .143026
-net_expens~d |   .0322677   .0346087     0.93   0.356    -.0374378    .1019732
-tr_error_b~d |  -.0381783   .0316326    -1.21   0.234    -.1018897     .025533
-perf_drag_~d |   .0091714    .026996     0.34   0.736    -.0452013    .0635441
-       d_uit |  -.0263144    .062336    -0.42   0.675    -.1518654    .0992367
-ratio_tii_~d |   .0741637   .0270239     2.74   0.009     .0197349    .1285926
-       _cons |   .1954289   .0213458     9.16   0.000     .1524363    .2384215
+     highfee |   .0548354   .0239575     2.29   0.027     .0066391    .1030317
+stock_twee~d |   .0048394   .0057051     0.85   0.401    -.0066379    .0163166
+log_aum_in~d |  -.7394919   .3460574    -2.14   0.038     -1.43567   -.0433142
+lend_byaum~d |  -.0208172   .0195936    -1.06   0.293    -.0602344    .0186001
+marketing_~d |   .0841564   .0272421     3.09   0.003     .0293523    .1389605
+net_expens~d |   .0322677   .0335767     0.96   0.341    -.0352799    .0998153
+tr_error_b~d |  -.0381783   .0306163    -1.25   0.219    -.0997704    .0234138
+perf_drag_~d |   .0091714   .0267392     0.34   0.733     -.044621    .0629638
+       d_uit |  -.0263144    .061508    -0.43   0.671    -.1500525    .0974238
+ratio_tii_~d |   .0741637   .0262076     2.83   0.007     .0214409    .1268866
+       _cons |   .1954289   .0183458    10.65   0.000     .1585219    .2323359
 ------------------------------------------------------------------------------
 
 Absorbed degrees of freedom:
 -----------------------------------------------------+
  Absorbed FE | Categories  - Redundant  = Num. Coefs |
 -------------+---------------------------------------|
-    index_id |        48           0          48     |
+    index_id |        48          48           0    *|
 -----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
 
 . outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
 >   dec(2) tdec(2) eqdrop(/) keep(*)

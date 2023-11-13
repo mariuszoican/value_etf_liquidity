@@ -45,12 +45,17 @@ Notes:
 
 . import delimited "`directory'/data/etf_panel_processed.csv"
 (encoding automatically selected: ISO-8859-1)
-(89 vars, 1,752 obs)
+(91 vars, 1,752 obs)
 
 . 
 . 
 . // // Label variables
 . // // ---------------------------------
+. 
+. drop spread_bps_crsp
+
+. gen spread_bps_crsp=10000*quotedspread_percent_tw 
+
 . 
 . egen time_existence_std=std(time_existence)
 

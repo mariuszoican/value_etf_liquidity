@@ -1,38 +1,38 @@
 		(1)	(2)	(3)	(4)	(5)	(6)
 VARIABLES	LABELS	Relative spread	Relative spread	Relative spread	MER	MER	MER
 							
-highfee	High MER	-4.15***	-3.53***	-3.40***	12.50***	11.83***	11.19***
-		(-4.22)	(-3.94)	(-3.60)	(8.59)	(7.97)	(8.82)
-ix_ratiotra_highfee	High MER $\times$ $\text{TRA}_\text{ix}$	-3.58**	-3.50**	-3.33*	3.60*	3.94**	3.35**
-		(-2.14)	(-2.13)	(-1.90)	(2.06)	(2.73)	(2.14)
-ratio_tra_ix_std	Index AUM share of transient investors ($\text{TRA}_\text{ix}$)	2.87**	2.32*	2.40	-2.03**	-1.80**	-1.80**
-		(2.29)	(1.90)	(1.72)	(-2.42)	(-2.48)	(-2.17)
-stock_tweets	Name recognition (Twitter msg.)		0.05	-0.15		-0.40**	-0.54
-			(0.67)	(-1.35)		(-2.44)	(-1.36)
-log_aum_index_std	Log index AUM		-4.94***	-3.73**		0.31*	0.19
-			(-3.31)	(-2.14)		(2.00)	(0.80)
-lend_byaum_bps_std	Lending income (bps of AUM)		-1.94***	-1.80***		1.31	1.17*
-			(-5.17)	(-5.57)		(1.52)	(1.78)
-marketing_fee_bps_std	Marketing expense (bps)		1.92*	1.70		-4.61***	-4.20***
-			(1.81)	(1.63)		(-3.07)	(-3.11)
-net_expenses_std	Other net expenses		-0.25	-0.46		-1.03	-1.27
-			(-0.29)	(-0.52)		(-0.65)	(-0.84)
-tr_error_bps_std	Tracking error (bps)			-0.85			3.85***
-				(-1.51)			(3.04)
-perf_drag_bps_std	Performance drag (bps)			0.04			1.48**
-				(0.16)			(2.31)
-d_uit	Unit investment trust			2.98*			4.44
-				(2.05)			(0.98)
-ratio_tii	Tax-insensitive investors			0.02			-0.02
-				(0.86)			(-0.93)
-logret_q_lag	Lagged return			-8.85			0.50
-				(-1.25)			(0.16)
-tii_return	TII $\times$ Lagged return			0.14			0.00
-				(1.59)			(0.02)
-Constant	Constant	8.62***	8.31***	6.45***	19.09***	19.44***	21.01***
-		(14.91)	(15.87)	(3.69)	(19.31)	(20.51)	(12.99)
+highfee	High MER	-4.21***	-3.46***	-3.21***	12.50***	11.83***	11.19***
+		(-5.62)	(-5.05)	(-4.44)	(8.59)	(7.97)	(8.82)
+ix_ratiotra_highfee	High MER $\times$ $\text{TRA}_\text{ix}$	-2.95**	-2.77**	-2.48**	3.60*	3.94**	3.35**
+		(-2.63)	(-2.62)	(-2.29)	(2.06)	(2.73)	(2.14)
+ratio_tra_ix_std	Index AUM share of transient investors ($\text{TRA}_\text{ix}$)	2.62***	1.91**	1.85**	-2.03**	-1.80**	-1.80**
+		(3.14)	(2.62)	(2.39)	(-2.42)	(-2.48)	(-2.17)
+stock_tweets	Name recognition (Twitter msg.)		0.16*	-0.05		-0.40**	-0.54
+			(2.06)	(-0.81)		(-2.44)	(-1.36)
+log_aum_index_std	Log index AUM		-7.03***	-6.01***		0.31*	0.19
+			(-4.14)	(-3.24)		(2.00)	(0.80)
+lend_byaum_bps_std	Lending income (bps of AUM)		-2.00***	-2.02***		1.31	1.17*
+			(-6.92)	(-6.42)		(1.52)	(1.78)
+marketing_fee_bps_std	Marketing expense (bps)		1.14	0.80		-4.61***	-4.20***
+			(1.30)	(0.93)		(-3.07)	(-3.11)
+net_expenses_std	Other net expenses		-1.02	-1.36		-1.03	-1.27
+			(-1.23)	(-1.57)		(-0.65)	(-0.84)
+tr_error_bps_std	Tracking error (bps)			-1.09*			3.85***
+				(-1.98)			(3.04)
+perf_drag_bps_std	Performance drag (bps)			-0.13			1.48**
+				(-0.44)			(2.31)
+d_uit	Unit investment trust			3.18**			4.44
+				(2.76)			(0.98)
+ratio_tii	Tax-insensitive investors			0.03*			-0.02
+				(1.95)			(-0.93)
+logret_q_lag	Lagged return			3.77**			0.50
+				(2.64)			(0.16)
+tii_return	TII $\times$ Lagged return			-0.05			0.00
+				(-1.66)			(0.02)
+Constant	Constant	9.72***	9.33***	6.50***	19.09***	19.44***	21.01***
+		(19.92)	(21.24)	(5.20)	(19.31)	(20.51)	(12.99)
 							
 Observations		1,752	1,752	1,703	1,752	1,752	1,703
-Adjusted R-squared		0.54	0.59	0.59	0.86	0.89	0.90
+Adjusted R-squared		0.62	0.68	0.67	0.86	0.89	0.90
 Robust t-statistics in parentheses							
 *** p<0.01, ** p<0.05, * p<0.1							

@@ -8,3 +8,4 @@ stata-mp -b do table_5
 stata-mp -b do table_6
 stata-mp -b do table_7
 stata-mp -b do table_8
+stata-mp -b do table_E2
