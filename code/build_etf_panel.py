@@ -216,7 +216,7 @@ if __name__ == "__main__":
 
     # load 13-F based duration measure and aggregate across managers (Cremers and Pareek, 2016)
     # -----------------------------------------------------------------------------------------
-    d13furg = pd.read_csv(f"{cfg.data_folder}/duration_13F_v2.csv.gz", index_col=0)
+    d13furg = pd.read_csv(f"{cfg.data_folder}/duration_13F.csv.gz", index_col=0)
     d13furg["year"] = d13furg["quarter"].apply(lambda x: int(x / 10))
     d13furg["dollar_pos"] = d13furg["shares"] * d13furg["prc_crsp"]
     d13furg = d13furg.merge(
