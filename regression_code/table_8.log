@@ -10,9 +10,9 @@ ___/   /   /___/   /   /___/       MP—Parallel Edition
                                    800-STATA-PC        https://www.stata.com
                                    979-696-4600        stata@stata.com
 
-Stata license: 5-user 32-core network perpetual
-Serial number: 501806221992
-  Licensed to: Nathaniel Baum−Snow
+Stata license: Single-user 8-core  perpetual
+Serial number: 501806221785
+  Licensed to: Marius Zoican
                University of Toronto
 
 Notes:
@@ -22,7 +22,7 @@ Notes:
       4. Maximum number of variables is set to 5,000 but can be increased;
           see help set_maxvar.
 
-. do table_8 
+. do table_8.do 
 
 . // Load data
 . // -------------------------------------
@@ -32,7 +32,7 @@ Notes:
 
 . 
 . cd ..
-/global/home/pc_mzoican/kpz_etfliquidity
+D:\Research\kpz_etfliquidity
 
 . local directory : pwd
 
@@ -82,58 +82,58 @@ Notes:
 . probit competition log_aum, vce(robust)
 
 Iteration 0:  Log pseudolikelihood = -242.18114  
-Iteration 1:  Log pseudolikelihood = -162.38679  
-Iteration 2:  Log pseudolikelihood = -149.84056  
-Iteration 3:  Log pseudolikelihood =   -149.632  
-Iteration 4:  Log pseudolikelihood =  -149.6315  
-Iteration 5:  Log pseudolikelihood =  -149.6315  
+Iteration 1:  Log pseudolikelihood = -162.49088  
+Iteration 2:  Log pseudolikelihood =  -149.5217  
+Iteration 3:  Log pseudolikelihood = -149.27789  
+Iteration 4:  Log pseudolikelihood = -149.27718  
+Iteration 5:  Log pseudolikelihood = -149.27718  
 
 Probit regression                                       Number of obs =  1,068
-                                                        Wald chi2(1)  =  65.40
+                                                        Wald chi2(1)  =  63.29
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -149.6315                        Pseudo R2     = 0.3822
+Log pseudolikelihood = -149.27718                       Pseudo R2     = 0.3836
 
 ------------------------------------------------------------------------------
              |               Robust
  competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     log_aum |    .467191   .0577725     8.09   0.000      .353959     .580423
-       _cons |  -11.10173    1.24976    -8.88   0.000    -13.55121   -8.652245
+     log_aum |   .4761385   .0598506     7.96   0.000     .3588334    .5934436
+       _cons |  -11.31181   1.296537    -8.72   0.000    -13.85297   -8.770645
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_8.tex", replace tex tstat e(r2_p)  la
 > bel  dec(2) tdec(2) eqdrop(/) keep(*) 
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
+D:\Research\kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
 . probit competition log_aum top3_issuer major_brand_index, vce(robust)
 
 Iteration 0:  Log pseudolikelihood = -242.18114  
-Iteration 1:  Log pseudolikelihood = -159.24094  
-Iteration 2:  Log pseudolikelihood = -146.72756  
-Iteration 3:  Log pseudolikelihood = -146.43736  
-Iteration 4:  Log pseudolikelihood = -146.43638  
-Iteration 5:  Log pseudolikelihood = -146.43638  
+Iteration 1:  Log pseudolikelihood = -159.19561  
+Iteration 2:  Log pseudolikelihood = -146.34907  
+Iteration 3:  Log pseudolikelihood = -146.02463  
+Iteration 4:  Log pseudolikelihood = -146.02333  
+Iteration 5:  Log pseudolikelihood = -146.02333  
 
 Probit regression                                       Number of obs =  1,068
-                                                        Wald chi2(3)  =  88.15
+                                                        Wald chi2(3)  =  85.97
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -146.43638                       Pseudo R2     = 0.3953
+Log pseudolikelihood = -146.02333                       Pseudo R2     = 0.3970
 
 ------------------------------------------------------------------------------
              |               Robust
  competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     log_aum |   .4264278   .0588707     7.24   0.000     .3110434    .5418122
- top3_issuer |   .3564935   .1784009     2.00   0.046     .0068342    .7061528
-major_bran~x |   .3232265    .168911     1.91   0.056    -.0078331     .654286
-       _cons |  -10.55332   1.229884    -8.58   0.000    -12.96385   -8.142792
+     log_aum |   .4336753   .0608444     7.13   0.000     .3144225    .5529281
+ top3_issuer |   .3746621   .1797546     2.08   0.037     .0223496    .7269745
+major_bran~x |   .3155883    .169308     1.86   0.062    -.0162493    .6474258
+       _cons |  -10.72479   1.274295    -8.42   0.000    -13.22237    -8.22722
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
+D:\Research\kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -141,31 +141,31 @@ dir : seeout
 > ust)
 
 Iteration 0:  Log pseudolikelihood = -242.18114  
-Iteration 1:  Log pseudolikelihood = -158.95872  
-Iteration 2:  Log pseudolikelihood = -146.70538  
-Iteration 3:  Log pseudolikelihood = -146.41647  
-Iteration 4:  Log pseudolikelihood = -146.41545  
-Iteration 5:  Log pseudolikelihood = -146.41545  
+Iteration 1:  Log pseudolikelihood = -158.88588  
+Iteration 2:  Log pseudolikelihood = -146.31645  
+Iteration 3:  Log pseudolikelihood = -145.99527  
+Iteration 4:  Log pseudolikelihood = -145.99394  
+Iteration 5:  Log pseudolikelihood = -145.99394  
 
 Probit regression                                       Number of obs =  1,068
-                                                        Wald chi2(4)  =  91.76
+                                                        Wald chi2(4)  =  90.34
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -146.41545                       Pseudo R2     = 0.3954
+Log pseudolikelihood = -145.99394                       Pseudo R2     = 0.3972
 
 ------------------------------------------------------------------------------
              |               Robust
  competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     log_aum |   .4243028   .0607469     6.98   0.000      .305241    .5433646
- top3_issuer |   .3499361   .1816915     1.93   0.054    -.0061727    .7060448
-major_bran~x |   .3174044   .1697276     1.87   0.061    -.0152555    .6500643
- numhold_000 |   .0245838   .1054235     0.23   0.816    -.1820426    .2312101
-       _cons |  -10.51358   1.261189    -8.34   0.000    -12.98546   -8.041693
+     log_aum |   .4311767   .0627601     6.87   0.000     .3081693    .5541842
+ top3_issuer |    .366596   .1832974     2.00   0.045     .0073398    .7258523
+major_bran~x |   .3087228   .1701101     1.81   0.070     -.024687    .6421325
+ numhold_000 |   .0292105   .1057413     0.28   0.782    -.1780387    .2364596
+       _cons |  -10.67793   1.306371    -8.17   0.000    -13.23837   -8.117494
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
+D:\Research\kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -173,32 +173,32 @@ dir : seeout
 > ndex_std, vce(robust)
 
 Iteration 0:  Log pseudolikelihood = -242.18114  
-Iteration 1:  Log pseudolikelihood = -156.42822  
-Iteration 2:  Log pseudolikelihood = -144.32779  
-Iteration 3:  Log pseudolikelihood = -144.10756  
-Iteration 4:  Log pseudolikelihood =   -144.107  
-Iteration 5:  Log pseudolikelihood =   -144.107  
+Iteration 1:  Log pseudolikelihood = -156.04407  
+Iteration 2:  Log pseudolikelihood = -143.50191  
+Iteration 3:  Log pseudolikelihood = -143.24729  
+Iteration 4:  Log pseudolikelihood = -143.24648  
+Iteration 5:  Log pseudolikelihood = -143.24648  
 
 Probit regression                                       Number of obs =  1,068
-                                                        Wald chi2(5)  =  98.62
+                                                        Wald chi2(5)  =  96.02
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -144.107                         Pseudo R2     = 0.4050
+Log pseudolikelihood = -143.24648                       Pseudo R2     = 0.4085
 
 ------------------------------------------------------------------------------
              |               Robust
  competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     log_aum |   .4838241   .0651497     7.43   0.000      .356133    .6115152
- top3_issuer |   .3452512    .185942     1.86   0.063    -.0191885    .7096909
-major_bran~x |   .3343794   .1715109     1.95   0.051    -.0017757    .6705346
- numhold_000 |   .0050722   .1071325     0.05   0.962    -.2049036     .215048
-spread_ind~d |   .3179377    .057075     5.57   0.000     .2060727    .4298027
-       _cons |  -11.61747   1.333897    -8.71   0.000    -14.23186   -9.003084
+     log_aum |   .4962907   .0686224     7.23   0.000     .3617933    .6307881
+ top3_issuer |   .3637482    .188334     1.93   0.053    -.0053796    .7328761
+major_bran~x |   .3265141   .1723189     1.89   0.058    -.0112248     .664253
+ numhold_000 |   .0094847   .1076905     0.09   0.930    -.2015849    .2205542
+spread_ind~d |   .3380815   .0634767     5.33   0.000     .2136694    .4624935
+       _cons |  -11.89558   1.408331    -8.45   0.000    -14.65586   -9.135303
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p) labe
 > l  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
+D:\Research\kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -206,33 +206,33 @@ dir : seeout
 > d_000 spread_index_std , vce(robust)
 
 Iteration 0:  Log pseudolikelihood = -239.07915  
-Iteration 1:  Log pseudolikelihood = -151.55884  
-Iteration 2:  Log pseudolikelihood = -138.14622  
-Iteration 3:  Log pseudolikelihood = -137.82949  
-Iteration 4:  Log pseudolikelihood = -137.82872  
-Iteration 5:  Log pseudolikelihood = -137.82872  
+Iteration 1:  Log pseudolikelihood = -151.32066  
+Iteration 2:  Log pseudolikelihood = -137.47137  
+Iteration 3:  Log pseudolikelihood = -137.18569  
+Iteration 4:  Log pseudolikelihood = -137.18505  
+Iteration 5:  Log pseudolikelihood = -137.18505  
 
 Probit regression                                       Number of obs =  1,019
-                                                        Wald chi2(6)  =  91.57
+                                                        Wald chi2(6)  =  89.03
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -137.82872                       Pseudo R2     = 0.4235
+Log pseudolikelihood = -137.18505                       Pseudo R2     = 0.4262
 
 ------------------------------------------------------------------------------
              |               Robust
  competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     log_aum |    .557176   .0863998     6.45   0.000     .3878355    .7265166
-ratio_tra_~d |   .4393057   .1537507     2.86   0.004     .1379599    .7406516
- top3_issuer |   .3172092   .1870065     1.70   0.090    -.0493169    .6837353
-major_bran~x |   .3775165   .1653155     2.28   0.022     .0535041    .7015289
- numhold_000 |   .0663616   .1082649     0.61   0.540    -.1458338     .278557
-spread_ind~d |   .2638045   .0590377     4.47   0.000     .1480927    .3795163
-       _cons |  -13.14156   1.782293    -7.37   0.000    -16.63479   -9.648332
+     log_aum |   .5638309    .089453     6.30   0.000     .3885063    .7391555
+ratio_tra_~d |   .4303305   .1531051     2.81   0.005     .1302501     .730411
+ top3_issuer |   .3420447   .1884375     1.82   0.069     -.027286    .7113754
+major_bran~x |   .3673423   .1652754     2.22   0.026     .0434085    .6912762
+ numhold_000 |   .0709074   .1089582     0.65   0.515    -.1426467    .2844614
+spread_ind~d |   .2793587     .06253     4.47   0.000     .1568023    .4019152
+       _cons |  -13.30233   1.849125    -7.19   0.000    -16.92654   -9.678107
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
+D:\Research\kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
@@ -240,35 +240,35 @@ dir : seeout
 > d_index numhold_000 spread_index_std , vce(robust)
 
 Iteration 0:  Log pseudolikelihood = -239.07915  
-Iteration 1:  Log pseudolikelihood =  -149.0535  
-Iteration 2:  Log pseudolikelihood = -133.04485  
-Iteration 3:  Log pseudolikelihood = -132.73296  
-Iteration 4:  Log pseudolikelihood = -132.73258  
-Iteration 5:  Log pseudolikelihood = -132.73258  
+Iteration 1:  Log pseudolikelihood = -148.89378  
+Iteration 2:  Log pseudolikelihood = -132.28135  
+Iteration 3:  Log pseudolikelihood = -131.95737  
+Iteration 4:  Log pseudolikelihood = -131.95686  
+Iteration 5:  Log pseudolikelihood = -131.95686  
 
 Probit regression                                       Number of obs =  1,019
-                                                        Wald chi2(7)  = 113.43
+                                                        Wald chi2(7)  = 112.46
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -132.73258                       Pseudo R2     = 0.4448
+Log pseudolikelihood = -131.95686                       Pseudo R2     = 0.4481
 
 ------------------------------------------------------------------------------
              |               Robust
  competition | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-     log_aum |   .5731926   .0781487     7.33   0.000      .420024    .7263613
-ratio_tra_~d |   .3913059   .1468989     2.66   0.008     .1033893    .6792226
-ratio_tii_~d |   .4718587   .1489502     3.17   0.002     .1799215    .7637958
- top3_issuer |   .3281361   .1928701     1.70   0.089    -.0498825    .7061546
-major_bran~x |   .3809722   .1705814     2.23   0.026     .0466389    .7153056
- numhold_000 |   .1536337   .1089121     1.41   0.158    -.0598301    .3670974
-spread_ind~d |   .2462373   .0587993     4.19   0.000     .1309928    .3614818
-       _cons |  -13.58376   1.601278    -8.48   0.000    -16.72221   -10.44531
+     log_aum |   .5847301   .0816405     7.16   0.000     .4247177    .7447424
+ratio_tra_~d |   .3856465   .1454579     2.65   0.008     .1005541    .6707388
+ratio_tii_~d |   .4829107   .1451215     3.33   0.001     .1984777    .7673436
+ top3_issuer |   .3580141   .1956456     1.83   0.067    -.0254443    .7414725
+major_bran~x |   .3724265   .1711122     2.18   0.030     .0370528    .7078002
+ numhold_000 |   .1603392   .1100696     1.46   0.145    -.0553934    .3760717
+spread_ind~d |   .2649894   .0638175     4.15   0.000     .1399094    .3900694
+       _cons |  -13.85208   1.677153    -8.26   0.000    -17.13924   -10.56492
 ------------------------------------------------------------------------------
 Note: 5 failures and 0 successes completely determined.
 
 . outreg2 using "`directory'/output/table_8.tex", append tex tstat e(r2_p)  lab
 > el  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_8.tex
+D:\Research\kpz_etfliquidity/output/table_8.tex
 dir : seeout
 
 . 
