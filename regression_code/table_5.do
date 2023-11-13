@@ -133,7 +133,7 @@ outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  de
 rego mer_bps_fe   efspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-rego mer_bps_fe   efspread_bps \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
+rego mer_bps_fe   rspread_dollar \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
 rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_std d_uit, vce(cl index_id)
