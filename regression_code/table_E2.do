@@ -12,6 +12,9 @@ local directory : pwd
 display "`working_dir'"
 import delimited "`directory'/data/cs_panel.csv"
 
+drop spread_bps_crsp
+gen spread_bps_crsp=10000*quotedspread_percent_tw 
+
 
 // // Label variables
 // // ---------------------------------

@@ -16,6 +16,9 @@ import delimited "`directory'/data/etf_panel_processed.csv"
 // // Label variables
 // // ---------------------------------
 
+drop spread_bps_crsp
+gen spread_bps_crsp=10000*quotedspread_percent_tw 
+
 egen time_existence_std=std(time_existence)
 egen time_since_first_std=std(time_since_first)
 egen log_aum_index_std=std(log_aum_index)

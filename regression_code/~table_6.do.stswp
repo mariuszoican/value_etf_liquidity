@@ -17,7 +17,7 @@ import delimited "`directory'/data/etf_panel_processed.csv"
 // // ---------------------------------
 
 drop spread_bps_crsp
-gen spread_bps_crsp=10000*quotedspread_percent_tw 
+gen spread_bps_crsp
 
 egen time_existence_std=std(time_existence)
 egen time_since_first_std=std(time_since_first)
