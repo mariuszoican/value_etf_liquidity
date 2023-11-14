@@ -1,0 +1,32 @@
+		(1)	(2)	(3)	(4)	(5)	(6)
+VARIABLES	LABELS	Residuals	Residuals	Residuals	Residuals	Residuals	Residuals
+							
+qspread_dollar_resid	Quoted spread (cents)	-0.04***			-0.32*		
+		(-5.30)			(-1.93)		
+stock_tweets_resid	Name recognition (Twitter msg.)	0.01	0.01	0.02	-0.31	-0.27	-0.22
+		(0.70)	(0.94)	(1.28)	(-1.26)	(-1.18)	(-1.03)
+marketing_fee_bps_resid	Marketing expense (bps)	-0.02	-0.01	-0.01	-0.29	-0.26	-0.25
+		(-1.52)	(-1.19)	(-1.08)	(-0.98)	(-0.88)	(-0.86)
+net_expenses_resid	Other net expenses	0.42	0.77	0.80	25.44	28.78	28.56
+		(0.40)	(0.73)	(0.80)	(0.91)	(1.04)	(1.02)
+ratio_tii_resid	Tax-insensitive investors (TII)	-0.00	0.00	0.00	0.02	0.02	0.02
+		(-0.00)	(0.20)	(0.37)	(0.63)	(0.70)	(0.78)
+lend_byaum_bps_resid	Lending income (bps of AUM)	0.02***	0.02***	0.01**	0.23	0.22	0.21
+		(3.35)	(2.75)	(2.50)	(0.79)	(0.73)	(0.68)
+tr_error_bps_resid	Tracking error (bps)	-0.00	-0.00	-0.00	0.16***	0.16***	0.16***
+		(-0.42)	(-0.56)	(-0.43)	(3.18)	(3.12)	(3.17)
+perf_drag_bps_resid	Performance drag (bps)	-0.00	-0.00	-0.00	0.31**	0.31**	0.31**
+		(-0.77)	(-0.82)	(-0.91)	(2.32)	(2.31)	(2.32)
+d_uit_resid	Unit investment trust	-0.11	-0.17	-0.27	10.32**	9.75**	9.03**
+		(-0.49)	(-0.68)	(-0.96)	(2.11)	(2.11)	(2.03)
+efspread_dollar_resid	Effective spread (cents)		-0.06***			-0.45*	
+			(-4.82)			(-1.74)	
+rspread_dollar_resid	Realized spread (cents)			-0.07***			-0.59**
+				(-5.55)			(-2.04)
+Constant	Constant	0.00	0.00	0.00	0.04	0.04	0.03
+		(1.56)	(1.02)	(0.75)	(1.42)	(1.20)	(1.03)
+							
+Observations		1,703	1,703	1,703	1,703	1,703	1,703
+Adjusted R-squared		0.34	0.34	0.37	0.34	0.34	0.35
+Robust t-statistics in parentheses							
+*** p<0.01, ** p<0.05, * p<0.1							

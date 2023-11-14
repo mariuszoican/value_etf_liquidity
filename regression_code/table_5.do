@@ -10,8 +10,8 @@ set more off
 cd ..
 local directory : pwd
 display "`working_dir'"
-//import delimited "`directory'/data/etf_panel_processed.csv"
-import delimited "D:/ResearchProjects/kpz_etfliquidity/data/etf_panel_processed.csv"
+import delimited "`directory'/data/etf_panel_processed.csv"
+//import delimited "D:/ResearchProjects/kpz_etfliquidity/data/etf_panel_processed.csv"
 
 
 
@@ -46,26 +46,26 @@ label variable highfee "High MER"
 label variable time_existence "ETF age (quarters)"
 label variable time_since_first "Time since first position"
 label variable log_aum_index "Log index AUM"
-label variable d_uit "Unit investment trust"
-// label variable lend_byaum_bps "Lending income (bps of AUM)"
-// label variable marketing_fee_bps "Marketing expense (bps)"
-// label variable stock_tweets "Name recognition (Twitter msg.)"
-// label variable tr_error_bps "Tracking error (bps)"
-// label variable perf_drag_bps "Performance drag (bps)"
-// label variable turnover_frac "ETF turnover"
-// label variable net_expenses "Other net expenses"
-// label variable stock_tweets "Stock tweets"
-// label variable log_volume "Log volume"
-// label variable spread_bps_crsp "Relative spread"
-// label variable creation_fee "Creation fee"
+label variable d_uit_resid "Unit investment trust"
+label variable lend_byaum_bps_resid "Lending income (bps of AUM)"
+label variable marketing_fee_bps_resid "Marketing expense (bps)"
+label variable stock_tweets_resid "Name recognition (Twitter msg.)"
+label variable tr_error_bps_resid "Tracking error (bps)"
+label variable perf_drag_bps_resid "Performance drag (bps)"
+label variable turnover_frac_resid "ETF turnover"
+label variable net_expenses_resid "Other net expenses"
+label variable log_volume "Log volume"
+label variable spread_bps_crsp "Relative spread"
+label variable creation_fee "Creation fee"
+label variable ratio_tii_resid "Tax-insensitive investors (TII)"
 
 
-label variable qspread_bps "Quoted spread (bps)"
-label variable qspread_dollar "Quoted spread (cents)"
-label variable efspread_bps "Effective spread (bps)"
-label variable efspread_dollar "Effective spread (cents)"
-label variable rspread_bps "Realized spread (bps)"
-label variable rspread_dollar "Realized spread (cents)"
+label variable qspread_bps_resid "Quoted spread (bps)"
+label variable qspread_dollar_resid "Quoted spread (cents)"
+label variable efspread_bps_resid "Effective spread (bps)"
+label variable efspread_dollar_resid "Effective spread (cents)"
+label variable rspread_bps_resid "Realized spread (bps)"
+label variable rspread_dollar_resid "Realized spread (cents)"
 
 rego mkt_share_resid   qspread_bps_resid \ stock_tweets_resid marketing_fee_bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_error_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
 outreg2 using "`directory'/output/table_5.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)

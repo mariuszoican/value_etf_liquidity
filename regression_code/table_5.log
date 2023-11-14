@@ -1,7 +1,7 @@
 
   ___  ____  ____  ____  ____ ®
  /__    /   ____/   /   ____/      18.0
-___/   /   /___/   /   /___/       MP—Parallel Edition
+___/   /   /___/   /   /___/       BE—Basic Edition
 
  Statistics and Data Science       Copyright 1985-2023 StataCorp LLC
                                    StataCorp
@@ -10,7 +10,7 @@ ___/   /   /___/   /   /___/       MP—Parallel Edition
                                    800-STATA-PC        https://www.stata.com
                                    979-696-4600        stata@stata.com
 
-Stata license: 5-user 32-core network perpetual
+Stata license: 5-user network perpetual
 Serial number: 501806221992
   Licensed to: Nathaniel Baum−Snow
                University of Toronto
@@ -18,11 +18,8 @@ Serial number: 501806221992
 Notes:
       1. Stata is running in batch mode.
       2. Unicode is supported; see help unicode_advice.
-      3. More than 2 billion observations are allowed; see help obs_advice.
-      4. Maximum number of variables is set to 5,000 but can be increased;
-          see help set_maxvar.
 
-. do table_5 
+. do table_5.do 
 
 . 
 . // Table 5 - Shapley values
@@ -45,88 +42,12 @@ Notes:
 
 . import delimited "`directory'/data/etf_panel_processed.csv"
 (encoding automatically selected: ISO-8859-1)
-(92 vars, 1,752 obs)
+(94 vars, 1,752 obs)
 
-. //import delimited "D:/Research/kpz_etfliquidity/data/etf_panel_processed.csv
-> "
+. //import delimited "D:/ResearchProjects/kpz_etfliquidity/data/etf_panel_proce
+> ssed.csv"
 . 
-. drop spread_bps_crsp
-
-. gen spread_bps_crsp=10000*quotedspread_percent_tw 
-
 . 
-. egen time_existence_std=std(time_existence)
-
-. egen time_since_first_std=std(time_since_first)
-(33 missing values generated)
-
-. egen log_aum_index_std=std(log_aum_index)
-
-. egen lend_byaum_bps_std=std(lend_byaum_bps)
-
-. egen marketing_fee_bps_std=std(marketing_fee_bps)
-
-. egen tr_error_bps_std=std(tr_error_bps)
-
-. egen perf_drag_bps_std=std(perf_drag_bps)
-
-. egen turnover_frac_std=std(turnover_frac)
-(2 missing values generated)
-
-. gen  net_expense_mer=other_expense-marketing_fee_bps/100+fee_waiver
-
-. egen net_expenses_std=std(net_expense_mer)
-
-. egen stock_tweets_std=std(stock_tweets)
-
-. egen ratio_tii_std=std(ratio_tii)
-(49 missing values generated)
-
-. egen log_volume_std=std(log_volume)
-
-. egen spread_bps_crsp_std=std(spread_bps_crsp)
-
-. egen other_expense_std=std(other_expenses)
-
-. egen fee_waiver_std=std(fee_waivers)
-
-. egen creation_fee_std=std(creation_fee)
-
-. 
-. label variable mgr_duration "Investor holding duration"
-
-. label variable highfee "High MER"
-
-. label variable time_existence_std "ETF age (quarters)"
-
-. label variable time_since_first_std "Time since first position"
-
-. label variable log_aum_index_std "Log index AUM"
-
-. label variable d_uit "Unit investment trust"
-
-. label variable lend_byaum_bps_std "Lending income (bps of AUM)"
-
-. label variable marketing_fee_bps_std "Marketing expense (bps)"
-
-. label variable stock_tweets "Name recognition (Twitter msg.)"
-
-. label variable tr_error_bps_std "Tracking error (bps)"
-
-. label variable perf_drag_bps_std "Performance drag (bps)"
-
-. label variable turnover_frac_std "ETF turnover"
-
-. label variable net_expenses_std "Other net expenses"
-
-. label variable stock_tweets_std "Stock tweets"
-
-. label variable log_volume_std "Log volume"
-
-. label variable spread_bps_crsp_std "Relative spread"
-
-. label variable creation_fee_std "Creation fee"
-
 . 
 . gen qspread_bps=10000*quotedspread_percent_tw 
 
@@ -144,82 +65,104 @@ Notes:
 
 . 
 . 
+. drop net_expenses
+
+. gen  net_expenses=other_expense-marketing_fee_bps/100+fee_waiver
+
 . 
-. //
-. gen tii_return=ratio_tii * logret_q_lag
+. gen mer_diff=(mer_bps-mer_avg_ix)
+
+. 
+. // List of variables to regress on index_id and quarter
+. local varlist mkt_share mer_bps mer_diff stock_tweets marketing_fee_bps net_e
+> xpenses ratio_tii lend_byaum_bps tr_error_bps perf_drag_bps d_uit turnover_fr
+> ac qspread_bps qspread_dollar efspread_bps efspread_dollar rspread_bps rsprea
+> d_dollar
+
+. 
+. // Loop through the list of variables
+. foreach var in `varlist' {
+  2.     // Perform the regression and save residuals
+.     quietly reghdfe `var', absorb(index_id quarter) resid
+  3.     predict `var'_resid, residuals
+  4. }
 (49 missing values generated)
-
-. 
-. encode index_id, gen(index_no)
-
-. 
-. // keep if marketing_fee_bps>0
-. 
-. gen mer_diff=(mer_bps-mer_avg_ix)/mer_avg_ix
-
-. 
-. quietly regress mer_bps i.index_no i.quarter
-
-. predict mer_bps_fe, residuals
-
-. 
-. quietly regress mkt_share i.index_no i.quarter
-
-. predict mkt_share_fe, residuals
-
-. 
-. 
-. 
-. drop log_aum
-
-. gen log_aum=log(aum)
 (2 missing values generated)
 
 . 
-. // quietly regress log_aum i.index_no i.quarter
-. // predict mkt_share_fe, residuals
 . 
-. label variable mkt_share_fe "Market share"
+. label variable mgr_duration "Investor holding duration"
 
-. label variable mer_bps_fe "MER"
+. label variable highfee "High MER"
+
+. label variable time_existence "ETF age (quarters)"
+
+. label variable time_since_first "Time since first position"
+
+. label variable log_aum_index "Log index AUM"
+
+. label variable d_uit_resid "Unit investment trust"
+
+. label variable lend_byaum_bps_resid "Lending income (bps of AUM)"
+
+. label variable marketing_fee_bps_resid "Marketing expense (bps)"
+
+. label variable stock_tweets_resid "Name recognition (Twitter msg.)"
+
+. label variable tr_error_bps_resid "Tracking error (bps)"
+
+. label variable perf_drag_bps_resid "Performance drag (bps)"
+
+. label variable turnover_frac_resid "ETF turnover"
+
+. label variable net_expenses_resid "Other net expenses"
+
+. label variable log_volume "Log volume"
+
+. label variable spread_bps_crsp "Relative spread"
+
+. label variable creation_fee "Creation fee"
+
+. label variable ratio_tii_resid "Tax-insensitive investors (TII)"
 
 . 
-. label variable qspread_bps "Quoted spread (bps)"
+. 
+. label variable qspread_bps_resid "Quoted spread (bps)"
 
-. label variable qspread_dollar "Quoted spread (cents)"
+. label variable qspread_dollar_resid "Quoted spread (cents)"
 
-. label variable efspread_bps "Effective spread (bps)"
+. label variable efspread_bps_resid "Effective spread (bps)"
 
-. label variable efspread_dollar "Effective spread (cents)"
+. label variable efspread_dollar_resid "Effective spread (cents)"
 
-. label variable rspread_bps "Realized spread (bps)"
+. label variable rspread_bps_resid "Realized spread (bps)"
 
-. label variable rspread_dollar "Realized spread (cents)"
+. label variable rspread_dollar_resid "Realized spread (cents)"
 
 . 
-. rego mkt_share_fe   qspread_bps \ stock_tweets marketing_fee_bps_std net_expe
-> nses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bp
-> s_std d_uit, vce(cl index_id)
+. rego mkt_share_resid   qspread_bps_resid \ stock_tweets_resid marketing_fee_b
+> ps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_err
+> or_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1      qspread_bps |   -.0137308 ***  .0027084   0.000    -0.3594     62.9916
- 2     stock_tweets |    .0129238      .0092223   0.168     0.0437     19.1981
-   marketing_fee_~d |    .0023524      .0618094   0.970     0.0070           
-   net_expenses_std |    .0389523      .0619744   0.533     0.1158           
- 3    ratio_tii_std |    .0258553 *    .0130234   0.053     0.0768      2.5743
- 4 lend_byaum_bps~d |    .0426123 **   .0183978   0.025     0.1255     15.2360
-   tr_error_bps_std |    .0325881      .0212733   0.132     0.0964           
-   perf_drag_bps_~d |   -.0044385      .0110134   0.689    -0.0131           
-              d_uit |   -.1820083      .1203884   0.137    -0.0819           
- -        Intercept |     .110237      .0198733   0.000     
+ 1 qspread_bps_re~d |   -.0266091 ***  .0049837   0.000    -0.4760     67.6503
+ 2 stock_tweets_r~d |     .016636       .015282   0.282     0.0466     19.9582
+   marketing_fee_~d |   -.0038134      .0103914   0.715    -0.0648           
+   net_expenses_r~d |     .683968      1.025706   0.508     0.1317           
+ 3  ratio_tii_resid |    .0003663      .0010931   0.739     0.0158      0.7590
+ 4 lend_byaum_bps~d |     .010476 **   .0046921   0.030     0.1172     11.6326
+   tr_error_bps_r~d |   -.0008368      .0008367   0.322    -0.0586           
+   perf_drag_bps_~d |    -.002515      .0018263   0.175    -0.0378           
+        d_uit_resid |   -.2059587        .27301   0.454    -0.0663           
+ -        Intercept |    .0007117      .0021095   0.737     
 --------------------+---------------------------------------------------------
        Observations |        1703
-         Overall R2 |     0.20006
-           Root MSE |    .3018952
-      F-stat. Model |     15.9929 ***             0.000
-     Log Likelihood |   -371.7967
+         Overall R2 |     0.35567
+           Root MSE |    .2709454
+      F-stat. Model |    32.61804 ***             0.000
+     Log Likelihood |   -187.5954
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 replace tex tstat label
@@ -228,29 +171,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. rego mkt_share_fe   efspread_bps \ stock_tweets marketing_fee_bps_std net_exp
-> enses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_b
-> ps_std d_uit, vce(cl index_id)
+. rego mkt_share_resid   efspread_bps_resid \ stock_tweets_resid marketing_fee_
+> bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_er
+> ror_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1     efspread_bps |   -.0196223 ***  .0036218   0.000    -0.3531     62.8774
- 2     stock_tweets |    .0147969      .0097926   0.137     0.0501     19.8355
-   marketing_fee_~d |    .0098711      .0598452   0.870     0.0293           
-   net_expenses_std |    .0500694      .0603531   0.411     0.1488           
- 3    ratio_tii_std |    .0232369 *    .0126557   0.073     0.0690      2.2876
- 4 lend_byaum_bps~d |    .0415348 **   .0180656   0.026     0.1223     14.9995
-   tr_error_bps_std |    .0345781      .0210456   0.107     0.1022           
-   perf_drag_bps_~d |   -.0012991      .0107892   0.905    -0.0038           
-              d_uit |   -.1889727      .1264686   0.142    -0.0850           
- -        Intercept |    .0972607      .0164303   0.000     
+ 1 efspread_bps_r~d |   -.0344444 ***  .0074745   0.000    -0.4458     64.8489
+ 2 stock_tweets_r~d |    .0200136      .0161768   0.222     0.0561     22.2872
+   marketing_fee_~d |   -.0000132      .0107597   0.999    -0.0002           
+   net_expenses_r~d |    1.093616      1.026807   0.292     0.2106           
+ 3  ratio_tii_resid |    .0002862      .0010972   0.795     0.0124      0.8125
+ 4 lend_byaum_bps~d |    .0095002 *    .0053473   0.082     0.1063     12.0514
+   tr_error_bps_r~d |   -.0006737      .0008674   0.441    -0.0472           
+   perf_drag_bps_~d |   -.0018029      .0018187   0.327    -0.0271           
+        d_uit_resid |   -.2560588      .2870716   0.377    -0.0825           
+ -        Intercept |    .0000957      .0022571   0.966     
 --------------------+---------------------------------------------------------
        Observations |        1703
-         Overall R2 |     0.20043
-           Root MSE |     .301826
-      F-stat. Model |    16.41567 ***             0.000
-     Log Likelihood |   -371.4061
+         Overall R2 |     0.33330
+           Root MSE |     .275608
+      F-stat. Model |    20.42436 ***             0.000
+     Log Likelihood |   -216.6524
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -259,29 +202,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. rego mkt_share_fe   rspread_bps \ stock_tweets marketing_fee_bps_std net_expe
-> nses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bp
-> s_std d_uit, vce(cl index_id)
+. rego mkt_share_resid   rspread_bps_resid \ stock_tweets_resid marketing_fee_b
+> ps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_err
+> or_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1      rspread_bps |   -.0204868 ***  .0040469   0.000    -0.3443     63.3336
- 2     stock_tweets |    .0154927      .0099854   0.127     0.0524     20.4992
-   marketing_fee_~d |    .0056895      .0608896   0.926     0.0169           
-   net_expenses_std |    .0487863      .0611411   0.429     0.1450           
- 3    ratio_tii_std |    .0225492 *    .0126886   0.082     0.0670      2.2157
- 4 lend_byaum_bps~d |    .0411434 **   .0183772   0.030     0.1212     13.9515
-   tr_error_bps_std |    .0260137      .0209361   0.220     0.0769           
-   perf_drag_bps_~d |    -.003167      .0106813   0.768    -0.0094           
-              d_uit |   -.1824224      .1293957   0.165    -0.0821           
- -        Intercept |    .0707032      .0134126   0.000     
+ 1 rspread_bps_re~d |   -.0320424 ***  .0084078   0.000    -0.4101     61.4031
+ 2 stock_tweets_r~d |    .0217855      .0160772   0.182     0.0610     24.4004
+   marketing_fee_~d |   -.0005718      .0110054   0.959    -0.0097           
+   net_expenses_r~d |    1.114125      1.045415   0.292     0.2145           
+ 3  ratio_tii_resid |      .00026      .0010955   0.813     0.0112      0.8758
+ 4 lend_byaum_bps~d |    .0111165 *    .0056491   0.055     0.1244     13.3208
+   tr_error_bps_r~d |   -.0003665      .0008665   0.674    -0.0257           
+   perf_drag_bps_~d |   -.0018314      .0017952   0.313    -0.0275           
+        d_uit_resid |   -.2667498      .2860263   0.356    -0.0859           
+ -        Intercept |    .0005046      .0019833   0.800     
 --------------------+---------------------------------------------------------
        Observations |        1703
-         Overall R2 |     0.19735
-           Root MSE |    .3024071
-      F-stat. Model |    15.27446 ***             0.000
-     Log Likelihood |   -374.6816
+         Overall R2 |     0.31483
+           Root MSE |    .2793996
+      F-stat. Model |    25.33341 ***             0.000
+     Log Likelihood |   -239.9214
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -290,122 +233,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. rego mkt_share_fe   qspread_dollar \ stock_tweets marketing_fee_bps_std net_e
-> xpenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag
-> _bps_std d_uit, vce(cl index_id)
+. rego mkt_share_resid    turnover_frac_resid  \ stock_tweets_resid marketing_f
+> ee_bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr
+> _error_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1   qspread_dollar |    -.018083 ***   .005495   0.002    -0.2729     46.0004
- 2     stock_tweets |    .0096946      .0082003   0.243     0.0328     34.1189
-   marketing_fee_~d |   -.0121742       .065046   0.852    -0.0361           
-   net_expenses_std |    .0631322      .0622945   0.316     0.1877           
- 3    ratio_tii_std |    .0166062       .013139   0.212     0.0493      1.8456
- 4 lend_byaum_bps~d |    .0530638 ***  .0166146   0.002     0.1563     18.0351
-   tr_error_bps_std |    .0018897      .0220566   0.932     0.0056           
-   perf_drag_bps_~d |   -.0157577      .0111818   0.165    -0.0466           
-              d_uit |    -.148609      .1113792   0.188    -0.0669           
- -        Intercept |    .1033604      .0271189   0.000     
---------------------+---------------------------------------------------------
-       Observations |        1703
-         Overall R2 |     0.16470
-           Root MSE |    .3084954
-      F-stat. Model |    18.63365 ***             0.000
-     Log Likelihood |   -408.6272
-------------------------------------------------------------------------------
-
-. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
->  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
-dir : seeout
-
-. 
-. rego mkt_share_fe   efspread_dollar \ stock_tweets marketing_fee_bps_std net_
-> expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_dra
-> g_bps_std d_uit, vce(cl index_id)
- 
-------------------------------------------------------------------------------
-Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
---------------------+---------------------------------------------------------
- 1  efspread_dollar |   -.0318915 ***  .0092424   0.001    -0.3010     50.5299
- 2     stock_tweets |    .0115461      .0085853   0.185     0.0391     31.5734
-   marketing_fee_~d |   -.0112133      .0637288   0.861    -0.0333           
-   net_expenses_std |    .0656805      .0608931   0.286     0.1953           
- 3    ratio_tii_std |    .0173059      .0124421   0.171     0.0514      1.7540
- 4 lend_byaum_bps~d |    .0517585 ***  .0163947   0.003     0.1524     16.1427
-   tr_error_bps_std |    .0025394      .0219955   0.909     0.0075           
-   perf_drag_bps_~d |    -.015674       .011346   0.174    -0.0464           
-              d_uit |   -.1610598      .1164045   0.173    -0.0725           
- -        Intercept |    .1083335       .027788   0.000     
---------------------+---------------------------------------------------------
-       Observations |        1703
-         Overall R2 |     0.18168
-           Root MSE |    .3053434
-      F-stat. Model |    19.26705 ***             0.000
-     Log Likelihood |   -391.1374
-------------------------------------------------------------------------------
-
-. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
->  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
-dir : seeout
-
-. 
-. rego mkt_share_fe   rspread_dollar \ stock_tweets marketing_fee_bps_std net_e
-> xpenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag
-> _bps_std d_uit, vce(cl index_id)
- 
-------------------------------------------------------------------------------
-Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
---------------------+---------------------------------------------------------
- 1   rspread_dollar |   -.0420357 ***  .0107562   0.000    -0.3390     57.4565
- 2     stock_tweets |    .0147617       .009367   0.122     0.0499     26.6038
-   marketing_fee_~d |   -.0137788      .0638217   0.830    -0.0409           
-   net_expenses_std |    .0583066      .0606848   0.341     0.1733           
- 3    ratio_tii_std |    .0190014      .0125878   0.138     0.0564      1.7254
- 4 lend_byaum_bps~d |    .0485586 ***  .0169853   0.006     0.1430     14.2142
-   tr_error_bps_std |    .0013609      .0219978   0.951     0.0040           
-   perf_drag_bps_~d |   -.0150334      .0113869   0.193    -0.0445           
-              d_uit |   -.2132852      .1274225   0.101    -0.0960           
- -        Intercept |    .0962767      .0222023   0.000     
---------------------+---------------------------------------------------------
-       Observations |        1703
-         Overall R2 |     0.20358
-           Root MSE |      .30123
-      F-stat. Model |    17.26129 ***             0.000
-     Log Likelihood |   -368.0397
-------------------------------------------------------------------------------
-
-. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
->  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
-dir : seeout
-
-. 
-. rego mkt_share_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std 
-> net_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf
-> _drag_bps_std d_uit, vce(cl index_id)
- 
-------------------------------------------------------------------------------
-Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
---------------------+---------------------------------------------------------
- 1 turnover_frac_~d |    .1082172 ***  .0254657   0.000     0.3235     48.0893
- 2     stock_tweets |   -.0059236      .0110015   0.593    -0.0201     33.2802
-   marketing_fee_~d |   -.0427518      .0814004   0.602    -0.1270           
-   net_expenses_std |    .0316236      .0788035   0.690     0.0941           
- 3    ratio_tii_std |   -.0026869      .0133838   0.842    -0.0080      0.7832
- 4 lend_byaum_bps~d |    .0495499 **   .0185172   0.010     0.1458     17.8474
-   tr_error_bps_std |    -.014881      .0234856   0.529    -0.0440           
-   perf_drag_bps_~d |    .0054893      .0103157   0.597     0.0162           
-              d_uit |   -.1877893 *     .105489   0.081    -0.0846           
- -        Intercept |     .008216      .0141341   0.564     
+ 1 turnover_frac_~d |    .0203699 ***  .0038984   0.000     0.4126     44.5939
+ 2 stock_tweets_r~d |   -.0098387      .0125288   0.436    -0.0276     33.4578
+   marketing_fee_~d |   -.0133206      .0124165   0.289    -0.2266           
+   net_expenses_r~d |    .5086444      1.216322   0.678     0.0981           
+ 3  ratio_tii_resid |   -.0013365      .0011415   0.247    -0.0577      1.0146
+ 4 lend_byaum_bps~d |    .0192067 ***  .0054026   0.001     0.2147     20.9337
+   tr_error_bps_r~d |   -.0012057      .0009267   0.199    -0.0845           
+   perf_drag_bps_~d |   -.0014532      .0020739   0.487    -0.0217           
+        d_uit_resid |   -.3455713 *    .1994402   0.090    -0.1114           
+ -        Intercept |    .0034777 **   .0014206   0.018     
 --------------------+---------------------------------------------------------
        Observations |        1701
-         Overall R2 |     0.16902
-           Root MSE |    .3074723
-      F-stat. Model |    23.59268 ***             0.000
-     Log Likelihood |   -402.4909
+         Overall R2 |     0.30264
+           Root MSE |    .2816692
+      F-stat. Model |    32.20886 ***             0.000
+     Log Likelihood |   -253.3951
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -414,30 +264,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. 
-. rego mer_bps_fe   qspread_bps \ stock_tweets marketing_fee_bps_std net_expens
-> es_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_
-> std d_uit, vce(cl index_id)
+. rego mer_bps_resid   qspread_bps_resid \ stock_tweets_resid marketing_fee_bps
+> _resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_error
+> _bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1      qspread_bps |   -.2575848 ***  .0609099   0.000    -0.2387     27.4914
- 2     stock_tweets |   -.2407163      .1637608   0.148    -0.0288     27.8160
-   marketing_fee_~d |    .2852066      1.694288   0.867     0.0299           
-   net_expenses_std |    2.172057      1.664039   0.198     0.2286           
- 3    ratio_tii_std |     .877702 ***  .3233581   0.009     0.0923      4.4476
- 4 lend_byaum_bps~d |    .4547058      .5614729   0.422     0.0474     40.2450
-   tr_error_bps_std |    3.292231 ***  .8055907   0.000     0.3446           
-   perf_drag_bps_~d |    1.168437 **    .447709   0.012     0.1224           
-              d_uit |    4.549529 *    2.349247   0.059     0.0725           
- -        Intercept |    1.884694      .6272887   0.004     
+ 1 qspread_bps_re~d |   -.4112932 ***  .1068262   0.000    -0.2604     29.9117
+ 2 stock_tweets_r~d |   -.2879249      .2178048   0.192    -0.0286     27.9870
+   marketing_fee_~d |   -.1948423      .2599853   0.457    -0.1172           
+   net_expenses_r~d |    20.97493      26.50029   0.433     0.1430           
+ 3  ratio_tii_resid |    .0223999      .0240892   0.357     0.0342      1.9185
+ 4 lend_byaum_bps~d |    .1085796      .3043346   0.723     0.0430     40.1828
+   tr_error_bps_r~d |    .1419423 ***  .0520621   0.009     0.3518           
+   perf_drag_bps_~d |    .2862359 **   .1333107   0.037     0.1521           
+        d_uit_resid |    10.10898 **   4.495764   0.029     0.1152           
+ -        Intercept |    .0093686      .0386199   0.809     
 --------------------+---------------------------------------------------------
        Observations |        1703
-         Overall R2 |     0.24300
-           Root MSE |    8.295796
-      F-stat. Model |    12.63854 ***             0.000
-     Log Likelihood |   -6014.558
+         Overall R2 |     0.38647
+           Root MSE |    7.468432
+      F-stat. Model |    29.15869 ***             0.000
+     Log Likelihood |   -5835.634
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -446,29 +295,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. rego mer_bps_fe   efspread_bps \ stock_tweets marketing_fee_bps_std net_expen
-> ses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps
-> _std d_uit, vce(cl index_id)
+. rego mer_bps_resid   efspread_bps_resid \ stock_tweets_resid marketing_fee_bp
+> s_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_erro
+> r_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1     efspread_bps |   -.3808481 ***  .0915789   0.000    -0.2426     27.7943
- 2     stock_tweets |   -.2084935      .1520187   0.177    -0.0250     28.0264
-   marketing_fee_~d |    .4244229      1.623371   0.795     0.0446           
-   net_expenses_std |    2.348827      1.613039   0.152     0.2472           
- 3    ratio_tii_std |    .8382356 ***  .2987567   0.007     0.0881      4.2096
- 4 lend_byaum_bps~d |    .4311642      .5591107   0.444     0.0450     39.9697
-   tr_error_bps_std |    3.334706 ***  .8178609   0.000     0.3491           
-   perf_drag_bps_~d |    1.227287 ***  .4453515   0.008     0.1286           
-              d_uit |    4.421301 *      2.2607   0.056     0.0704           
- -        Intercept |    1.699457      .6032801   0.007     
+ 1 efspread_bps_r~d |   -.5268934 ***  .1508004   0.001    -0.2414     27.4444
+ 2 stock_tweets_r~d |   -.2352841      .2047799   0.256    -0.0233     29.2206
+   marketing_fee_~d |   -.1364976      .2663516   0.611    -0.0821           
+   net_expenses_r~d |    27.38466      27.04906   0.316     0.1867           
+ 3  ratio_tii_resid |    .0210998        .02335   0.371     0.0322      1.9598
+ 4 lend_byaum_bps~d |    .0952074      .3184838   0.766     0.0377     41.3752
+   tr_error_bps_r~d |     .144674 ***  .0526947   0.008     0.3585           
+   perf_drag_bps_~d |    .2974002 **    .130833   0.028     0.1581           
+        d_uit_resid |    9.329917 **   4.363709   0.038     0.1064           
+ -        Intercept |    .0003459      .0428253   0.994     
 --------------------+---------------------------------------------------------
        Observations |        1703
-         Overall R2 |     0.24636
-           Root MSE |    8.277389
-      F-stat. Model |    14.37732 ***             0.000
-     Log Likelihood |   -6010.775
+         Overall R2 |     0.37882
+           Root MSE |    7.514855
+      F-stat. Model |    26.98947 ***             0.000
+     Log Likelihood |   -5846.187
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -477,29 +326,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. rego mer_bps_fe   rspread_bps \ stock_tweets marketing_fee_bps_std net_expens
-> es_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_bps_
-> std d_uit, vce(cl index_id)
+. rego mer_bps_resid   rspread_bps_resid \ stock_tweets_resid marketing_fee_bps
+> _resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_error
+> _bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1      rspread_bps |   -.3915625 ***  .0918268   0.000    -0.2330     28.6758
- 2     stock_tweets |   -.1938659      .1500626   0.203    -0.0232     28.6235
-   marketing_fee_~d |    .3453367      1.650434   0.835     0.0363           
-   net_expenses_std |    2.338793       1.63899   0.160     0.2461           
- 3    ratio_tii_std |     .820691 ***  .3027981   0.009     0.0863      4.1880
- 4 lend_byaum_bps~d |    .4252002      .5562275   0.448     0.0443     38.5127
-   tr_error_bps_std |     3.16867 ***  .8167153   0.000     0.3317           
-   perf_drag_bps_~d |    1.191606 **   .4458966   0.010     0.1249           
-              d_uit |    4.545393 **   2.242661   0.048     0.0724           
- -        Intercept |    1.165335 **   .5097152   0.027     
+ 1 rspread_bps_re~d |   -.5358679 ***  .1200441   0.000    -0.2428     26.7082
+ 2 stock_tweets_r~d |   -.2095149      .2061282   0.315    -0.0208     29.2825
+   marketing_fee_~d |   -.1423226      .2675721   0.597    -0.0856           
+   net_expenses_r~d |    27.03331      27.44655   0.330     0.1843           
+ 3  ratio_tii_resid |    .0212061      .0234339   0.370     0.0324      1.9642
+ 4 lend_byaum_bps~d |    .1069818      .3129617   0.734     0.0424     42.0451
+   tr_error_bps_r~d |    .1479323 ***  .0507713   0.005     0.3666           
+   perf_drag_bps_~d |    .2955108 **   .1292729   0.027     0.1571           
+        d_uit_resid |    9.192807 **   4.412327   0.043     0.1048           
+ -        Intercept |    .0027401       .039239   0.945     
 --------------------+---------------------------------------------------------
        Observations |        1703
-         Overall R2 |     0.24348
-           Root MSE |    8.293192
-      F-stat. Model |     13.8358 ***             0.000
-     Log Likelihood |   -6014.023
+         Overall R2 |     0.38120
+           Root MSE |    7.500413
+      F-stat. Model |    27.97505 ***             0.000
+     Log Likelihood |   -5842.911
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -508,122 +357,29 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 dir : seeout
 
 . 
-. rego mer_bps_fe   qspread_dollar \ stock_tweets marketing_fee_bps_std net_exp
-> enses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_b
-> ps_std d_uit, vce(cl index_id)
+. rego mer_bps_resid    turnover_frac_resid  \ stock_tweets_resid marketing_fee
+> _bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_e
+> rror_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
  
 ------------------------------------------------------------------------------
 Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 --------------------+---------------------------------------------------------
- 1   qspread_dollar |   -.0286146      .0885009   0.748    -0.0153      2.8405
- 2     stock_tweets |   -.1365241      .1438171   0.347    -0.0163     46.9569
-   marketing_fee_~d |    .4398444      1.720004   0.799     0.0462           
-   net_expenses_std |    3.242058 *    1.657888   0.056     0.3412           
- 3    ratio_tii_std |    .5627142 *    .2950423   0.062     0.0592      4.0122
- 4 lend_byaum_bps~d |    .5407637      .5951732   0.368     0.0564     46.1905
-   tr_error_bps_std |    3.141738 ***  .8590375   0.001     0.3289           
-   perf_drag_bps_~d |    1.205663 **   .4870809   0.017     0.1264           
-              d_uit |    4.418678 **   2.038548   0.035     0.0704           
- -        Intercept |    .1114549      .5926588   0.852     
---------------------+---------------------------------------------------------
-       Observations |        1703
-         Overall R2 |     0.19802
-           Root MSE |    8.538698
-      F-stat. Model |    12.66839 ***             0.000
-     Log Likelihood |   -6063.706
-------------------------------------------------------------------------------
-
-. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
->  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
-dir : seeout
-
-. 
-. rego mer_bps_fe   efspread_dollar \ stock_tweets marketing_fee_bps_std net_ex
-> penses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_
-> bps_std d_uit, vce(cl index_id)
- 
-------------------------------------------------------------------------------
-Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
---------------------+---------------------------------------------------------
- 1  efspread_dollar |    -.116307      .1618287   0.476    -0.0389      3.6761
- 2     stock_tweets |   -.1495757        .14527   0.308    -0.0179     46.6256
-   marketing_fee_~d |    .3920088      1.725657   0.821     0.0412           
-   net_expenses_std |    3.177267 *    1.656673   0.061     0.3344           
- 3    ratio_tii_std |    .5822705 *    .2932813   0.053     0.0612      4.0468
- 4 lend_byaum_bps~d |    .5492252      .5972803   0.362     0.0573     45.6514
-   tr_error_bps_std |    3.092978 ***  .8454742   0.001     0.3238           
-   perf_drag_bps_~d |    1.175972 **   .4803882   0.018     0.1232           
-              d_uit |    4.464305 **   2.078239   0.037     0.0711           
- -        Intercept |    .3272144      .6445809   0.614     
---------------------+---------------------------------------------------------
-       Observations |        1703
-         Overall R2 |     0.19922
-           Root MSE |    8.532356
-      F-stat. Model |     11.9216 ***             0.000
-     Log Likelihood |   -6062.441
-------------------------------------------------------------------------------
-
-. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
->  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
-dir : seeout
-
-. 
-. rego mer_bps_fe   rspread_dollar \ stock_tweets marketing_fee_bps_std net_exp
-> enses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_drag_b
-> ps_std d_uit, vce(cl index_id)
- 
-------------------------------------------------------------------------------
-Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
---------------------+---------------------------------------------------------
- 1   rspread_dollar |   -.1900967       .194725   0.334    -0.0543      5.6862
- 2     stock_tweets |   -.1418098      .1431224   0.327    -0.0170     45.4387
-   marketing_fee_~d |    .3594816      1.739062   0.837     0.0377           
-   net_expenses_std |     3.11474 *    1.669417   0.068     0.3278           
- 3    ratio_tii_std |    .5977595 **   .2964033   0.049     0.0629      4.1053
- 4 lend_byaum_bps~d |    .5392179      .5927587   0.368     0.0562     44.7698
-   tr_error_bps_std |     3.06654 ***  .8375479   0.001     0.3210           
-   perf_drag_bps_~d |    1.166225 **    .470272   0.017     0.1222           
-              d_uit |    4.255825 **   2.115786   0.050     0.0678           
- -        Intercept |    .3608291      .5628291   0.525     
---------------------+---------------------------------------------------------
-       Observations |        1703
-         Overall R2 |     0.20053
-           Root MSE |    8.525349
-      F-stat. Model |    11.71166 ***             0.000
-     Log Likelihood |   -6061.041
-------------------------------------------------------------------------------
-
-. outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
->  dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
-dir : seeout
-
-. 
-. rego mer_bps_fe    turnover_frac_std  \ stock_tweets marketing_fee_bps_std ne
-> t_expenses_std  \ ratio_tii_std \ lend_byaum_bps_std  tr_error_bps_std perf_d
-> rag_bps_std d_uit, vce(cl index_id)
- 
-------------------------------------------------------------------------------
-Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
---------------------+---------------------------------------------------------
- 1 turnover_frac_~d |    1.620075      1.094638   0.145     0.1714     22.9333
- 2     stock_tweets |   -.5021661      .3734119   0.185    -0.0602     40.1986
-   marketing_fee_~d |   -.3534151      2.255755   0.876    -0.0371           
-   net_expenses_std |    2.286534      2.247581   0.314     0.2409           
- 3    ratio_tii_std |    .3998758      .2715485   0.147     0.0421      2.7780
- 4 lend_byaum_bps~d |    .5492377      .5942819   0.360     0.0572     34.0901
-   tr_error_bps_std |    2.511868 ***  .6986934   0.001     0.2631           
-   perf_drag_bps_~d |    1.259259 ***   .444257   0.007     0.1314           
-              d_uit |    4.427807      2.658103   0.102     0.0706           
- -        Intercept |   -.0474085      .4235248   0.911     
+ 1 turnover_frac_~d |     .318892 *    .1603795   0.052     0.2286     21.3598
+ 2 stock_tweets_r~d |   -.7054114 *    .4183024   0.098    -0.0700     35.8885
+   marketing_fee_~d |   -.3432989      .3318204   0.306    -0.2067           
+   net_expenses_r~d |    18.20415      34.21657   0.597     0.1242           
+ 3  ratio_tii_resid |   -.0031735      .0244938   0.897    -0.0049      1.6806
+ 4 lend_byaum_bps~d |    .2413485      .2840274   0.400     0.0955     41.0711
+   tr_error_bps_r~d |    .1343962 ***  .0369815   0.001     0.3334           
+   perf_drag_bps_~d |    .2904136 **   .1170064   0.017     0.1537           
+        d_uit_resid |    7.933541      5.648611   0.167     0.0905           
+ -        Intercept |     .036506      .0268917   0.181     
 --------------------+---------------------------------------------------------
        Observations |        1701
-         Overall R2 |     0.21637
-           Root MSE |    8.436673
-      F-stat. Model |    8.470176 ***             0.000
-     Log Likelihood |   -6036.132
+         Overall R2 |     0.37067
+           Root MSE |    7.560597
+      F-stat. Model |    26.85213 ***             0.000
+     Log Likelihood |   -5849.638
 ------------------------------------------------------------------------------
 
 . outreg2 using "`directory'/output/table_5.tex", adjr2 append tex tstat label 
@@ -631,5 +387,196 @@ Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
 /global/home/pc_mzoican/kpz_etfliquidity/output/table_5.tex
 dir : seeout
 
+. 
+. 
+. // Robustness table with dollar measures
+. 
+. rego mkt_share_resid   qspread_dollar_resid \ stock_tweets_resid marketing_fe
+> e_bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_
+> error_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
+ 
+------------------------------------------------------------------------------
+Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
+--------------------+---------------------------------------------------------
+ 1 qspread_dollar~d |   -.0398926 ***  .0075272   0.000    -0.4260     48.7469
+ 2 stock_tweets_r~d |    .0083458      .0119691   0.489     0.0234     34.7766
+   marketing_fee_~d |   -.0171823      .0112952   0.135    -0.2919           
+   net_expenses_r~d |    .4175455       1.05413   0.694     0.0804           
+ 3  ratio_tii_resid |   -3.33e-06      .0011205   0.998    -0.0001      0.9140
+ 4 lend_byaum_bps~d |    .0170096 ***  .0050771   0.002     0.1903     15.5625
+   tr_error_bps_r~d |   -.0003523      .0008392   0.677    -0.0247           
+   perf_drag_bps_~d |   -.0015203      .0019644   0.443    -0.0228           
+        d_uit_resid |   -.1077682      .2210285   0.628    -0.0347           
+ -        Intercept |    .0026189      .0016769   0.125     
+--------------------+---------------------------------------------------------
+       Observations |        1703
+         Overall R2 |     0.33870
+           Root MSE |    .2744906
+      F-stat. Model |    39.52127 ***             0.000
+     Log Likelihood |    -209.734
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'/output/table_5_dollar.tex", adjr2 replace tex tsta
+> t label  dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5_dollar.tex
+dir : seeout
+
+. 
+. rego mkt_share_resid   efspread_dollar_resid \ stock_tweets_resid marketing_f
+> ee_bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr
+> _error_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
+ 
+------------------------------------------------------------------------------
+Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
+--------------------+---------------------------------------------------------
+ 1 efspread_dolla~d |   -.0602406 ***  .0124858   0.000    -0.4252     50.3321
+ 2 stock_tweets_r~d |    .0127979      .0136727   0.354     0.0358     34.3295
+   marketing_fee_~d |   -.0134331      .0112988   0.240    -0.2282           
+   net_expenses_r~d |    .7694036       1.04777   0.466     0.1481           
+ 3  ratio_tii_resid |    .0002165       .001109   0.846     0.0093      1.0043
+ 4 lend_byaum_bps~d |    .0151082 ***  .0054917   0.008     0.1690     14.3342
+   tr_error_bps_r~d |   -.0004855      .0008662   0.578    -0.0340           
+   perf_drag_bps_~d |   -.0016124      .0019599   0.415    -0.0242           
+        d_uit_resid |   -.1689214      .2488535   0.501    -0.0544           
+ -        Intercept |    .0016847      .0016493   0.312     
+--------------------+---------------------------------------------------------
+       Observations |        1703
+         Overall R2 |     0.34239
+           Root MSE |    .2737238
+      F-stat. Model |    42.34795 ***             0.000
+     Log Likelihood |     -204.97
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'/output/table_5_dollar.tex", adjr2 append tex tstat
+>  label  dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5_dollar.tex
+dir : seeout
+
+. 
+. rego mkt_share_resid   rspread_dollar_resid \ stock_tweets_resid marketing_fe
+> e_bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_
+> error_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
+ 
+------------------------------------------------------------------------------
+Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
+--------------------+---------------------------------------------------------
+ 1 rspread_dollar~d |   -.0736888 ***  .0132851   0.000    -0.4549     55.8306
+ 2 stock_tweets_r~d |    .0197457      .0154068   0.206     0.0553     30.1817
+   marketing_fee_~d |   -.0118327       .010907   0.283    -0.2010           
+   net_expenses_r~d |    .8019482      1.003855   0.428     0.1544           
+ 3  ratio_tii_resid |    .0003975      .0010713   0.712     0.0172      0.9939
+ 4 lend_byaum_bps~d |    .0138767 **   .0055432   0.016     0.1552     12.9938
+   tr_error_bps_r~d |   -.0003643      .0008395   0.666    -0.0255           
+   perf_drag_bps_~d |   -.0017386      .0019069   0.366    -0.0261           
+        d_uit_resid |   -.2669301      .2783553   0.342    -0.0860           
+ -        Intercept |    .0011799      .0015769   0.458     
+--------------------+---------------------------------------------------------
+       Observations |        1703
+         Overall R2 |     0.36946
+           Root MSE |    .2680311
+      F-stat. Model |    47.61147 ***             0.000
+     Log Likelihood |   -169.1787
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'/output/table_5_dollar.tex", adjr2 append tex tstat
+>  label  dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5_dollar.tex
+dir : seeout
+
+. 
+. rego mer_bps_resid   qspread_dollar_resid \ stock_tweets_resid marketing_fee_
+> bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_er
+> ror_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
+ 
+------------------------------------------------------------------------------
+Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
+--------------------+---------------------------------------------------------
+ 1 qspread_dollar~d |   -.3222434 *    .1670769   0.060    -0.1218      5.5204
+ 2 stock_tweets_r~d |   -.3099871      .2460888   0.214    -0.0307     40.7104
+   marketing_fee_~d |   -.2929778      .2982047   0.331    -0.1762           
+   net_expenses_r~d |    25.43658      27.82962   0.365     0.1734           
+ 3  ratio_tii_resid |    .0160108      .0253767   0.531     0.0245      2.2543
+ 4 lend_byaum_bps~d |    .2330664      .2941491   0.432     0.0923     51.5149
+   tr_error_bps_r~d |    .1567764 ***  .0492666   0.003     0.3885           
+   perf_drag_bps_~d |    .3068337 **   .1324415   0.025     0.1631           
+        d_uit_resid |    10.31687 **    4.88359   0.040     0.1176           
+ -        Intercept |    .0432103      .0305218   0.163     
+--------------------+---------------------------------------------------------
+       Observations |        1703
+         Overall R2 |     0.34654
+           Root MSE |     7.70764
+      F-stat. Model |    27.45908 ***             0.000
+     Log Likelihood |   -5889.325
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'/output/table_5_dollar.tex", adjr2 append tex tstat
+>  label  dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5_dollar.tex
+dir : seeout
+
+. 
+. rego mer_bps_resid   efspread_dollar_resid \ stock_tweets_resid marketing_fee
+> _bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_e
+> rror_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
+ 
+------------------------------------------------------------------------------
+Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
+--------------------+---------------------------------------------------------
+ 1 efspread_dolla~d |   -.4492256 *    .2578272   0.088    -0.1122      5.5119
+ 2 stock_tweets_r~d |   -.2678652      .2276442   0.245    -0.0266     40.9678
+   marketing_fee_~d |   -.2558944      .2909498   0.384    -0.1539           
+   net_expenses_r~d |      28.782      27.79987   0.306     0.1962           
+ 3  ratio_tii_resid |    .0175932      .0249645   0.484     0.0269      2.3212
+ 4 lend_byaum_bps~d |    .2208632      .3021394   0.468     0.0875     51.1991
+   tr_error_bps_r~d |    .1564004 ***  .0501941   0.003     0.3876           
+   perf_drag_bps_~d |    .3065863 **   .1325736   0.025     0.1630           
+        d_uit_resid |    9.750688 **   4.624542   0.040     0.1112           
+ -        Intercept |    .0366104      .0304911   0.236     
+--------------------+---------------------------------------------------------
+       Observations |        1703
+         Overall R2 |     0.34486
+           Root MSE |    7.717527
+      F-stat. Model |    22.76111 ***             0.000
+     Log Likelihood |   -5891.508
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'/output/table_5_dollar.tex", adjr2 append tex tstat
+>  label  dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5_dollar.tex
+dir : seeout
+
+. 
+. rego mer_bps_resid   rspread_dollar_resid \ stock_tweets_resid marketing_fee_
+> bps_resid net_expenses_resid  \ ratio_tii_resid \ lend_byaum_bps_resid  tr_er
+> ror_bps_resid perf_drag_bps_resid d_uit_resid, vce(cl index_id)
+ 
+------------------------------------------------------------------------------
+Gr        Regressor |       Coef.      Std.Err.   P>|t|  Std.Coef.   Group %R2
+--------------------+---------------------------------------------------------
+ 1 rspread_dollar~d |   -.5932166 **    .290739   0.047    -0.1296      7.5425
+ 2 stock_tweets_r~d |   -.2178195      .2118554   0.309    -0.0216     39.9044
+   marketing_fee_~d |   -.2495082      .2891762   0.393    -0.1501           
+   net_expenses_r~d |    28.56308      28.03921   0.313     0.1947           
+ 3  ratio_tii_resid |    .0192352      .0246331   0.439     0.0294      2.3381
+ 4 lend_byaum_bps~d |    .2079329      .3035779   0.497     0.0823     50.2150
+   tr_error_bps_r~d |    .1567069 ***  .0493941   0.003     0.3884           
+   perf_drag_bps_~d |    .3050953 **   .1317174   0.025     0.1622           
+        d_uit_resid |    9.030698 **   4.445335   0.048     0.1029           
+ -        Intercept |    .0316421      .0305933   0.306     
+--------------------+---------------------------------------------------------
+       Observations |        1703
+         Overall R2 |     0.34895
+           Root MSE |    7.693418
+      F-stat. Model |    23.35203 ***             0.000
+     Log Likelihood |    -5886.18
+------------------------------------------------------------------------------
+
+. outreg2 using "`directory'/output/table_5_dollar.tex", adjr2 append tex tstat
+>  label  dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_5_dollar.tex
+dir : seeout
+
+. 
+. 
 . 
 end of do-file
