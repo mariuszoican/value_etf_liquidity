@@ -562,10 +562,18 @@ if __name__ == "__main__":
     cs_panel["log_aum_index"] = cs_panel["aum_index"].map(np.log)
     cs_panel.to_csv(f"{cfg.data_folder}/cs_panel.csv")
 
-    etf_graph['mer_avg_ix']=etf_graph.groupby(['index_id','quarter'])['mer_bps'].transform('mean')
+    etf_graph["mer_avg_ix"] = etf_graph.groupby(["index_id", "quarter"])[
+        "mer_bps"
+    ].transform("mean")
 
-    crsp_data=pd.read_csv("../data/data_crsp.csv.gz")
-    etf_graph.merge(crsp_data[['ticker','quarter','prc']].drop_duplicates(subset=['ticker','quarter'],keep='last'),on=['ticker','quarter'],how='left')
+    crsp_data = pd.read_csv("../data/data_crsp.csv.gz")
+    etf_graph = etf_graph.merge(
+        crsp_data[["ticker", "quarter", "prc"]].drop_duplicates(
+            subset=["ticker", "quarter"], keep="last"
+        ),
+        on=["ticker", "quarter"],
+        how="left",
+    )
 
     etf_graph.to_csv(f"{cfg.data_folder}/etf_panel_processed.csv")
 
@@ -955,6 +963,27 @@ if __name__ == "__main__":
         "time_existence",
         "tr_error_bps",
         "turnover_frac",
+        "net_expenses",
+        "effectivespread_dollar_ave",
+        "effectivespread_percent_ave",
+        "effectivespread_dollar_dw",
+        "effectivespread_dollar_sw",
+        "effectivespread_percent_dw",
+        "effectivespread_percent_sw",
+        "dollarrealizedspread_lr_ave",
+        "percentrealizedspread_lr_ave",
+        "dollarrealizedspread_lr_sw",
+        "dollarrealizedspread_lr_dw",
+        "percentrealizedspread_lr_sw",
+        "percentrealizedspread_lr_dw",
+        "dollarpriceimpact_lr_ave",
+        "percentpriceimpact_lr_ave",
+        "dollarpriceimpact_lr_sw",
+        "dollarpriceimpact_lr_dw",
+        "percentpriceimpact_lr_sw",
+        "percentpriceimpact_lr_dw",
+        "quotedspread_dollar_tw",
+        "quotedspread_percent_tw",
     ]
 
     for c in col_diffs:
