@@ -7,3 +7,4 @@ raw_folder: "../raw_panels" # folder for raw (primary) data
 temp_folder: "../data/temp" # folder for temp data
 min_quarters: 8 # keep only managers with `quarters_manager` or more.
 rolling_window_cremers: 12 # rolling window quarters for Cremers estimation.
+entry_window: 252
