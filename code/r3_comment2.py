@@ -98,3 +98,4 @@ plt.savefig("../output/r3_comment2.png", bbox_inches="tight")
 # Effective spreads dropped from 3.79 cents to 0.72 cents, a 81% drop in effective spreads.
 # Relative effective spreads dropped from 4.38 bps to 2.43 bps, a 45% drop in relative effective spreads.
 # MER went down from 15 to 4 bps
+# The split for SPYV took place on October 16, 2017.
