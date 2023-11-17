@@ -72,6 +72,11 @@ if __name__ == "__main__":
             parse_dates=["as_of_date", "inception"],
         )
 
+    data_entry["quarter"] = data_entry["as_of_date"].apply(
+        lambda x: x.year * 10 + x.quarter
+    )
+    panel = pd.read_csv(f"{cfg.data_folder}/etf_panel_processed.csv", index_col=0)
+
     # get window around events
     entrant_inception = (
         data_entry[data_entry.entry_order == 2]
@@ -87,6 +92,8 @@ if __name__ == "__main__":
 
     data_entry["as_of_date"] = data_entry["as_of_date"].dt.date
     data_entry["entry_date"] = data_entry["entry_date"].dt.date
+
+    data_entry = data_entry[data_entry.entry_date >= dt.date(2016, 1, 1)]
 
     data_entry["distance_from_entry"] = data_entry.apply(
         lambda row: np.busday_count(row["entry_date"], row["as_of_date"]), axis=1
@@ -118,13 +125,6 @@ if __name__ == "__main__":
     window_entry = window_entry[
         (window_entry["max"] >= 252) & (window_entry["min"] <= -252)
     ]
-
-    window_entry["yearmonth"] = window_entry["as_of_date"].apply(
-        lambda x: dt.datetime(x.year, x.month, 15)
-    )
-    window_entry["entry_month"] = window_entry["entry_date"].apply(
-        lambda x: dt.datetime(x.year, x.month, 15)
-    )
 
     change = (
         window_entry[window_entry.entry_order == 1]
@@ -187,4 +187,23 @@ if __name__ == "__main__":
         y="mer_ratio",
         errorbar=None,
         hue="sign_change",
+    )
+
+    merged = window_entry.merge(
+        panel[
+            [
+                "ticker",
+                "quarter",
+                "ratio_tra",
+                "ratio_tii",
+                "mgr_duration",
+                "mgr_duration_tii",
+                "mgr_duration_tsi",
+                "quotedspread_percent_tw",
+                "effectivespread_percent_ave",
+                "percentrealizedspread_lr_ave",
+            ]
+        ],
+        on=["ticker", "quarter"],
+        how="left",
     )

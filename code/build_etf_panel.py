@@ -394,6 +394,10 @@ if __name__ == "__main__":
         tax_sensitivity, on=["ticker", "quarter"], how="outer"
     ).merge(transient, on=["ticker", "quarter"], how="outer")
 
+    etf_measures.to_csv(
+        f"{cfg.data_folder}/etf_clientele_measures.csv.gz", compression="gzip"
+    )
+
     # merge into main ETF panel
     etf_panel = etf_panel.merge(etf_measures, on=["ticker", "quarter"], how="left")
     etf_panel = etf_panel.merge(
