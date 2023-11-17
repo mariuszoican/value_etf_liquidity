@@ -103,8 +103,8 @@ if __name__ == "__main__":
 
     window_entry = window_entry.merge(mer_entry, on="ticker", how="left")
 
-    window_entry["mer_ratio"] = (
-        window_entry["management_fee"] / window_entry["leader_mer_entry"]
+    window_entry["mer_ratio"] = np.round(
+        window_entry["management_fee"] / window_entry["leader_mer_entry"], 2
     )
     window_entry["d_post"] = 1 * (window_entry["distance_from_entry"] > 0)
 
@@ -118,12 +118,6 @@ if __name__ == "__main__":
     window_entry = window_entry[
         (window_entry["max"] >= 252) & (window_entry["min"] <= -252)
     ]
-
-    sns.lineplot(
-        data=window_entry[(window_entry.entry_order == 1)],
-        x="distance_from_entry",
-        y="mer_ratio",
-    )
 
     window_entry["yearmonth"] = window_entry["as_of_date"].apply(
         lambda x: dt.datetime(x.year, x.month, 15)
@@ -141,3 +135,56 @@ if __name__ == "__main__":
     change = change.pivot(index="ticker", columns="d_post")
     change.columns = ["fee_0", "fee_1"]
     change["fee_diff"] = change["fee_1"] - change["fee_0"]
+
+    pivot_mer = (
+        window_entry.drop_duplicates(subset=["ticker", "distance_from_entry"])
+        .pivot(
+            index=["distance_from_entry"],
+            columns=["ticker"],
+            values=["management_fee", "mer_ratio", "entry_order", "d_post"],
+        )
+        .fillna(method="ffill")
+        .fillna(method="bfill")
+        .stack()
+        .reset_index()
+    )
+
+    pivot_mer_2 = (
+        window_entry.drop_duplicates(subset=["ticker", "distance_from_entry"])
+        .pivot(
+            index=["distance_from_entry"],
+            columns=["ticker"],
+            values=["management_fee"],
+        )
+        .fillna(method="ffill")
+        .fillna(method="bfill")
+    )
+
+    sns.lineplot(
+        data=pivot_mer[(pivot_mer.entry_order == 1)],
+        x="distance_from_entry",
+        y="mer_ratio",
+        errorbar=("se", 2),
+    )
+
+    group_tickers = (
+        pivot_mer[pivot_mer.d_post == 0]
+        .groupby(["ticker"])["mer_ratio"]
+        .mean()
+        .reset_index()
+    )
+    group_tickers = group_tickers.rename(columns={"mer_ratio": "before_ratio"})
+    group_tickers["sign_change"] = np.where(
+        group_tickers["before_ratio"] > 1,
+        1,
+        np.where(group_tickers["before_ratio"] < 1, -1, 0),
+    )
+    pivot_mer = pivot_mer.merge(group_tickers, on="ticker")
+
+    sns.lineplot(
+        data=pivot_mer[(pivot_mer.entry_order == 1) & (pivot_mer.sign_change != 0)],
+        x="distance_from_entry",
+        y="mer_ratio",
+        errorbar=None,
+        hue="sign_change",
+    )
