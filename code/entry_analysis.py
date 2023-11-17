@@ -75,7 +75,212 @@ if __name__ == "__main__":
     data_entry["quarter"] = data_entry["as_of_date"].apply(
         lambda x: x.year * 10 + x.quarter
     )
-    panel = pd.read_csv(f"{cfg.data_folder}/etf_panel_processed.csv", index_col=0)
+
+    list_ETF_tickers = data_entry.ticker.drop_duplicates().tolist()
+    etf_panel = pd.read_csv(f"{cfg.raw_folder}/etf_panel_raw.csv", index_col=0)
+    manager_data = pd.read_csv(
+        f"{cfg.raw_folder}/iiclass.csv", index_col=0
+    ).reset_index()
+    manager_data["tax_extend"] = manager_data.groupby("permakey")["tax_extend"].apply(
+        lambda x: x.fillna(method="ffill")
+    )
+
+    # load 13-F based duration measure and aggregate across managers (Cremers and Pareek, 2016)
+    # -----------------------------------------------------------------------------------------
+    d13furg = pd.read_csv(f"{cfg.data_folder}/duration_13F.csv.gz", index_col=0)
+    d13furg["year"] = d13furg["quarter"].apply(lambda x: int(x / 10))
+    d13furg["dollar_pos"] = d13furg["shares"] * d13furg["prc_crsp"]
+    d13furg = d13furg.merge(
+        etf_panel[["ticker", "index_id"]].drop_duplicates(), on="ticker", how="left"
+    )
+
+    # compute duration measure
+    def weighted_avg(x):  # function to weigh duration by dollar positions
+        return np.average(x["duration"], weights=x["dollar_pos"])
+
+    manager_dur = d13furg.groupby(["mgrno", "mgrname"]).apply(weighted_avg)
+    manager_dur = manager_dur.reset_index()
+    manager_dur = manager_dur.rename(columns={0: "mgr_duration"})
+
+    d13furg = d13furg.merge(manager_dur, on=["mgrno", "mgrname"])
+
+    d13furg = d13furg[d13furg.ticker.isin(list_ETF_tickers)]
+
+    cols_mgr = ["mgrno", "year", "horizon_perma", "type", "tax_extend"]
+    d13furg = d13furg.merge(manager_data[cols_mgr], on=["mgrno", "year"], how="left")
+    # Follow Broman-Shum (2018) and keep only quasi-indexers and transient investors
+    d13furg = d13furg[d13furg.horizon_perma.isin(["QIX", "TRA"])]
+
+    # FILTER: drop rows where institutional ownership > shares outstanding
+    d13furg["inst_shares"] = d13furg.groupby(["ticker", "quarter"])["shares"].transform(
+        sum
+    )
+    d13furg["weight_shares"] = d13furg["shares"] / d13furg["inst_shares"]
+    d13furg["weight_shares_out"] = d13furg["shares"] / (1000 * d13furg["shrout2"])
+    d13furg["share_ownership"] = d13furg["inst_shares"] / (1000 * d13furg["shrout2"])
+    d13furg = d13furg[d13furg.share_ownership < 1]
+
+    # FILTER: drop managers that existed for less than 2 years in our sample
+    unique_mgr_qtr = d13furg.drop_duplicates(subset=["mgrno", "quarter"])
+    unique_mgr_qtr["quarter_count"] = unique_mgr_qtr.groupby(["mgrno"]).cumcount()
+    unique_mgr_qtr = unique_mgr_qtr[["mgrno", "quarter", "quarter_count"]]
+    d13furg = d13furg.merge(unique_mgr_qtr, on=["mgrno", "quarter"], how="left")
+    d13furg["quarter_count"] = d13furg["quarter_count"].fillna(0)
+    d13furg = d13furg[d13furg.quarter_count >= 8]
+
+    # CONTROLS: Compute for each manager-ETF, the time since first investment
+    d13furg["quarter_decimal"] = d13furg["quarter"].apply(
+        lambda x: int(x / 10) + (x % 10 - 1) / 4
+    )
+    # first quarter of investment for that investor
+    d13furg["first_quarter_inv"] = d13furg.groupby(["mgrno", "ticker"])[
+        "quarter_decimal"
+    ].transform("first")
+    d13furg["time_since_first_inv"] = (
+        d13furg["quarter_decimal"] - d13furg["first_quarter_inv"]
+    )
+
+    # Aggregate duration measures into panel
+
+    # duration
+    etf_duration = (
+        d13furg.groupby(["ticker", "quarter"])
+        .apply(lambda x: (x["mgr_duration"] * x["shares"]).sum() / x["shares"].sum())
+        .reset_index()
+    )
+    etf_duration = etf_duration.rename(columns={0: "mgr_duration"})
+
+    etf_duration_index = (
+        d13furg.groupby(["index_id", "quarter"])
+        .apply(
+            lambda x: (x["mgr_duration"] * x["dollar_pos"]).sum()
+            / x["dollar_pos"].sum()
+        )
+        .reset_index()
+    )
+    etf_duration_index = etf_duration_index.rename(columns={0: "mgr_duration_index"})
+
+    # duration for Tax-Insensitive Investors (TII)
+    etf_duration_tii = (
+        d13furg[d13furg.tax_extend == "TII"]
+        .groupby(["ticker", "quarter"])
+        .apply(lambda x: (x["mgr_duration"] * x["shares"]).sum() / x["shares"].sum())
+        .reset_index()
+    )
+    etf_duration_tii = etf_duration_tii.rename(columns={0: "mgr_duration_tii"})
+
+    # duration for Tax-Sensitive Investors (TSI)
+    etf_duration_tsi = (
+        d13furg[d13furg.tax_extend == "TSI"]
+        .groupby(["ticker", "quarter"])
+        .apply(lambda x: (x["mgr_duration"] * x["shares"]).sum() / x["shares"].sum())
+        .reset_index()
+    )
+    etf_duration_tsi = etf_duration_tsi.rename(columns={0: "mgr_duration_tsi"})
+
+    # average time since first investment
+    etf_time_since_first = (
+        d13furg.groupby(["ticker", "quarter"])
+        .apply(
+            lambda x: (x["time_since_first_inv"] * x["shares"]).sum()
+            / x["shares"].sum()
+        )
+        .reset_index()
+    )
+    etf_time_since_first = etf_time_since_first.rename(columns={0: "time_since_first"})
+
+    # put dataframes together
+    etf_duration = etf_duration.merge(
+        etf_duration_tii, on=["ticker", "quarter"], how="left"
+    )
+    etf_duration = etf_duration.merge(
+        etf_duration_tsi, on=["ticker", "quarter"], how="left"
+    )
+    etf_duration = etf_duration.merge(
+        etf_time_since_first, on=["ticker", "quarter"], how="left"
+    )
+
+    # Compute share of AUM held by tax-insensitive investors (TII)
+    # --------------------------------------------------------------------
+
+    tax_sensitivity = (
+        d13furg.groupby(["ticker", "quarter", "tax_extend"])
+        .agg({"shares": sum})
+        .reset_index()
+    )
+    tax_sensitivity["total_shares_sample"] = tax_sensitivity.groupby(
+        [
+            "ticker",
+            "quarter",
+        ]
+    )["shares"].transform(sum)
+    tax_sensitivity["ratio_tii"] = (
+        tax_sensitivity["shares"] / tax_sensitivity["total_shares_sample"] * 100
+    )
+    tax_sensitivity = tax_sensitivity[tax_sensitivity.tax_extend == "TII"]
+    tax_sensitivity = tax_sensitivity[["ticker", "quarter", "ratio_tii"]]
+
+    # compute share of AUM held by transient investors (according to Bushee classification)
+    # --------------------------------------------------------------------
+
+    transient = (
+        d13furg.groupby(["ticker", "quarter", "horizon_perma"])
+        .agg({"shares": sum})
+        .reset_index()
+    )
+    transient["total_shares_sample"] = transient.groupby(
+        [
+            "ticker",
+            "quarter",
+        ]
+    )[
+        "shares"
+    ].transform(sum)
+    transient["ratio_tra"] = transient["shares"] / (transient["total_shares_sample"])
+    transient = transient[transient.horizon_perma == "TRA"]
+    transient = transient[["ticker", "quarter", "ratio_tra"]]
+
+    transient_ix = (
+        d13furg.groupby(["index_id", "quarter", "horizon_perma"])
+        .agg({"dollar_pos": sum})
+        .reset_index()
+    )
+    transient_ix["dollar_pos_sample"] = transient_ix.groupby(
+        [
+            "index_id",
+            "quarter",
+        ]
+    )[
+        "dollar_pos"
+    ].transform(sum)
+    transient_ix["ratio_tra_ix"] = transient_ix["dollar_pos"] / (
+        transient_ix["dollar_pos_sample"]
+    )
+    transient_ix = transient_ix[transient_ix.horizon_perma == "TRA"]
+    transient_ix = transient_ix[["index_id", "quarter", "ratio_tra_ix"]]
+
+    # put together manager-specific measures
+    etf_measures = etf_duration.merge(
+        tax_sensitivity, on=["ticker", "quarter"], how="outer"
+    ).merge(transient, on=["ticker", "quarter"], how="outer")
+
+    # panel = pd.read_csv(f"{cfg.data_folder}/etf_clientele_measures.csv.gz", index_col=0)
+
+    data_entry = data_entry.merge(
+        panel[
+            [
+                "ticker",
+                "quarter",
+                "ratio_tra",
+                "ratio_tii",
+                "mgr_duration",
+                "mgr_duration_tii",
+                "mgr_duration_tsi",
+            ]
+        ],
+        on=["ticker", "quarter"],
+        how="left",
+    )
 
     # get window around events
     entrant_inception = (
@@ -105,13 +310,53 @@ if __name__ == "__main__":
     mer_entry = window_entry[
         (window_entry.entry_order == 1)
         & (window_entry.as_of_date == window_entry.entry_date)
-    ][["ticker", "management_fee"]].reset_index(drop=True)
-    mer_entry = mer_entry.rename(columns={"management_fee": "leader_mer_entry"})
+    ][
+        [
+            "ticker",
+            "management_fee",
+            "ratio_tra",
+            "ratio_tii",
+            "mgr_duration_tii",
+            "mgr_duration_tsi",
+            "aum",
+        ]
+    ].reset_index(
+        drop=True
+    )
+    mer_entry = mer_entry.rename(
+        columns={
+            "management_fee": "leader_mer_entry",
+            "aum": "leader_aum_entry",
+            "ratio_tra": "leader_tra_entry",
+            "ratio_tii": "leader_tii_entry",
+            "mgr_duration_tii": "leader_mgr_duration_tii_entry",
+            "mgr_duration_tsi": "leader_mgr_duration_tsi_entry",
+        }
+    )
 
     window_entry = window_entry.merge(mer_entry, on="ticker", how="left")
 
     window_entry["mer_ratio"] = np.round(
         window_entry["management_fee"] / window_entry["leader_mer_entry"], 2
+    )
+    window_entry["aum_ratio"] = np.round(
+        window_entry["aum"] / window_entry["leader_aum_entry"], 2
+    )
+    window_entry["tra_ratio"] = np.round(
+        window_entry["ratio_tra"] / window_entry["leader_tra_entry"], 2
+    )
+    window_entry["tii_ratio"] = np.round(
+        window_entry["ratio_tii"] / window_entry["leader_tii_entry"], 2
+    )
+    window_entry["mgr_duration_tii_ratio"] = np.round(
+        window_entry["mgr_duration_tii"]
+        / window_entry["leader_mgr_duration_tii_entry"],
+        2,
+    )
+    window_entry["mgr_duration_tsi_ratio"] = np.round(
+        window_entry["mgr_duration_tsi"]
+        / window_entry["leader_mgr_duration_tsi_entry"],
+        2,
     )
     window_entry["d_post"] = 1 * (window_entry["distance_from_entry"] > 0)
 
@@ -141,23 +386,27 @@ if __name__ == "__main__":
         .pivot(
             index=["distance_from_entry"],
             columns=["ticker"],
-            values=["management_fee", "mer_ratio", "entry_order", "d_post"],
+            values=[
+                "management_fee",
+                "mer_ratio",
+                "ratio_tra",
+                "tra_ratio",
+                "ratio_tii",
+                "aum_ratio",
+                "tii_ratio",
+                "mgr_duration_tii",
+                "mgr_duration_tsi",
+                "mgr_duration",
+                "mgr_duration_tii_ratio",
+                "mgr_duration_tsi_ratio",
+                "entry_order",
+                "d_post",
+            ],
         )
         .fillna(method="ffill")
         .fillna(method="bfill")
         .stack()
         .reset_index()
-    )
-
-    pivot_mer_2 = (
-        window_entry.drop_duplicates(subset=["ticker", "distance_from_entry"])
-        .pivot(
-            index=["distance_from_entry"],
-            columns=["ticker"],
-            values=["management_fee"],
-        )
-        .fillna(method="ffill")
-        .fillna(method="bfill")
     )
 
     sns.lineplot(
@@ -189,21 +438,23 @@ if __name__ == "__main__":
         hue="sign_change",
     )
 
-    merged = window_entry.merge(
-        panel[
-            [
-                "ticker",
-                "quarter",
-                "ratio_tra",
-                "ratio_tii",
-                "mgr_duration",
-                "mgr_duration_tii",
-                "mgr_duration_tsi",
-                "quotedspread_percent_tw",
-                "effectivespread_percent_ave",
-                "percentrealizedspread_lr_ave",
-            ]
-        ],
-        on=["ticker", "quarter"],
-        how="left",
+    pre_transient = (
+        pivot_mer[pivot_mer.d_post == 1]
+        .groupby("ticker")["ratio_tra"]
+        .mean()
+        .reset_index()
+    )
+    pre_transient = pre_transient.rename(columns={"ratio_tra": "pre_tra"})
+    pivot_mer = pivot_mer.merge(pre_transient, on="ticker", how="left")
+    pivot_mer["ratio_tra_above"] = 1 * (
+        pivot_mer["pre_tra"] >= pre_transient.set_index("ticker").mean().mean()
+    )
+
+    plt.clf()
+    sns.lineplot(
+        data=pivot_mer[(pivot_mer.sign_change != 0)],
+        x="distance_from_entry",
+        y="mer_ratio",
+        errorbar=None,
+        hue="ratio_tra_above",
     )
