@@ -266,6 +266,12 @@ if __name__ == "__main__":
 
     # panel = pd.read_csv(f"{cfg.data_folder}/etf_clientele_measures.csv.gz", index_col=0)
 
+    spreads = pd.read_csv(
+        f"{cfg.data_folder}/etf_spread_measures.csv", index_col=0, parse_dates=["date"]
+    )
+    spreads = spreads.rename(columns={"date": "as_of_date"})
+    spreads["as_of_date"] = spreads["as_of_date"].dt.date
+
     data_entry = data_entry.merge(
         etf_measures[
             [
@@ -281,6 +287,8 @@ if __name__ == "__main__":
         on=["ticker", "quarter"],
         how="left",
     )
+
+    data_entry = data_entry.merge(transient_ix, on=["index_id", "quarter"], how="left")
 
     # get window around events
     entrant_inception = (
@@ -305,7 +313,17 @@ if __name__ == "__main__":
     )
     data_entry["abs_distance_from_entry"] = data_entry["distance_from_entry"].abs()
 
+    data_entry["aum_index"] = data_entry.groupby(["as_of_date", "index_id"])[
+        "aum"
+    ].transform(sum)
+    data_entry["mkt_share"] = data_entry["aum"] / data_entry["aum_index"]
+
     window_entry = data_entry[data_entry["abs_distance_from_entry"] <= cfg.entry_window]
+    window_entry = window_entry.merge(
+        spreads[["as_of_date", "ticker", "quotedspread_percent_tw"]],
+        on=["as_of_date", "ticker"],
+        how="left",
+    )
 
     mer_entry = window_entry[
         (window_entry.entry_order == 1)
@@ -315,10 +333,13 @@ if __name__ == "__main__":
             "ticker",
             "management_fee",
             "ratio_tra",
+            "ratio_tra_ix",
             "ratio_tii",
             "mgr_duration_tii",
             "mgr_duration_tsi",
+            "quotedspread_percent_tw",
             "aum",
+            "aum_index",
         ]
     ].reset_index(
         drop=True
@@ -328,9 +349,11 @@ if __name__ == "__main__":
             "management_fee": "leader_mer_entry",
             "aum": "leader_aum_entry",
             "ratio_tra": "leader_tra_entry",
+            "ratio_tra_ix": "leader_tra_ix_entry",
             "ratio_tii": "leader_tii_entry",
             "mgr_duration_tii": "leader_mgr_duration_tii_entry",
             "mgr_duration_tsi": "leader_mgr_duration_tsi_entry",
+            "quotedspread_percent_tw": "leader_quotedspread_percent_tw_entry",
         }
     )
 
@@ -345,6 +368,10 @@ if __name__ == "__main__":
     window_entry["tra_ratio"] = np.round(
         window_entry["ratio_tra"] / window_entry["leader_tra_entry"], 2
     )
+
+    window_entry["tra_ix_ratio"] = np.round(
+        window_entry["ratio_tra_ix"] / window_entry["leader_tra_ix_entry"], 2
+    )
     window_entry["tii_ratio"] = np.round(
         window_entry["ratio_tii"] / window_entry["leader_tii_entry"], 2
     )
@@ -356,6 +383,11 @@ if __name__ == "__main__":
     window_entry["mgr_duration_tsi_ratio"] = np.round(
         window_entry["mgr_duration_tsi"]
         / window_entry["leader_mgr_duration_tsi_entry"],
+        2,
+    )
+    window_entry["spread_ratio"] = np.round(
+        window_entry["quotedspread_percent_tw"]
+        / window_entry["leader_quotedspread_percent_tw_entry"],
         2,
     )
     window_entry["d_post"] = 1 * (window_entry["distance_from_entry"] > 0)
@@ -391,9 +423,13 @@ if __name__ == "__main__":
                 "mer_ratio",
                 "ratio_tra",
                 "tra_ratio",
+                "ratio_tra_ix",
+                "tra_ix_ratio",
                 "ratio_tii",
                 "aum_ratio",
                 "tii_ratio",
+                "quotedspread_percent_tw",
+                "spread_ratio",
                 "mgr_duration_tii",
                 "mgr_duration_tsi",
                 "mgr_duration",
@@ -401,6 +437,7 @@ if __name__ == "__main__":
                 "mgr_duration_tsi_ratio",
                 "entry_order",
                 "d_post",
+                "mkt_share",
             ],
         )
         .fillna(method="ffill")
@@ -424,17 +461,31 @@ if __name__ == "__main__":
     pivot_mer = pivot_mer.merge(group_tickers, on="ticker")
 
     pre_transient = (
-        pivot_mer[pivot_mer.d_post == 1]
-        .groupby("ticker")["ratio_tra"]
+        pivot_mer[pivot_mer.d_post == 0]
+        .groupby("ticker")[["ratio_tra", "ratio_tii", "quotedspread_percent_tw"]]
         .mean()
         .reset_index()
     )
-    pre_transient = pre_transient.rename(columns={"ratio_tra": "pre_tra"})
+    pre_transient = pre_transient.rename(
+        columns={
+            "ratio_tra": "pre_tra",
+            "ratio_tii": "pre_tii",
+            "quotedspread_percent_tw": "pre_spread",
+        }
+    )
     pivot_mer = pivot_mer.merge(pre_transient, on="ticker", how="left")
     pivot_mer["ratio_tra_above"] = 1 * (
-        pivot_mer["pre_tra"] >= pre_transient.set_index("ticker").mean().mean()
+        pivot_mer["pre_tra"]
+        >= pre_transient.set_index("ticker")["ratio_tra"].mean().mean()
     )
-
+    pivot_mer["ratio_tii_above"] = 1 * (
+        pivot_mer["pre_tii"]
+        >= pre_transient.set_index("ticker")["ratio_tii"].mean().mean()
+    )
+    pivot_mer["spread_above"] = 1 * (
+        pivot_mer["pre_spread"]
+        >= pre_transient.set_index("ticker")["pre_spread"].mean().mean()
+    )
     sizefigs_L = (22, 10)
     fig = plt.figure(facecolor="white", figsize=sizefigs_L)
     gs = gridspec.GridSpec(2, 2)
