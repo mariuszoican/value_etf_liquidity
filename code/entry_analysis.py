@@ -81,9 +81,9 @@ if __name__ == "__main__":
     manager_data = pd.read_csv(
         f"{cfg.raw_folder}/iiclass.csv", index_col=0
     ).reset_index()
-    manager_data["tax_extend"] = manager_data.groupby("permakey")["tax_extend"].apply(
-        lambda x: x.fillna(method="ffill")
-    )
+    manager_data["tax_extend"] = manager_data.groupby("permakey", group_keys=False)[
+        "tax_extend"
+    ].apply(lambda x: x.fillna(method="ffill"))
 
     # load 13-F based duration measure and aggregate across managers (Cremers and Pareek, 2016)
     # -----------------------------------------------------------------------------------------
@@ -267,7 +267,7 @@ if __name__ == "__main__":
     # panel = pd.read_csv(f"{cfg.data_folder}/etf_clientele_measures.csv.gz", index_col=0)
 
     data_entry = data_entry.merge(
-        panel[
+        etf_measures[
             [
                 "ticker",
                 "quarter",
@@ -409,13 +409,6 @@ if __name__ == "__main__":
         .reset_index()
     )
 
-    sns.lineplot(
-        data=pivot_mer[(pivot_mer.entry_order == 1)],
-        x="distance_from_entry",
-        y="mer_ratio",
-        errorbar=("se", 2),
-    )
-
     group_tickers = (
         pivot_mer[pivot_mer.d_post == 0]
         .groupby(["ticker"])["mer_ratio"]
@@ -430,14 +423,6 @@ if __name__ == "__main__":
     )
     pivot_mer = pivot_mer.merge(group_tickers, on="ticker")
 
-    sns.lineplot(
-        data=pivot_mer[(pivot_mer.entry_order == 1) & (pivot_mer.sign_change != 0)],
-        x="distance_from_entry",
-        y="mer_ratio",
-        errorbar=None,
-        hue="sign_change",
-    )
-
     pre_transient = (
         pivot_mer[pivot_mer.d_post == 1]
         .groupby("ticker")["ratio_tra"]
@@ -450,11 +435,85 @@ if __name__ == "__main__":
         pivot_mer["pre_tra"] >= pre_transient.set_index("ticker").mean().mean()
     )
 
-    plt.clf()
+    sizefigs_L = (22, 10)
+    fig = plt.figure(facecolor="white", figsize=sizefigs_L)
+    gs = gridspec.GridSpec(2, 2)
+
+    # ---------
+    ax = fig.add_subplot(gs[0, :])
+    ax = settings_plot(ax)
+
     sns.lineplot(
-        data=pivot_mer[(pivot_mer.sign_change != 0)],
+        data=pivot_mer[(pivot_mer.entry_order == 1)],
+        x="distance_from_entry",
+        y="mer_ratio",
+        errorbar=("ci", 95),
+        c="b",
+        lw=2,
+    )
+
+    plt.axvline(x=0, c="k", ls="--", lw=2)
+    plt.text(2, 1.05, "Follower entry", fontsize=20, ha="left", va="bottom")
+
+    plt.xlabel("Days from entry", fontsize=20)
+    plt.ylabel("Normalized MER", fontsize=20)
+    plt.legend(loc="best", fontsize=20, frameon=False)
+
+    ax = fig.add_subplot(gs[1, 0])
+    ax = settings_plot(ax)
+
+    sns.lineplot(
+        data=pivot_mer[
+            (pivot_mer.entry_order == 1) & (pivot_mer.sign_change != 0)
+        ].dropna(subset="mer_ratio"),
         x="distance_from_entry",
         y="mer_ratio",
         errorbar=None,
-        hue="ratio_tra_above",
+        hue="sign_change",
+        palette=["b", "r"],
+        lw=2,
     )
+
+    plt.xlabel("Days from entry", fontsize=20)
+    plt.ylabel("Normalized MER", fontsize=20)
+    ax.legend(
+        title="Incumbent MER",
+        fontsize=16,
+        title_fontsize=18,
+        frameon=False,
+        labels=["Higher after entry", "Lower after entry"],
+    )
+
+    plt.axvline(x=0, c="k", ls="--", lw=2)
+    plt.text(2, 1.05, "Follower entry", fontsize=20, ha="left", va="bottom")
+
+    ax = fig.add_subplot(gs[1, 1])
+    ax = settings_plot(ax)
+
+    sns.lineplot(
+        data=pivot_mer[
+            (pivot_mer.entry_order == 1) & (pivot_mer.sign_change.isin([1, -1]))
+        ],
+        x="distance_from_entry",
+        y="aum_ratio",
+        errorbar=None,
+        hue="sign_change",
+        palette=["b", "r"],
+        lw=2,
+    )
+
+    plt.axvline(x=0, c="k", ls="--", lw=2)
+    plt.text(2, 0.85, "Follower entry", fontsize=20, ha="left", va="bottom")
+
+    plt.xlabel("Days from entry", fontsize=20)
+    plt.ylabel("Normalized AUM", fontsize=20)
+    ax.legend(
+        title="Incumbent MER",
+        fontsize=16,
+        title_fontsize=18,
+        frameon=False,
+        labels=["Higher after entry", "Lower after entry"],
+    )
+
+    plt.tight_layout(pad=2)
+    plt.savefig("../output/entry_dynamics.png", bbox_inches="tight")
