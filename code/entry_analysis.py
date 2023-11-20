@@ -476,11 +476,11 @@ if __name__ == "__main__":
     pivot_mer = pivot_mer.merge(pre_transient, on="ticker", how="left")
     pivot_mer["ratio_tra_above"] = 1 * (
         pivot_mer["pre_tra"]
-        >= pre_transient.set_index("ticker")["ratio_tra"].mean().mean()
+        >= pre_transient.set_index("ticker")["pre_tra"].mean().mean()
     )
     pivot_mer["ratio_tii_above"] = 1 * (
         pivot_mer["pre_tii"]
-        >= pre_transient.set_index("ticker")["ratio_tii"].mean().mean()
+        >= pre_transient.set_index("ticker")["pre_tii"].mean().mean()
     )
     pivot_mer["spread_above"] = 1 * (
         pivot_mer["pre_spread"]
@@ -509,6 +509,7 @@ if __name__ == "__main__":
     plt.xlabel("Days from entry", fontsize=20)
     plt.ylabel("Normalized MER", fontsize=20)
     plt.legend(loc="best", fontsize=20, frameon=False)
+    plt.title("Panel (a): Aggregate MER dynamics around entry", fontsize=20)
 
     ax = fig.add_subplot(gs[1, 0])
     ax = settings_plot(ax)
@@ -536,7 +537,8 @@ if __name__ == "__main__":
     )
 
     plt.axvline(x=0, c="k", ls="--", lw=2)
-    plt.text(2, 1.05, "Follower entry", fontsize=20, ha="left", va="bottom")
+    plt.text(2, 1.04, "Follower entry", fontsize=20, ha="left", va="bottom")
+    plt.title("Panel (b): Heterogeneity in MER dynamics around entry", fontsize=20)
 
     ax = fig.add_subplot(gs[1, 1])
     ax = settings_plot(ax)
@@ -565,6 +567,6 @@ if __name__ == "__main__":
         frameon=False,
         labels=["Higher after entry", "Lower after entry"],
     )
-
+    plt.title("Panel (c): Heterogeneity in AUM dynamics around entry", fontsize=20)
     plt.tight_layout(pad=2)
     plt.savefig("../output/entry_dynamics.png", bbox_inches="tight")

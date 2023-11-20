@@ -46,9 +46,9 @@ if __name__ == "__main__":
     manager_data = pd.read_csv(
         f"{cfg.raw_folder}/iiclass.csv", index_col=0
     ).reset_index()
-    manager_data["tax_extend"] = manager_data.groupby("permakey")["tax_extend"].apply(
-        lambda x: x.fillna(method="ffill")
-    )
+    manager_data["tax_extend"] = manager_data.groupby("permakey", group_keys=False)[
+        "tax_extend"
+    ].apply(lambda x: x.fillna(method="ffill"))
     manager_data = manager_data[manager_data.year >= 2016]  # keep data in our sample
     probit_file = pd.read_csv(f"{cfg.raw_folder}/probit_raw.csv", index_col=0)
 
