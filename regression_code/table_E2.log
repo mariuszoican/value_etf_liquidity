@@ -170,52 +170,6 @@ Absorbed degrees of freedom:
 dir : seeout
 
 . 
-. reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_s
-> td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
-> d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
-(dropped 1 singleton observations)
-(MWFE estimator converged in 1 iterations)
-
-HDFE Linear regression                            Number of obs   =        103
-Absorbing 1 HDFE group                            F(  10,     47) =     175.99
-Statistics robust to heteroskedasticity           Prob > F        =     0.0000
-                                                  R-squared       =     0.5800
-                                                  Adj R-squared   =     0.0480
-                                                  Within R-sq.    =     0.5656
-Number of clusters (index_id) =         48        Root MSE        =     0.3441
-
-                              (Std. err. adjusted for 48 clusters in index_id)
-------------------------------------------------------------------------------
-             |               Robust
-   mkt_share | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-     highfee |   .3385272   .1084599     3.12   0.003     .1203341    .5567203
-stock_twee~d |   .0766983   .0247166     3.10   0.003     .0269748    .1264217
-log_aum_in~d |   2.259773   .8749575     2.58   0.013     .4995859    4.019961
-lend_byaum~d |   .1201621   .0648456     1.85   0.070    -.0102904    .2506145
-marketing_~d |  -.0817635   .1396861    -0.59   0.561    -.3627756    .1992486
-net_expens~d |   .1411424   .1881072     0.75   0.457    -.2372805    .5195652
-tr_error_b~d |   -.045283   .0742511    -0.61   0.545    -.1946569    .1040908
-perf_drag_~d |  -.0872935   .0685997    -1.27   0.209    -.2252984    .0507114
-       d_uit |  -.9270022   .2586538    -3.58   0.001    -1.447347   -.4066579
-ratio_tii_~d |  -.0722302   .0395814    -1.82   0.074    -.1518578    .0073973
-       _cons |   .3968843   .0766175     5.18   0.000     .2427496    .5510189
-------------------------------------------------------------------------------
-
-Absorbed degrees of freedom:
------------------------------------------------------+
- Absorbed FE | Categories  - Redundant  = Num. Coefs |
--------------+---------------------------------------|
-    index_id |        48          48           0    *|
------------------------------------------------------+
-* = FE nested within cluster; treated as redundant for DoF computation
-
-. outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
->   dec(2) tdec(2) eqdrop(/) keep(*)
-/global/home/pc_mzoican/kpz_etfliquidity/output/table_E2.tex
-dir : seeout
-
-. 
 . reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum
 > _bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bp
 > s_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
@@ -353,6 +307,53 @@ Absorbed degrees of freedom:
 /global/home/pc_mzoican/kpz_etfliquidity/output/table_E2.tex
 dir : seeout
 
+. 
+. reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_s
+> td marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std 
+> d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
+(dropped 1 singleton observations)
+(MWFE estimator converged in 1 iterations)
+
+HDFE Linear regression                            Number of obs   =        103
+Absorbing 1 HDFE group                            F(  10,     47) =     175.99
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
+                                                  R-squared       =     0.5800
+                                                  Adj R-squared   =     0.0480
+                                                  Within R-sq.    =     0.5656
+Number of clusters (index_id) =         48        Root MSE        =     0.3441
+
+                              (Std. err. adjusted for 48 clusters in index_id)
+------------------------------------------------------------------------------
+             |               Robust
+   mkt_share | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     highfee |   .3385272   .1084599     3.12   0.003     .1203341    .5567203
+stock_twee~d |   .0766983   .0247166     3.10   0.003     .0269748    .1264217
+log_aum_in~d |   2.259773   .8749575     2.58   0.013     .4995859    4.019961
+lend_byaum~d |   .1201621   .0648456     1.85   0.070    -.0102904    .2506145
+marketing_~d |  -.0817635   .1396861    -0.59   0.561    -.3627756    .1992486
+net_expens~d |   .1411424   .1881072     0.75   0.457    -.2372805    .5195652
+tr_error_b~d |   -.045283   .0742511    -0.61   0.545    -.1946569    .1040908
+perf_drag_~d |  -.0872935   .0685997    -1.27   0.209    -.2252984    .0507114
+       d_uit |  -.9270022   .2586538    -3.58   0.001    -1.447347   -.4066579
+ratio_tii_~d |  -.0722302   .0395814    -1.82   0.074    -.1518578    .0073973
+       _cons |   .3968843   .0766175     5.18   0.000     .2427496    .5510189
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+-----------------------------------------------------+
+ Absorbed FE | Categories  - Redundant  = Num. Coefs |
+-------------+---------------------------------------|
+    index_id |        48          48           0    *|
+-----------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label
+>   dec(2) tdec(2) eqdrop(/) keep(*)
+/global/home/pc_mzoican/kpz_etfliquidity/output/table_E2.tex
+dir : seeout
+
+. 
 . 
 . reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std 
 > marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_u

@@ -41,12 +41,19 @@ Notes:
 
 . import delimited "`directory'/data/etf_panel_processed.csv"
 (encoding automatically selected: ISO-8859-1)
-(91 vars, 1,752 obs)
+(94 vars, 1,752 obs)
 
+. //import delimited "D:/Research/kpz_etfliquidity/data/etf_panel_processed.csv
+> "
 . 
 . drop spread_bps_crsp
 
 . gen spread_bps_crsp=10000*quotedspread_percent_tw 
+
+. 
+. gen eff_spread_bps=10000*effectivespread_percent_ave
+
+. gen rspread_bps=10000*percentrealizedspread_lr_ave
 
 . 
 . 
@@ -120,12 +127,21 @@ Notes:
 
 . label variable creation_fee_std "Creation fee"
 
+. label variable ratio_tra "AUM share of transient investors"
+
+. label variable spread_bps_crsp "Quoted spread (bps)"
+
+. label variable eff_spread_bps "Effective spread (bps)"
+
+. label variable rspread_bps "Realized spread (bps)"
+
+. 
 . 
 . outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkee
-> p(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp turnover_
-> frac lend_byaum_bps tr_error_bps perf_drag_bps marketing_fee_bps stock_tweets
-> _raw other_expenses_100 fee_waivers_100 time_existence mgr_duration ratio_tii
->  ratio_tra)
+> p(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp eff_sprea
+> d_bps rspread_bps turnover_frac ratio_tra  ratio_tii  mgr_duration lend_byaum
+> _bps marketing_fee_bps stock_tweets_raw other_expenses_100 fee_waivers_100 tr
+> _error_bps perf_drag_bps )
 
                              v1
 -------------------------------------------------------------
@@ -682,6 +698,21 @@ Notes:
 95%        10000          15000       Skewness       2.061627
 99%        15000          15000       Kurtosis       6.228584
 
+                       management_fee
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          .03            .03
+ 5%          .03            .03
+10%          .04            .03       Obs               1,752
+25%          .08            .03       Sum of wgt.       1,752
+
+50%          .15                      Mean           .2266467
+                        Largest       Std. dev.      .1903117
+75%          .34             .7
+90%           .5             .7       Variance       .0362185
+95%          .62             .7       Skewness       .9585355
+99%           .7            .71       Kurtosis       2.694304
+
                        other_expenses
 -------------------------------------------------------------
       Percentiles      Smallest
@@ -817,7 +848,7 @@ Notes:
 95%          100            100       Skewness      -1.631841
 99%          100            100       Kurtosis       5.911959
 
-                          ratio_tra
+              AUM share of transient investors
 -------------------------------------------------------------
       Percentiles      Smallest
  1%     .0087902       .0000101
@@ -990,12 +1021,12 @@ Notes:
 10%            0              0       Obs               1,752
 25%            0              0       Sum of wgt.       1,752
 
-50%            0                      Mean           .2009132
-                        Largest       Std. dev.      .4007977
-75%            0              1
-90%            1              1       Variance       .1606388
-95%            1              1       Skewness       1.492884
-99%            1              1       Kurtosis       3.228701
+50%            0                      Mean           .2180365
+                        Largest       Std. dev.      .4212448
+75%            0              2
+90%            1              2       Variance       .1774472
+95%            1              2       Skewness       1.502521
+99%            1              2       Kurtosis       3.664917
 
                  effectivespread_dollar_ave
 -------------------------------------------------------------
@@ -1297,7 +1328,37 @@ Notes:
 95%     .0025913       .0073725       Skewness       3.137869
 99%     .0045439       .0078502       Kurtosis       16.09078
 
-                       spread_bps_crsp
+                         mer_avg_ix
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          6.5            6.2
+ 5%           11            6.2
+10%           11            6.2       Obs               1,752
+25%         11.5            6.2       Sum of wgt.       1,752
+
+50%           20                      Mean           25.34537
+                        Largest       Std. dev.      16.30302
+75%         31.5             71
+90%         51.5             71       Variance       265.7884
+95%           57             71       Skewness        1.09946
+99%           71             71       Kurtosis       3.230335
+
+                             prc
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%        15.01          12.83
+ 5%         22.5          13.16
+10%        27.66          13.39       Obs               1,732
+25%        42.92          13.47       Sum of wgt.       1,732
+
+50%        72.65                      Mean           93.36246
+                        Largest       Std. dev.      65.08674
+75%      129.905         373.88
+90%       173.85         375.38       Variance       4236.284
+95%       215.83         375.39       Skewness       1.359989
+99%       323.24         419.92       Kurtosis       5.321967
+
+                     Quoted spread (bps)
 -------------------------------------------------------------
       Percentiles      Smallest
  1%     .4743925       .3607288
@@ -1311,6 +1372,36 @@ Notes:
 90%     17.41387       73.48402       Variance       82.43065
 95%     25.91272       73.72538       Skewness       3.137869
 99%     45.43854       78.50153       Kurtosis       16.09078
+
+                   Effective spread (bps)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .4629798       .3363516
+ 5%     .8636464       .3441023
+10%     1.099814       .3620118       Obs               1,752
+25%     1.608885       .3679007       Sum of wgt.       1,752
+
+50%     2.635445                      Mean           4.682503
+                        Largest       Std. dev.      6.331571
+75%     4.781751       54.69578
+90%     10.12795       57.41705       Variance       40.08879
+95%       16.884        59.2775       Skewness       4.002208
+99%     30.58784       62.78004       Kurtosis       24.59731
+
+                    Realized spread (bps)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.0812844      -.3970351
+ 5%     .0371592      -.2743216
+10%     .1186181        -.23411       Obs               1,752
+25%     .3561825      -.2298309       Sum of wgt.       1,752
+
+50%     1.234406                      Mean           3.189273
+                        Largest       Std. dev.      5.844999
+75%     3.321587       45.31795
+90%     7.700381       49.12402       Variance       34.16402
+95%     13.54173       50.22379       Skewness       5.071581
+99%     27.79566       92.62156       Kurtosis       47.27231
 
                      ETF age (quarters)
 -------------------------------------------------------------
@@ -1558,5 +1649,10 @@ ticker  inception  index_id  log_profit  issuer  description  primary_benchmark
 /global/home/pc_mzoican/kpz_etfliquidity\output\table_1.tex
 dir : seeout
 
+. //outreg2 using "D:/Research/kpz_etfliquidity/output/table_1.tex", replace te
+> x sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread
+> _bps_crsp eff_spread_bps rspread_bps turnover_frac ratio_tra  ratio_tii  mgr_
+> duration lend_byaum_bps marketing_fee_bps stock_tweets_raw other_expenses_100
+>  fee_waivers_100 tr_error_bps perf_drag_bps )
 . 
 end of do-file

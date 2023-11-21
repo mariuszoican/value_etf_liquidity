@@ -1,7 +1,7 @@
 
   ___  ____  ____  ____  ____ ®
  /__    /   ____/   /   ____/      18.0
-___/   /   /___/   /   /___/       BE—Basic Edition
+___/   /   /___/   /   /___/       MP—Parallel Edition
 
  Statistics and Data Science       Copyright 1985-2023 StataCorp LLC
                                    StataCorp
@@ -10,7 +10,7 @@ ___/   /   /___/   /   /___/       BE—Basic Edition
                                    800-STATA-PC        https://www.stata.com
                                    979-696-4600        stata@stata.com
 
-Stata license: 5-user network perpetual
+Stata license: 5-user 32-core network perpetual
 Serial number: 501806221992
   Licensed to: Nathaniel Baum−Snow
                University of Toronto
@@ -18,8 +18,11 @@ Serial number: 501806221992
 Notes:
       1. Stata is running in batch mode.
       2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
 
-. do table_5.do 
+. do table_5 
 
 . 
 . // Table 5 - Shapley values

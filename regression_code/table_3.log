@@ -45,7 +45,7 @@ Notes:
 
 . import delimited "`directory'/data/etf_panel_processed.csv"
 (encoding automatically selected: ISO-8859-1)
-(91 vars, 1,752 obs)
+(94 vars, 1,752 obs)
 
 . 
 . drop spread_bps_crsp

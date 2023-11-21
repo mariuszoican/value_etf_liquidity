@@ -6,8 +6,8 @@ set more off
 cd ..
 local directory : pwd
 display "`working_dir'"
-// import delimited "`directory'/data/etf_panel_processed.csv"
-import delimited "D:/Research/kpz_etfliquidity/data/etf_panel_processed.csv"
+import delimited "`directory'/data/etf_panel_processed.csv"
+//import delimited "D:/Research/kpz_etfliquidity/data/etf_panel_processed.csv"
 
 drop spread_bps_crsp
 gen spread_bps_crsp=10000*quotedspread_percent_tw 
@@ -59,5 +59,5 @@ label variable eff_spread_bps "Effective spread (bps)"
 label variable rspread_bps "Realized spread (bps)"
 
 
-//outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp eff_spread_bps rspread_bps turnover_frac ratio_tra  ratio_tii  mgr_duration lend_byaum_bps marketing_fee_bps stock_tweets_raw other_expenses_100 fee_waivers_100 tr_error_bps perf_drag_bps )
-outreg2 using "D:/Research/kpz_etfliquidity/output/table_1.tex", replace tex sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp eff_spread_bps rspread_bps turnover_frac ratio_tra  ratio_tii  mgr_duration lend_byaum_bps marketing_fee_bps stock_tweets_raw other_expenses_100 fee_waivers_100 tr_error_bps perf_drag_bps )
+outreg2 using "`directory'\output\table_1.tex", replace tex sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp eff_spread_bps rspread_bps turnover_frac ratio_tra  ratio_tii  mgr_duration lend_byaum_bps marketing_fee_bps stock_tweets_raw other_expenses_100 fee_waivers_100 tr_error_bps perf_drag_bps )
+//outreg2 using "D:/Research/kpz_etfliquidity/output/table_1.tex", replace tex sum(detail) eqkeep(N mean sd p25 p50 p75) dec(2) keep(aum_bn mer_bps spread_bps_crsp eff_spread_bps rspread_bps turnover_frac ratio_tra  ratio_tii  mgr_duration lend_byaum_bps marketing_fee_bps stock_tweets_raw other_expenses_100 fee_waivers_100 tr_error_bps perf_drag_bps )

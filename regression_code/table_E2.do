@@ -59,9 +59,6 @@ label variable mkt_share "Market share"
 reghdfe mer_bps highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii_std , absorb(index_id) vce(cluster index_id)
 outreg2 using "`directory'/output/table_E2.tex", adjr2 replace tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
-reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
-outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
-
 reghdfe spread_bps_crsp highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
 
@@ -70,6 +67,10 @@ outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label  d
 
 reghdfe turnover_frac highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
+reghdfe mkt_share highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
+outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
+
 
 reghdfe log_pr highfee stock_tweets_std log_aum_index_std lend_byaum_bps_std marketing_fee_bps_std net_expenses_std tr_error_bps_std perf_drag_bps_std d_uit ratio_tii_std , absorb(index_id)vce(cluster index_id)
 outreg2 using "`directory'/output/table_E2.tex", adjr2 append tex tstat label  dec(2) tdec(2) eqdrop(/) keep(*)
