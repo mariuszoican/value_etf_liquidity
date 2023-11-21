@@ -599,7 +599,7 @@ if __name__ == "__main__":
 
     rat_tra_reg = PanelOLS.from_formula(
         """ratio_tra ~  EntityEffects + TimeEffects + stock_tweets + log_aum_index + lend_byAUM_bps + 
-                                    marketing_fee_bps + net_expense + tr_error_bps + perf_drag_bps + d_UIT + time_existence + time_since_first""",
+                                    marketing_fee_bps + net_expense + tr_error_bps + perf_drag_bps + d_UIT + time_since_first""",
         data=etf_graph,
     ).fit()
     etf_graph["tra_resid"] = rat_tra_reg.resids
@@ -623,7 +623,7 @@ if __name__ == "__main__":
         y="highfee",
         x="ratio_tra",
         capsize=0.1,
-        errorbar="se",
+        errorbar=("ci", 95),
         palette="Blues",
         orient="h",
     )
@@ -640,7 +640,7 @@ if __name__ == "__main__":
         y="highfee",
         x="tra_resid",
         capsize=0.1,
-        errorbar="se",
+        errorbar=("ci", 95),
         palette="Blues",
         orient="h",
     )
@@ -691,7 +691,7 @@ if __name__ == "__main__":
         x="tax_extend",
         y="dollar_pos",
         hue="highfee",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.05,
         palette="Blues",
     )
@@ -709,7 +709,7 @@ if __name__ == "__main__":
         x="horizon_perma",
         y="dollar_pos",
         hue="highfee",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.05,
         palette="Blues",
     )
@@ -808,7 +808,7 @@ if __name__ == "__main__":
         x="highfee",
         y="spread_bps_crsp",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -825,7 +825,7 @@ if __name__ == "__main__":
         x="highfee",
         y="mkt_share",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -842,7 +842,7 @@ if __name__ == "__main__":
         x="highfee",
         y="log_volume",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -859,7 +859,7 @@ if __name__ == "__main__":
         x="highfee",
         y="turnover_frac",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -876,7 +876,7 @@ if __name__ == "__main__":
         x="highfee",
         y="spread_resid",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -893,7 +893,7 @@ if __name__ == "__main__":
         x="highfee",
         y="mktshare_resid",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -910,7 +910,7 @@ if __name__ == "__main__":
         x="highfee",
         y="volume_resid",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -927,7 +927,7 @@ if __name__ == "__main__":
         x="highfee",
         y="turnover_resid",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("")
@@ -1049,7 +1049,7 @@ if __name__ == "__main__":
         x="firstmover",
         y="highfee",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("First mover", fontsize=18)
@@ -1069,7 +1069,7 @@ if __name__ == "__main__":
         y="hf_resid",
         hue="Different benchmarks",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("First mover", fontsize=18)
@@ -1091,7 +1091,7 @@ if __name__ == "__main__":
         y="hf_resid",
         hue="Major brand index",
         palette="Blues",
-        errorbar="se",
+        errorbar=("ci", 95),
         capsize=0.1,
     )
     plt.xlabel("First mover", fontsize=18)
