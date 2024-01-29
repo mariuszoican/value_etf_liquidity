@@ -176,7 +176,7 @@ if __name__ == "__main__":
     )
 
     # add more data from WRDS ETF Global
-    extra_data = pd.read_csv(f"{cfg.data_folder}/dummies_etfg.csv.gz")
+    extra_data = pd.read_csv(f"{cfg.data_folder}/dummies_etfg.csv.gz",keep_default_na=False, na_values=[""])
     extra_data = extra_data[extra_data.composite_ticker.isin(list_ETF_tickers)]
     extra_data["as_of_date"] = extra_data["as_of_date"].apply(
         lambda x: dt.datetime.strptime(x, "%Y-%m-%d")
