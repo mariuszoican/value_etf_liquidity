@@ -667,7 +667,7 @@ if __name__ == "__main__":
     )
     aum_quarter_tax["dollar_pos"] = aum_quarter_tax["dollar_pos"] / 10**9
     aum_quarter_tax["highfee"] = np.where(
-        aum_quarter_tax["highfee"] == 1, "High MER", "Low MER"
+        aum_quarter_tax["highfee"] == 1, "High fee", "Low fee"
     )
     aum_quarter_tra = (
         d13furg_micro.groupby(["quarter", "horizon_perma", "highfee"])
@@ -676,7 +676,7 @@ if __name__ == "__main__":
     )
     aum_quarter_tra["dollar_pos"] = aum_quarter_tra["dollar_pos"] / 10**9
     aum_quarter_tra["highfee"] = np.where(
-        aum_quarter_tra["highfee"] == 1, "High MER", "Low MER"
+        aum_quarter_tra["highfee"] == 1, "High fee", "Low fee"
     )
 
     sizefigs_L = (16, 9)
@@ -814,7 +814,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Bid-ask spread (basis points)", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("No controls", fontsize=18)
 
     ax = fig.add_subplot(gs[0, 1])
@@ -831,7 +831,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Market shares", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("No controls", fontsize=18)
 
     ax = fig.add_subplot(gs[0, 2])
@@ -848,7 +848,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Trading volume (logs)", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("No controls", fontsize=18)
 
     ax = fig.add_subplot(gs[0, 3])
@@ -865,7 +865,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Turnover", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("All controls", fontsize=18)
 
     ax = fig.add_subplot(gs[1, 0])
@@ -882,7 +882,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Bid-ask spread (basis points)", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("All controls", fontsize=18)
 
     ax = fig.add_subplot(gs[1, 1])
@@ -899,7 +899,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Market shares", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("All controls", fontsize=18)
 
     ax = fig.add_subplot(gs[1, 2])
@@ -916,7 +916,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Trading volume (logs)", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("All controls", fontsize=18)
 
     ax = fig.add_subplot(gs[1, 3])
@@ -933,7 +933,7 @@ if __name__ == "__main__":
     plt.xlabel("")
     # plt.xlabel("ETF management expense ratio (MER)",fontsize=18)
     plt.ylabel("Turnover", fontsize=18)
-    ax.set_xticklabels(["Low MER", "High MER"], fontsize=18)
+    ax.set_xticklabels(["Low fee", "High fee"], fontsize=18)
     plt.title("No controls", fontsize=18)
 
     plt.tight_layout(pad=2)

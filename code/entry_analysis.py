@@ -507,9 +507,9 @@ if __name__ == "__main__":
     plt.text(2, 1.05, "Follower entry", fontsize=20, ha="left", va="bottom")
 
     plt.xlabel("Days from entry", fontsize=20)
-    plt.ylabel("Normalized MER", fontsize=20)
+    plt.ylabel("Normalized fee", fontsize=20)
     plt.legend(loc="best", fontsize=20, frameon=False)
-    plt.title("Panel (a): Aggregate MER dynamics around entry", fontsize=20)
+    plt.title("Panel (a): Aggregate fee dynamics around entry", fontsize=20)
 
     ax = fig.add_subplot(gs[1, 0])
     ax = settings_plot(ax)
@@ -527,9 +527,9 @@ if __name__ == "__main__":
     )
 
     plt.xlabel("Days from entry", fontsize=20)
-    plt.ylabel("Normalized MER", fontsize=20)
+    plt.ylabel("Normalized fee", fontsize=20)
     ax.legend(
-        title="Incumbent MER",
+        title="Incumbent fee",
         fontsize=16,
         title_fontsize=18,
         frameon=False,
@@ -538,7 +538,7 @@ if __name__ == "__main__":
 
     plt.axvline(x=0, c="k", ls="--", lw=2)
     plt.text(2, 1.04, "Follower entry", fontsize=20, ha="left", va="bottom")
-    plt.title("Panel (b): Heterogeneity in MER dynamics around entry", fontsize=20)
+    plt.title("Panel (b): Heterogeneity in fee dynamics around entry", fontsize=20)
 
     ax = fig.add_subplot(gs[1, 1])
     ax = settings_plot(ax)
@@ -561,7 +561,7 @@ if __name__ == "__main__":
     plt.xlabel("Days from entry", fontsize=20)
     plt.ylabel("Normalized AUM", fontsize=20)
     ax.legend(
-        title="Incumbent MER",
+        title="Incumbent fee",
         fontsize=16,
         title_fontsize=18,
         frameon=False,
