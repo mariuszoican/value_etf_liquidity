@@ -1021,12 +1021,12 @@ Notes:
 10%            0              0       Obs               1,752
 25%            0              0       Sum of wgt.       1,752
 
-50%            0                      Mean           .2180365
-                        Largest       Std. dev.      .4212448
-75%            0              2
-90%            1              2       Variance       .1774472
-95%            1              2       Skewness       1.502521
-99%            1              2       Kurtosis       3.664917
+50%            0                      Mean           .2009132
+                        Largest       Std. dev.      .4007977
+75%            0              1
+90%            1              1       Variance       .1606388
+95%            1              1       Skewness       1.492884
+99%            1              1       Kurtosis       3.228701
 
                  effectivespread_dollar_ave
 -------------------------------------------------------------
