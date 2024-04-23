@@ -4,6 +4,7 @@ from omegaconf import OmegaConf
 import pandas as pd
 import numpy as np
 import datetime as dt
+import boto3
 from scipy.stats.mstats import winsorize
 
 
@@ -18,6 +19,17 @@ def longest_string(series):
     return series[series.str.len().idxmax()]
 
 
+def aws_load_csv(bucket_name, object, s3_client):
+    import pandas as pd
+    import io
+    import gzip
+
+    obj = s3_client.get_object(Bucket=bucket_name, Key=object, RequestPayer="requester")
+    body_obj = obj["Body"].read()  # pull object / decode
+    decompressed_data = gzip.decompress(body_obj)
+    return pd.read_csv(io.BytesIO(decompressed_data))
+
+
 if __name__ == "__main__":
     with initialize(version_base=None, config_path="../conf"):
         cfg = compose(config_name="config")
@@ -25,8 +37,12 @@ if __name__ == "__main__":
     date_file = dt.datetime(2024, 4, 22)  # vintage of ETFG data
     today = date_file.strftime("%Y%m%d")
     print("Loading data:")
-    data_etfg = pd.read_csv(
-        f"../data/etfg_industry_{today}.csv.gz", index_col=0, parse_dates=["as_of_date"]
+    # data_etfg = pd.read_csv(
+    #     f"../data/etfg_industry_{today}.csv.gz", index_col=0, parse_dates=["as_of_date"]
+    # )
+    s3_client = boto3.client("s3")
+    data_etfg = aws_load_csv(
+        "etfindustrydata", f"etfg_industry_{today}.csv.gz", s3_client
     )
     print("Data loaded. Start filtering...")
 
