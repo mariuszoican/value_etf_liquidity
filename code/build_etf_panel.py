@@ -176,7 +176,9 @@ if __name__ == "__main__":
     )
 
     # add more data from WRDS ETF Global
-    extra_data = pd.read_csv(f"{cfg.data_folder}/dummies_etfg.csv.gz",keep_default_na=False, na_values=[""])
+    extra_data = pd.read_csv(
+        f"{cfg.data_folder}/dummies_etfg.csv.gz", keep_default_na=False, na_values=[""]
+    )
     extra_data = extra_data[extra_data.composite_ticker.isin(list_ETF_tickers)]
     extra_data["as_of_date"] = extra_data["as_of_date"].apply(
         lambda x: dt.datetime.strptime(x, "%Y-%m-%d")
@@ -679,9 +681,20 @@ if __name__ == "__main__":
         aum_quarter_tra["highfee"] == 1, "High fee", "Low fee"
     )
 
-    sizefigs_L = (16, 9)
+    aum_quarter_tax["dollar_pos_pct"] = aum_quarter_tax[
+        "dollar_pos"
+    ] / aum_quarter_tax.groupby(["quarter", "tax_extend"])["dollar_pos"].transform(
+        "sum"
+    )
+    aum_quarter_tra["dollar_pos_pct"] = aum_quarter_tra[
+        "dollar_pos"
+    ] / aum_quarter_tra.groupby(["quarter", "horizon_perma"])["dollar_pos"].transform(
+        "sum"
+    )
+
+    sizefigs_L = (16, 16)
     fig = plt.figure(facecolor="white", figsize=sizefigs_L)
-    gs = gridspec.GridSpec(2, 2)
+    gs = gridspec.GridSpec(3, 2)
 
     # ---------
     ax = fig.add_subplot(gs[0, 0])
@@ -720,7 +733,58 @@ if __name__ == "__main__":
     ax.set_xticklabels(["Quasi-indexers", "Transient investor"], fontsize=18)
     plt.title("Panel (b): Holdings by investor horizon", fontsize=18)
 
+    # ---------
     ax = fig.add_subplot(gs[1, 0])
+    ax = settings_plot(ax)
+    sns.barplot(
+        data=aum_quarter_tax,
+        x="tax_extend",
+        y="dollar_pos_pct",
+        hue="highfee",
+        errorbar=("ci", 95),
+        capsize=0.05,
+        palette="Blues",
+    )
+    plt.xlabel("Tax sensitivity", fontsize=18)
+    plt.ylim(0, 1.25)
+    plt.ylabel(r"Investor holdings (fraction)", fontsize=18)
+    ax.legend(
+        title="ETF management fee",
+        fontsize=16,
+        title_fontsize=18,
+        frameon=False,
+        loc="upper left",
+    )
+
+    ax.set_xticklabels(["Tax insensitive", "Tax sensitive"], fontsize=18)
+    plt.title("Panel (c): Holdings by tax sensitivity", fontsize=18)
+
+    ax = fig.add_subplot(gs[1, 1])
+    ax = settings_plot(ax)
+    sns.barplot(
+        data=aum_quarter_tra,
+        x="horizon_perma",
+        y="dollar_pos_pct",
+        hue="highfee",
+        errorbar=("ci", 95),
+        capsize=0.05,
+        palette="Blues",
+    )
+    plt.xlabel("Investor horizon", fontsize=18)
+    plt.ylabel(r"Investor holdings (fraction)", fontsize=18)
+    plt.ylim(0, 1.25)
+    ax.legend(
+        title="ETF management fee",
+        fontsize=16,
+        title_fontsize=18,
+        frameon=False,
+        loc="upper right",
+    )
+
+    ax.set_xticklabels(["Quasi-indexers", "Transient investor"], fontsize=18)
+    plt.title("Panel (d): Holdings by investor horizon", fontsize=18)
+
+    ax = fig.add_subplot(gs[2, 0])
     ax = settings_plot(ax)
     sns.kdeplot(data=d13furg, x="mgr_duration", hue="horizon_perma", common_norm=False)
     plt.xlabel("Investor holding duration", fontsize=18)
@@ -732,9 +796,9 @@ if __name__ == "__main__":
         frameon=False,
         labels=["Quasi-indexers", "Transient"],
     )
-    plt.title("Panel (c): Holding durations by investor horizon", fontsize=18)
+    plt.title("Panel (e): Holding durations by investor horizon", fontsize=18)
 
-    ax = fig.add_subplot(gs[1, 1])
+    ax = fig.add_subplot(gs[2, 1])
     ax = settings_plot(ax)
     sns.kdeplot(data=d13furg, x="mgr_duration", hue="tax_extend", common_norm=False)
     plt.xlabel("Investor holding duration", fontsize=18)
@@ -746,7 +810,7 @@ if __name__ == "__main__":
         frameon=False,
         labels=["Tax-insensitive", "Tax-sensitive"],
     )
-    plt.title("Panel (d): Holding durations by tax status", fontsize=18)
+    plt.title("Panel (f): Holding durations by tax status", fontsize=18)
 
     plt.tight_layout(pad=4)
     plt.savefig(path + "micro_sumstats.png", bbox_inches="tight")
