@@ -396,9 +396,9 @@ if __name__ == "__main__":
         tax_sensitivity, on=["ticker", "quarter"], how="outer"
     ).merge(transient, on=["ticker", "quarter"], how="outer")
 
-    etf_measures.to_csv(
-        f"{cfg.data_folder}/etf_clientele_measures.csv.gz", compression="gzip"
-    )
+    # etf_measures.to_csv(
+    #     f"{cfg.data_folder}/etf_clientele_measures.csv.gz", compression="gzip"
+    # )
 
     # merge into main ETF panel
     etf_panel = etf_panel.merge(etf_measures, on=["ticker", "quarter"], how="left")
@@ -1002,91 +1002,6 @@ if __name__ == "__main__":
 
     plt.tight_layout(pad=2)
     plt.savefig(path + "main_graph_RR.png", bbox_inches="tight")
-
-    # Get panel of quarterly differences
-    # -----------------------------------
-
-    panel_diff = etf_graph.pivot(columns="highfee")
-    # list of columns to get differences from
-    col_diffs = [
-        "lend_byAUM_bps",
-        "d_UIT",
-        "aum",
-        "log_aum",
-        "cum_mktg_expense",
-        "log_volume",
-        "logret_q",
-        "logret_q_lag",
-        "marketing_fee_bps",
-        "mer_bps",
-        "mgr_duration",
-        "mgr_duration_tii",
-        "mgr_duration_tsi",
-        "mkt_share",
-        "perf_drag_bps",
-        "ratio_tii",
-        "ratio_tra",
-        "spread_bps_crsp",
-        "stock_tweets",
-        "time_existence",
-        "tr_error_bps",
-        "turnover_frac",
-        "net_expenses",
-        "effectivespread_dollar_ave",
-        "effectivespread_percent_ave",
-        "effectivespread_dollar_dw",
-        "effectivespread_dollar_sw",
-        "effectivespread_percent_dw",
-        "effectivespread_percent_sw",
-        "dollarrealizedspread_lr_ave",
-        "percentrealizedspread_lr_ave",
-        "dollarrealizedspread_lr_sw",
-        "dollarrealizedspread_lr_dw",
-        "percentrealizedspread_lr_sw",
-        "percentrealizedspread_lr_dw",
-        "dollarpriceimpact_lr_ave",
-        "percentpriceimpact_lr_ave",
-        "dollarpriceimpact_lr_sw",
-        "dollarpriceimpact_lr_dw",
-        "percentpriceimpact_lr_sw",
-        "percentpriceimpact_lr_dw",
-        "quotedspread_dollar_tw",
-        "quotedspread_percent_tw",
-    ]
-
-    for c in col_diffs:
-        if c == "mkt_share":
-            panel_diff[c + "_sum"] = panel_diff[(c, 1)] + panel_diff[(c, 0)]
-            panel_diff[c + "_sum"] = np.where(
-                panel_diff[c + "_sum"] == 0, 1, panel_diff[c + "_sum"]
-            )
-            panel_diff[c + "_diff"] = (
-                2 * (panel_diff[(c, 1)] - panel_diff[(c, 0)]) / panel_diff[c + "_sum"]
-            )
-
-            # panel_diff[c+"_diff"]=panel_diff[(c,1)]-panel_diff[(c,0)]
-        else:
-            panel_diff[c + "_sum"] = panel_diff[(c, 1)] + panel_diff[(c, 0)]
-            panel_diff[c + "_sum"] = np.where(
-                panel_diff[c + "_sum"] == 0, 1, panel_diff[c + "_sum"]
-            )
-            panel_diff[c + "_diff"] = (
-                2 * (panel_diff[(c, 1)] - panel_diff[(c, 0)]) / panel_diff[c + "_sum"]
-            )
-            # panel_diff[c+"_diff"]=(panel_diff[(c,1)]-panel_diff[(c,0)])
-
-    panel_diff = panel_diff[[c + "_diff" for c in col_diffs]]
-    panel_diff = panel_diff.reset_index()
-    panel_diff.columns = ["".join(col).strip() for col in panel_diff.columns.values]
-
-    panel_diff = panel_diff.merge(
-        etf_panel[
-            ["index_id", "quarter", "d_UIT", "mgr_duration_index", "ratio_tra_ix"]
-        ].drop_duplicates(),
-        on=["index_id", "quarter"],
-        how="left",
-    )
-    panel_diff.to_csv(f"{cfg.data_folder}/etf_panel_differences_RR.csv")
 
     #### Plot to see first mover advantage
     controls_v2 = """EntityEffects + TimeEffects + other_expenses + fee_waivers + lend_byAUM_bps + stock_tweets +

@@ -29,7 +29,7 @@ if __name__ == "__main__":
     with initialize(version_base=None, config_path="../conf"):
         cfg = compose(config_name="config")
 
-    re_download = False
+    re_download = True
 
     if re_download:
         conn = wrds.Connection(wrds_username=cfg.wrds_user)  # login to WRDS account
