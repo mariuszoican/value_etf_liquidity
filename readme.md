@@ -1,4 +1,5 @@
 ## Instructions to Replicate the Results in "The Value of ETF Liquidity"
+## Khomyn, Putnins, and Zoican (Review of Financial Studies)
 
 1. **Replication of Regression Table `X`**:
    - Run the Stata code `regression_code/table_X.do` to generate the LaTeX table at `output/table_X.tex`.
