@@ -1,5 +1,0 @@
-Load (raw) 13F data
-Traceback (most recent call last):
-  File "/global/home/pc_mzoican/kpz_etfliquidity/code/cp_duration_measure.py", line 74, in <module>
-    sample = data13f[data13f.mgrno.isin(partition_managers[idx])]
-IndexError: list index out of range
